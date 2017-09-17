@@ -21,7 +21,7 @@ public class FFBadDbContract {
         public static final String COLUMN_NAME_ADDRESS = "address";
         public static final String COLUMN_NAME_CONTACT = "contact";
         public static final String COLUMN_NAME_PHONE = "phone";
-        public static final String COLUMN_NAME_mail = "mail";
+        public static final String COLUMN_NAME_MAIL = "mail";
     }
 
     public static class Customer implements BaseColumns {
