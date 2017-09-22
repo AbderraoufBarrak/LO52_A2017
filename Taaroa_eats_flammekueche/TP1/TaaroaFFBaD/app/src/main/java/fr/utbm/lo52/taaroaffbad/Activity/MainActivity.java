@@ -1,7 +1,9 @@
-package fr.utbm.lo52.taaroaffbad;
+package fr.utbm.lo52.taaroaffbad.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import fr.utbm.lo52.taaroaffbad.R;
 
 public class MainActivity extends AppCompatActivity {
 
