@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Volant Manager</string>
+    <string name="welcome_message">Bienvenue dans l\'application Volant Manager !</string>
+    <string name="browse_volants">Parcourir les volants</string>
+</resources>
