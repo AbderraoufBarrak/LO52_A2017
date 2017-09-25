@@ -2,6 +2,9 @@ package fr.utbm.lo52.taaroaffbad.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,8 +66,8 @@ public class VolantAdapter extends BaseAdapter {
         marque.setText(v.getMarque());
 
         // Rating
-        RatingBar note = (RatingBar) convertView.findViewById(R.id.ratingBar);
-        note.setRating(v.getClassement());
+        RatingBar classement = (RatingBar) convertView.findViewById(R.id.ratingBarAdapter);
+        classement.setRating(v.getClassement());
 
 
         return convertView;

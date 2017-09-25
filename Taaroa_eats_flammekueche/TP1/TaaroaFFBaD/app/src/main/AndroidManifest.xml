@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.VolantActivity"></activity>
+        <activity android:name=".Activity.VolantActivity" />
+        <activity android:name=".Activity.VolantPageActivity"></activity>
     </application>
 
 </manifest>
