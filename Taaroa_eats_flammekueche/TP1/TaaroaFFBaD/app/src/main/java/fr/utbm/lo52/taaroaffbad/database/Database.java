@@ -1,4 +1,4 @@
-package fr.utbm.lo52.taaroaffbad.database;
+package fr.utbm.lo52.taaroaffbad.Database;
 
 /**
  * Created by Jordan on 22/09/2017.
@@ -14,6 +14,26 @@ public class Database extends SQLiteOpenHelper {
     // database
     private static final String DATABASE_NAME = "ffb.db";
     private static final int DATABASE_VERSION = 1;
+
+    // table VOLANT
+    public static final String TABLE_VOLANT = "volant";
+    public static final String VOL_VAL1 = "validite1_volant";
+    public static final String VOL_VAL2 = "validite2_volant";
+    public static final String VOL_MARQUE = "marque_volant";
+    public static final String VOL_REF = "ref_volant";
+    public static final String VOL_CLASSEMENT = "classement_volant";
+
+    // create table VOLANT
+    private static final String CREATE_VOLANT = "create table " + TABLE_VOLANT
+            + "(" + VOL_VAL1 + " text not null, "
+            + VOL_VAL2 + " text not null, "
+            + VOL_MARQUE + " text not null, "
+            + VOL_REF + " text not null, "
+            + VOL_CLASSEMENT + " integer not null, "
+            + "primary key(" + VOL_MARQUE+ "," + VOL_REF + ")"
+            + ");";
+
+/*
 
     // table FABRICANT
     public static final String TABLE_FABRICANT = "fabricant";
@@ -34,24 +54,6 @@ public class Database extends SQLiteOpenHelper {
             + FAB_mail + "text not null"
             + ");";
 
-
-    // table VOLANT
-    public static final String TABLE_VOLANT = "volant";
-    public static final String VOL_VAL1 = "validite1_volant";
-    public static final String VOL_VAL2 = "validite2_volant";
-    public static final String VOL_MARQUE = "marque_volant";
-    public static final String VOL_REF = "ref_volant";
-    public static final String VOL_CLASSEMENT = "classement_volant";
-
-    // create table VOLANT
-    private static final String CREATE_VOLANT = "create table " + TABLE_VOLANT
-            + "(" + VOL_VAL1 + "text not null, "
-            + VOL_VAL2 + " text not null, "
-            + VOL_MARQUE + "text not null, "
-            + VOL_REF + " text not null, "
-            + VOL_CLASSEMENT + "integer not null, "
-            + "primary key(" + VOL_MARQUE+ "," + VOL_REF + ")"
-            + ");";
 
     // table ACHETEUR
     public static final String TABLE_ACHETEUR = "acheteur";
@@ -95,17 +97,18 @@ public class Database extends SQLiteOpenHelper {
             + VEN_DATE_VENTE + " text not null, "
             + VEN_DATE_PAYE + " text not null, "
             + ");";
+*/
 
 
-    public Database(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public Database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        database.execSQL(CREATE_FABRICANT);
+        /*database.execSQL(CREATE_FABRICANT);
         database.execSQL(CREATE_VENTE);
-        database.execSQL(CREATE_ACHETEUR);
+        database.execSQL(CREATE_ACHETEUR);*/
         database.execSQL(CREATE_VOLANT);
     }
 

@@ -1,10 +1,12 @@
 package fr.utbm.lo52.taaroaffbad.Beans;
 
+import java.io.Serializable;
+
 /**
  * Created by Moi on 22/09/2017.
  */
 
-public class Volant {
+public class Volant implements Serializable{
     private String validite_1;
     private String validite_2;
     private String marque;
@@ -18,6 +20,8 @@ public class Volant {
         this.reference = reference;
         this.classement = classement;
     }
+
+    public Volant(){}
 
     public String getValidite_1() {
         return validite_1;
@@ -57,5 +61,16 @@ public class Volant {
 
     public void setClassement(int classement) {
         this.classement = classement;
+    }
+
+    @Override
+    public String toString() {
+        return "Volant{" +
+                "validite_1='" + validite_1 + '\'' +
+                ", validite_2='" + validite_2 + '\'' +
+                ", marque='" + marque + '\'' +
+                ", reference='" + reference + '\'' +
+                ", classement=" + classement +
+                '}';
     }
 }

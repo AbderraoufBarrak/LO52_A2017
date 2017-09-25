@@ -1,5 +1,6 @@
 package fr.utbm.lo52.taaroaffbad.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -20,13 +21,10 @@ public class VolantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volant);
 
-        volantList.add(new Volant("2015-2016","206-2017","Toshibo","Test",2));
-        volantList.add(new Volant("2015-2016","206-2017","Blabla","aaaaa",1));
-        volantList.add(new Volant("2015-2016","206-2017","Micka","Test",3));
-        volantList.add(new Volant("2015-2016","206-2017","Yvan","aaaaa",1));
+        Intent intent = getIntent();
+        ArrayList<Volant> test = (ArrayList<Volant>) intent.getSerializableExtra("volantList");
 
         listView = (ListView) findViewById(R.id.listVolant);
-        listView.setAdapter(new VolantAdapter(VolantActivity.this, volantList));
-
+        listView.setAdapter(new VolantAdapter(VolantActivity.this, test));
     }
 }
