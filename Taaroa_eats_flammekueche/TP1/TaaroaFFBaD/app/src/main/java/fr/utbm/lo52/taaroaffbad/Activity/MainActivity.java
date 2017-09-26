@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         VolantDAO volantsDAO = new VolantDAO(MainActivity.this);
         volantsDAO.open();
 
+        // TODO : Mettre dans un fichier xml
         Volant volantToAdd = new Volant("2017-2018","2018-2019", "ARTENGO", "BSC 950", 3);
         Volant volantToAdd_2 = new Volant("2017-2017","2018-2018", "aaa", "Blbala0", 1);
         volantsDAO.addVolant(volantToAdd);
