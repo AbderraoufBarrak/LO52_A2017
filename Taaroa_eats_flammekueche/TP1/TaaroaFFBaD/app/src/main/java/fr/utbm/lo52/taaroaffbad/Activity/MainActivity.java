@@ -1,6 +1,7 @@
 package fr.utbm.lo52.taaroaffbad.Activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +16,7 @@ import fr.utbm.lo52.taaroaffbad.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Button btnTest;
+    public Button btnVolant, btnCommande;
     public ArrayList<Volant> test;
 
     @Override
@@ -39,10 +40,13 @@ public class MainActivity extends AppCompatActivity {
             Log.d("YVAN",v.toString());
         }
 
+        Typeface pacifico = Typeface.createFromAsset(getAssets(),"font/Pacifico.ttf");
+        btnVolant = (Button)findViewById(R.id.btnVolant);
+        btnCommande = (Button)findViewById(R.id.btnCommande);
+        btnVolant.setTypeface(pacifico);
+        btnCommande.setTypeface(pacifico);
 
-        btnTest = (Button)findViewById(R.id.btnTest);
-
-        btnTest.setOnClickListener(new View.OnClickListener() {
+        btnVolant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, VolantActivity.class);
