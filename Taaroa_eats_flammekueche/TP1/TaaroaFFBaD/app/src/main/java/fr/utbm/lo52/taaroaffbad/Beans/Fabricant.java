@@ -17,6 +17,8 @@ public class Fabricant {
         this.mail = mail;
     }
 
+    public Fabricant(){}
+
     public int getId() {
         return id;
     }

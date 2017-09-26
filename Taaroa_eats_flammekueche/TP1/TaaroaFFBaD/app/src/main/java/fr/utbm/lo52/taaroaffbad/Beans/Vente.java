@@ -7,24 +7,44 @@ import java.util.Date;
  */
 
 public class Vente {
+    private int venteId;
     private int fabricantId;
     private String marque;
     private String reference;
     private int acheteurId;
     private int prix;
     private Boolean paye;
+    private int quantite;
     private Date dateAchat;
     private Date datePaye;
 
-    public Vente(int fabricantId, String marque, String reference, int acheteurId, int prix, Boolean paye, Date dateAchat, Date datePaye) {
+    public Vente(int VenteId, int fabricantId, String marque, String reference, int acheteurId, int prix, Boolean paye, int quantite, Date dateAchat, Date datePaye) {
         this.fabricantId = fabricantId;
         this.marque = marque;
         this.reference = reference;
         this.acheteurId = acheteurId;
         this.prix = prix;
         this.paye = paye;
+        this.quantite = quantite;
         this.dateAchat = dateAchat;
         this.datePaye = datePaye;
+    }
+
+
+    public int getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+    public int getVenteId() {
+        return venteId;
+    }
+
+    public void setVenteId(int venteId) {
+        this.venteId = venteId;
     }
 
     public int getFabricantId() {
@@ -89,5 +109,21 @@ public class Vente {
 
     public void setDatePaye(Date datePaye) {
         this.datePaye = datePaye;
+    }
+
+    @Override
+    public String toString() {
+        return "Vente{" +
+                "venteId=" + venteId +
+                ", fabricantId=" + fabricantId +
+                ", marque='" + marque + '\'' +
+                ", reference='" + reference + '\'' +
+                ", acheteurId=" + acheteurId +
+                ", prix=" + prix +
+                ", paye=" + paye +
+                ", quantite=" + quantite +
+                ", dateAchat=" + dateAchat +
+                ", datePaye=" + datePaye +
+                '}';
     }
 }

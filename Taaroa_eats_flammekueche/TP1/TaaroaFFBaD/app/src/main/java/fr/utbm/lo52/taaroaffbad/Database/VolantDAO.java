@@ -42,12 +42,6 @@ public class VolantDAO extends BaseDAO {
         // CODE
     }*/
 
-    public Volant getVolant(long id) {
-        // CODE
-        Volant v = new Volant();
-        return v;
-    }
-
     public ArrayList<Volant> getVolant () {
         Cursor c =
                 sqlite.rawQuery(

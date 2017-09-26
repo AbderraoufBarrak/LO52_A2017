@@ -15,6 +15,8 @@ public class Acheteur {
         this.type = type;
     }
 
+    public Acheteur(){}
+
     public int getId() {
         return id;
     }

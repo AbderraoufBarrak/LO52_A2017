@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import fr.utbm.lo52.taaroaffbad.Beans.Vente;
 import fr.utbm.lo52.taaroaffbad.Beans.Volant;
+import fr.utbm.lo52.taaroaffbad.Database.VenteDAO;
 import fr.utbm.lo52.taaroaffbad.Database.VolantDAO;
 import fr.utbm.lo52.taaroaffbad.R;
 
@@ -28,17 +31,18 @@ public class MainActivity extends AppCompatActivity {
         volantsDAO.open();
 
         // TODO : Mettre dans un fichier xml
-        Volant volantToAdd = new Volant("2017-2018","2018-2019", "ARTENGO", "BSC 950", 3);
-        Volant volantToAdd_2 = new Volant("2017-2017","2018-2018", "aaa", "Blbala0", 1);
-        volantsDAO.addVolant(volantToAdd);
-        volantsDAO.addVolant(volantToAdd_2);
+        //Volant volantToAdd = new Volant("2017-2018","2018-2019", "ARTENGO", "BSC 950", 3);
+        //Volant volantToAdd_2 = new Volant("2017-2017","2018-2018", "aaa", "Blbala0", 1);
+        //volantsDAO.addVolant(volantToAdd);
+        //volantsDAO.addVolant(volantToAdd_2);
+
+        Vente vente = new Vente(1,0,"AA","BB",0,15,true,10,new Date(), new Date());
+        VenteDAO aaaa = new VenteDAO(MainActivity.this);
+        aaaa.open();
+        aaaa.addVente(vente);
 
 
         test = volantsDAO.getVolant();
-
-        for (Volant v : test){
-            Log.d("YVAN",v.toString());
-        }
 
         Typeface pacifico = Typeface.createFromAsset(getAssets(),"font/Pacifico.ttf");
         btnVolant = (Button)findViewById(R.id.btnVolant);

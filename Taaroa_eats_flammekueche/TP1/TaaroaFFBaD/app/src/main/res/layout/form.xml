@@ -11,7 +11,7 @@
         android:contentDescription="@string/app_name" />
 
     <EditText
-        android:id="@+id/Nom"
+        android:id="@+id/CmdNom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -22,7 +22,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/Prenom"
+        android:id="@+id/CmdPrenom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -30,11 +30,10 @@
         android:layout_marginRight="4dp"
         android:layout_marginTop="4dp"
         android:fontFamily="sans-serif"
-        android:hint="Prenom"
-        android:inputType="textPassword" />
+        android:hint="Prenom"/>
 
     <EditText
-        android:id="@+id/Adresse"
+        android:id="@+id/CmdAdresse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -42,11 +41,10 @@
         android:layout_marginRight="4dp"
         android:layout_marginTop="4dp"
         android:fontFamily="sans-serif"
-        android:hint="Adresse"
-        android:inputType="textPassword" />
+        android:hint="Adresse"/>
 
     <EditText
-        android:id="@+id/Tel"
+        android:id="@+id/CmdTelephone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -54,11 +52,42 @@
         android:layout_marginRight="4dp"
         android:layout_marginTop="4dp"
         android:fontFamily="sans-serif"
-        android:hint="Tel"
-        android:inputType="textPassword" />
-    <SeekBar
-        android:id="@+id/seekBar"
+        android:hint="Tel"/>
+
+    <EditText
+        android:id="@+id/CmdQuantite"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
+        android:hint="Quantité"/>
+
+    <Switch
+        android:id="@+id/CheckPaye"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Je souhaite payer maintenant"
+        android:ems="10"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"/>
+
+    <Switch
+        android:id="@+id/CheckStatut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Je représente un CLUB"
+        android:ems="10"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"/>
+
 
 </LinearLayout>
