@@ -3,6 +3,9 @@ package fr.utbm.lo52.taaroaffbad.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -30,6 +33,20 @@ public class VenteActivity extends AppCompatActivity {
         listView.setAdapter(new VenteAdapter(VenteActivity.this, venteList));
 
 
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Vente listItem = venteList.get(position);
+                Log.d("JOJO",listItem.getReference());
+
+                Intent intent = new Intent(VenteActivity.this,VentePageActivity.class);
+                intent.putExtra("Vente",listItem);
+
+                startActivity(intent);
+            }
+        });
 
     }
 }

@@ -9,10 +9,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 
 public abstract class BaseDAO {
-    // Nous sommes à la première version de la base
-    // Si je décide de la mettre à jour, il faudra changer cet attribut
-    protected final static int VERSION = 2;
-    // Le nom du fichier qui représente ma base
+
+    //TODO: /!\ incrémenter s'il y a changement de la structure de la BDD
+    protected final static int VERSION = 8;
     protected final static String NOM = "database.db";
 
     protected SQLiteDatabase sqlite = null;
@@ -23,8 +22,7 @@ public abstract class BaseDAO {
     }
 
     public SQLiteDatabase open() {
-        // Pas besoin de fermer la dernière base puisque getWritableDatabase s'en charge
-        sqlite = handler.getWritableDatabase();
+        sqlite = handler.getWritableDatabase(); // ferme automatiquement la base
         return sqlite;
     }
 

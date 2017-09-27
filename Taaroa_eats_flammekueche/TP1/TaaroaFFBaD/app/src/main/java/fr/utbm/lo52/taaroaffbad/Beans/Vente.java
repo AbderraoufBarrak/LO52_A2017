@@ -19,7 +19,7 @@ public class Vente implements Serializable{
     private Date dateAchat;
     private Date datePaye;
 
-    public Vente(int VenteId, int fabricantId, String marque, String reference, int acheteurId, int prix, Boolean paye, int quantite, Date dateAchat, Date datePaye) {
+    public Vente(int VenteId, String marque, String reference, int fabricantId, int acheteurId, int prix, Boolean paye, int quantite, Date dateAchat, Date datePaye) {
         this.venteId = VenteId;
         this.fabricantId = fabricantId;
         this.marque = marque;

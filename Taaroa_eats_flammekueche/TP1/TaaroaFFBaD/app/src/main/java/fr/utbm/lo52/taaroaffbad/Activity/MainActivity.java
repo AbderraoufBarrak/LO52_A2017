@@ -14,6 +14,7 @@ import java.util.Date;
 import fr.utbm.lo52.taaroaffbad.Beans.Vente;
 import fr.utbm.lo52.taaroaffbad.Beans.Volant;
 import fr.utbm.lo52.taaroaffbad.Database.Database;
+import fr.utbm.lo52.taaroaffbad.Database.RemplissageBDD;
 import fr.utbm.lo52.taaroaffbad.Database.VenteDAO;
 import fr.utbm.lo52.taaroaffbad.Database.VolantDAO;
 import fr.utbm.lo52.taaroaffbad.R;
@@ -37,17 +38,10 @@ public class MainActivity extends AppCompatActivity {
         venteDAO = new VenteDAO(MainActivity.this);
         venteDAO.open();
 
-        // TODO : Mettre dans un fichier xml
-        //Volant volantToAdd = new Volant("2017-2018","2018-2019", "ARTENGO", "BSC 950", 3);
-        //Volant volantToAdd_2 = new Volant("2017-2017","2018-2018", "aaa", "Blbala0", 1);
-        //volantsDAO.addVolant(volantToAdd);
-        //volantsDAO.addVolant(volantToAdd_2);
+        // remplissage de la BDD (RAZ) -> paramètres : context, volant, fabricant, acheteur, vente
+        RemplissageBDD rbdd = new RemplissageBDD(MainActivity.this, true, false, false, false);
 
-        //Vente vente = new Vente(1,0,"AA","BB",0,15,true,10,new Date(), new Date());
-        //venteDAO.addVente(vente);
-
-
-        test2 = venteDAO.getVente();
+        //test2 = venteDAO.getVente();
         test = volantsDAO.getVolant();
 
         Typeface pacifico = Typeface.createFromAsset(getAssets(),"font/Pacifico.ttf");

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"
+                    android:background="@drawable/backhome"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:id="@+id/tvVenteTITRE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#000"
+                    android:shadowRadius="5"
+                    android:shadowDy="6"
+                    android:shadowDx="7"
+                    android:text="TextView"
+                    android:textColor="#fff"
+                    android:textSize="35sp"
+                    android:layout_marginTop="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="4dp"
+                    android:layout_centerHorizontal="true"
+                    android:shadowColor="#000"
+                    android:shadowRadius="5"
+                    android:shadowDy="6"
+                    android:shadowDx="7"
+                    android:layout_marginTop="120dp"
+                    android:background="#fff"/>
+
+                <TextView
+                    android:id="@+id/tvVenteSousTITRE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#000"
+                    android:shadowRadius="5"
+                    android:shadowDy="6"
+                    android:shadowDx="7"
+                    android:text="TextView"
+                    android:textColor="#fff"
+                    android:textSize="35sp"
+                    android:layout_marginTop="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/tvVenteDESC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textSize="25sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+

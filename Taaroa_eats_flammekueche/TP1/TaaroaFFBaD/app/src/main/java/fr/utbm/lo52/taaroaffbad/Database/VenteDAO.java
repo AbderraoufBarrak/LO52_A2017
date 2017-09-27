@@ -26,8 +26,11 @@ public class VenteDAO extends BaseDAO {
 
     // insert into table VENTE
     public void addVente(Vente v) {
+
+        Log.i("JOjo-addVente","vente.getFabID="+v.getFabricantId());
+
         ContentValues values = new ContentValues();
-        values.put(handler.VEN_ID, v.getVenteId());
+        values.putNull(handler.VEN_ID);
         values.put(handler.VEN_VOL_MARQUE, v.getMarque());
         values.put(handler.VEN_VOL_REF, v.getReference());
         values.put(handler.VEN_FAB_ID, v.getFabricantId());
@@ -36,7 +39,7 @@ public class VenteDAO extends BaseDAO {
         values.put(handler.VEN_PAYE, v.getPaye());
         values.put(handler.VEN_QUANTITE, v.getQuantite());
         values.put(handler.VEN_DATE_VENTE, v.getDateAchat().toString());
-        values.put(handler.VEN_DATE_PAYE, v.getDatePaye().toString());
+        values.put(handler.VEN_DATE_PAYE, (v.getDatePaye() != null)?v.getDatePaye().toString(): null);
 
         sqlite.insert(handler.TABLE_VENTE, null, values);
     }
@@ -66,10 +69,19 @@ public class VenteDAO extends BaseDAO {
         ArrayList<Vente> venteList = new ArrayList<Vente>();
         while (c.moveToNext()) {
             Date dateAchat = new Date(c.getString(8));
-            Date datePaye = new Date(c.getString(9));
-            vente = new Vente(c.getInt(0), c.getInt(1), c.getString(2), c.getString(3), c.getInt(4),c.getInt(5), c.getInt(6) > 0,c.getInt(7),dateAchat,datePaye);
+            Date datePaye = (c.getString(9) != null)?new Date(c.getString(9)):null;
+            vente = new Vente(  c.getInt(0)
+                                ,c.getString(1)
+                                ,c.getString(2)
+                                ,c.getInt(3)
+                                ,c.getInt(4)
+                                ,c.getInt(5)
+                                ,c.getInt(6)>0
+                                ,c.getInt(7)
+                                ,dateAchat
+                                ,datePaye);
             venteList.add(vente);
-            Log.d("YVAN-DB", "getVente() -> " + vente.toString());
+            Log.d("YVAN-OUI", "getVente() -> " + vente.toString());
         }
         c.close();
         return venteList;

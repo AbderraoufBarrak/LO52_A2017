@@ -12,16 +12,26 @@ public class Volant implements Serializable{
     private String marque;
     private String reference;
     private int classement;
+    private int prix;
 
-    public Volant(String validite_1, String validite_2, String marque, String reference, int classement) {
+    public Volant(String validite_1, String validite_2, String marque, String reference, int classement, int prix) {
         this.validite_1 = validite_1;
         this.validite_2 = validite_2;
         this.marque = marque;
         this.reference = reference;
         this.classement = classement;
+        this.prix = prix;
     }
 
     public Volant(){}
+
+    public int getPrix() {
+        return prix;
+    }
+
+    public void setPrix(int prix) {
+        this.prix = prix;
+    }
 
     public String getValidite_1() {
         return validite_1;

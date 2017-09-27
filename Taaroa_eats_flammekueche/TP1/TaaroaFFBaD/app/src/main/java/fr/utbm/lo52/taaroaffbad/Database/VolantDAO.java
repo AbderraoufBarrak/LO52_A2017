@@ -30,8 +30,11 @@ public class VolantDAO extends BaseDAO {
         values.put(handler.VOL_MARQUE, v.getMarque());
         values.put(handler.VOL_REF, v.getReference());
         values.put(handler.VOL_CLASSEMENT, v.getClassement());
+        values.put(handler.VOL_PRIX, v.getPrix());
 
+        Log.i("JOJO-addVolant","avant INSERT");
         sqlite.insert(handler.TABLE_VOLANT, null, values);
+        Log.i("JOJO-addVolant","après INSERT");
     }
 
     /*public void supprimer(long id) {
@@ -57,7 +60,7 @@ public class VolantDAO extends BaseDAO {
         Volant volant;
         ArrayList<Volant> volantList = new ArrayList<Volant>();
         while (c.moveToNext()) {
-            volant = new Volant(c.getString(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4));
+            volant = new Volant(c.getString(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4), c.getInt(5));
             volantList.add(volant);
             Log.d("YVAN", "getVolant() -> " + volant.toString());
         }

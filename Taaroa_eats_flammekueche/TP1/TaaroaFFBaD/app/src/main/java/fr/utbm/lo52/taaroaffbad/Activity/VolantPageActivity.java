@@ -2,11 +2,13 @@ package fr.utbm.lo52.taaroaffbad.Activity;
 
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.IntegerRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,11 +22,13 @@ import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.Date;
 
 import fr.utbm.lo52.taaroaffbad.Beans.Vente;
+import fr.utbm.lo52.taaroaffbad.Beans.Volant;
 import fr.utbm.lo52.taaroaffbad.Database.VenteDAO;
 import fr.utbm.lo52.taaroaffbad.R;
 
@@ -33,7 +37,7 @@ public class VolantPageActivity extends AppCompatActivity {
     public AlertDialog.Builder builder;
     public EditText cmdNom, cmdPrenom, cmdTelephone, cmdAdresse, cmdQuantite;
     public Switch checkPaye, checkStatut;
-    public String validite1_volant,validite2_volant,marque_volant,reference;
+    public Volant volant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +45,21 @@ public class VolantPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_volant_page);
 
         Intent intent = getIntent();
-        validite1_volant = intent.getStringExtra("validite1_volant");
-        validite2_volant = intent.getStringExtra("validite2_volant");
-        marque_volant = intent.getStringExtra("marque_volant");
-        reference = intent.getStringExtra("reference");
-        int classement = intent.getIntExtra("classement",0);
+        volant = (Volant) intent.getSerializableExtra("Volant");
 
         // marque & référence
         TextView tvVolantMarqueRef = (TextView) findViewById(R.id.tvVolantMarqueRef);
-        tvVolantMarqueRef.setText(marque_volant+"\n["+reference+"]");
+        tvVolantMarqueRef.setText(volant.getMarque()+"\n["+volant.getReference()+"]");
 
         // classement
         RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        ratingBar.setNumStars(classement);
+        ratingBar.setNumStars(volant.getClassement());
         Drawable drawable = ratingBar.getProgressDrawable();
         drawable.setColorFilter(Color.parseColor("#dfe61d"), PorterDuff.Mode.SRC_ATOP);
 
         // validite 1 & 2
         TextView tvValidite = (TextView) findViewById(R.id.tvValidite);
-        tvValidite.setText(validite1_volant+" / "+validite2_volant);
+        tvValidite.setText(volant.getValidite_1()+" / "+volant.getValidite_2());
 
         // bouton cmmander
         Button commander = (Button) findViewById(R.id.btnCommander);
@@ -92,7 +92,17 @@ public class VolantPageActivity extends AppCompatActivity {
                                 "club:"+(checkStatut.isChecked()?"OUI":"NON")+"\n";
                         Log.i("JOJO-commande",refCommande);
 
-                        Vente vente = new Vente(3,0,marque_volant,reference,0,15,checkPaye.isChecked(),Integer.parseInt(cmdQuantite.getText().toString()),new Date(), new Date());
+                        Vente vente = new Vente(1,          // venteID
+                                volant.getMarque(),         // marque
+                                volant.getReference(),      // référence
+                                0,                          // fabID
+                                0,                          // achID
+                                volant.getPrix()* Integer.parseInt(cmdQuantite.getText().toString()),   // prix
+                                checkPaye.isChecked(),                                                  // boolPaye
+                                Integer.parseInt(cmdQuantite.getText().toString()),                     // qte
+                                new Date(),                                                             // dateAchat
+                                (checkPaye.isChecked()?new Date():null));                               // datePaye
+
                         VenteDAO venteDAO = new VenteDAO(VolantPageActivity.this);
                         venteDAO.open();
                         venteDAO.addVente(vente);
@@ -100,6 +110,14 @@ public class VolantPageActivity extends AppCompatActivity {
                         Log.i("JOJO-vente",vente.toString());
 
                         dialog.cancel();
+
+                        Context context = getApplicationContext();
+                        CharSequence text = "Commande enregistrée =)";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+
+
                     }
                 }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
                     @Override

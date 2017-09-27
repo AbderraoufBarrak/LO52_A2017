@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".Activity.VolantActivity" />
         <activity android:name=".Activity.VolantPageActivity" />
-        <activity android:name=".Activity.VenteActivity"></activity>
+        <activity android:name=".Activity.VenteActivity" />
+        <activity android:name=".Activity.VentePageActivity"></activity>
     </application>
 
 </manifest>

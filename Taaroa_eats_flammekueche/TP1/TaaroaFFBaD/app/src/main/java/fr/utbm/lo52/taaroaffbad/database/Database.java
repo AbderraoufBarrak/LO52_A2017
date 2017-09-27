@@ -19,6 +19,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String VOL_MARQUE = "marque_volant";
     public static final String VOL_REF = "ref_volant";
     public static final String VOL_CLASSEMENT = "classement_volant";
+    public static final String VOL_PRIX = "prix_volant";
 
     // create table VOLANT
     private static final String CREATE_VOLANT = "create table " + TABLE_VOLANT
@@ -27,6 +28,7 @@ public class Database extends SQLiteOpenHelper {
             + VOL_MARQUE + " text not null, "
             + VOL_REF + " text not null, "
             + VOL_CLASSEMENT + " integer not null, "
+            + VOL_PRIX + " integer not null, "
             + "primary key(" + VOL_MARQUE+ "," + VOL_REF + ")"
             + ");";
 
@@ -86,7 +88,7 @@ public class Database extends SQLiteOpenHelper {
             + VEN_PAYE + " numeric not null, "   // nb
             + VEN_QUANTITE + " numeric not null, "
             + VEN_DATE_VENTE + " text not null, "
-            + VEN_DATE_PAYE + " text not null"
+            + VEN_DATE_PAYE + " text null"
             /*+ "foreign key(" + VEN_VOL_MARQUE + "," + VEN_VOL_REF + ") references " + TABLE_VOLANT + " ("+VOL_MARQUE+","+VOL_REF+"), "
             + "foreign key(" + VEN_FAB_ID + ") references " + TABLE_FABRICANT + " (" + FAB_ID + "), "
             + "foreign key(" + VEN_ACH_ID + ") references " + TABLE_ACHETEUR + " (" + ACH_ID + ")"*/

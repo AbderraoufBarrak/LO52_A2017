@@ -42,11 +42,7 @@ public class VolantActivity extends AppCompatActivity {
                 Log.d("JOJO",listItem.getReference());
 
                 Intent intent = new Intent(VolantActivity.this,VolantPageActivity.class);
-                intent.putExtra("validite1_volant",listItem.getValidite_1());
-                intent.putExtra("validite2_volant",listItem.getValidite_2());
-                intent.putExtra("marque_volant",listItem.getMarque());
-                intent.putExtra("reference",listItem.getReference());
-                intent.putExtra("classement",listItem.getClassement());
+                intent.putExtra("Volant",listItem);
 
                 startActivity(intent);
             }
