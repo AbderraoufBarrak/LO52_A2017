@@ -92,8 +92,10 @@ public class VolantPageActivity extends AppCompatActivity {
                                 "club:"+(checkStatut.isChecked()?"OUI":"NON")+"\n";
                         Log.i("JOJO-commande",refCommande);
 
-                        Vente vente = new Vente(1,0,marque_volant,reference,0,15,checkPaye.isChecked(),10,new Date(), new Date());
-
+                        Vente vente = new Vente(3,0,marque_volant,reference,0,15,checkPaye.isChecked(),Integer.parseInt(cmdQuantite.getText().toString()),new Date(), new Date());
+                        VenteDAO venteDAO = new VenteDAO(VolantPageActivity.this);
+                        venteDAO.open();
+                        venteDAO.addVente(vente);
 
                         Log.i("JOJO-vente",vente.toString());
 

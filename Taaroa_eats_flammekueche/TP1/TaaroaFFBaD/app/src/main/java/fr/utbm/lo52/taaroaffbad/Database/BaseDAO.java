@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 public abstract class BaseDAO {
     // Nous sommes à la première version de la base
     // Si je décide de la mettre à jour, il faudra changer cet attribut
-    protected final static int VERSION = 1;
+    protected final static int VERSION = 2;
     // Le nom du fichier qui représente ma base
     protected final static String NOM = "database.db";
 

@@ -11,9 +11,6 @@ import android.util.Log;
 
 public class Database extends SQLiteOpenHelper {
 
-    // database
-    private static final String DATABASE_NAME = "ffb.db";
-    private static final int DATABASE_VERSION = 2;
 
     // table VOLANT
     public static final String TABLE_VOLANT = "volant";
@@ -107,11 +104,12 @@ public class Database extends SQLiteOpenHelper {
         database.execSQL(CREATE_ACHETEUR);
         database.execSQL(CREATE_VOLANT);
         database.execSQL(CREATE_VENTE);
+        Log.i("YVAN-DB","CREATION DES TABLES");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(Database.class.getName(),
+        Log.i("YVAN-DB",
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
 

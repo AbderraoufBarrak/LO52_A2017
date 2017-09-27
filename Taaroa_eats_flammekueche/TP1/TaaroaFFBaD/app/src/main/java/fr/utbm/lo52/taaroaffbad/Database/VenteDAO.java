@@ -2,7 +2,14 @@ package fr.utbm.lo52.taaroaffbad.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Date;
+
 import fr.utbm.lo52.taaroaffbad.Beans.Vente;
+import fr.utbm.lo52.taaroaffbad.Beans.Volant;
 
 /**
  * Created by Jordan on 26/09/2017.
@@ -41,5 +48,31 @@ public class VenteDAO extends BaseDAO {
     /*public void modifier(Volant m) {
         // CODE
     }*/
+
+    public ArrayList<Vente> getVente () {
+        Cursor c =
+                sqlite.rawQuery(
+                        "select * " +
+                                //VolantDAO + ", " +
+                                //REF + ", "
+                                //+ CLASSEMENT +
+                                " from " +
+                                handler.TABLE_VENTE //+
+                        //" where marque = ? and ref = ?"
+                        , new String[] {/*marque, ref*/});
+
+
+        Vente vente;
+        ArrayList<Vente> venteList = new ArrayList<Vente>();
+        while (c.moveToNext()) {
+            Date dateAchat = new Date(c.getString(8));
+            Date datePaye = new Date(c.getString(9));
+            vente = new Vente(c.getInt(0), c.getInt(1), c.getString(2), c.getString(3), c.getInt(4),c.getInt(5), c.getInt(6) > 0,c.getInt(7),dateAchat,datePaye);
+            venteList.add(vente);
+            Log.d("YVAN-DB", "getVente() -> " + vente.toString());
+        }
+        c.close();
+        return venteList;
+    }
 
 }

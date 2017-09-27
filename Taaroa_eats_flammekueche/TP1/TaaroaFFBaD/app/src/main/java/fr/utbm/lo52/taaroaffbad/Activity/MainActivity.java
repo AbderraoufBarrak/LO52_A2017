@@ -13,6 +13,7 @@ import java.util.Date;
 
 import fr.utbm.lo52.taaroaffbad.Beans.Vente;
 import fr.utbm.lo52.taaroaffbad.Beans.Volant;
+import fr.utbm.lo52.taaroaffbad.Database.Database;
 import fr.utbm.lo52.taaroaffbad.Database.VenteDAO;
 import fr.utbm.lo52.taaroaffbad.Database.VolantDAO;
 import fr.utbm.lo52.taaroaffbad.R;
@@ -21,14 +22,20 @@ public class MainActivity extends AppCompatActivity {
 
     public Button btnVolant, btnCommande;
     public ArrayList<Volant> test;
+    public ArrayList<Vente> test2;
+    public VenteDAO venteDAO;
+    public VolantDAO volantsDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        VolantDAO volantsDAO = new VolantDAO(MainActivity.this);
+        volantsDAO = new VolantDAO(MainActivity.this);
         volantsDAO.open();
+
+        venteDAO = new VenteDAO(MainActivity.this);
+        venteDAO.open();
 
         // TODO : Mettre dans un fichier xml
         //Volant volantToAdd = new Volant("2017-2018","2018-2019", "ARTENGO", "BSC 950", 3);
@@ -36,12 +43,11 @@ public class MainActivity extends AppCompatActivity {
         //volantsDAO.addVolant(volantToAdd);
         //volantsDAO.addVolant(volantToAdd_2);
 
-        Vente vente = new Vente(1,0,"AA","BB",0,15,true,10,new Date(), new Date());
-        VenteDAO aaaa = new VenteDAO(MainActivity.this);
-        aaaa.open();
-        aaaa.addVente(vente);
+        //Vente vente = new Vente(1,0,"AA","BB",0,15,true,10,new Date(), new Date());
+        //venteDAO.addVente(vente);
 
 
+        test2 = venteDAO.getVente();
         test = volantsDAO.getVolant();
 
         Typeface pacifico = Typeface.createFromAsset(getAssets(),"font/Pacifico.ttf");
@@ -50,11 +56,21 @@ public class MainActivity extends AppCompatActivity {
         btnVolant.setTypeface(pacifico);
         btnCommande.setTypeface(pacifico);
 
+        btnCommande.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                test2 = venteDAO.getVente();
+                Intent intent = new Intent(MainActivity.this, VenteActivity.class);
+                intent.putExtra("venteList", test2);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
         btnVolant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                test = volantsDAO.getVolant();
                 Intent intent = new Intent(MainActivity.this, VolantActivity.class);
-
                 intent.putExtra("volantList", test);
                 MainActivity.this.startActivity(intent);
             }

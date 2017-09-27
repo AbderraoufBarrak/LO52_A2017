@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.VolantActivity" />
-        <activity android:name=".Activity.VolantPageActivity"></activity>
+        <activity android:name=".Activity.VolantPageActivity" />
+        <activity android:name=".Activity.VenteActivity"></activity>
     </application>
 
 </manifest>

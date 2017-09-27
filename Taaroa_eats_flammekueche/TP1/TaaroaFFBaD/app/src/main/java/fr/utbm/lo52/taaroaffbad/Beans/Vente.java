@@ -1,12 +1,13 @@
 package fr.utbm.lo52.taaroaffbad.Beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Moi on 22/09/2017.
  */
 
-public class Vente {
+public class Vente implements Serializable{
     private int venteId;
     private int fabricantId;
     private String marque;
@@ -19,6 +20,7 @@ public class Vente {
     private Date datePaye;
 
     public Vente(int VenteId, int fabricantId, String marque, String reference, int acheteurId, int prix, Boolean paye, int quantite, Date dateAchat, Date datePaye) {
+        this.venteId = VenteId;
         this.fabricantId = fabricantId;
         this.marque = marque;
         this.reference = reference;
