@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kiera.shuttlesmgmt.MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clicAchats"
+        android:text="Achats"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/buttonStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clicStock"
+        android:text="Stock"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button"
+        tools:layout_editor_absoluteX="120dp" />
+
+</android.support.constraint.ConstraintLayout>
