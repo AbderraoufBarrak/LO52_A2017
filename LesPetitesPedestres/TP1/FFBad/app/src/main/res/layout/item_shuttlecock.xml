@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:visibility="visible">
+    android:visibility="visible"
+    android:weightSum="1">
 
 
     <ImageView
@@ -18,17 +19,20 @@
         android:id="@+id/brand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_weight="0.15" />
 
     <TextView
         android:id="@+id/reference"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_weight="0.20" />
 
     <TextView
         android:id="@+id/stock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_weight="0.18" />
 </LinearLayout>
