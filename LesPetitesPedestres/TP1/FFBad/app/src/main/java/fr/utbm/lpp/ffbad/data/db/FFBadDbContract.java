@@ -1,6 +1,7 @@
 package fr.utbm.lpp.ffbad.data.db;
 
 import android.provider.BaseColumns;
+import android.util.Log;
 
 public class FFBadDbContract {
     private FFBadDbContract() {}
@@ -16,12 +17,12 @@ public class FFBadDbContract {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + TABLE_NAME + " (" +
-                        _ID + "INTEGER PRIMARY KEY, " +
+                        _ID + " INTEGER PRIMARY KEY, " +
                         COLUMN_NAME_BRAND + " TEXT, " +
-                        COLUMN_NAME_REFERENCE + "TEXT, " +
-                        COLUMN_NAME_RATING + "INTEGER, " +
-                        COLUMN_NAME_PRICE + "REAL, " +
-                        COLUMN_NAME_STOCK + "INTEGER)";
+                        COLUMN_NAME_REFERENCE + " TEXT, " +
+                        COLUMN_NAME_RATING + " INTEGER, " +
+                        COLUMN_NAME_PRICE + " REAL, " +
+                        COLUMN_NAME_STOCK + " INTEGER)";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -37,12 +38,12 @@ public class FFBadDbContract {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + TABLE_NAME + " (" +
-                        _ID + "INTEGER PRIMARY KEY, " +
+                        _ID + " INTEGER PRIMARY KEY, " +
                         COLUMN_NAME_NAME + " TEXT, " +
-                        COLUMN_NAME_ADDRESS + "TEXT, " +
-                        COLUMN_NAME_CONTACT + "TEXT, " +
-                        COLUMN_NAME_PHONE + "TEXT, " +
-                        COLUMN_NAME_MAIL + "TEXT)";
+                        COLUMN_NAME_ADDRESS + " TEXT, " +
+                        COLUMN_NAME_CONTACT + " TEXT, " +
+                        COLUMN_NAME_PHONE + " TEXT, " +
+                        COLUMN_NAME_MAIL + " TEXT)";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -55,9 +56,9 @@ public class FFBadDbContract {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + TABLE_NAME + " (" +
-                        _ID + "INTEGER PRIMARY KEY, " +
-                        COLUMN_NAME_TYPE + "INTEGER, " +
-                        COLUMN_NAME_NAME + "TEXT)";
+                        _ID + " INTEGER PRIMARY KEY, " +
+                        COLUMN_NAME_TYPE + " INTEGER, " +
+                        COLUMN_NAME_NAME + " TEXT)";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -73,12 +74,12 @@ public class FFBadDbContract {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + TABLE_NAME + " (" +
-                        _ID + "INTEGER PRIMARY KEY, " +
+                        _ID + " INTEGER PRIMARY KEY, " +
                         COLUMN_NAME_SHUTTLECOCK + " INTEGER, " +
-                        COLUMN_NAME_CUSTOMER + "INTEGER, " +
-                        COLUMN_NAME_IS_PAID + "INTEGER, " +
-                        COLUMN_NAME_PRICE + "REAL, " +
-                        COLUMN_NAME_QUANTITY + "INTEGER)";
+                        COLUMN_NAME_CUSTOMER + " INTEGER, " +
+                        COLUMN_NAME_IS_PAID + " INTEGER, " +
+                        COLUMN_NAME_PRICE + " REAL, " +
+                        COLUMN_NAME_QUANTITY + " INTEGER)";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -91,9 +92,9 @@ public class FFBadDbContract {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + TABLE_NAME + " (" +
-                        _ID + "INTEGER PRIMARY KEY, " +
+                        _ID + " INTEGER PRIMARY KEY, " +
                         COLUMN_NAME_SHUTTLECOCK + " INTEGER, " +
-                        COLUMN_NAME_TRADER + "INTEGER)";
+                        COLUMN_NAME_TRADER + " INTEGER)";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TABLE_NAME;
