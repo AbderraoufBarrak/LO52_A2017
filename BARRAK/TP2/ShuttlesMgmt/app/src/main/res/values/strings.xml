@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ShuttlesMgmt</string>
+    <string name="listView">listView</string>
+
+    <string name="textView_name">textView_name</string>
+    <string name="textView_grade">textView_name</string>
+    <string name="textView_stock">textView_name</string>
+    <string name="textView_price">textView_name</string>
+
 </resources>
