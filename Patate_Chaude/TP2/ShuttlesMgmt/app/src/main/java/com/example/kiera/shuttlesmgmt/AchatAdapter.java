@@ -3,8 +3,6 @@ package com.example.kiera.shuttlesmgmt;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +16,9 @@ import java.util.List;
  * Created by kiera on 29/09/2017.
  */
 
-public class StockAdapter extends ArrayAdapter<Stock>{
+public class AchatAdapter extends ArrayAdapter<Achat> {
 
-    public StockAdapter(Context context, List<Stock> a) {
+    public AchatAdapter(Context context, List<Achat> a) {
         super(context, 0, a);
     }
 
@@ -31,33 +29,34 @@ public class StockAdapter extends ArrayAdapter<Stock>{
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.stock_card,parent, false);
         }
 
-        StockViewHolder viewHolder = (StockViewHolder) convertView.getTag();
+        AchatAdapter.AchatViewHolder viewHolder = (AchatAdapter.AchatViewHolder) convertView.getTag();
         if(viewHolder == null){
-            viewHolder = new StockViewHolder();
-            viewHolder.marque = (TextView) convertView.findViewById(R.id.marque);
+            viewHolder = new AchatAdapter.AchatViewHolder();
+            viewHolder.acheteur = (TextView) convertView.findViewById(R.id.marque);
             viewHolder.ref = (TextView) convertView.findViewById(R.id.ref);
             viewHolder.qtt = (TextView) convertView.findViewById(R.id.qtt);
             viewHolder.prix = (TextView) convertView.findViewById(R.id.prix);
-            viewHolder.image = (ImageView) convertView.findViewById(R.id.img);
+            viewHolder.paye = (ImageView) convertView.findViewById(R.id.img);
             convertView.setTag(viewHolder);
         }
 
         //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
-        Stock s = getItem(position);
+        Achat s = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
-        viewHolder.marque.setText(s.getMarque());
+        viewHolder.acheteur.setText(s.getAcheteur());
         viewHolder.ref.setText(s.getRef());
         viewHolder.qtt.setText(s.getQtt()+"");
         viewHolder.prix.setText(s.getPrix()+"€");
-        viewHolder.image.setImageResource(s.getImage());
+        viewHolder.paye.setImageDrawable(new ColorDrawable(s.isPaye()? Color.GREEN : Color.RED));
 
         return convertView;
     }
 
-    class StockViewHolder {
-        public ImageView image;
-        public TextView marque, ref, prix, qtt;
+    class AchatViewHolder {
+        public ImageView paye;
+        public TextView acheteur, ref, prix, qtt;
     }
 
 }
+

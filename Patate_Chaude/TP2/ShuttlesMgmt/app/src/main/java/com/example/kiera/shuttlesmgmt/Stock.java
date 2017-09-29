@@ -1,6 +1,5 @@
 package com.example.kiera.shuttlesmgmt;
 
-import android.widget.ImageView;
 
 /**
  * Created by kiera on 29/09/2017.

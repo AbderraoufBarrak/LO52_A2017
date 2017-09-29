@@ -12,8 +12,10 @@
         android:layout_height="wrap_content"
         android:onClick="clicAchats"
         android:text="Achats"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/buttonStock"
@@ -22,6 +24,7 @@
         android:onClick="clicStock"
         android:text="Stock"
         app:layout_constraintBaseline_toBaselineOf="@+id/button"
-        tools:layout_editor_absoluteX="120dp" />
+        app:layout_constraintLeft_toRightOf="@+id/button"
+        android:layout_marginLeft="8dp" />
 
 </android.support.constraint.ConstraintLayout>
