@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ShuttlesMgmt</string>
+    <string name="title_activity_achat_activty">Achat_activty</string>
+    <string name="title_activity_achats">Achats</string>
+    <string name="title_activity_stock">Stock</string>
+    <string name="button_achats">Achats</string>
+    <string name="button_stock">Stock</string>
+    <string name="text">Hello</string>
+</resources>
