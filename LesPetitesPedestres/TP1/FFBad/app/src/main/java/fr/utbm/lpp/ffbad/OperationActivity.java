@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +14,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+
+import fr.utbm.lpp.ffbad.data.adapter.SaleCursorAdapter;
 
 public class OperationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,24 +79,7 @@ public class OperationActivity extends AppCompatActivity
         Log.d("SQL", MY_QUERY);
         Cursor cursor = getDb().rawQuery(MY_QUERY, null);
 
-        String[] from = {
-                "price",
-                "quantity",
-                "brand",
-                "reference",
-                "name",
-                "is_paid",
-        };
-
-        int[] to = {
-                R.id.price,
-                R.id.quantity,
-                R.id.brand,
-                R.id.reference,
-                R.id.name,
-                R.id.is_paid,
-        };
-        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.item_sale, cursor, from, to, 0);
+        SaleCursorAdapter cursorAdapter = new SaleCursorAdapter(this, cursor);
 
         ListView list = (ListView) findViewById(R.id.listview);
         list.setAdapter(cursorAdapter);
