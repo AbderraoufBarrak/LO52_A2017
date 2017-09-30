@@ -4,23 +4,21 @@ package fr.utbm.entity;
  * Created by Exige on 23/09/2017.
  */
 
-public class Volants {
+public class Volant {
 
     private long id;
     private String marque;
     private String ref;
     private String classement;
 
-    public Volants(long id, String marque, String ref, String classement) {
-        super();
+    public Volant(long id, String marque, String ref, String classement) {
         this.id = id;
         this.marque = marque;
         this.ref = ref;
         this.classement = classement;
     }
 
-    public Volants(String marque, String ref, String classement) {
-        super();
+    public Volant(String marque, String ref, String classement) {
         this.marque = marque;
         this.ref = ref;
         this.classement = classement;
@@ -60,7 +58,7 @@ public class Volants {
 
     @Override
     public String toString() {
-        return "Volants{" +
+        return "Volant{" +
                 "id=" + id +
                 ", marque='" + marque + '\'' +
                 ", ref='" + ref + '\'' +

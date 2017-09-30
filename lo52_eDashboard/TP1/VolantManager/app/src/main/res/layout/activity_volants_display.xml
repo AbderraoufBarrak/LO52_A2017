@@ -7,4 +7,10 @@
     android:background="@color/colorBackground"
     tools:context="fr.utbm.volantmanager.VolantsDisplay">
 
+    <ListView
+        android:id="@+id/volants_lv"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 </android.support.constraint.ConstraintLayout>

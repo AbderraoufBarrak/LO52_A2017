@@ -5,7 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
-import fr.utbm.entity.Volants;
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.utbm.entity.Volant;
 
 /**
  * Created by Exige on 23/09/2017.
@@ -13,7 +16,7 @@ import fr.utbm.entity.Volants;
 
 public class VolantsDAO extends DAOManager {
 
-    public static final String TABLE_NAME = "volants";
+    public static final String TABLE_NAME = "Volants";
     public static final String ID = "id";
     public static final String MARQUE = "marque";
     public static final String REF = "ref";
@@ -29,12 +32,36 @@ public class VolantsDAO extends DAOManager {
     public static final String TABLE_DROP =
             "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
 
+    /**
+     * Constructeur prenant en compte le contexte
+     * @param pContext
+     */
     public VolantsDAO(Context pContext) {
         super(pContext);
     }
 
+    /**
+     * Permet de supprimer la table. Son utilisation implique un changement de version de la base de données
+     */
+    public void dropTable() {
+        Log.d("eDBTEAM/VolantsDAO", "Deleting " + TABLE_NAME + " table...");
+        sqLiteDatabase.execSQL(TABLE_DROP);
+    }
 
-    public void addVolant (Volants v) {
+    /**
+     * Permet de créer la table
+     */
+    public void createTable() {
+        Log.d("eDBTEAM/VolantsDAO", "Creating " + TABLE_NAME + " table...");
+        sqLiteDatabase.execSQL(TABLE_CREATE);
+    }
+
+    /**
+     * Ajoute un volant en base de données
+     * @param v
+     */
+    public void addVolant (Volant v) {
+        v.setId(getMaxID() + 1);
         Log.d("eDBTEAM/VolantsDAO", "addVolant -> " + v.toString());
         ContentValues cv = new ContentValues();
         cv.put(VolantsDAO.MARQUE, v.getMarque());
@@ -43,23 +70,45 @@ public class VolantsDAO extends DAOManager {
         sqLiteDatabase.insert(TABLE_NAME, null, cv);
     }
 
+    /**
+     * Efface le contenu de la table
+     */
+    public void eraseContent() {
+        sqLiteDatabase.delete(TABLE_NAME, null, null);
+    }
 
+
+    /**
+     * Efface une entrée de la table en fonction de son ID
+     * @param id
+     */
     public void deleteVolant(long id) {
         sqLiteDatabase.delete(TABLE_NAME, ID + " = ?", new String[] {String.valueOf(id)});
     }
 
 
-    public void updateClassementVolant (Volants v) {
+    /**
+     * Met à jour les informations d'un volant
+     * @param v
+     */
+    public void updateClassementVolant (Volant v) {
         ContentValues cv = new ContentValues();
         cv.put(CLASSEMENT, v.getClassement());
         sqLiteDatabase.update(TABLE_NAME, cv, ID + " = ?", new String[] {String.valueOf(v.getId())});
     }
 
 
-    public Volants getVolant (String marque, String ref) {
+    /**
+     * Récupère un volant en fonction de sa marque et de sa référence
+     * @param marque
+     * @param ref
+     * @return
+     */
+    public Volant getVolant (String marque, String ref) {
         Cursor c =
                 sqLiteDatabase.rawQuery(
                         "select " +
+                                ID + ", " +
                                 MARQUE + ", " +
                                 REF + ", "
                                 + CLASSEMENT +
@@ -67,12 +116,47 @@ public class VolantsDAO extends DAOManager {
                                 TABLE_NAME +
                         " where marque = ? and ref = ?"
                 , new String[] {marque, ref});
-        Volants volant = new Volants(0, null, null, null);
+
+        Volant volant = new Volant(0, null, null, null);
+
+        // Affichage des résultats répondants à la requête
         while (c.moveToNext()) {
-            volant = new Volants(c.getString(0), c.getString(1), c.getString(2));
+            volant = new Volant(c.getLong(0), c.getString(1), c.getString(2), c.getString(3));
             Log.d("eDBTEAM/VolantsDAO", "getVolant(" + marque + ", " + ref + ") -> " + volant);
         }
         c.close();
         return volant;
+    }
+
+    public long getMaxID() {
+        long res = 0;
+        Cursor c =
+                sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY " + ID + " DESC LIMIT 1", null);
+        while (c.moveToNext()) {
+            res = c.getLong(0);
+        }
+        return res;
+    }
+
+    public List<Volant> getVolants() {
+        Cursor c =
+                sqLiteDatabase.rawQuery(
+                        "select " +
+                                ID + ", " +
+                                MARQUE + ", " +
+                                REF + ", "
+                                + CLASSEMENT +
+                                " from " +
+                                TABLE_NAME, null);
+
+        Volant volant = new Volant(0, null, null, null);
+        List<Volant> volants = new ArrayList<>();
+        while (c.moveToNext()) {
+            volant = new Volant(c.getLong(0), c.getString(1), c.getString(2), c.getString(3));
+            volants.add(volant);
+            Log.d("eDBTEAM/VolantsDAO", "getVolants -> " + volant);
+        }
+        c.close();
+        return volants;
     }
 }
