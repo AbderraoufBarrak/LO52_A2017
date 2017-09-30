@@ -1,36 +1,33 @@
 package fr.utbm.lpp.ffbad;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 import fr.utbm.lpp.ffbad.data.db.FFBadDbContract;
-import fr.utbm.lpp.ffbad.data.db.FFbadDbHelper;
 
 public class Stock extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    SQLiteDatabase db;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
 
-        FFbadDbHelper helper = new FFbadDbHelper(this);
-        db = helper.getReadableDatabase();
-
-        setutListView();
+        setupListView();
 
         setupDrawerLayout();
     }
@@ -38,7 +35,17 @@ public class Stock extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        db.close();
+        if (db != null) {
+            db.close();
+        }
+    }
+
+    public SQLiteDatabase getDb() {
+        if (db == null) {
+            FFBadApplication app = (FFBadApplication) getApplication();
+            db = app.getDb();
+        }
+        return db;
     }
 
     private void setupDrawerLayout() {
@@ -55,7 +62,7 @@ public class Stock extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void setutListView() {
+    private void setupListView() {
         String[] projection = {
                 FFBadDbContract.Shuttlecock._ID,
                 FFBadDbContract.Shuttlecock.COLUMN_NAME_BRAND,
@@ -63,7 +70,7 @@ public class Stock extends AppCompatActivity
                 FFBadDbContract.Shuttlecock.COLUMN_NAME_STOCK
         };
 
-        Cursor cursor = db.query(
+        Cursor cursor = getDb().query(
                 FFBadDbContract.Shuttlecock.TABLE_NAME,
                 projection,
                 null,
@@ -129,7 +136,13 @@ public class Stock extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_operations) {
+            Intent intent = new Intent(this, OperationActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_stock) {
+            Intent intent = new Intent(this, Stock.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_gallery) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
