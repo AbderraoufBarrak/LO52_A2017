@@ -39,10 +39,10 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         db.execSQL(FFBadDbContract.Sale.SQL_CREATE_ENTRIES);
         db.execSQL(FFBadDbContract.Purchase.SQL_CREATE_ENTRIES);
 
-        createShuttlecock(db, "Yonex", "AS30", 500, 27);
-        createShuttlecock(db, "RSL", "Grade 3", 5000, 16.70);
-        createShuttlecock(db, "RSL", "Grade A9", 10000, 13.70);
-        createShuttlecock(db, "RSL", "Grade A1", 6000, 21);
+        createShuttlecock(db, "Yonex", "AS30", 500, 27, 1);
+        createShuttlecock(db, "RSL", "Grade 3", 5000, 16.70, 2);
+        createShuttlecock(db, "RSL", "Grade A9", 10000, 13.70, 3);
+        createShuttlecock(db, "RSL", "Grade A1", 6000, 21, 4);
 
         createCustomer(db, "FFBad Belfort", 1);
         createCustomer(db, "Florian Staine", 2);
@@ -59,13 +59,14 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         db.execSQL(FFBadDbContract.Purchase.SQL_DELETE_ENTRIES);
     }
 
-    private long createShuttlecock (SQLiteDatabase db, String brand, String ref, int stock, double price) {
+    private long createShuttlecock (SQLiteDatabase db, String brand, String ref, int stock, double price, int rating) {
         ContentValues values = new ContentValues();
 
         values.put(FFBadDbContract.Shuttlecock.COLUMN_NAME_BRAND, brand);
         values.put(FFBadDbContract.Shuttlecock.COLUMN_NAME_REFERENCE, ref);
         values.put(FFBadDbContract.Shuttlecock.COLUMN_NAME_STOCK, stock);
         values.put(FFBadDbContract.Shuttlecock.COLUMN_NAME_PRICE, price);
+        values.put(FFBadDbContract.Shuttlecock.COLUMN_NAME_RATING, rating);
 
         long rowID = db.insert(FFBadDbContract.Shuttlecock.TABLE_NAME, null, values);
         return rowID;

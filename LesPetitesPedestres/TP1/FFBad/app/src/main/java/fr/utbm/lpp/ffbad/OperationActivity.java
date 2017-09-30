@@ -69,9 +69,7 @@ public class OperationActivity extends AppCompatActivity
         // le tout affiché en vert si c'est payé, en rouge sinon
 
         final String MY_QUERY = "" +
-                "SELECT " +
-                "sale._id, sale.shuttlecock_id, sale.customer_id, sale.is_paid, sale.price, sale.quantity, " +
-                "shuttlecock.brand, shuttlecock.reference, customer.name " +
+                "SELECT * " +
                 "FROM sale " +
                 "INNER JOIN shuttlecock ON shuttlecock._id = sale.shuttlecock_id " +
                 "INNER JOIN customer ON customer._id = sale.customer_id ";

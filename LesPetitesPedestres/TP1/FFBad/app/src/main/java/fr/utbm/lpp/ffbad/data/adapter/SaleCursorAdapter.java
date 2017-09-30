@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.utbm.lpp.ffbad.R;
+import fr.utbm.lpp.ffbad.data.Sale;
+import fr.utbm.lpp.ffbad.data.db.FFBadDbContract;
 
 public class SaleCursorAdapter extends CursorAdapter {
 
@@ -27,15 +29,6 @@ public class SaleCursorAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        int[] to = {
-                R.id.price,
-                R.id.quantity,
-                R.id.brand,
-                R.id.reference,
-                R.id.name,
-                R.id.is_paid,
-        };
-
         TextView txtPrice = view.findViewById(R.id.price);
         TextView txtQuantity = view.findViewById(R.id.quantity);
         TextView txtShuttlecock = view.findViewById(R.id.shuttlecock);
@@ -43,19 +36,14 @@ public class SaleCursorAdapter extends CursorAdapter {
 
         List<TextView> txtList = Arrays.asList(txtPrice, txtQuantity, txtShuttlecock, txtCustomerName);
 
-        float price = cursor.getFloat(cursor.getColumnIndex("price"));
-        int quantity = cursor.getInt(cursor.getColumnIndex("quantity"));
-        boolean isPaid = cursor.getInt(cursor.getColumnIndex("is_paid")) == 1;
-        String brand = cursor.getString(cursor.getColumnIndex("brand"));
-        String ref = cursor.getString(cursor.getColumnIndex("reference"));
-        String customerName = cursor.getString(cursor.getColumnIndex("name"));
+        Sale sale = FFBadDbContract.Sale.getFromCursor(cursor);
 
-        txtPrice.setText(String.valueOf(price));
-        txtQuantity.setText(String.valueOf(quantity));
-        txtShuttlecock.setText(brand + " - " + ref);
-        txtCustomerName.setText(customerName);
+        txtPrice.setText(String.valueOf(sale.getPrice()));
+        txtQuantity.setText(String.valueOf(sale.getQuantity()));
+        txtShuttlecock.setText(sale.getShuttlecock().getBrand() + " - " + sale.getShuttlecock().getReference());
+        txtCustomerName.setText(sale.getCustomer().getName());
 
-        int txtColor = (isPaid ? Color.GREEN : Color.RED);
+        int txtColor = (sale.isPaid() ? Color.GREEN : Color.RED);
         for (TextView txt : txtList) {
             txt.setTextColor(txtColor);
         }
