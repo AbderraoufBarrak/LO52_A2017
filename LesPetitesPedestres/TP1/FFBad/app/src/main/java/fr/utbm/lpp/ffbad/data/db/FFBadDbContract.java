@@ -32,7 +32,7 @@ public class FFBadDbContract {
         public static fr.utbm.lpp.ffbad.data.Shuttlecock getFromCursor(Cursor cursor) {
             long id = cursor.getLong(cursor.getColumnIndex(_ID));
             String brand = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_BRAND));
-            String reference = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_BRAND));
+            String reference = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_REFERENCE));
             int rating = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_RATING));
             int stock = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_STOCK));
 

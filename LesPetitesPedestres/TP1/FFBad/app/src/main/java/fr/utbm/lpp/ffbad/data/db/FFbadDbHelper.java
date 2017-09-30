@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import fr.utbm.lpp.ffbad.data.CustomerType;
+
 public class FFbadDbHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
@@ -44,8 +46,8 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         createShuttlecock(db, "RSL", "Grade A9", 10000, 13.70, 3);
         createShuttlecock(db, "RSL", "Grade A1", 6000, 21, 4);
 
-        createCustomer(db, "FFBad Belfort", 1);
-        createCustomer(db, "Florian Staine", 2);
+        createCustomer(db, "FFBad Belfort", CustomerType.Association);
+        createCustomer(db, "Florian Staine", CustomerType.Particular);
 
         createSale(db, 1, 2, 3.50, 4, true);
         createSale(db, 2, 2, 4.50, 4, false);
@@ -72,11 +74,11 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         return rowID;
     }
 
-    private long createCustomer(SQLiteDatabase db, String name, int type) {
+    private long createCustomer(SQLiteDatabase db, String name, CustomerType type) {
         ContentValues values = new ContentValues();
 
         values.put(FFBadDbContract.Customer.COLUMN_NAME_NAME, name);
-        values.put(FFBadDbContract.Customer.COLUMN_NAME_NAME, type);
+        values.put(FFBadDbContract.Customer.COLUMN_NAME_TYPE, type.ordinal());
 
         return db.insert(FFBadDbContract.Customer.TABLE_NAME, null, values);
     }

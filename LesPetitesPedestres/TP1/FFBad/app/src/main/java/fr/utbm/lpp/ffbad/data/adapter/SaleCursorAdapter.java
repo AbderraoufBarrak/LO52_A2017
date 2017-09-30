@@ -32,7 +32,7 @@ public class SaleCursorAdapter extends CursorAdapter {
         TextView txtPrice = view.findViewById(R.id.price);
         TextView txtQuantity = view.findViewById(R.id.quantity);
         TextView txtShuttlecock = view.findViewById(R.id.shuttlecock);
-        TextView txtCustomerName = view.findViewById(R.id.name);
+        TextView txtCustomerName = view.findViewById(R.id.customer);
 
         List<TextView> txtList = Arrays.asList(txtPrice, txtQuantity, txtShuttlecock, txtCustomerName);
 
