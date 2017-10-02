@@ -20,10 +20,10 @@ public class RemplissageBDD {
         // insert into VOLANT
         if(volant) {
             // paramètres :validité1, validité2, marque, référence, classement, prix
-            Volant volantToAdd = new Volant("2017-2018", "2018-2019", "ARTENGO", "BSC 950", 3,19);
-            Volant volantToAdd_2 = new Volant("2017-2018", "2018-2019", "ASHAWAY", "A6", 3,23);
-            Volant volantToAdd_3 = new Volant("2017-2018", "2018-2019", "BABOLAT", "3", 2,15);
-            Volant volantToAdd_4 = new Volant("2016-2017", "2017-2018", "HONKOO", "SHKO", 2,12);
+            Volant volantToAdd = new Volant("2016-2017", "2017-2018", "YONEX", "AS 30", 3, 27, 500);
+            Volant volantToAdd_2 = new Volant("2016-2017", "2017-2018", "RSL", "RSL GRADE 1", 3, 21, 6000);
+            Volant volantToAdd_3 = new Volant("2016-2017", "2017-2018", "RSL", "RSL GRADE 3", 3, 16.70, 5000);
+            Volant volantToAdd_4 = new Volant("2016-2017", "2017-2018", "RSL", "RSL GRADE 9", 3, 13.70, 10000);
 
             VolantDAO volantsDAO = new VolantDAO(context);
             volantsDAO.open();

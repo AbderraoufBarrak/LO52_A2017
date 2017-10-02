@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
@@ -7,10 +8,20 @@
 
 
     <TextView
-        android:id="@+id/tvVolantName"
+        android:id="@+id/tvVolantMarque"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="Marque"
+        android:textColor="#000"
+        android:textSize="22sp"
+        android:layout_margin="10dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvVolantRef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[Référence]"
         android:textColor="#000"
         android:textSize="22sp"
         android:layout_margin="10dp"
@@ -21,13 +32,22 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
-    <RatingBar
-        android:id="@+id/ratingBarAdapter"
+    <TextView
+        android:id="@+id/tvVolantStock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:isIndicator="true"
-        android:numStars="3"
-        android:stepSize="0.1" />
+        android:text="Stock"
+        android:textColor="#000"
+        android:textSize="22sp"
+        android:layout_margin="10dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/ivVolantIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/tube_1013_1_1" />
 
 
 </LinearLayout>

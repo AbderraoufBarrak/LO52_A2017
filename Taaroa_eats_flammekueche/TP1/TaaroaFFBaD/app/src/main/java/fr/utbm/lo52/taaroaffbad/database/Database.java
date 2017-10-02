@@ -20,6 +20,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String VOL_REF = "ref_volant";
     public static final String VOL_CLASSEMENT = "classement_volant";
     public static final String VOL_PRIX = "prix_volant";
+    public static final String VOL_STOCK = "stock_volant";
 
     // create table VOLANT
     private static final String CREATE_VOLANT = "create table " + TABLE_VOLANT
@@ -28,7 +29,8 @@ public class Database extends SQLiteOpenHelper {
             + VOL_MARQUE + " text not null, "
             + VOL_REF + " text not null, "
             + VOL_CLASSEMENT + " integer not null, "
-            + VOL_PRIX + " integer not null, "
+            + VOL_PRIX + " real not null, "
+            + VOL_STOCK + " integer not null, "
             + "primary key(" + VOL_MARQUE+ "," + VOL_REF + ")"
             + ");";
 

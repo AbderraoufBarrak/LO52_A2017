@@ -12,20 +12,30 @@ public class Volant implements Serializable{
     private String marque;
     private String reference;
     private int classement;
-    private int prix;
+    private double prix;
+    private int stock;
 
-    public Volant(String validite_1, String validite_2, String marque, String reference, int classement, int prix) {
+    public Volant(String validite_1, String validite_2, String marque, String reference, int classement, double prix, int stock) {
         this.validite_1 = validite_1;
         this.validite_2 = validite_2;
         this.marque = marque;
         this.reference = reference;
         this.classement = classement;
         this.prix = prix;
+        this.stock = stock;
     }
 
     public Volant(){}
 
-    public int getPrix() {
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public double getPrix() {
         return prix;
     }
 
@@ -81,6 +91,8 @@ public class Volant implements Serializable{
                 ", marque='" + marque + '\'' +
                 ", reference='" + reference + '\'' +
                 ", classement=" + classement +
+                ", prix=" + prix +
+                ", stock=" + stock +
                 '}';
     }
 }

@@ -4,6 +4,8 @@ import android.content.Intent;
 import java.text.DateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import fr.utbm.lo52.taaroaffbad.Beans.Vente;
@@ -42,5 +44,23 @@ public class VentePageActivity extends AppCompatActivity {
         titre.setText(sTitre);
         sousTitre.setText(sSousTitre);
         desc.setText(sDesc);
+    }
+
+    // HOME Button
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // handle button activities
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_home) {
+            startActivity(new Intent(this,MainActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

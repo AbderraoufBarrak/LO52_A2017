@@ -15,9 +15,12 @@ import android.os.Bundle;
 import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
@@ -26,10 +29,12 @@ import android.widget.Toast;
 
 
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 import fr.utbm.lo52.taaroaffbad.Beans.Vente;
 import fr.utbm.lo52.taaroaffbad.Beans.Volant;
 import fr.utbm.lo52.taaroaffbad.Database.VenteDAO;
+import fr.utbm.lo52.taaroaffbad.Database.VolantDAO;
 import fr.utbm.lo52.taaroaffbad.R;
 
 public class VolantPageActivity extends AppCompatActivity {
@@ -57,9 +62,19 @@ public class VolantPageActivity extends AppCompatActivity {
         Drawable drawable = ratingBar.getProgressDrawable();
         drawable.setColorFilter(Color.parseColor("#dfe61d"), PorterDuff.Mode.SRC_ATOP);
 
-        // validite 1 & 2
+        // validite 1 & 2 + stock
         TextView tvValidite = (TextView) findViewById(R.id.tvValidite);
-        tvValidite.setText(volant.getValidite_1()+" / "+volant.getValidite_2());
+        tvValidite.setText(volant.getValidite_1()+" / "+volant.getValidite_2()+
+                            "\nStock disponible : "+volant.getStock());
+
+        // image
+        ImageView img = (ImageView) findViewById(R.id.ivVolantIconGd);
+        if(volant.getMarque().equals("RSL")) {
+            if(volant.getReference().equals("RSL GRADE 1"))       img.setImageResource(R.drawable.tube_1013_1_1_gd);
+            else if(volant.getReference().equals("RSL GRADE 3"))  img.setImageResource(R.drawable.tube_1015_blanc_1_2_gd);
+            else if(volant.getReference().equals("RSL GRADE 9"))  img.setImageResource(R.drawable.tube_rsla9_1_1_gd);
+        }
+        else img.setImageResource(R.drawable.tube_as30_1_1_gd); // Marque & Réf défaut : Yonex [AS30]
 
         // bouton cmmander
         Button commander = (Button) findViewById(R.id.btnCommander);
@@ -83,39 +98,53 @@ public class VolantPageActivity extends AppCompatActivity {
                         checkPaye = (Switch) dialogObj.findViewById(R.id.CheckPaye);
                         checkStatut = (Switch) dialogObj.findViewById(R.id.CheckStatut);
 
-                        String refCommande = cmdPrenom.getText().toString().toLowerCase()+" "+
-                                cmdNom.getText().toString().toUpperCase()+"\n"+
-                                cmdTelephone.getText().toString()+"\n"+
-                                cmdAdresse.getText().toString().toUpperCase()+"\n"+
-                                cmdQuantite.getText().toString()+"\n"+
-                                "payé:"+(checkPaye.isChecked()?"OUI":"NON")+"\n"+
-                                "club:"+(checkStatut.isChecked()?"OUI":"NON")+"\n";
-                        Log.i("JOJO-commande",refCommande);
+                        try {
 
-                        Vente vente = new Vente(1,          // venteID
-                                volant.getMarque(),         // marque
-                                volant.getReference(),      // référence
-                                0,                          // fabID
-                                0,                          // achID
-                                volant.getPrix()* Integer.parseInt(cmdQuantite.getText().toString()),   // prix
-                                checkPaye.isChecked(),                                                  // boolPaye
-                                Integer.parseInt(cmdQuantite.getText().toString()),                     // qte
-                                new Date(),                                                             // dateAchat
-                                (checkPaye.isChecked()?new Date():null));                               // datePaye
+                            String sNom = cmdNom.getText().toString().toUpperCase();
+                            String sTel = cmdTelephone.getText().toString();
+                            String sAdr = cmdAdresse.getText().toString().toUpperCase();
+                            String qteTmp = cmdQuantite.getText().toString();
 
-                        VenteDAO venteDAO = new VenteDAO(VolantPageActivity.this);
-                        venteDAO.open();
-                        venteDAO.addVente(vente);
+                            if(sNom.isEmpty() || sTel.isEmpty() || sAdr.isEmpty() || qteTmp.isEmpty())
+                                throw new Exception("Champ(s) vide(s) !");
 
-                        Log.i("JOJO-vente",vente.toString());
+                            if(volant.getStock() < Integer.parseInt(cmdQuantite.getText().toString()))
+                                throw new Exception("Pas assez de stock !");
 
-                        dialog.cancel();
+                            Vente vente = new Vente(1,          // venteID
+                                    volant.getMarque(),         // marque
+                                    volant.getReference(),      // référence
+                                    0,                          // fabID
+                                    0,                          // achID
+                                    volant.getPrix() * Integer.parseInt(qteTmp),   // prix
+                                    checkPaye.isChecked(),                                                  // boolPaye
+                                    Integer.parseInt(qteTmp),                     // qte
+                                    new Date(),                                                             // dateAchat
+                                    (checkPaye.isChecked() ? new Date() : null));                               // datePaye
 
-                        Context context = getApplicationContext();
-                        CharSequence text = "Commande enregistrée =)";
-                        int duration = Toast.LENGTH_SHORT;
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                            // Ajoute la vente en BDD
+                            VenteDAO venteDAO = new VenteDAO(VolantPageActivity.this);
+                            venteDAO.open();
+                            venteDAO.addVente(vente);
+
+                            // Puis décrémente le stock du volant
+                            VolantDAO volantDAO = new VolantDAO(VolantPageActivity.this);
+                            volantDAO.open();
+                            volantDAO.decrementStock(volant,vente.getQuantite());
+
+                            // Ferme la pop-up
+                            dialog.cancel();
+
+                            // message de réussite
+                            Toast.makeText(VolantPageActivity.this, "Commande enregistrée", Toast.LENGTH_LONG).show();
+
+                            startActivity(new Intent(VolantPageActivity.this,MainActivity.class));
+
+                        }catch (Exception e){
+                            Log.e("VolantPageActivity", e+"");
+                            Toast.makeText(VolantPageActivity.this, "Erreur : "+e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+
 
 
                     }
@@ -131,6 +160,24 @@ public class VolantPageActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    // HOME Button
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // handle button activities
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_home) {
+            startActivity(new Intent(this,MainActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

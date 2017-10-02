@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -59,16 +60,28 @@ public class VolantAdapter extends BaseAdapter {
         // getting volant data for the row
         Volant v = volantList.get(position);
 
-        Log.i("Yvan",v.getClassement()+"");
+        Log.i("JOJO_volantAdapter=",v.toString());
 
         // Marque
-        TextView marque = (TextView) convertView.findViewById(R.id.tvVolantName);
+        TextView marque = (TextView) convertView.findViewById(R.id.tvVolantMarque);
         marque.setText(v.getMarque());
 
-        // Rating
-        RatingBar classement = (RatingBar) convertView.findViewById(R.id.ratingBarAdapter);
-        classement.setRating(v.getClassement());
+        // Référence
+        TextView ref = (TextView) convertView.findViewById(R.id.tvVolantRef);
+        ref.setText("["+v.getReference()+"]");
 
+        // Stock
+        TextView stock = (TextView) convertView.findViewById(R.id.tvVolantStock);
+        stock.setText(v.getStock()+"x");
+
+        // Image
+        ImageView img = (ImageView) convertView.findViewById(R.id.ivVolantIcon);
+        if(v.getMarque().equals("RSL")) {
+            if(v.getReference().equals("RSL GRADE 1"))       img.setImageResource(R.drawable.tube_1013_1_1);
+            else if(v.getReference().equals("RSL GRADE 3"))  img.setImageResource(R.drawable.tube_1015_blanc_1_2);
+            else if(v.getReference().equals("RSL GRADE 9"))  img.setImageResource(R.drawable.tube_rsla9_1_1);
+        }
+        else img.setImageResource(R.drawable.tube_as30_1_1); // Marque & Réf défaut : Yonex [AS30]
 
         return convertView;
     }

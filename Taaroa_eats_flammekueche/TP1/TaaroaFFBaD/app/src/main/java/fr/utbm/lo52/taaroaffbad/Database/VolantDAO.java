@@ -31,36 +31,25 @@ public class VolantDAO extends BaseDAO {
         values.put(handler.VOL_REF, v.getReference());
         values.put(handler.VOL_CLASSEMENT, v.getClassement());
         values.put(handler.VOL_PRIX, v.getPrix());
+        values.put(handler.VOL_STOCK, v.getStock());
 
         Log.i("JOJO-addVolant","avant INSERT");
         sqlite.insert(handler.TABLE_VOLANT, null, values);
         Log.i("JOJO-addVolant","après INSERT");
     }
 
-    /*public void supprimer(long id) {
-        // CODE
-    }*/
-
-    /*public void modifier(Volant m) {
-        // CODE
-    }*/
+    public void decrementStock(Volant v, int qte) {
+        sqlite.execSQL("update "+handler.TABLE_VOLANT+" set "+handler.VOL_STOCK+"="+(v.getStock()-qte)+" where "+
+                handler.VOL_MARQUE+"='"+v.getMarque()+"' and "+handler.VOL_REF+"='"+v.getReference()+"'");
+    }
 
     public ArrayList<Volant> getVolant () {
-        Cursor c =
-                sqlite.rawQuery(
-                        "select * " +
-                                //VolantDAO + ", " +
-                                //REF + ", "
-                                //+ CLASSEMENT +
-                                " from " +
-                                handler.TABLE_VOLANT //+
-                                //" where marque = ? and ref = ?"
-                        , new String[] {/*marque, ref*/});
+        Cursor c = sqlite.rawQuery("select * from " + handler.TABLE_VOLANT, new String[] {});
 
         Volant volant;
         ArrayList<Volant> volantList = new ArrayList<Volant>();
         while (c.moveToNext()) {
-            volant = new Volant(c.getString(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4), c.getInt(5));
+            volant = new Volant(c.getString(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4), c.getFloat(5), c.getInt((6)));
             volantList.add(volant);
             Log.d("YVAN", "getVolant() -> " + volant.toString());
         }

@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         venteDAO.open();
 
         // remplissage de la BDD (RAZ) -> paramètres : context, volant, fabricant, acheteur, vente
-        RemplissageBDD rbdd = new RemplissageBDD(MainActivity.this, true, false, false, false);
+        RemplissageBDD rbdd = new RemplissageBDD(MainActivity.this, false, false, false, false);
 
         //test2 = venteDAO.getVente();
         test = volantsDAO.getVolant();
