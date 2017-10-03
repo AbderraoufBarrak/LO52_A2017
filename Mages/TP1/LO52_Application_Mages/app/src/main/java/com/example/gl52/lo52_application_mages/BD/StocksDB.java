@@ -9,7 +9,5 @@ import java.util.ArrayList;
 public class Stock {
     private String Id_Stock;
     private String Nom_Stock;
-    private ArrayList<Volants> vVolants;
-
 
 }
