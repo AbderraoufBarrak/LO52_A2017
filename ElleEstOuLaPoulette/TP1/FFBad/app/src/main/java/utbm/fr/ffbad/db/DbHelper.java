@@ -34,7 +34,7 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        InputStream is = getClass().getClassLoader().getResourceAsStream("db/SHUTTLECOCK.SQL");
+        InputStream is = getClass().getClassLoader().getResourceAsStream("raw/shuttlecock.sql");
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader bfr = new BufferedReader(isr);
         String query = "";
