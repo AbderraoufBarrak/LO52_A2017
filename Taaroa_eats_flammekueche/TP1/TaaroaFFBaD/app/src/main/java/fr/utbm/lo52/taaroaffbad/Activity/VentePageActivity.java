@@ -4,12 +4,17 @@ import android.content.Intent;
 import java.text.DateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import fr.utbm.lo52.taaroaffbad.Beans.Vente;
 import fr.utbm.lo52.taaroaffbad.Beans.Volant;
+import fr.utbm.lo52.taaroaffbad.Database.VenteDAO;
 import fr.utbm.lo52.taaroaffbad.R;
 
 public class VentePageActivity extends AppCompatActivity {
@@ -35,8 +40,6 @@ public class VentePageActivity extends AppCompatActivity {
                 DateFormat.SHORT,
                 DateFormat.SHORT);
 
-
-
         String sTitre = "#"+vente.getVenteId()+" "+vente.getMarque()+" ["+vente.getReference()+"]";
         String sSousTitre =  shortDateFormat.format(vente.getDateAchat());
         String sDesc = "Prix : "+vente.getPrix()+" \n A payé : "+(vente.getPaye()?" le "+shortDateFormat.format(vente.getDatePaye()):"NON");
@@ -44,6 +47,28 @@ public class VentePageActivity extends AppCompatActivity {
         titre.setText(sTitre);
         sousTitre.setText(sSousTitre);
         desc.setText(sDesc);
+
+        // switch pour payer ou non ---------------------------------------------------------------
+        Switch switchPaye = (Switch) findViewById(R.id.switchPaye);
+        boolean flagPaye = vente.getPaye();
+        switchPaye.setSelected(flagPaye);
+
+        if(flagPaye) // déjà payé
+            switchPaye.setVisibility(View.GONE);
+
+        // action de paie
+        switchPaye.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    Log.i("JOJO-SwitchPaye","isChecked:"+isChecked);
+                    VenteDAO venteDAO = new VenteDAO(VentePageActivity.this);
+                    venteDAO.open();
+                    venteDAO.setPaye(vente);
+                }
+            }
+        });
+        //-----------------------------------------------------------------------------------------
     }
 
     // HOME Button

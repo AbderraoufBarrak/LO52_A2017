@@ -83,7 +83,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:textStyle="bold"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp"
+                    android:text="text"/>
+
+                <Switch
+                    android:id="@+id/switchPaye"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Payer maintenant" />
 
             </LinearLayout>
 

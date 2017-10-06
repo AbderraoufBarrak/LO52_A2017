@@ -44,13 +44,12 @@ public class VenteDAO extends BaseDAO {
         sqlite.insert(handler.TABLE_VENTE, null, values);
     }
 
-    /*public void supprimer(long id) {
-        // CODE
-    }*/
+    public void setPaye(Vente v) {
+        Date date = new Date();
 
-    /*public void modifier(Volant m) {
-        // CODE
-    }*/
+        sqlite.execSQL("update "+handler.TABLE_VENTE+" set "+handler.VEN_PAYE+"=1, "+handler.VEN_DATE_PAYE+"='"+date.toString()+
+                "' where "+handler.VEN_ID+"="+v.getVenteId());
+    }
 
     public ArrayList<Vente> getVente () {
         Cursor c =
