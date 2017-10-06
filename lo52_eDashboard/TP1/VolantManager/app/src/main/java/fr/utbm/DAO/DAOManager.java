@@ -1,7 +1,9 @@
 package fr.utbm.DAO;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import fr.utbm.database.DatabaseHandler;
 
@@ -11,7 +13,7 @@ import fr.utbm.database.DatabaseHandler;
 
 public abstract class DAOManager {
 
-    protected final static int VERSION = 2; // Incrémente-moi si la structure de la base de données change !
+    protected final static int VERSION = 7; // Incrémente-moi si la structure de la base de données change !
     protected final static String NAME = "database.db";
 
     protected SQLiteDatabase sqLiteDatabase = null;
@@ -54,5 +56,17 @@ public abstract class DAOManager {
      */
     public SQLiteDatabase getDb() {
         return sqLiteDatabase;
+    }
+
+
+
+    public long getMaxID(String tableName, String id) {
+        long res = 0;
+        Cursor c =
+                sqLiteDatabase.rawQuery("SELECT * FROM " + tableName + " ORDER BY " + id + " DESC LIMIT 1", null);
+        while (c.moveToNext()) {
+            res = c.getLong(0);
+        }
+        return res;
     }
 }

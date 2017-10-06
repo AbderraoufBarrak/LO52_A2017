@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorBackground"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/lot_iv"
+        android:layout_width="73dp"
+        android:layout_height="0dp"
+        app:srcCompat="@mipmap/ic_volants_manager"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/space" />
+
+    <TextView
+        android:id="@+id/lot_marque_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/marque_volants"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBaseText"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/lot_iv"
+        app:layout_constraintRight_toLeftOf="@+id/lot_taille_tv"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/lot_ref_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/ref_volants"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBaseText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/lot_iv"
+        app:layout_constraintRight_toLeftOf="@+id/lot_taille_tv"
+        app:layout_constraintTop_toBottomOf="@+id/lot_marque_tv"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="0dp" />
+
+    <TextView
+        android:id="@+id/lot_taille_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:textColor="@color/colorBaseText"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/space"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintRight_toRightOf="@+id/lot_prix_tv" />
+
+    <Space
+        android:layout_width="368dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lot_ref_tv"
+        android:id="@+id/space" />
+
+    <TextView
+        android:id="@+id/lot_prix_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:textColor="@color/colorBaseText"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/space"
+        app:layout_constraintVertical_bias="0.0" />
+</android.support.constraint.ConstraintLayout>

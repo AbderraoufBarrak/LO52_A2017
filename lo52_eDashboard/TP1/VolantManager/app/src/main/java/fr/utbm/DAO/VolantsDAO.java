@@ -16,18 +16,20 @@ import fr.utbm.entity.Volant;
 
 public class VolantsDAO extends DAOManager {
 
-    public static final String TABLE_NAME = "Volants";
+    public static final String TABLE_NAME = "Volant";
     public static final String ID = "id";
     public static final String MARQUE = "marque";
     public static final String REF = "ref";
     public static final String CLASSEMENT = "classement";
+    public static final String LOT_ID = "lotId";
 
     public static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     MARQUE + " TEXT, " +
                     REF + " TEXT, " +
-                    CLASSEMENT + " INTEGER);";
+                    CLASSEMENT + " INTEGER, " +
+                    LOT_ID + " INTEGER);";
 
     public static final String TABLE_DROP =
             "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
@@ -61,12 +63,13 @@ public class VolantsDAO extends DAOManager {
      * @param v
      */
     public void addVolant (Volant v) {
-        v.setId(getMaxID() + 1);
+        v.setId(getMaxID(TABLE_NAME, ID) + 1);
         Log.d("eDBTEAM/VolantsDAO", "addVolant -> " + v.toString());
         ContentValues cv = new ContentValues();
         cv.put(VolantsDAO.MARQUE, v.getMarque());
         cv.put(VolantsDAO.REF, v.getRef());
         cv.put(VolantsDAO.CLASSEMENT, v.getClassement());
+        cv.put(VolantsDAO.LOT_ID, v.getLotId());
         sqLiteDatabase.insert(TABLE_NAME, null, cv);
     }
 
@@ -110,32 +113,23 @@ public class VolantsDAO extends DAOManager {
                         "select " +
                                 ID + ", " +
                                 MARQUE + ", " +
-                                REF + ", "
-                                + CLASSEMENT +
+                                REF + ", " +
+                                CLASSEMENT + ", " +
+                                LOT_ID +
                         " from " +
                                 TABLE_NAME +
                         " where marque = ? and ref = ?"
                 , new String[] {marque, ref});
 
-        Volant volant = new Volant(0, null, null, null);
+        Volant volant = new Volant(0, null, null, null, 0);
 
         // Affichage des résultats répondants à la requête
         while (c.moveToNext()) {
-            volant = new Volant(c.getLong(0), c.getString(1), c.getString(2), c.getString(3));
+            volant = new Volant(c.getLong(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4));
             Log.d("eDBTEAM/VolantsDAO", "getVolant(" + marque + ", " + ref + ") -> " + volant);
         }
         c.close();
         return volant;
-    }
-
-    public long getMaxID() {
-        long res = 0;
-        Cursor c =
-                sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY " + ID + " DESC LIMIT 1", null);
-        while (c.moveToNext()) {
-            res = c.getLong(0);
-        }
-        return res;
     }
 
     public List<Volant> getVolants() {
@@ -144,15 +138,16 @@ public class VolantsDAO extends DAOManager {
                         "select " +
                                 ID + ", " +
                                 MARQUE + ", " +
-                                REF + ", "
-                                + CLASSEMENT +
+                                REF + ", " +
+                                CLASSEMENT + ", " +
+                                LOT_ID +
                                 " from " +
                                 TABLE_NAME, null);
 
-        Volant volant = new Volant(0, null, null, null);
+        Volant volant = new Volant(0, null, null, null, 0);
         List<Volant> volants = new ArrayList<>();
         while (c.moveToNext()) {
-            volant = new Volant(c.getLong(0), c.getString(1), c.getString(2), c.getString(3));
+            volant = new Volant(c.getLong(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4));
             volants.add(volant);
             Log.d("eDBTEAM/VolantsDAO", "getVolants -> " + volant);
         }
