@@ -1,7 +1,9 @@
 package fr.utbm.lpp.ffbad.data.db;
 
+import android.database.Cursor;
 import android.provider.BaseColumns;
-import android.util.Log;
+
+import fr.utbm.lpp.ffbad.data.CustomerType;
 
 public class FFBadDbContract {
     private FFBadDbContract() {}
@@ -26,6 +28,16 @@ public class FFBadDbContract {
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+        public static fr.utbm.lpp.ffbad.data.Shuttlecock getFromCursor(Cursor cursor) {
+            long id = cursor.getLong(cursor.getColumnIndex(_ID));
+            String brand = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_BRAND));
+            String reference = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_REFERENCE));
+            int rating = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_RATING));
+            int stock = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_STOCK));
+
+            return new fr.utbm.lpp.ffbad.data.Shuttlecock(id, brand, reference, rating, stock);
+        }
     }
 
     public static class Trader implements BaseColumns {
@@ -62,6 +74,14 @@ public class FFBadDbContract {
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+        public static fr.utbm.lpp.ffbad.data.Customer getFromCursor(Cursor cursor) {
+            long id = cursor.getLong(cursor.getColumnIndex(_ID));
+            String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_NAME));
+            int type = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_TYPE));
+
+            return new fr.utbm.lpp.ffbad.data.Customer(id, name, CustomerType.values()[type]);
+        }
     }
 
     public static class Sale implements BaseColumns {
@@ -83,6 +103,17 @@ public class FFBadDbContract {
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+        public static fr.utbm.lpp.ffbad.data.Sale getFromCursor(Cursor cursor) {
+            long id = cursor.getLong(cursor.getColumnIndex(_ID));
+            fr.utbm.lpp.ffbad.data.Customer customer = Customer.getFromCursor(cursor);
+            fr.utbm.lpp.ffbad.data.Shuttlecock shuttlecock = Shuttlecock.getFromCursor(cursor);
+            float price = cursor.getFloat(cursor.getColumnIndex(COLUMN_NAME_PRICE));
+            int quantity = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_QUANTITY));
+            boolean isPaid = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_IS_PAID)) == 1;
+
+            return new fr.utbm.lpp.ffbad.data.Sale(id, customer, shuttlecock, price, quantity, isPaid);
+        }
     }
 
     public static class Purchase implements BaseColumns {

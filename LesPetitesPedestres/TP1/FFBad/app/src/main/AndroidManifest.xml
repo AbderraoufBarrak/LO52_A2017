@@ -2,21 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.utbm.lpp.ffbad">
 
+    <!--TODO: <div>Icons made by <a href="https://www.flaticon.com/authors/dot-on-paper" title="Dot on Paper">Dot on Paper</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
     <application
+        android:name=".FFBadApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_badminton_shuttlecock"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".LardeSports_Welcome">
-        </activity>
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".LardeSports_Welcome" />
         <activity android:name=".Stock">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            </intent-filter>
+        </activity>
+        <activity android:name=".OperationActivity"></activity>
     </application>
 
 </manifest>
