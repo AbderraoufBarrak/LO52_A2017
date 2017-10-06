@@ -59,6 +59,13 @@ public class VolantsDAO extends DAOManager {
     }
 
     /**
+     * Efface le contenu de la table
+     */
+    public void eraseContent() {
+        sqLiteDatabase.delete(TABLE_NAME, null, null);
+    }
+
+    /**
      * Ajoute un volant en base de données
      * @param v
      */
@@ -72,14 +79,6 @@ public class VolantsDAO extends DAOManager {
         cv.put(VolantsDAO.LOT_ID, v.getLotId());
         sqLiteDatabase.insert(TABLE_NAME, null, cv);
     }
-
-    /**
-     * Efface le contenu de la table
-     */
-    public void eraseContent() {
-        sqLiteDatabase.delete(TABLE_NAME, null, null);
-    }
-
 
     /**
      * Efface une entrée de la table en fonction de son ID
@@ -132,6 +131,10 @@ public class VolantsDAO extends DAOManager {
         return volant;
     }
 
+    /**
+     * Récupère la liste de tous les volants
+     * @return
+     */
     public List<Volant> getVolants() {
         Cursor c =
                 sqLiteDatabase.rawQuery(

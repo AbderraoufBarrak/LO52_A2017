@@ -140,6 +140,11 @@ public class LotVolantDAO extends DAOManager {
         return lotsVolants;
     }
 
+    /**
+     * Récupère la liste de tous les lots de volants
+     * @param vDAO
+     * @return
+     */
     public List<LotInfo> getTestVolants(VolantsDAO vDAO) {
         Cursor c =
                 sqLiteDatabase.rawQuery(

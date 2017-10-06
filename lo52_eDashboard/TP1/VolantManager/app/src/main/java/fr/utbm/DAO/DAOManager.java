@@ -13,7 +13,7 @@ import fr.utbm.database.DatabaseHandler;
 
 public abstract class DAOManager {
 
-    protected final static int VERSION = 7; // Incrémente-moi si la structure de la base de données change !
+    protected final static int VERSION = 11; // Incrémente-moi si la structure de la base de données change !
     protected final static String NAME = "database.db";
 
     protected SQLiteDatabase sqLiteDatabase = null;
