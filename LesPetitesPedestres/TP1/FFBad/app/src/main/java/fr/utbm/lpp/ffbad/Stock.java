@@ -33,14 +33,6 @@ public class Stock extends AppCompatActivity
         setupDrawerLayout();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (db != null) {
-            db.close();
-        }
-    }
-
     public SQLiteDatabase getDb() {
         if (db == null) {
             FFBadApplication app = (FFBadApplication) getApplication();
