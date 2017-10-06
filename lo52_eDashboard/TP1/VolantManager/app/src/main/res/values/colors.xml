@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#10911B</color>
+    <color name="colorPrimary">#10911b</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#00DB95</color>
+    <color name="colorAccent">#00db95</color>
     <color name="colorBackground">#222222</color>
     <color name="colorBaseText">#bbbbbb</color>
+    <color name="lot_50">#e8d900</color>
+    <color name="lot_100">#e87000</color>
+    <color name="lot_150">#ed0000</color>
 </resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sort_price">Prix</string>
+    <string name="sort_stock">Stock</string>
+    <string name="sort_brand">Marque</string>
+    <string name="sort_ref">Référence</string>
+    <string-array name="sort_types">
+        <item>@string/sort_price</item>
+        <item>@string/sort_stock</item>
+        <item>@string/sort_brand</item>
+        <item>@string/sort_ref</item>
+    </string-array>
+</resources>

@@ -10,6 +10,22 @@ public class Volant {
     private String marque;
     private String ref;
     private String classement;
+    private int lotId;
+
+    public Volant(long id, String marque, String ref, String classement, int lotId) {
+        this.id = id;
+        this.marque = marque;
+        this.ref = ref;
+        this.classement = classement;
+        this.lotId = lotId;
+    }
+
+    public Volant(String marque, String ref, String classement, int lotId) {
+        this.marque = marque;
+        this.ref = ref;
+        this.classement = classement;
+        this.lotId = lotId;
+    }
 
     public Volant(long id, String marque, String ref, String classement) {
         this.id = id;
@@ -56,13 +72,22 @@ public class Volant {
         this.classement = classement;
     }
 
+    public int getLotId() {
+        return lotId;
+    }
+
+    public void setLotId(int lotId) {
+        this.lotId = lotId;
+    }
+
     @Override
     public String toString() {
         return "Volant{" +
                 "id=" + id +
                 ", marque='" + marque + '\'' +
                 ", ref='" + ref + '\'' +
-                ", classement=" + classement +
+                ", classement='" + classement + '\'' +
+                ", lotId=" + lotId +
                 '}';
     }
 }

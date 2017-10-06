@@ -24,4 +24,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, VolantsDisplay.class);
         startActivity(intent);
     }
+
+    /**
+     * Accès à l'activité Purchase
+     * @param view
+     */
+    public void purchaseVolants(View view) {
+        Intent intent = new Intent(this, Purchase.class);
+        startActivity(intent);
+    }
 }

@@ -2,6 +2,11 @@
     <string name="app_name">Volant Manager</string>
     <string name="welcome_message">Bienvenue dans l\'application Volant Manager !</string>
     <string name="browse_volants">Parcourir les volants</string>
+    <string name="purchase_volants">Acheter</string>
     <string name="marque_volants">Marque:</string>
     <string name="ref_volants">Ref:</string>
+    <string name="purchase_activity_title">Achats</string>
+    <string name="volants_display_activity_title">Volants</string>
+    <string name="purchase_welcome_message">Coming soon...</string>
+    <string name="sort_caption">Tri : </string>
 </resources>
