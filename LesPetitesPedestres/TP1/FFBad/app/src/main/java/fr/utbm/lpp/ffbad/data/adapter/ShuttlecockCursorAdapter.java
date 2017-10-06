@@ -33,18 +33,24 @@ public class ShuttlecockCursorAdapter extends CursorAdapter{
         TextView txtBrand = view.findViewById(R.id.brand);
         TextView txtReference = view.findViewById(R.id.reference);
         TextView txtStock = view.findViewById(R.id.stock);
-        /*ImageView imgIcon = view.findViewById(R.id.icon);*/
+        ImageView imgIcon = view.findViewById(R.id.icon);
 
         Shuttlecock shuttlecock = FFBadDbContract.Shuttlecock.getFromCursor(cursor);
 
         txtBrand.setText(shuttlecock.getBrand());
         txtReference.setText(shuttlecock.getReference());
         txtStock.setText(String.valueOf(shuttlecock.getStock()));
-        /*imgIcon.setImageBitmap(shuttlecock.getCustomer().getName());
 
 
-        Bitmap bMap = BitmapFactory.decodeFile("/sdcard/test2.png");
-        image.setImageBitmap(bMap);*/
+
+
+        String iconName = shuttlecock.getIcon() + ".jpg";
+        /*iconName += ".jpg";*/
+
+        int image = context.getResources().getIdentifier(iconName, "drawable", context.getPackageName());
+
+        imgIcon.setImageResource(image);
+
 
         /*int txtColor = (shuttlecock.isPaid() ? Color.GREEN : Color.RED);
         for (TextView txt : txtList) {
