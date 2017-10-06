@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import fr.utbm.lpp.ffbad.data.adapter.ShuttlecockCursorAdapter;
 import fr.utbm.lpp.ffbad.data.db.FFBadDbContract;
 
 public class Stock extends AppCompatActivity
@@ -63,7 +64,32 @@ public class Stock extends AppCompatActivity
     }
 
     private void setupListView() {
+
         String[] projection = {
+                FFBadDbContract.Shuttlecock._ID,
+                FFBadDbContract.Shuttlecock.COLUMN_NAME_BRAND,
+                FFBadDbContract.Shuttlecock.COLUMN_NAME_REFERENCE,
+                FFBadDbContract.Shuttlecock.COLUMN_NAME_STOCK,
+                FFBadDbContract.Shuttlecock.COLUMN_NAME_RATING
+        };
+
+        Cursor cursor = getDb().query(
+                FFBadDbContract.Shuttlecock.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        ShuttlecockCursorAdapter cursorAdapter = new ShuttlecockCursorAdapter(this, cursor);
+
+        ListView list = (ListView) findViewById(R.id.listview);
+        list.setAdapter(cursorAdapter);
+
+    }
+
+        /*String[] projection = {
                 FFBadDbContract.Shuttlecock._ID,
                 FFBadDbContract.Shuttlecock.COLUMN_NAME_BRAND,
                 FFBadDbContract.Shuttlecock.COLUMN_NAME_REFERENCE,
@@ -96,7 +122,7 @@ public class Stock extends AppCompatActivity
         ListView list = (ListView) findViewById(R.id.listview);
 
         list.setAdapter(cursorAdapter);
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -160,4 +186,5 @@ public class Stock extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

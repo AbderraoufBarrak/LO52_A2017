@@ -6,9 +6,11 @@ public class Shuttlecock {
     private String reference;
     private int rating;
     private int stock;
+    private String icon;
 
     public Shuttlecock(long id, String brand, String reference, int rating, int stock) {
         setId(id);
+        setIcon(brand + "-" + reference);
         setBrand(brand);
         setReference(reference);
         setRating(rating);
@@ -64,4 +66,8 @@ public class Shuttlecock {
             this.stock = stock;
         }
     }
+
+    public void setIcon(String icon) {this.icon = icon;}
+
+    public String getIcon() { return icon; }
 }
