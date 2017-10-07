@@ -87,7 +87,8 @@ public class Purchase extends AppCompatActivity {
         achatsLV.setAdapter(adapter);
 
         adapter.updateRecords(achatInfos);
-        // TODO - L'affichage de l'activité Purchase est pas opti
+        // TODO - L'affichage de l'activité Purchase est peut-être pas opti
         // TODO - Ajouter plus d'entrées en BDD. Garder le remplissage ici BDD ici ? Le basculer sur la première activité ? Faudrait qu'il soit fixe aussi, au lieu de tout supprimer & remettre à chaque fois
+        // TODO - Tri sur la ListView ? par date ? par acheteur ? par prix ?
     }
 }
