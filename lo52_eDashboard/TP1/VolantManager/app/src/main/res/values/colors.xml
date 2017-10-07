@@ -8,4 +8,6 @@
     <color name="lot_50">#e8d900</color>
     <color name="lot_100">#e87000</color>
     <color name="lot_150">#ed0000</color>
+    <color name="unpayed">#f23756</color>
+    <color name="payed">#1ff48d</color>
 </resources>

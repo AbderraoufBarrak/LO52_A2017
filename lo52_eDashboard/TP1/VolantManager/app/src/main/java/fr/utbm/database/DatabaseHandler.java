@@ -95,6 +95,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String ACHETER_LOT_ID = "lot_id";
     public static final String ACHETER_DATE_ID = "date_id";
     public static final String ACHETER_ACHETEUR_ID = "acheteur_id";
+    public static final String ACHETER_QUANTITE = "quantité";
     public static final String ACHETER_PAYED = "payed";
 
     public static final String ACHETER_TABLE_NAME = "Acheter";
@@ -104,6 +105,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     ACHETER_LOT_ID + " INTEGER, " +
                     ACHETER_DATE_ID + " INTEGER, " +
                     ACHETER_ACHETEUR_ID + " INTEGER, " +
+                    ACHETER_QUANTITE + " INTEGER, " +
                     ACHETER_PAYED + " INTEGER);";
 
     public static final String ACHETER_TABLE_DROP = "DROP TABLE IF EXISTS " + ACHETER_TABLE_NAME + ";";

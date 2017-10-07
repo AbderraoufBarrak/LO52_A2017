@@ -8,6 +8,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.utbm.beans.AchatInfo;
 import fr.utbm.entity.Acheter;
 import fr.utbm.entity.Date;
 
@@ -21,6 +22,7 @@ public class AcheterDAO extends DAOManager {
     public static final String LOT_ID = "lot_id";
     public static final String DATE_ID = "date_id";
     public static final String ACHETEUR_ID = "acheteur_id";
+    public static final String QUANTITE = "quantité";
     public static final String PAYED = "payed";
 
     public static final String TABLE_NAME = "Acheter";
@@ -30,6 +32,7 @@ public class AcheterDAO extends DAOManager {
                     LOT_ID + " INTEGER, " +
                     DATE_ID + " INTEGER, " +
                     ACHETEUR_ID + " INTEGER, " +
+                    QUANTITE + " INTEGER, " +
                     PAYED + " INTEGER);";
 
     public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
@@ -75,6 +78,7 @@ public class AcheterDAO extends DAOManager {
         cv.put(AcheterDAO.LOT_ID, a.getLot_id());
         cv.put(AcheterDAO.DATE_ID, a.getDate_id());
         cv.put(AcheterDAO.ACHETEUR_ID, a.getAcheteur_matricule());
+        cv.put(AcheterDAO.QUANTITE, a.getQuantité());
         cv.put(AcheterDAO.PAYED, a.isPayed());
         sqLiteDatabase.insert(TABLE_NAME, null, cv);
     }
@@ -99,17 +103,55 @@ public class AcheterDAO extends DAOManager {
                                 LOT_ID + ", " +
                                 DATE_ID + ", " +
                                 ACHETEUR_ID + ", " +
+                                QUANTITE + ", " +
                                 PAYED +
                                 " from " +
                                 TABLE_NAME, null);
 
-        Acheter achat = new Acheter (0, 0, 0, 0, false);
+        Acheter achat = new Acheter (0, 0, 0, 0, 0, false);
         List<Acheter> achats = new ArrayList<>();
         while (c.moveToNext()) {
-            Boolean currentPayed = (c.getInt(4) != 0);
-            achat = new Acheter(c.getLong(0), c.getLong(1), c.getLong(2), c.getLong(3), currentPayed);
+            Boolean currentPayed = (c.getInt(5) != 0);
+            achat = new Acheter(c.getLong(0), c.getLong(1), c.getLong(2), c.getLong(3), c.getInt(4), currentPayed);
             achats.add(achat);
             Log.d("eDBTEAM/AcheterDAO", "getAchats -> " + achat);
+        }
+        c.close();
+        return achats;
+    }
+
+    /**
+     * Récupère la liste complète des informations concernant une transaction
+     */
+    public List<AchatInfo> getAchatsInfos(VolantsDAO vDAO, LotVolantDAO lotVolantDAO, DateDAO dateDAO, AcheteurDAO acheteurDAO) {
+        Cursor c =
+                sqLiteDatabase.rawQuery(
+                        "select acher." +
+                                ID + ", acher." +
+                                LOT_ID + ", acher." +
+                                DATE_ID + ", acher." +
+                                ACHETEUR_ID + ", acher." +
+                                QUANTITE + ", acher." +
+                                PAYED + ", lot." +
+                                lotVolantDAO.TAILLE + ", lot." +
+                                lotVolantDAO.PRIX + ", dat." +
+                                dateDAO.DATE + ", acheur." +
+                                acheteurDAO.NOM + ", acheur." +
+                                acheteurDAO.PRENOM + ", acheur." +
+                                acheteurDAO.SOCIETE + ", vol." +
+                                vDAO.REF + ", vol." +
+                                vDAO.MARQUE + ", vol." +
+                                vDAO.CLASSEMENT +
+                                " from " +
+                                lotVolantDAO.TABLE_NAME + " lot inner join " + TABLE_NAME + " acher on lot." +  lotVolantDAO.ID + "=acher." + LOT_ID + " inner join " + acheteurDAO.TABLE_NAME + " acheur on acher." + ACHETEUR_ID + "=acheur." + acheteurDAO.MATRICULE + " inner join " + dateDAO.TABLE_NAME + " dat on acher." + DATE_ID + "=dat." + dateDAO.ID + " inner join " + vDAO.TABLE_NAME + " vol on lot." + lotVolantDAO.ID + "=vol." + vDAO.ID, null);
+
+        AchatInfo achat = new AchatInfo(0, false, 0, 0, 0, 0, null, null, null, null, 0, 0, null, null, null);
+        List<AchatInfo> achats = new ArrayList<>();
+        while (c.moveToNext()) {
+            Boolean currentPayed = (c.getInt(5) != 0);
+            achat = new AchatInfo(c.getLong(0), currentPayed, c.getInt(4), c.getLong(1), c.getLong(3), c.getLong(2), new java.util.Date(c.getString(8)), c.getString(9), c.getString(10), c.getString(11), c.getInt(6), c.getFloat(7), c.getString(12), c.getString(13), c.getString(14));
+            achats.add(achat);
+            Log.d("eDBTEAM/AcheterDAO", "getAchatsInfos -> " + achat);
         }
         c.close();
         return achats;

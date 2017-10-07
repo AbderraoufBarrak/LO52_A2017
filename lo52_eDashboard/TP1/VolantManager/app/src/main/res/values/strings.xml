@@ -7,6 +7,6 @@
     <string name="ref_volants">Ref:</string>
     <string name="purchase_activity_title">Achats</string>
     <string name="volants_display_activity_title">Volants</string>
-    <string name="purchase_welcome_message">Coming soon...</string>
+    <string name="purchase_welcome_message">Experimental</string>
     <string name="sort_caption">Tri : </string>
 </resources>

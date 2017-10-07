@@ -10,20 +10,23 @@ public class Acheter {
     private long lot_id;
     private long date_id;
     private long acheteur_matricule;
+    private int quantité;
     private boolean payed;
 
-    public Acheter(long lot_id, long date_id, long acheteur_matricule, boolean payed) {
+    public Acheter(long lot_id, long date_id, long acheteur_matricule, int quantité, boolean payed) {
         this.lot_id = lot_id;
         this.date_id = date_id;
         this.acheteur_matricule = acheteur_matricule;
+        this.quantité = quantité;
         this.payed = payed;
     }
 
-    public Acheter(long id, long lot_id, long date_id, long acheteur_matricule, boolean payed) {
+    public Acheter(long id, long lot_id, long date_id, long acheteur_matricule, int quantité, boolean payed) {
         this.id = id;
         this.lot_id = lot_id;
         this.date_id = date_id;
         this.acheteur_matricule = acheteur_matricule;
+        this.quantité = quantité;
         this.payed = payed;
     }
 
@@ -59,6 +62,14 @@ public class Acheter {
         this.acheteur_matricule = acheteur_matricule;
     }
 
+    public int getQuantité() {
+        return quantité;
+    }
+
+    public void setQuantité(int quantité) {
+        this.quantité = quantité;
+    }
+
     public boolean isPayed() {
         return payed;
     }
@@ -74,6 +85,7 @@ public class Acheter {
                 ", lot_id=" + lot_id +
                 ", date_id=" + date_id +
                 ", acheteur_matricule=" + acheteur_matricule +
+                ", quantité=" + quantité +
                 ", payed=" + payed +
                 '}';
     }

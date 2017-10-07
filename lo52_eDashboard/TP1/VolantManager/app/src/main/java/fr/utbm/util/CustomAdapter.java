@@ -81,9 +81,9 @@ public class CustomAdapter extends BaseAdapter {
 
         holder.lotMarqueTV.setText(this.activity.getString(R.string.marque_volants) + " " + lotInfo.getMarque());
         holder.lotRefTV.setText(this.activity.getString(R.string.ref_volants) + " " + lotInfo.getRef());
-        holder.lotTailleTV.setText(" " + lotInfo.getTaille());
-        holder.lotTailleTV.setTextColor(ContextCompat.getColor(activity, colorAdapter(lotInfo.getTaille())));
-        holder.lotPrixTV.setText(" " + String.format("%.2f", lotInfo.getPrix()) + "€");
+        holder.lotTailleTV.setText("" + lotInfo.getTaille());
+        holder.lotTailleTV.setTextColor(ContextCompat.getColor(activity, ColorQuantityMatcher.colorAdapter(lotInfo.getTaille())));
+        holder.lotPrixTV.setText("" + String.format("%.2f", lotInfo.getPrix()) + "€");
         holder.lotIV.setImageResource(imagePicker(lotInfo));
 
 
@@ -94,18 +94,6 @@ public class CustomAdapter extends BaseAdapter {
         this.lots = lots;
 
         notifyDataSetChanged();
-    }
-
-    public int colorAdapter(int taille) {
-        int color = 0;
-        if(taille > 0 && taille <= 500) {
-            color = R.color.lot_50;
-        } else if (taille > 500 && taille <= 5000){
-            color = R.color.lot_100;
-        } else {
-            color = R.color.lot_150;
-        }
-        return color;
     }
 
     public List<LotInfo> sortList(List<LotInfo> lots, int mode) {
