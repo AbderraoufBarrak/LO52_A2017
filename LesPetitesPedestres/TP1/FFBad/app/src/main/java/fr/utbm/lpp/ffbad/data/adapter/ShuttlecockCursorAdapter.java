@@ -31,6 +31,8 @@ public class ShuttlecockCursorAdapter extends CursorAdapter{
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
+
+        //Creation des alias des champs à remplir dans la vue
         TextView txtBrand = view.findViewById(R.id.brand);
         TextView txtReference = view.findViewById(R.id.reference);
         TextView txtStock = view.findViewById(R.id.stock);
@@ -38,21 +40,37 @@ public class ShuttlecockCursorAdapter extends CursorAdapter{
 
         Shuttlecock shuttlecock = FFBadDbContract.Shuttlecock.getFromCursor(cursor);
 
+        //contenus des textView
         txtBrand.setText(shuttlecock.getBrand());
         txtReference.setText(shuttlecock.getReference());
         txtStock.setText(String.valueOf(shuttlecock.getStock()));
 
-        String iconName = shuttlecock.getIcon() + ".jpg";
+        //recuperation de la concatenation de la marque et de la référence du volant
+        String iconNameWithSpaces = shuttlecock.getIcon();
 
-        /*iconName += ".jpg";*/
+        //les noms contiennent peut-être des espaces
+        Log.d("image",iconNameWithSpaces);
 
-        //int image = context.getResources().getIdentifier(iconName, "drawable", context.getPackageName());
+        String iconName = "";
 
-        //imgIcon.setImageResource(image);
+        for(int i=0;i<iconNameWithSpaces.length();i++){
+            if (iconNameWithSpaces.charAt(i) == ' ') {
+                for (int j = i; j < iconNameWithSpaces.length() - 1; j++) {
+                    iconName += iconNameWithSpaces.charAt(j + 1);
+                }
+                break;
+            } else {
+                iconName += iconNameWithSpaces.charAt(i);
+            }
+        }
 
-        imgIcon.setImageResource(R.drawable.rsl_grade3);
+        //les noms ne contiennent plus d'espaces
+        Log.d("imageSUITE", iconName);
 
-        Log.d("LOL","YOUPI");
+        //creation d'un ID de la ressource
+        int resIm = context.getResources().getIdentifier(iconName, "mipmap", context.getPackageName());
 
+        //assigner la ressource à l'image
+        imgIcon.setImageResource(resIm);
     }
 }
