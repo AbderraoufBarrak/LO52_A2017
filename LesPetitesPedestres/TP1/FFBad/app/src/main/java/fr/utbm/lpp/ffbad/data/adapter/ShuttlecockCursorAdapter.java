@@ -2,6 +2,7 @@ package fr.utbm.lpp.ffbad.data.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,20 +42,17 @@ public class ShuttlecockCursorAdapter extends CursorAdapter{
         txtReference.setText(shuttlecock.getReference());
         txtStock.setText(String.valueOf(shuttlecock.getStock()));
 
-
-
-
         String iconName = shuttlecock.getIcon() + ".jpg";
+
         /*iconName += ".jpg";*/
 
-        int image = context.getResources().getIdentifier(iconName, "drawable", context.getPackageName());
+        //int image = context.getResources().getIdentifier(iconName, "drawable", context.getPackageName());
 
-        imgIcon.setImageResource(image);
+        //imgIcon.setImageResource(image);
 
+        imgIcon.setImageResource(R.drawable.rsl_grade3);
 
-        /*int txtColor = (shuttlecock.isPaid() ? Color.GREEN : Color.RED);
-        for (TextView txt : txtList) {
-            txt.setTextColor(txtColor);
-        }*/
+        Log.d("LOL","YOUPI");
+
     }
 }
