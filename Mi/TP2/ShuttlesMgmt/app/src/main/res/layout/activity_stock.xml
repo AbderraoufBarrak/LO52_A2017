@@ -6,74 +6,87 @@
     android:layout_height="match_parent"
     tools:context="com.example.shuttlesmgmt.Stock">
 
-    <android.support.design.widget.AppBarLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_stock" />
-
-    <ListView
-        android:id="@+id/list_achats"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="#f00"
-        android:dividerHeight='"1dp"'
-        android:footerDividersEnabled="false" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout">
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="@android:dimen/app_icon_size"
-            android:layout_height="@android:dimen/app_icon_size"
-            android:layout_gravity="bottom|right"
-            android:layout_weight="1"
-            app:layout_anchor="@+id/linearLayout"
-            app:layout_anchorGravity="top|left"
-            app:srcCompat="@mipmap/ic_launcher" />
-
-        <EditText
-            android:id="@+id/text_marque"
+        <TextView
+            android:id="@+id/id_prix"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:text="Prix/u"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/idQuantite"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/idQuantite"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:ems="10"
+            android:text="Quantité"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/idRef"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/nomStock" />
+
+        <TextView
+            android:id="@+id/idMarque"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="0dp"
+            android:ems="10"
+            android:text="Marque"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/nomMarque" />
+
+        <TextView
+            android:id="@+id/idRef"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Référence"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/idMarque"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/nomRef" />
 
-        <EditText
-            android:id="@+id/text_ref"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+        <ListView
+            android:id="@+id/list_stock"
+            android:layout_width="411dp"
+            android:layout_height="553dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="8dp"
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="1dp"
+            android:footerDividersEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-        <EditText
-            android:id="@+id/text_stock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
-
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

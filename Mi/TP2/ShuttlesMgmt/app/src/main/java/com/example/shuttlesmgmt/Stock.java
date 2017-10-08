@@ -1,29 +1,54 @@
 package com.example.shuttlesmgmt;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+/**
+ * Created by Michel on 2017/10/2.
+ */
 
-public class Stock extends AppCompatActivity {
+public class Stock {
+    private String marque, ref, quantite, image, prix;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stock);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    public Stock(String m, String r, String qtt, String icon, String prix){
+        this.marque = m;
+        this.ref = r;
+        this.quantite = qtt;
+        this.image = icon;
+        this.prix = prix;
     }
 
+    public String getPrix(){ return prix;}
+
+    public void setPrix(String p){ this.prix = p;}
+
+    public String getMarque(){
+        return marque;
+    }
+
+    public String getRef(){
+        return ref;
+    }
+
+    public String getQuantite(){
+        return quantite;
+    }
+
+    public String getImage(){
+        return image;
+    }
+
+    public void setImage(String icon){
+        this.image = icon;
+    }
+
+    public void setQuantite(String qtt){
+        this.quantite = qtt;
+    }
+
+    public void setRef(String ref){
+        this.ref = ref;
+    }
+
+    public void setMarque(String m){
+        this.marque = m;
+    }
 }

@@ -6,4 +6,8 @@
     <string name="button_achats">Achats</string>
     <string name="button_stock">Stock</string>
     <string name="text">Hello</string>
+    <string name="title_activity_listview">Listview</string>
+    <string name="nomStock">Quantite</string>
+    <string name="nomMarque">Marque</string>
+    <string name="nomRef">Reference</string>
 </resources>

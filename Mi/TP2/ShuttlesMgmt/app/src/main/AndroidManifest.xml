@@ -17,13 +17,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Achats"
+            android:name=".AchatsActivity"
             android:label="@string/title_activity_achats"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Stock"
+            android:name=".StockActivity"
             android:label="@string/title_activity_stock"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ListviewStock" />
+        <activity android:name=".ListViewAchat"></activity>
     </application>
 
 </manifest>
