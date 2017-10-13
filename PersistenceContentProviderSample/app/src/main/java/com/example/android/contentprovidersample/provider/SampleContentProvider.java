@@ -29,8 +29,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.example.android.contentprovidersample.data.Cheese;
-import com.example.android.contentprovidersample.data.CheeseDao;
+import com.example.android.contentprovidersample.data.Volant;
+import com.example.android.contentprovidersample.data.VolantDao;
 import com.example.android.contentprovidersample.data.SampleDatabase;
 
 import java.util.ArrayList;
@@ -47,22 +47,22 @@ public class SampleContentProvider extends ContentProvider {
     /** The authority of this content provider. */
     public static final String AUTHORITY = "com.example.android.contentprovidersample.provider";
 
-    /** The URI for the Cheese table. */
+    /** The URI for the Volant table. */
     public static final Uri URI_CHEESE = Uri.parse(
-            "content://" + AUTHORITY + "/" + Cheese.TABLE_NAME);
+            "content://" + AUTHORITY + "/" + Volant.TABLE_NAME);
 
-    /** The match code for some items in the Cheese table. */
+    /** The match code for some items in the Volant table. */
     private static final int CODE_CHEESE_DIR = 1;
 
-    /** The match code for an item in the Cheese table. */
+    /** The match code for an item in the Volant table. */
     private static final int CODE_CHEESE_ITEM = 2;
 
     /** The URI matcher. */
     private static final UriMatcher MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
-        MATCHER.addURI(AUTHORITY, Cheese.TABLE_NAME, CODE_CHEESE_DIR);
-        MATCHER.addURI(AUTHORITY, Cheese.TABLE_NAME + "/*", CODE_CHEESE_ITEM);
+        MATCHER.addURI(AUTHORITY, Volant.TABLE_NAME, CODE_CHEESE_DIR);
+        MATCHER.addURI(AUTHORITY, Volant.TABLE_NAME + "/*", CODE_CHEESE_ITEM);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class SampleContentProvider extends ContentProvider {
             if (context == null) {
                 return null;
             }
-            CheeseDao cheese = SampleDatabase.getInstance(context).cheese();
+            VolantDao cheese = SampleDatabase.getInstance(context).volant();
             final Cursor cursor;
             if (code == CODE_CHEESE_DIR) {
                 cursor = cheese.selectAll();
@@ -99,9 +99,9 @@ public class SampleContentProvider extends ContentProvider {
     public String getType(@NonNull Uri uri) {
         switch (MATCHER.match(uri)) {
             case CODE_CHEESE_DIR:
-                return "vnd.android.cursor.dir/" + AUTHORITY + "." + Cheese.TABLE_NAME;
+                return "vnd.android.cursor.dir/" + AUTHORITY + "." + Volant.TABLE_NAME;
             case CODE_CHEESE_ITEM:
-                return "vnd.android.cursor.item/" + AUTHORITY + "." + Cheese.TABLE_NAME;
+                return "vnd.android.cursor.item/" + AUTHORITY + "." + Volant.TABLE_NAME;
             default:
                 throw new IllegalArgumentException("Unknown URI: " + uri);
         }
@@ -116,8 +116,8 @@ public class SampleContentProvider extends ContentProvider {
                 if (context == null) {
                     return null;
                 }
-                final long id = SampleDatabase.getInstance(context).cheese()
-                        .insert(Cheese.fromContentValues(values));
+                final long id = SampleDatabase.getInstance(context).volant()
+                        .insert(Volant.fromContentValues(values));
                 context.getContentResolver().notifyChange(uri, null);
                 return ContentUris.withAppendedId(uri, id);
             case CODE_CHEESE_ITEM:
@@ -138,7 +138,7 @@ public class SampleContentProvider extends ContentProvider {
                 if (context == null) {
                     return 0;
                 }
-                final int count = SampleDatabase.getInstance(context).cheese()
+                final int count = SampleDatabase.getInstance(context).volant()
                         .deleteById(ContentUris.parseId(uri));
                 context.getContentResolver().notifyChange(uri, null);
                 return count;
@@ -158,10 +158,10 @@ public class SampleContentProvider extends ContentProvider {
                 if (context == null) {
                     return 0;
                 }
-                final Cheese cheese = Cheese.fromContentValues(values);
-                cheese.id = ContentUris.parseId(uri);
-                final int count = SampleDatabase.getInstance(context).cheese()
-                        .update(cheese);
+                final Volant volant = Volant.fromContentValues(values);
+                volant.id = ContentUris.parseId(uri);
+                final int count = SampleDatabase.getInstance(context).volant()
+                        .update(volant);
                 context.getContentResolver().notifyChange(uri, null);
                 return count;
             default:
@@ -198,11 +198,11 @@ public class SampleContentProvider extends ContentProvider {
                     return 0;
                 }
                 final SampleDatabase database = SampleDatabase.getInstance(context);
-                final Cheese[] cheeses = new Cheese[valuesArray.length];
+                final Volant[] volants = new Volant[valuesArray.length];
                 for (int i = 0; i < valuesArray.length; i++) {
-                    cheeses[i] = Cheese.fromContentValues(valuesArray[i]);
+                    volants[i] = Volant.fromContentValues(valuesArray[i]);
                 }
-                return database.cheese().insertAll(cheeses).length;
+                return database.volant().insertAll(volants).length;
             case CODE_CHEESE_ITEM:
                 throw new IllegalArgumentException("Invalid URI, cannot insert with ID: " + uri);
             default:

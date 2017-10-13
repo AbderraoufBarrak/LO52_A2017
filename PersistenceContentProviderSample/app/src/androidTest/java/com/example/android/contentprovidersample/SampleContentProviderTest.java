@@ -33,7 +33,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.android.contentprovidersample.data.Cheese;
+import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.data.SampleDatabase;
 import com.example.android.contentprovidersample.provider.SampleContentProvider;
 
@@ -60,7 +60,7 @@ public class SampleContentProviderTest {
     @Test
     public void cheese_initiallyEmpty() {
         final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
-                new String[]{Cheese.COLUMN_NAME}, null, null, null);
+                new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(0));
         cursor.close();
@@ -72,11 +72,11 @@ public class SampleContentProviderTest {
                 cheeseWithName("Daigo"));
         assertThat(itemUri, notNullValue());
         final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
-                new String[]{Cheese.COLUMN_NAME}, null, null, null);
+                new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(1));
         assertThat(cursor.moveToFirst(), is(true));
-        assertThat(cursor.getString(cursor.getColumnIndexOrThrow(Cheese.COLUMN_NAME)), is("Daigo"));
+        assertThat(cursor.getString(cursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)), is("Daigo"));
         cursor.close();
     }
 
@@ -88,11 +88,11 @@ public class SampleContentProviderTest {
         final int count = mContentResolver.update(itemUri, cheeseWithName("Queso"), null, null);
         assertThat(count, is(1));
         final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
-                new String[]{Cheese.COLUMN_NAME}, null, null, null);
+                new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(1));
         assertThat(cursor.moveToFirst(), is(true));
-        assertThat(cursor.getString(cursor.getColumnIndexOrThrow(Cheese.COLUMN_NAME)), is("Queso"));
+        assertThat(cursor.getString(cursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)), is("Queso"));
         cursor.close();
     }
 
@@ -102,14 +102,14 @@ public class SampleContentProviderTest {
                 cheeseWithName("Daigo"));
         assertThat(itemUri, notNullValue());
         final Cursor cursor1 = mContentResolver.query(SampleContentProvider.URI_CHEESE,
-                new String[]{Cheese.COLUMN_NAME}, null, null, null);
+                new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor1, notNullValue());
         assertThat(cursor1.getCount(), is(1));
         cursor1.close();
         final int count = mContentResolver.delete(itemUri, null, null);
         assertThat(count, is(1));
         final Cursor cursor2 = mContentResolver.query(SampleContentProvider.URI_CHEESE,
-                new String[]{Cheese.COLUMN_NAME}, null, null, null);
+                new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor2, notNullValue());
         assertThat(cursor2.getCount(), is(0));
         cursor2.close();
@@ -125,7 +125,7 @@ public class SampleContentProviderTest {
                 });
         assertThat(count, is(3));
         final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
-                new String[]{Cheese.COLUMN_NAME}, null, null, null);
+                new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(3));
         cursor.close();
@@ -136,17 +136,17 @@ public class SampleContentProviderTest {
         final ArrayList<ContentProviderOperation> operations = new ArrayList<>();
         operations.add(ContentProviderOperation
                 .newInsert(SampleContentProvider.URI_CHEESE)
-                .withValue(Cheese.COLUMN_NAME, "Peynir")
+                .withValue(Volant.COLUMN_NAME, "Peynir")
                 .build());
         operations.add(ContentProviderOperation
                 .newInsert(SampleContentProvider.URI_CHEESE)
-                .withValue(Cheese.COLUMN_NAME, "Queso")
+                .withValue(Volant.COLUMN_NAME, "Queso")
                 .build());
         final ContentProviderResult[] results = mContentResolver.applyBatch(
                 SampleContentProvider.AUTHORITY, operations);
         assertThat(results.length, is(2));
         final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
-                new String[]{Cheese.COLUMN_NAME}, null, null, null);
+                new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(2));
         assertThat(cursor.moveToFirst(), is(true));
@@ -155,7 +155,7 @@ public class SampleContentProviderTest {
 
     private ContentValues cheeseWithName(String name) {
         final ContentValues values = new ContentValues();
-        values.put(Cheese.COLUMN_NAME, name);
+        values.put(Volant.COLUMN_NAME, name);
         return values;
     }
 

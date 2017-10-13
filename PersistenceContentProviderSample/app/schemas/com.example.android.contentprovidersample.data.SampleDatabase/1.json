@@ -2,21 +2,29 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d612c3c0739239af787986e19d97626b",
+    "identityHash": "c9c4cc8340f4a931769d941a2e02b45d",
     "entities": [
       {
-        "tableName": "cheeses",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT)",
+        "tableName": "volants",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `image` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "_id",
-            "affinity": "INTEGER"
+            "affinity": "INTEGER",
+            "notNull": true
           },
           {
             "fieldPath": "name",
             "columnName": "name",
-            "affinity": "TEXT"
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "image",
+            "columnName": "image",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -27,12 +35,12 @@
         },
         "indices": [
           {
-            "name": "index_cheeses__id",
+            "name": "index_volants__id",
             "unique": false,
             "columnNames": [
               "_id"
             ],
-            "createSql": "CREATE  INDEX `index_cheeses__id` ON `${TABLE_NAME}` (`_id`)"
+            "createSql": "CREATE  INDEX `index_volants__id` ON `${TABLE_NAME}` (`_id`)"
           }
         ],
         "foreignKeys": []
@@ -40,7 +48,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d612c3c0739239af787986e19d97626b\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c9c4cc8340f4a931769d941a2e02b45d\")"
     ]
   }
 }

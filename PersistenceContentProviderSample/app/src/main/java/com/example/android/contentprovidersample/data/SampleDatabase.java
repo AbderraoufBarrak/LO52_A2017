@@ -22,18 +22,20 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.annotation.VisibleForTesting;
 
+import com.example.android.contentprovidersample.R;
+
 
 /**
  * The Room database.
  */
-@Database(entities = {Cheese.class}, version = 1)
+@Database(entities = {Volant.class}, version = 1)
 public abstract class SampleDatabase extends RoomDatabase {
 
     /**
-     * @return The DAO for the Cheese table.
+     * @return The DAO for the Volant table.
      */
     @SuppressWarnings("WeakerAccess")
-    public abstract CheeseDao cheese();
+    public abstract VolantDao volant();
 
     /** The only instance */
     private static SampleDatabase sInstance;
@@ -69,13 +71,14 @@ public abstract class SampleDatabase extends RoomDatabase {
      * Inserts the dummy data into the database if it is currently empty.
      */
     private void populateInitialData() {
-        if (cheese().count() == 0) {
-            Cheese cheese = new Cheese();
+        if (volant().count() == 0) {
+            Volant volant = new Volant();
             beginTransaction();
             try {
-                for (int i = 0; i < Cheese.CHEESES.length; i++) {
-                    cheese.name = Cheese.CHEESES[i];
-                    cheese().insert(cheese);
+                for (int i = 0; i < Volant.VOLANTS.length; i++) {
+                    volant.name = Volant.VOLANTS[i];
+                    volant.image = R.drawable.a;
+                    volant().insert(volant);
                 }
                 setTransactionSuccessful();
             } finally {

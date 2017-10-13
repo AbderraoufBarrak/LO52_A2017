@@ -24,70 +24,70 @@ import android.database.Cursor;
 
 
 /**
- * Data access object for Cheese.
+ * Data access object for Volant.
  */
 @Dao
-public interface CheeseDao {
+public interface VolantDao {
 
     /**
      * Counts the number of cheeses in the table.
      *
      * @return The number of cheeses.
      */
-    @Query("SELECT COUNT(*) FROM " + Cheese.TABLE_NAME)
+    @Query("SELECT COUNT(*) FROM " + Volant.TABLE_NAME)
     int count();
 
     /**
-     * Inserts a cheese into the table.
+     * Inserts a volant into the table.
      *
-     * @param cheese A new cheese.
-     * @return The row ID of the newly inserted cheese.
+     * @param volant A new volant.
+     * @return The row ID of the newly inserted volant.
      */
     @Insert
-    long insert(Cheese cheese);
+    long insert(Volant volant);
 
     /**
-     * Inserts multiple cheeses into the database
+     * Inserts multiple volants into the database
      *
-     * @param cheeses An array of new cheeses.
-     * @return The row IDs of the newly inserted cheeses.
+     * @param volants An array of new volants.
+     * @return The row IDs of the newly inserted volants.
      */
     @Insert
-    long[] insertAll(Cheese[] cheeses);
+    long[] insertAll(Volant[] volants);
 
     /**
      * Select all cheeses.
      *
      * @return A {@link Cursor} of all the cheeses in the table.
      */
-    @Query("SELECT * FROM " + Cheese.TABLE_NAME)
+    @Query("SELECT * FROM " + Volant.TABLE_NAME)
     Cursor selectAll();
 
     /**
-     * Select a cheese by the ID.
+     * Select a volant by the ID.
      *
      * @param id The row ID.
-     * @return A {@link Cursor} of the selected cheese.
+     * @return A {@link Cursor} of the selected volant.
      */
-    @Query("SELECT * FROM " + Cheese.TABLE_NAME + " WHERE " + Cheese.COLUMN_ID + " = :id")
+    @Query("SELECT * FROM " + Volant.TABLE_NAME + " WHERE " + Volant.COLUMN_ID + " = :id")
     Cursor selectById(long id);
 
     /**
-     * Delete a cheese by the ID.
+     * Delete a volant by the ID.
      *
      * @param id The row ID.
      * @return A number of cheeses deleted. This should always be {@code 1}.
      */
-    @Query("DELETE FROM " + Cheese.TABLE_NAME + " WHERE " + Cheese.COLUMN_ID + " = :id")
+    @Query("DELETE FROM " + Volant.TABLE_NAME + " WHERE " + Volant.COLUMN_ID + " = :id")
     int deleteById(long id);
 
     /**
-     * Update the cheese. The cheese is identified by the row ID.
+     * Update the volant. The volant is identified by the row ID.
      *
-     * @param cheese The cheese to update.
+     * @param volant The volant to update.
      * @return A number of cheeses updated. This should always be {@code 1}.
      */
     @Update
-    int update(Cheese cheese);
+    int update(Volant volant);
 
 }

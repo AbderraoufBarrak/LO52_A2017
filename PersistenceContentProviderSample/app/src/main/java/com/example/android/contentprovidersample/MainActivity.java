@@ -17,6 +17,7 @@
 package com.example.android.contentprovidersample;
 
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -26,9 +27,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.contentprovidersample.data.Cheese;
+import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.provider.SampleContentProvider;
 
 
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                         case LOADER_CHEESES:
                             return new CursorLoader(getApplicationContext(),
                                     SampleContentProvider.URI_CHEESE,
-                                    new String[]{Cheese.COLUMN_NAME},
+                                    new String[]{Volant.COLUMN_NAME},
                                     null, null, null);
                         default:
                             throw new IllegalArgumentException();
@@ -106,7 +108,9 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(ViewHolder holder, int position) {
             if (mCursor.moveToPosition(position)) {
                 holder.mText.setText(mCursor.getString(
-                        mCursor.getColumnIndexOrThrow(Cheese.COLUMN_NAME)));
+                        mCursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
+                //holder.mImage.setImageDrawable(getDrawable((mCursor.getInt(
+                //        mCursor.getColumnIndexOrThrow(Volant.COLUMN_IMAGE))));
             }
         }
 
@@ -123,11 +127,13 @@ public class MainActivity extends AppCompatActivity {
         static class ViewHolder extends RecyclerView.ViewHolder {
 
             TextView mText;
+            ImageView mImage;
 
             ViewHolder(ViewGroup parent) {
                 super(LayoutInflater.from(parent.getContext()).inflate(
-                        android.R.layout.simple_list_item_1, parent, false));
-                mText = itemView.findViewById(android.R.id.text1);
+                        R.layout.item_card, parent, false));
+                mText = itemView.findViewById(R.id.card_title);
+                mImage = itemView.findViewById(R.id.card_image);
             }
 
         }

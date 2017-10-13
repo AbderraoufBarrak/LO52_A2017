@@ -13,4 +13,5 @@
 -->
 <resources>
     <string name="app_name">ContentProvider Sample</string>
+    <string name="item_title">Test</string>
 </resources>

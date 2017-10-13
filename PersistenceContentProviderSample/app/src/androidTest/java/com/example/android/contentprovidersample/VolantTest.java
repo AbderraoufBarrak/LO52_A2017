@@ -24,7 +24,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.android.contentprovidersample.data.Cheese;
+import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.data.SampleDatabase;
 
 import org.junit.After;
@@ -37,7 +37,7 @@ import java.io.IOException;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
-public class CheeseTest {
+public class VolantTest {
 
     private SampleDatabase mDatabase;
 
@@ -54,11 +54,11 @@ public class CheeseTest {
 
     @Test
     public void insertAndCount() {
-        assertThat(mDatabase.cheese().count(), is(0));
-        Cheese cheese = new Cheese();
-        cheese.name = "abc";
-        mDatabase.cheese().insert(cheese);
-        assertThat(mDatabase.cheese().count(), is(1));
+        assertThat(mDatabase.volant().count(), is(0));
+        Volant volant = new Volant();
+        volant.name = "abc";
+        mDatabase.volant().insert(volant);
+        assertThat(mDatabase.volant().count(), is(1));
     }
 
 }
