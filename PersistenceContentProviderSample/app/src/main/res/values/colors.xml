@@ -15,5 +15,6 @@
     <color name="primary">#009688</color>
     <color name="primary_dark">#00796B</color>
     <color name="accent">#536DFE</color>
-    <color name="white">#000000</color>
+    <color name="white">#FEFEFE</color>
+    <color name="text_shadow">#7F000000</color>
 </resources>

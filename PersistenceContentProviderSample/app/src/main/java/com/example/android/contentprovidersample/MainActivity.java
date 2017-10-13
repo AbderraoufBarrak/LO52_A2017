@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
             if (mCursor.moveToPosition(position)) {
                 holder.mText.setText(mCursor.getString(
                         mCursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
-                //holder.mImage.setImageDrawable(getDrawable((mCursor.getInt(
-                //        mCursor.getColumnIndexOrThrow(Volant.COLUMN_IMAGE))));
+                holder.mImage.setImageResource(mCursor.getInt(
+                        mCursor.getColumnIndexOrThrow(Volant.COLUMN_IMAGE)));
             }
         }
 
