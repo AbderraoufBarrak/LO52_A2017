@@ -119,6 +119,9 @@ public class OperationActivity extends AppCompatActivity
         } else if (id == R.id.nav_stock) {
             Intent intent = new Intent(this, Stock.class);
             startActivity(intent);
+        } else if (id == R.id.nav_buy) {
+            Intent intent = new Intent(this, Stock.class);
+            startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

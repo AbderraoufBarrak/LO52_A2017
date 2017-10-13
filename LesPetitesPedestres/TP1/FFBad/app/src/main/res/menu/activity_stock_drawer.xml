@@ -12,9 +12,9 @@
             android:title="Operations" />
 
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_buy"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Buy" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
