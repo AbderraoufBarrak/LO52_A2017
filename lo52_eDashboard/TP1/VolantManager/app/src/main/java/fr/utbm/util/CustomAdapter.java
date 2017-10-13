@@ -79,8 +79,8 @@ public class CustomAdapter extends BaseAdapter {
 
         LotInfo lotInfo = lots.get(i);
 
-        holder.lotMarqueTV.setText(this.activity.getString(R.string.marque_volants) + " " + lotInfo.getMarque());
-        holder.lotRefTV.setText(this.activity.getString(R.string.ref_volants) + " " + lotInfo.getRef());
+        holder.lotMarqueTV.setText(lotInfo.getMarque());
+        holder.lotRefTV.setText(lotInfo.getRef());
         holder.lotTailleTV.setText("" + lotInfo.getTaille());
         holder.lotTailleTV.setTextColor(ContextCompat.getColor(activity, ColorQuantityMatcher.colorAdapter(lotInfo.getTaille())));
         holder.lotPrixTV.setText("" + String.format("%.2f", lotInfo.getPrix()) + "€");

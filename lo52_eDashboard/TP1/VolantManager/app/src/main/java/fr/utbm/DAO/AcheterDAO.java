@@ -11,6 +11,7 @@ import java.util.List;
 import fr.utbm.beans.AchatInfo;
 import fr.utbm.entity.Acheter;
 import fr.utbm.entity.Date;
+import fr.utbm.entity.Volant;
 
 /**
  * Created by Exige on 06/10/2017.
@@ -92,6 +93,16 @@ public class AcheterDAO extends DAOManager {
     }
 
     /**
+     * Mets à jour la valeur payed d'une entrée
+     * @param a
+     */
+    public void updatePayed (Acheter a) {
+        ContentValues cv = new ContentValues();
+        cv.put(PAYED, a.isPayed());
+        sqLiteDatabase.update(TABLE_NAME, cv, ID + " = ?", new String[] {String.valueOf(a.getId())});
+    }
+
+    /**
      * Récupère la liste de tous les achats
      * @return
      */
@@ -118,6 +129,28 @@ public class AcheterDAO extends DAOManager {
         }
         c.close();
         return achats;
+    }
+
+    public Acheter getAcheter(long id) {
+        Cursor c =
+                sqLiteDatabase.rawQuery(
+                        "select " +
+                                ID + ", " +
+                                LOT_ID + ", " +
+                                DATE_ID + ", " +
+                                ACHETEUR_ID + ", " +
+                                QUANTITE + ", " +
+                                PAYED +
+                                " from " +
+                                TABLE_NAME + " where " + ID + " = ?", new String[] {String.valueOf(id)});
+        Acheter achat = new Acheter (0, 0, 0, 0, 0, false);
+        while (c.moveToNext()) {
+            Boolean currentPayed = (c.getInt(5) != 0);
+            achat = new Acheter(c.getLong(0), c.getLong(1), c.getLong(2), c.getLong(3), c.getInt(4), currentPayed);
+            Log.d("eDBTEAM/AcheterDAO", "getAcheter -> " + achat);
+        }
+        c.close();
+        return achat;
     }
 
     /**
@@ -155,5 +188,37 @@ public class AcheterDAO extends DAOManager {
         }
         c.close();
         return achats;
+    }
+
+    public AchatInfo getAchatInfo(long id, VolantsDAO vDAO, LotVolantDAO lotVolantDAO, DateDAO dateDAO, AcheteurDAO acheteurDAO) {
+        Cursor c =
+                sqLiteDatabase.rawQuery(
+                        "select acher." +
+                                ID + ", acher." +
+                                LOT_ID + ", acher." +
+                                DATE_ID + ", acher." +
+                                ACHETEUR_ID + ", acher." +
+                                QUANTITE + ", acher." +
+                                PAYED + ", lot." +
+                                lotVolantDAO.TAILLE + ", lot." +
+                                lotVolantDAO.PRIX + ", dat." +
+                                dateDAO.DATE + ", acheur." +
+                                acheteurDAO.NOM + ", acheur." +
+                                acheteurDAO.PRENOM + ", acheur." +
+                                acheteurDAO.SOCIETE + ", vol." +
+                                vDAO.REF + ", vol." +
+                                vDAO.MARQUE + ", vol." +
+                                vDAO.CLASSEMENT +
+                                " from " +
+                                lotVolantDAO.TABLE_NAME + " lot inner join " + TABLE_NAME + " acher on lot." +  lotVolantDAO.ID + "=acher." + LOT_ID + " inner join " + acheteurDAO.TABLE_NAME + " acheur on acher." + ACHETEUR_ID + "=acheur." + acheteurDAO.MATRICULE + " inner join " + dateDAO.TABLE_NAME + " dat on acher." + DATE_ID + "=dat." + dateDAO.ID + " inner join " + vDAO.TABLE_NAME + " vol on lot." + lotVolantDAO.ID + "=vol." + vDAO.ID + " where acher." + ID + "= ?", new String[] {String.valueOf(id)});
+
+        AchatInfo achat = new AchatInfo(0, false, 0, 0, 0, 0, null, null, null, null, 0, 0, null, null, null);
+        while (c.moveToNext()) {
+            Boolean currentPayed = (c.getInt(5) != 0);
+            achat = new AchatInfo(c.getLong(0), currentPayed, c.getInt(4), c.getLong(1), c.getLong(3), c.getLong(2), new java.util.Date(c.getString(8)), c.getString(9), c.getString(10), c.getString(11), c.getInt(6), c.getFloat(7), c.getString(13), c.getString(12), c.getString(14));
+            Log.d("eDBTEAM/AcheterDAO", "getAchatsInfos -> " + achat);
+        }
+        c.close();
+        return achat;
     }
 }

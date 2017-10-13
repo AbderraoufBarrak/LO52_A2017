@@ -2,11 +2,23 @@
     <string name="app_name">Volant Manager</string>
     <string name="welcome_message">Bienvenue dans l\'application Volant Manager !</string>
     <string name="browse_volants">Parcourir les volants</string>
-    <string name="purchase_volants">Acheter</string>
+    <string name="purchase_volants">Achats</string>
     <string name="marque_volants">Marque:</string>
     <string name="ref_volants">Ref:</string>
     <string name="purchase_activity_title">Achats</string>
     <string name="volants_display_activity_title">Volants</string>
     <string name="purchase_welcome_message">Experimental</string>
     <string name="sort_caption">Tri : </string>
+    <string name="purchase_item_activity">Acheter</string>
+    <string name="purchase_item_volant_selector">Choix du volant</string>
+    <string name="purchase_item_volant_spinner_selector">Choisissez votre volant...</string>
+    <string name="acheteur_infos">Informations acheteur : </string>
+    <string name="acheteur_nom">Nom</string>
+    <string name="acheteur_prénom">Prénom</string>
+    <string name="acheteur_société">Société</string>
+    <string name="quantité_volants">Quantité</string>
+    <string name="save_command">Enregistrer la commande</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="update_payed_button">Mettre à jour le paiement</string>
 </resources>

@@ -1,8 +1,11 @@
 package fr.utbm.volantmanager;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.text.SimpleDateFormat;
@@ -22,16 +25,23 @@ import fr.utbm.util.AchatInfoCustomAdapter;
 import fr.utbm.util.CustomAdapter;
 import fr.utbm.volantmanager.R;
 
+// TODO - L'affichage de l'activité Purchase est peut-être pas opti
+// TODO - Ajouter plus d'entrées en BDD. Garder le remplissage ici BDD ici ? Le basculer sur la première activité ? Faudrait qu'il soit fixe aussi, au lieu de tout supprimer & remettre à chaque fois
+// TODO - Tri sur la ListView ? par date ? par acheteur ? par prix ?
+// TODO - Y'a des open() sans close() partout
+// TODO - Le code est moche là
+
 public class Purchase extends AppCompatActivity {
 
     private AchatInfoCustomAdapter adapter;
+    private List<AchatInfo> achatInfos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase);
 
-        ListView achatsLV = (ListView) findViewById(R.id.achats_lv);
+        final ListView achatsLV = (ListView) findViewById(R.id.achats_lv);
 
 
         AcheterDAO acheterDAO = new AcheterDAO(Purchase.this);
@@ -46,12 +56,13 @@ public class Purchase extends AppCompatActivity {
         lotVolantDAO.open();
         volantDAO.open();
 
-        acheterDAO.eraseContent();
-        acheteurDAO.eraseContent();
-        dateDAO.eraseContent();
+        //acheterDAO.eraseContent();
+        //acheteurDAO.eraseContent();
+        //dateDAO.eraseContent();
 
 
-        // Ajout d'une Date
+        // AJOUTS D'ACHATS
+        /*// Ajout d'une Date
         String dateString = "06/10/2017";
         java.util.Date date = null;
         try {
@@ -67,7 +78,7 @@ public class Purchase extends AppCompatActivity {
 
         // Ajout d'un achat
         acheterDAO.addAcheter(new Acheter(lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID), dateDAO.getMaxID(dateDAO.TABLE_NAME, dateDAO.ID), acheteurDAO.getMaxID(acheteurDAO.TABLE_NAME, acheteurDAO.MATRICULE), 10, false));
-        acheterDAO.addAcheter(new Acheter(lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID) - 1, dateDAO.getMaxID(dateDAO.TABLE_NAME, dateDAO.ID), acheteurDAO.getMaxID(acheteurDAO.TABLE_NAME, acheteurDAO.MATRICULE), 3, true));
+        acheterDAO.addAcheter(new Acheter(lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID) - 1, dateDAO.getMaxID(dateDAO.TABLE_NAME, dateDAO.ID), acheteurDAO.getMaxID(acheteurDAO.TABLE_NAME, acheteurDAO.MATRICULE), 3, true));*/
 
         // Récupération des achats
         List<Acheter> achats = new ArrayList<>();
@@ -76,7 +87,6 @@ public class Purchase extends AppCompatActivity {
         Log.d("eDBTEAM/Purchase", "Achats -> " + achats.toString()); // Ici on voit qu'on récupère tous les bons ID
 
         // Récupération avancée
-        List<AchatInfo> achatInfos = new ArrayList<>();
         achatInfos = acheterDAO.getAchatsInfos(volantDAO, lotVolantDAO, dateDAO, acheteurDAO);
 
         Log.d("eDBTEAM/Purchase", "AchatInfos -> " + achatInfos.toString());
@@ -87,8 +97,14 @@ public class Purchase extends AppCompatActivity {
         achatsLV.setAdapter(adapter);
 
         adapter.updateRecords(achatInfos);
-        // TODO - L'affichage de l'activité Purchase est peut-être pas opti
-        // TODO - Ajouter plus d'entrées en BDD. Garder le remplissage ici BDD ici ? Le basculer sur la première activité ? Faudrait qu'il soit fixe aussi, au lieu de tout supprimer & remettre à chaque fois
-        // TODO - Tri sur la ListView ? par date ? par acheteur ? par prix ?
+
+        achatsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                Intent intent = new Intent(getBaseContext(), PurchaseItem.class);
+                intent.putExtra("achatInfoID", achatInfos.get(position).getId());
+                startActivity(intent);
+            }
+        });
     }
 }

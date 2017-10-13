@@ -24,7 +24,7 @@ public class AchatInfo {
     private String marque;
     private String classement;
 
-    public AchatInfo(boolean payed, int quantité, long lotId, long acheteurMatricule, long dateId, Date dateDate, String acheteurNom, String acheteurPrénom, String acheteurSociété, int lotTaille, float lotPrix, String référence, String marque, String classement) {
+    public AchatInfo(boolean payed, int quantité, long lotId, long acheteurMatricule, long dateId, Date dateDate, String acheteurNom, String acheteurPrénom, String acheteurSociété, int lotTaille, float lotPrix, String marque, String référence, String classement) {
         this.payed = payed;
         this.quantité = quantité;
         this.lotId = lotId;
@@ -41,7 +41,7 @@ public class AchatInfo {
         this.classement = classement;
     }
 
-    public AchatInfo(long id, boolean payed, int quantité, long lotId, long acheteurMatricule, long dateId, Date dateDate, String acheteurNom, String acheteurPrénom, String acheteurSociété, int lotTaille, float lotPrix, String référence, String marque, String classement) {
+    public AchatInfo(long id, boolean payed, int quantité, long lotId, long acheteurMatricule, long dateId, Date dateDate, String acheteurNom, String acheteurPrénom, String acheteurSociété, int lotTaille, float lotPrix, String marque, String référence, String classement) {
         this.id = id;
         this.payed = payed;
         this.quantité = quantité;

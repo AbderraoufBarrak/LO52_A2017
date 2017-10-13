@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".PurchaseItem">
+
+    <TextView
+        android:id="@+id/purchase_item_volant_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/purchase_item_volant_selector"
+        android:textAlignment="center"
+        android:textColor="@color/colorBaseText"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/volants_sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:prompt="@string/purchase_item_volant_spinner_selector"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/purchase_item_volant_tv"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/acheteur_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/acheteur_infos"
+        android:textColor="@color/colorBaseText"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="@color/colorBaseText"
+        android:id="@+id/view"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/minus_b" />
+
+    <EditText
+        android:id="@+id/acheteur_name_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/colorBaseText"
+        android:ems="10"
+        android:hint="@string/acheteur_nom"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/colorBaseText"
+        android:textColorHint="@color/colorBaseText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acheteur_tv" />
+
+    <EditText
+        android:id="@+id/acheteur_family_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorBaseText"
+        android:ems="10"
+        android:hint="@string/acheteur_prénom"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/colorBaseText"
+        android:textColorHint="@color/colorBaseText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acheteur_name_et" />
+
+    <EditText
+        android:id="@+id/acheteur_society_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/colorBaseText"
+        android:ems="10"
+        android:hint="@string/acheteur_société"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/colorBaseText"
+        android:textColorHint="@color/colorBaseText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acheteur_family_et" />
+
+    <Button
+        android:id="@+id/validate_b"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="validateCommand"
+        android:text="@string/save_command"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/total_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/plus_b"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plus_b"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/quantity_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/minus_b"
+        app:layout_constraintRight_toLeftOf="@+id/plus_b"
+        app:layout_constraintTop_toTopOf="@+id/minus_b" />
+
+    <Button
+        android:id="@+id/minus_b"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="decreaseQuantity"
+        android:text="@string/minus"
+        app:layout_constraintRight_toLeftOf="@+id/quantity_tv"
+        app:layout_constraintTop_toBottomOf="@+id/volants_sp" />
+
+    <Button
+        android:id="@+id/plus_b"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="increaseQuantity"
+        android:text="@string/plus"
+        app:layout_constraintRight_toLeftOf="@+id/total_price_tv"
+        app:layout_constraintTop_toBottomOf="@+id/volants_sp" />
+
+    <CheckBox
+        android:id="@+id/payed_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:buttonTint="@color/colorBaseText"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/minus_b"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/minus_b" />
+
+    <Button
+        android:id="@+id/updatePayed_b"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="updatePayed"
+        android:text="@string/update_payed_button"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="32dp" />
+
+</android.support.constraint.ConstraintLayout>

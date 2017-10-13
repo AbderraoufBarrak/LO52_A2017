@@ -24,8 +24,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Purchase"
-                    android:label="@string/purchase_activity_title">
+        <activity
+            android:name=".Purchase"
+            android:label="@string/purchase_activity_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".PurchaseItem"
+            android:label="@string/purchase_item_activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

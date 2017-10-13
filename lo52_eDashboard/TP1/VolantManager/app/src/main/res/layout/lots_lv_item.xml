@@ -23,38 +23,33 @@
 
     <TextView
         android:id="@+id/lot_marque_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="23dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="24dp"
-        android:text="@string/marque_volants"
         android:textAlignment="textStart"
         android:textColor="@color/colorBaseText"
         android:textSize="14sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/lot_iv"
         app:layout_constraintRight_toLeftOf="@+id/lot_taille_tv"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintLeft_toRightOf="@+id/space3"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
         android:id="@+id/lot_ref_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="23dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/ref_volants"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
         android:textAlignment="textStart"
         android:textColor="@color/colorBaseText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/lot_iv"
         app:layout_constraintRight_toLeftOf="@+id/lot_taille_tv"
         app:layout_constraintTop_toBottomOf="@+id/lot_marque_tv"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="0dp" />
+        app:layout_constraintLeft_toRightOf="@+id/space6"
+        android:layout_marginLeft="0dp" />
 
     <TextView
         android:id="@+id/lot_taille_tv"
@@ -98,4 +93,49 @@
         android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toTopOf="@+id/space"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/marque_volants"
+        android:textColor="@color/colorBaseText"
+        app:layout_constraintLeft_toRightOf="@+id/lot_iv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/ref_volants"
+        android:textColor="@color/colorBaseText"
+        app:layout_constraintLeft_toRightOf="@+id/lot_iv"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Space
+        android:layout_width="5dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintLeft_toRightOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:id="@+id/space3" />
+
+    <Space
+        android:layout_width="5dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintLeft_toRightOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:id="@+id/space6" />
 </android.support.constraint.ConstraintLayout>

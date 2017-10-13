@@ -13,7 +13,7 @@ public class LotInfo {
     private int taille;
     private float prix;
 
-    public LotInfo(long id, String ref, String marque, String classement, int taille, float prix) {
+    public LotInfo(long id, String marque, String ref, String classement, int taille, float prix) {
         this.id = id;
         this.ref = ref;
         this.marque = marque;

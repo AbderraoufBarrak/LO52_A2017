@@ -33,4 +33,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Purchase.class);
         startActivity(intent);
     }
+
+    /**
+     * Accès à l'activité PurchaseItem
+     * @param view
+     */
+    public void purchaseItem(View view) {
+        Intent intent = new Intent(this, PurchaseItem.class);
+        startActivity(intent);
+    }
 }
