@@ -16,8 +16,9 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import fr.utbm.lpp.ffbad.data.adapter.SaleCursorAdapter;
+import fr.utbm.lpp.ffbad.data.db.FFBadDbContract;
 
-public class OperationActivity extends AppCompatActivity
+public class OperationActivity extends BasicActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SQLiteDatabase db;
@@ -40,7 +41,7 @@ public class OperationActivity extends AppCompatActivity
         return db;
     }
 
-    private void setupDrawerLayout() {
+    protected void setupDrawerLayout() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -74,7 +75,7 @@ public class OperationActivity extends AppCompatActivity
         ListView list = (ListView) findViewById(R.id.listview);
         list.setAdapter(cursorAdapter);
     }
-
+/*
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -119,8 +120,8 @@ public class OperationActivity extends AppCompatActivity
         } else if (id == R.id.nav_stock) {
             Intent intent = new Intent(this, Stock.class);
             startActivity(intent);
-        } else if (id == R.id.nav_buy) {
-            Intent intent = new Intent(this, Stock.class);
+        } else if (id == R.id.nav_purchase) {
+            Intent intent = new Intent(this, Purchase.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 
@@ -137,5 +138,5 @@ public class OperationActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
+    }*/
 }

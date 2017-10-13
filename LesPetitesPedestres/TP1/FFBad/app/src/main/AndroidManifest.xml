@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.utbm.lpp.ffbad">
 
-    <!--TODO: <div>Icons made by <a href="https://www.flaticon.com/authors/dot-on-paper" title="Dot on Paper">Dot on Paper</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
+    <!-- TODO: <div>Icons made by <a href="https://www.flaticon.com/authors/dot-on-paper" title="Dot on Paper">Dot on Paper</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
     <application
         android:name=".FFBadApplication"
         android:allowBackup="true"
@@ -18,7 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OperationActivity"></activity>
+        <activity android:name=".OperationActivity" />
+        <activity android:name=".Purchase" />
+        <activity android:name=".BasicActivity"></activity>
     </application>
 
 </manifest>
