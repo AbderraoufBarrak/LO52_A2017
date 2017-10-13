@@ -20,8 +20,9 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.content.ContentValues;
-import android.graphics.drawable.Drawable;
 import android.provider.BaseColumns;
+
+import com.example.android.contentprovidersample.R;
 
 
 /**
@@ -74,8 +75,12 @@ public class Volant {
     }
 
     /** Dummy data. */
-    static final String[] VOLANTS = {
-            "Test 1", "Test 2"
+    static final String[] VOLANTS_NOMS = {
+            "AS30", "Grade 3", "Grade A9", "Grade A1"
+    };
+
+    static final int[] VOLANTS_IMAGES = {
+            R.drawable.as30, R.drawable.grade3, R.drawable.a9, R.drawable.a1
     };
 
 }

@@ -75,9 +75,9 @@ public abstract class SampleDatabase extends RoomDatabase {
             Volant volant = new Volant();
             beginTransaction();
             try {
-                for (int i = 0; i < Volant.VOLANTS.length; i++) {
-                    volant.name = Volant.VOLANTS[i];
-                    volant.image = R.drawable.b;
+                for (int i = 0; i < Volant.VOLANTS_NOMS.length; i++) {
+                    volant.name = Volant.VOLANTS_NOMS[i];
+                    volant.image = Volant.VOLANTS_IMAGES[i];
                     volant().insert(volant);
                 }
                 setTransactionSuccessful();

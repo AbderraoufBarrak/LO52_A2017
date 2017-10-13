@@ -16,5 +16,5 @@
     <color name="primary_dark">#00796B</color>
     <color name="accent">#536DFE</color>
     <color name="white">#FEFEFE</color>
-    <color name="text_shadow">#7F000000</color>
+    <color name="black">#000000</color>
 </resources>
