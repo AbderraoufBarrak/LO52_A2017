@@ -20,7 +20,11 @@
         </activity>
         <activity android:name=".OperationActivity" />
         <activity android:name=".Purchase" />
-        <activity android:name=".BasicActivity"></activity>
+        <activity android:name=".BasicActivity" />
+        <activity
+            android:name=".activity_purchase"
+            android:label="@string/title_activity_purchase"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

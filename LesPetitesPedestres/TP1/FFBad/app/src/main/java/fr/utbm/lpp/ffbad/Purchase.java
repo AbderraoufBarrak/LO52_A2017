@@ -9,7 +9,7 @@ public class Purchase extends BasicActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stock);    //TODO : change the layout with activity_purchase (doesn't work yet)
+        setContentView(R.layout.activity_purchase);
 
         setupDrawerLayout();
     }
