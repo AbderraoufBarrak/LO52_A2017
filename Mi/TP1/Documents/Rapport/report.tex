@@ -47,17 +47,12 @@ d'un nouveau projet Android en spécifiant les informations suivantes:
   \item Utilisation du SDK lié à Android6.0, nommé "Marshmallow"
   \item L'utilisation d'un projet vide "Empty Activity"
 \end{itemize}
-\includegraphics[width=10cm]{1strartNewProject.png}
-
-\includegraphics[width=10cm]{2congProj.png}
 
 \includegraphics[width=10cm]{3Sdk.png}
 
 \includegraphics[width=10cm]{4Activity.png}
 
-\includegraphics[width=10cm]{5bUIDaPP.png}
-
-\subsection{Run our  Android aplication}
+\subsection{Run our Android aplication}
 Par la suite, nous avons cherché à déployer notre application sur une cible.
 Pour cela, deux moyen s'offre à nous au sein d'Android Studio, nous pouvons
 déployer notre application au choix, sur un smartphone, en connectant celui-ci
@@ -75,21 +70,9 @@ dernier, comme illustré ci-dessous.
 On lance " Android Virtual Device Manager" en sélectionnant Tools > Android > AVD Manager,
 puis l'on peut créer un nouvel "virtual device", en cliquant sur "Create Virtual Device".
 
-\includegraphics[width=10cm]{6.png}
+\includegraphics[width=9cm]{7.png}
 
-\includegraphics[width=10cm]{7.png}
-
-\includegraphics[width=10cm]{8.png}
-
-\includegraphics[width=10cm]{9.png}
-
-\includegraphics[width=10cm]{10.png}
-
-\includegraphics[width=10cm]{11.png}
-
-\includegraphics[width=10cm]{12.png}
-
-\includegraphics[width=10cm]{121.png}
+\includegraphics[width=9cm]{121.png}
 
 \subsection{Build a Simple User Interface}
 
@@ -133,13 +116,9 @@ que nous lierons par la suite à nos éléments.
 Nous utilisont donc l'outil "translate editor", fournissant une UI afin d'ajouter
 nos éléments au fichier.
 \bigbreak
-\includegraphics[width=10cm]{17.png}
-
-\includegraphics[width=10cm]{18.png}
-\bigbreak
 pour finir, nous avons du lier notre fichier conteneurs de String avec nos
 éléments graphique, afin que l'affichage s'adapte de manière automatique.
-
+\bigbreak
 \includegraphics[width=10cm]{19.png}
 
 \includegraphics[width=10cm]{20.png}
@@ -167,9 +146,18 @@ Nous avons tout d'abord du créer une méthode déclanché par un appui sur un
  le lancement de la deuxième "activity".
  \bigbreak
 
- \includegraphics[width=10cm]{21.png}
+ \begin{figure}[h]
+     \begin{minipage}[c]{.46\linewidth}
+         \centering
+         \includegraphics[width=5cm]{21.png}
+     \end{minipage}
+     \hfill%
+     \begin{minipage}[c]{.46\linewidth}
+         \centering
+         \includegraphics[width=5cm]{22.png}
+     \end{minipage}
+ \end{figure}
 
- \includegraphics[width=10cm]{22.png}
 \bigbreak
 Pour finir, comme nous pouvons le voir sur le document ci-dessus, nous pouvons
 afficher un message envoyé par la première "activity" au sein de la seconde.
@@ -202,8 +190,8 @@ en cas de besoin. Les coordonnées de cette dernière doivent donc également ê
 
 La représentation de tous ces éléments sous forme de tables se fait donc comme
 ceci :
-
-\includegraphics[width=10cm]{ensemble1.png}
+\centering
+\includegraphics[width=15cm]{ensemble1.png}
 
 Les tables Saison, Rapport et Entité ont été ajouté pour éviter la redondance
 d'information : en effet, comme plusieurs volants peuvent avoir les mêmes
@@ -264,7 +252,7 @@ Nous avons donc créé une première table Commande définie par un identifiant,
 l'état binaire décrit ci-dessus et qui possède une référence vers l'acheteur
 (FK de la table Entité).
 
-\includegraphics[width=10cm]{ensemble3.png}
+\includegraphics[width=12cm]{ensemble3.png}
 
 Ensuite, nous avons ajouté une seconde table, nommée Entrée, qui correspond à
 une ligne de la commande. C'est cette table qui va associer un produit à la

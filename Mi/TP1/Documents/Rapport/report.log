@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.9.13)  4 OCT 2017 01:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.9.13)  17 OCT 2017 02:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -483,7 +483,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.toc:8: Misplaced alignment tab character &.
 <argument> \numberline {2.1.5}Text box &
                                         & a button
-l.8 ...numberline {2.1.5}Text box && a button}{10}
+l.8 ...\numberline {2.1.5}Text box && a button}{6}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -495,7 +495,7 @@ might try typing `S' now just to see what is salvageable.
 /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.toc:8: Misplaced alignment tab character &.
 <argument> \numberline {2.1.5}Text box &&
                                           a button
-l.8 ...numberline {2.1.5}Text box && a button}{10}
+l.8 ...\numberline {2.1.5}Text box && a button}{6}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -522,93 +522,48 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 47.
- <1strartNewProject.png, id=17, 672.5125pt x 466.74374pt>
-File: 1strartNewProject.png Graphic file (type png)
- <use 1strartNewProject.png>
-Package pdftex.def Info: 1strartNewProject.png used on input line 50.
-(pdftex.def)             Requested size: 284.52756pt x 197.46967pt.
- <2congProj.png, id=19, 1086.0575pt x 702.625pt> [3
-
-]
-File: 2congProj.png Graphic file (type png)
- <use 2congProj.png>
-Package pdftex.def Info: 2congProj.png used on input line 52.
-(pdftex.def)             Requested size: 284.52756pt x 184.07195pt.
- <3Sdk.png, id=26, 1088.065pt x 702.625pt>
+ <3Sdk.png, id=17, 1088.065pt x 702.625pt>
 File: 3Sdk.png Graphic file (type png)
  <use 3Sdk.png>
-Package pdftex.def Info: 3Sdk.png used on input line 54.
+Package pdftex.def Info: 3Sdk.png used on input line 51.
 (pdftex.def)             Requested size: 284.52756pt x 183.73958pt.
- <4Activity.png, id=27, 1927.2pt x 1084.05pt>
+ <4Activity.png, id=19, 1927.2pt x 1084.05pt> [3
+
+]
 File: 4Activity.png Graphic file (type png)
  <use 4Activity.png>
-Package pdftex.def Info: 4Activity.png used on input line 56.
+Package pdftex.def Info: 4Activity.png used on input line 53.
 (pdftex.def)             Requested size: 284.52756pt x 160.03659pt.
- <5bUIDaPP.png, id=28, 670.505pt x 465.74pt> [4 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/1strartNewProject.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/2congProj.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/3Sdk.png>]
-File: 5bUIDaPP.png Graphic file (type png)
- <use 5bUIDaPP.png>
-Package pdftex.def Info: 5bUIDaPP.png used on input line 58.
-(pdftex.def)             Requested size: 284.52756pt x 197.63484pt.
- <6.png, id=35, 1409.265pt x 1003.75pt> [5 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/4Activity.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/5bUIDaPP.png>]
-File: 6.png Graphic file (type png)
- <use 6.png>
-Package pdftex.def Info: 6.png used on input line 78.
-(pdftex.def)             Requested size: 284.52756pt x 202.64561pt.
- <7.png, id=40, 1405.25pt x 1003.75pt>
+ <7.png, id=26, 1405.25pt x 1003.75pt>
 File: 7.png Graphic file (type png)
  <use 7.png>
-Package pdftex.def Info: 7.png used on input line 80.
-(pdftex.def)             Requested size: 284.52756pt x 203.22763pt.
- <8.png, id=41, 1405.25pt x 1003.75pt>
-File: 8.png Graphic file (type png)
- <use 8.png>
-Package pdftex.def Info: 8.png used on input line 82.
-(pdftex.def)             Requested size: 284.52756pt x 203.22763pt.
- <9.png, id=42, 1405.25pt x 1003.75pt> [6 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/6.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/7.png>]
-File: 9.png Graphic file (type png)
- <use 9.png>
-Package pdftex.def Info: 9.png used on input line 84.
-(pdftex.def)             Requested size: 284.52756pt x 203.22763pt.
- <10.png, id=49, 1405.25pt x 1003.75pt>
-File: 10.png Graphic file (type png)
- <use 10.png>
-Package pdftex.def Info: 10.png used on input line 86.
-(pdftex.def)             Requested size: 284.52756pt x 203.22763pt.
- <11.png, id=50, 1405.25pt x 1003.75pt> [7 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/8.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/9.png>]
-File: 11.png Graphic file (type png)
- <use 11.png>
-Package pdftex.def Info: 11.png used on input line 88.
-(pdftex.def)             Requested size: 284.52756pt x 203.22763pt.
- <12.png, id=56, 1405.25pt x 1003.75pt>
-File: 12.png Graphic file (type png)
- <use 12.png>
-Package pdftex.def Info: 12.png used on input line 90.
-(pdftex.def)             Requested size: 284.52756pt x 203.22763pt.
- <121.png, id=57, 632.3625pt x 491.8375pt> [8 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/10.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/11.png>]
+Package pdftex.def Info: 7.png used on input line 73.
+(pdftex.def)             Requested size: 256.0748pt x 182.90334pt.
+ <121.png, id=27, 632.3625pt x 491.8375pt> [4 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/3Sdk.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/4Activity.png>]
 File: 121.png Graphic file (type png)
  <use 121.png>
-Package pdftex.def Info: 121.png used on input line 92.
-(pdftex.def)             Requested size: 284.52756pt x 221.3023pt.
+Package pdftex.def Info: 121.png used on input line 75.
+(pdftex.def)             Requested size: 256.0748pt x 199.17058pt.
 
-Overfull \hbox (1.01001pt too wide) in paragraph at lines 100--102
+Overfull \hbox (1.01001pt too wide) in paragraph at lines 83--85
 []\T1/cmr/m/n/12 L'interface graphique sous An-droid utilise une hiérar-chie de lay-outs (View-
  []
 
-[9 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/12.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/121.png>] <13.png, id=68, 602.25pt x 272.01625pt>
+<13.png, id=32, 602.25pt x 272.01625pt>
 File: 13.png Graphic file (type png)
  <use 13.png>
-Package pdftex.def Info: 13.png used on input line 109.
+Package pdftex.def Info: 13.png used on input line 92.
 (pdftex.def)             Requested size: 284.52756pt x 128.5159pt.
- <131.png, id=69, 378.41376pt x 257.96375pt>
+ [5 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/7.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/121.png>] <131.png, id=38, 378.41376pt x 257.96375pt>
 File: 131.png Graphic file (type png)
  <use 131.png>
-Package pdftex.def Info: 131.png used on input line 117.
+Package pdftex.def Info: 131.png used on input line 100.
 (pdftex.def)             Requested size: 284.52756pt x 193.96434pt.
 
-/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.tex:119: Misplaced alignment tab character &.
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.tex:102: Misplaced alignment tab character &.
 <argument> Text box &
                      & a button
-l.119 \subsection{Text box && a button}
+l.102 \subsection{Text box && a button}
                                        
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -617,10 +572,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.tex:119: Misplaced alignment tab character &.
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.tex:102: Misplaced alignment tab character &.
 <argument> Text box &&
                        a button
-l.119 \subsection{Text box && a button}
+l.102 \subsection{Text box && a button}
                                        
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -629,85 +584,80 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-<15.png, id=70, 1038.88126pt x 362.35374pt>
+<15.png, id=39, 1038.88126pt x 362.35374pt>
 File: 15.png Graphic file (type png)
  <use 15.png>
-Package pdftex.def Info: 15.png used on input line 123.
+Package pdftex.def Info: 15.png used on input line 106.
 (pdftex.def)             Requested size: 284.52756pt x 99.2412pt.
- <16.png, id=71, 1043.9pt x 351.3125pt> [10 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/13.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/131.png>]
+ <16.png, id=40, 1043.9pt x 351.3125pt> [6 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/13.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/131.png>]
 File: 16.png Graphic file (type png)
  <use 16.png>
-Package pdftex.def Info: 16.png used on input line 125.
+Package pdftex.def Info: 16.png used on input line 108.
 (pdftex.def)             Requested size: 284.52756pt x 95.75621pt.
- <17.png, id=77, 787.94376pt x 527.9725pt>
-File: 17.png Graphic file (type png)
- <use 17.png>
-Package pdftex.def Info: 17.png used on input line 136.
-(pdftex.def)             Requested size: 284.52756pt x 190.65pt.
- <18.png, id=78, 797.98125pt x 518.93875pt>
-File: 18.png Graphic file (type png)
- <use 18.png>
-Package pdftex.def Info: 18.png used on input line 138.
-(pdftex.def)             Requested size: 284.52756pt x 185.02826pt.
- [11 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/15.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/16.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/17.png>] <19.png, id=85, 876.27374pt x 166.6225pt>
+ <19.png, id=47, 876.27374pt x 166.6225pt>
 File: 19.png Graphic file (type png)
  <use 19.png>
-Package pdftex.def Info: 19.png used on input line 143.
+Package pdftex.def Info: 19.png used on input line 122.
 (pdftex.def)             Requested size: 284.52756pt x 54.10335pt.
- <20.png, id=86, 858.20625pt x 157.58875pt>
+ <20.png, id=48, 858.20625pt x 157.58875pt>
 File: 20.png Graphic file (type png)
  <use 20.png>
-Package pdftex.def Info: 20.png used on input line 145.
+Package pdftex.def Info: 20.png used on input line 124.
 (pdftex.def)             Requested size: 284.52756pt x 52.2473pt.
 
-Overfull \hbox (13.05693pt too wide) in paragraph at lines 152--154
+Overfull \hbox (13.05693pt too wide) in paragraph at lines 131--133
 []\T1/cmr/m/n/12 Nous avons ainsi du mod-i-fier les paramètres d'ancrage, spé-ci-fi-ant l'utilisation
  []
 
-[12 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/18.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/19.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/20.png>] <21.png, id=94, 722.7pt x 1284.8pt>
+[7 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/15.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/16.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/19.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/20.png>] <21.png, id=56, 722.7pt x 1284.8pt>
 File: 21.png Graphic file (type png)
  <use 21.png>
-Package pdftex.def Info: 21.png used on input line 170.
-(pdftex.def)             Requested size: 284.52756pt x 505.83386pt.
- <22.png, id=95, 722.7pt x 1284.8pt> [13]
+Package pdftex.def Info: 21.png used on input line 152.
+(pdftex.def)             Requested size: 142.26378pt x 252.91693pt.
+ <22.png, id=57, 722.7pt x 1284.8pt>
 File: 22.png Graphic file (type png)
  <use 22.png>
-Package pdftex.def Info: 22.png used on input line 172.
-(pdftex.def)             Requested size: 284.52756pt x 505.83386pt.
- [14 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/21.png>] [15 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/22.png>]
+Package pdftex.def Info: 22.png used on input line 157.
+(pdftex.def)             Requested size: 142.26378pt x 252.91693pt.
+ [8 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/21.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/22.png>]
 Chapter 3.
-<ensemble1.png, id=105, 451.6875pt x 331.2375pt>
+<ensemble1.png, id=61, 707.64375pt x 281.05pt>
 File: ensemble1.png Graphic file (type png)
  <use ensemble1.png>
-Package pdftex.def Info: ensemble1.png used on input line 206.
-(pdftex.def)             Requested size: 284.52756pt x 208.66556pt.
- [16
+Package pdftex.def Info: ensemble1.png used on input line 194.
+(pdftex.def)             Requested size: 426.79134pt x 169.50613pt.
 
-] [17 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/ensemble1.png>] <ensemble2.png, id=113, 451.6875pt x 158.09062pt>
+Overfull \hbox (36.79134pt too wide) in paragraph at lines 191--195
+ [] 
+ []
+
+[9
+
+] [10 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/ensemble1.png>] <ensemble2.png, id=69, 401.5pt x 311.1625pt>
 File: ensemble2.png Graphic file (type png)
  <use ensemble2.png>
-Package pdftex.def Info: ensemble2.png used on input line 253.
-(pdftex.def)             Requested size: 284.52756pt x 99.59036pt.
- <ensemble3.png, id=114, 267.24844pt x 225.84375pt>
+Package pdftex.def Info: ensemble2.png used on input line 241.
+(pdftex.def)             Requested size: 284.52756pt x 220.52335pt.
+ <ensemble3.png, id=70, 471.7625pt x 271.0125pt>
 File: ensemble3.png Graphic file (type png)
  <use ensemble3.png>
-Package pdftex.def Info: ensemble3.png used on input line 267.
-(pdftex.def)             Requested size: 284.52756pt x 240.47185pt.
- [18 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/ensemble2.png>] [19 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/ensemble3.png>] (/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.aux) ) 
+Package pdftex.def Info: ensemble3.png used on input line 255.
+(pdftex.def)             Requested size: 341.43306pt x 196.14612pt.
+ [11 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/ensemble2.png>] [12 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/ensemble3.png>] (/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.aux) ) 
 Here is how much of TeX's memory you used:
- 3579 strings out of 494945
- 48347 string characters out of 6181032
+ 3525 strings out of 494945
+ 47685 string characters out of 6181032
  102255 words of memory out of 5000000
- 6810 multiletter control sequences out of 15000+600000
+ 6766 multiletter control sequences out of 15000+600000
  14235 words of font info for 35 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,6n,32p,236b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,7n,32p,236b,280s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb>
-Output written on /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.pdf (20 pages, 1613024 bytes).
+Output written on /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.pdf (13 pages, 560051 bytes).
 PDF statistics:
- 410 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+ 366 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
