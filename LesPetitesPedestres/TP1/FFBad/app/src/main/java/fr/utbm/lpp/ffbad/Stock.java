@@ -14,6 +14,7 @@ public class Stock extends BasicActivity
 
     private SQLiteDatabase db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
