@@ -48,23 +48,6 @@ public class VolantsDisplay extends AppCompatActivity {
         volantsDAO.open();
         lotVolantDAO.open();
 
-        // Efface le contenu de la table
-        volantsDAO.eraseContent();
-        lotVolantDAO.eraseContent();
-
-        // Ajout d'un volant en BDD
-        lotVolantDAO.addLotVolant(new LotVolant(500, 27f));
-        lotVolantDAO.addLotVolant(new LotVolant(5000, 16.70f));
-        lotVolantDAO.addLotVolant(new LotVolant(10000, 13.70f));
-        lotVolantDAO.addLotVolant(new LotVolant(6000, 21f));
-        lotVolantDAO.addLotVolant(new LotVolant(1000, 10f));
-        volantsDAO.addVolant(new Volant("Yonex", "AS30", "3", (int) (lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID) - 4)));
-        volantsDAO.addVolant(new Volant("RSL", "Grade 3", "1", (int) (lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID) - 3)));
-        volantsDAO.addVolant(new Volant("RSL", "Grade A9", "2", (int) (lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID) - 2)));
-        volantsDAO.addVolant(new Volant("RSL", "Grade A1", "2", (int) (lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID) - 1)));
-        volantsDAO.addVolant(new Volant("eDBTEAM", "B3ST V0LANT", "3", (int) (lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID))));
-        volantsDAO.addVolant(new Volant("Undefined", "Undefined", "0", (int) (lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID))));
-
         // Récupération d'un volant en BDD
         Volant myVolant = volantsDAO.getVolant("eDBTEAM", "B3ST V0LANT");
         Log.d("eDBTEAM/VolantsDisplay", "returned volant : " + myVolant.toString());

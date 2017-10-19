@@ -5,6 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import fr.utbm.DAO.LotVolantDAO;
+import fr.utbm.DAO.VolantsDAO;
+import fr.utbm.entity.LotVolant;
+import fr.utbm.entity.Volant;
+
 /**
  * Created by Exige on 23/09/2017.
  */
@@ -134,7 +139,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(ACHETER_TABLE_DROP);
         onCreate(sqLiteDatabase);
     }
-
 
 
 }

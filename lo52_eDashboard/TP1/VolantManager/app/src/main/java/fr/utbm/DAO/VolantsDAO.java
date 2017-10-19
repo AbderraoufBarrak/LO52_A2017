@@ -63,6 +63,7 @@ public class VolantsDAO extends DAOManager {
      */
     public void eraseContent() {
         sqLiteDatabase.delete(TABLE_NAME, null, null);
+        Log.d("eDBTEAM/VolantsDAO","eraseAllVolant");
     }
 
     /**
@@ -203,4 +204,18 @@ public class VolantsDAO extends DAOManager {
         c.close();
         return id;
     }*/
+
+    public boolean isEmpty(){
+        Cursor c =
+                sqLiteDatabase.rawQuery("select count ( " + ID + ") from " + TABLE_NAME, null);
+        if (c.moveToFirst()){
+            return c.getInt(0) <= 0;
+        }
+        // en cas de non accès au curseur on retourne false
+        else
+        {
+            return false;
+        }
+    }
+
 }

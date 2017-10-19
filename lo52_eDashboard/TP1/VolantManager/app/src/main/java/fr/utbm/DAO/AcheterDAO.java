@@ -176,10 +176,12 @@ public class AcheterDAO extends DAOManager {
                                 vDAO.MARQUE + ", vol." +
                                 vDAO.CLASSEMENT +
                                 " from " +
-                                lotVolantDAO.TABLE_NAME + " lot inner join " + TABLE_NAME + " acher on lot." +  lotVolantDAO.ID + "=acher." + LOT_ID + " inner join " + acheteurDAO.TABLE_NAME + " acheur on acher." + ACHETEUR_ID + "=acheur." + acheteurDAO.MATRICULE + " inner join " + dateDAO.TABLE_NAME + " dat on acher." + DATE_ID + "=dat." + dateDAO.ID + " inner join " + vDAO.TABLE_NAME + " vol on lot." + lotVolantDAO.ID + "=vol." + vDAO.ID, null);
+                                lotVolantDAO.TABLE_NAME + " lot inner join " + TABLE_NAME + " acher on lot." +  lotVolantDAO.ID + "=acher." + LOT_ID + " inner join " + acheteurDAO.TABLE_NAME + " acheur on acher." + ACHETEUR_ID + "=acheur." + acheteurDAO.MATRICULE + " inner join " + dateDAO.TABLE_NAME + " dat on acher." + DATE_ID + "=dat." + dateDAO.ID + " inner join " + vDAO.TABLE_NAME + " vol on lot." + lotVolantDAO.ID + "=vol." + vDAO.ID,null);
+
 
         AchatInfo achat = new AchatInfo(0, false, 0, 0, 0, 0, null, null, null, null, 0, 0, null, null, null);
         List<AchatInfo> achats = new ArrayList<>();
+        Log.d("eDBTEAM/AcheterDAO", "cursorsize -> " + c.getCount());
         while (c.moveToNext()) {
             Boolean currentPayed = (c.getInt(5) != 0);
             achat = new AchatInfo(c.getLong(0), currentPayed, c.getInt(4), c.getLong(1), c.getLong(3), c.getLong(2), new java.util.Date(c.getString(8)), c.getString(9), c.getString(10), c.getString(11), c.getInt(6), c.getFloat(7), c.getString(12), c.getString(13), c.getString(14));

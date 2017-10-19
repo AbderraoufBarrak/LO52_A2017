@@ -141,7 +141,7 @@ public class PurchaseItem extends AppCompatActivity {
                 String marque = ((TextView)view.findViewById(R.id.lot_marque_tv)).getText().toString();
                 String taille = ((TextView)view.findViewById(R.id.lot_taille_tv)).getText().toString();
                 String prixString = ((TextView)view.findViewById(R.id.lot_prix_tv)).getText().toString();
-                float prix = Float.valueOf(prixString.substring(0, prixString.length() - 1));
+                float prix = Float.valueOf(prixString.substring(0, prixString.length() - 1).replace(',','.'));
 
                 totalPrice.setText("" + String.format("%.2f", updatePrice()) + "€");
             }
@@ -182,7 +182,7 @@ public class PurchaseItem extends AppCompatActivity {
 
     public float updatePrice() {
         String prixString = ((TextView) findViewById(R.id.lot_prix_tv)).getText().toString();
-        float prix = Float.valueOf(prixString.substring(0, prixString.length() - 1));
+        float prix = Float.valueOf(prixString.substring(0, prixString.length() - 1).replace(',','.'));
         return Integer.valueOf(this.quantity.getText().toString()) * prix;
     }
 
@@ -203,7 +203,7 @@ public class PurchaseItem extends AppCompatActivity {
             acheteurDAO.addAcheteur(new Acheteur(acheteurName.getText().toString(), acheteurFamily.getText().toString(), acheteurSociety.getText().toString()));
 
             String prixString = ((TextView) findViewById(R.id.lot_prix_tv)).getText().toString();
-            float prix = Float.valueOf(prixString.substring(0, prixString.length() - 1));
+            float prix = Float.valueOf(prixString.substring(0, prixString.length() - 1).replace(',','.'));
 
             String tailleString = ((TextView) findViewById(R.id.lot_taille_tv)).getText().toString();
             int taille = Integer.valueOf(tailleString);

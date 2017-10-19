@@ -82,6 +82,7 @@ public class Purchase extends AppCompatActivity {
 
         // Récupération des achats
         List<Acheter> achats = new ArrayList<>();
+        Log.d("eDBTEAM/Purchase","appel de la liste");
         achats = acheterDAO.getAchats();
 
         Log.d("eDBTEAM/Purchase", "Achats -> " + achats.toString()); // Ici on voit qu'on récupère tous les bons ID
