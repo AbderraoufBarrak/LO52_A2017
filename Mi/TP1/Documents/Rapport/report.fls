@@ -50,6 +50,12 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.aux
 INPUT /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.aux
 OUTPUT /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.aux
@@ -146,7 +152,12 @@ INPUT /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2
 INPUT /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/ensemble3.png
 INPUT /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/ensemble3.png
 INPUT /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/ensemble3.png
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1095.tfm
 INPUT /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP1/Documents/Rapport/report.aux
+INPUT /home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk
 INPUT /home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk
 INPUT /home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk
 INPUT /home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk
