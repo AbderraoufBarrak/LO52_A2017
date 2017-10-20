@@ -48,5 +48,24 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/black" />
 
+        <Button
+            android:id="@+id/action_acheter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_image"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="?attr/colorPrimary"
+            android:text="Acheter" />
+
+        <Button
+            android:id="@+id/action_vendre"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_image"
+            android:layout_toEndOf="@+id/action_acheter"
+            android:text="Vendre"
+            android:textColor="?attr/colorPrimary" />
+
     </RelativeLayout>
 </android.support.v7.widget.CardView>
