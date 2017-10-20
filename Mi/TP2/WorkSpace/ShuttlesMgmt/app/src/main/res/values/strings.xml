@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ShuttlesMgmt</string>
+    <string name="app_name">LardeSports</string>
+    <string name="button_Achat">Achat</string>
+    <string name="button_stock">Stock</string>
 </resources>
