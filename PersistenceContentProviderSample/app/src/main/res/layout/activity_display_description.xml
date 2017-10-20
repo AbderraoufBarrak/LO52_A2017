@@ -6,4 +6,41 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.contentprovidersample.DisplayDescription">
 
+    <TextView
+        android:id="@+id/nomVolant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="nomVolant"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/priceVolant"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="priceVolant"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rateVolant" />
+
+    <RatingBar
+        android:id="@+id/rateVolant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomVolant" />
+
 </android.support.constraint.ConstraintLayout>
