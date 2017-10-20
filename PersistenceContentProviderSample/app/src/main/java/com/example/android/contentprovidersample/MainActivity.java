@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                int item_row = getAdapterPosition();
+                int item_row = getAdapterPosition() + 1;
                 Toast.makeText(context,"The Item Clicked is: "+item_row,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, DisplayDescription.class);
                 intent.putExtra("ITEM_ROW", item_row);

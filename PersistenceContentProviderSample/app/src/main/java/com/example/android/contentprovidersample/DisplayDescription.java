@@ -7,6 +7,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.provider.SampleContentProvider;
@@ -15,17 +16,7 @@ public class DisplayDescription extends AppCompatActivity {
 
     private static final int LOADER_CHEESES = 1;
     private Cursor mCursor;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_description);
-
-        Intent intent = getIntent();
-        int item_row = intent.getIntExtra("ITEM_ROW", 0);
-
-        mCursor.move(item_row);
-    }
+    private int item_row;
 
     private LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks =
             new LoaderManager.LoaderCallbacks<Cursor>() {
@@ -48,6 +39,9 @@ public class DisplayDescription extends AppCompatActivity {
                     switch (loader.getId()) {
                         case LOADER_CHEESES:
                             mCursor = data;
+                            mCursor.move(item_row);
+                            TextView mText = findViewById(R.id.nomVolant);
+                            mText.setText(mCursor.getString(mCursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
                             break;
                     }
                 }
@@ -62,4 +56,15 @@ public class DisplayDescription extends AppCompatActivity {
                 }
 
             };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_display_description);
+
+        Intent intent = getIntent();
+        item_row = intent.getIntExtra("ITEM_ROW", 0);
+
+        getSupportLoaderManager().initLoader(LOADER_CHEESES, null, mLoaderCallbacks);
+    }
 }
