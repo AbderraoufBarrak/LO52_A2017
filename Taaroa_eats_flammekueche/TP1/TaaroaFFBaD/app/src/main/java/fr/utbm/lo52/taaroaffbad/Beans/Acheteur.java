@@ -7,11 +7,17 @@ package fr.utbm.lo52.taaroaffbad.Beans;
 public class Acheteur {
     private int id;
     private String nom;
+    private String prenom;
+    private String adresse;
+    private String tel;
     private String type;
 
-    public Acheteur(int id, String nom, String type) {
+    public Acheteur(int id, String nom, String prenom, String adresse, String tel, String type) {
         this.id = id;
         this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.tel = tel;
         this.type = type;
     }
 
@@ -40,4 +46,30 @@ public class Acheteur {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+
 }

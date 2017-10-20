@@ -4,16 +4,20 @@ import android.content.Intent;
 import java.text.DateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import fr.utbm.lo52.taaroaffbad.Beans.Acheteur;
 import fr.utbm.lo52.taaroaffbad.Beans.Vente;
 import fr.utbm.lo52.taaroaffbad.Beans.Volant;
+import fr.utbm.lo52.taaroaffbad.Database.AcheteurDAO;
 import fr.utbm.lo52.taaroaffbad.Database.VenteDAO;
 import fr.utbm.lo52.taaroaffbad.R;
 
@@ -21,6 +25,7 @@ public class VentePageActivity extends AppCompatActivity {
 
     Vente vente;
     TextView titre, sousTitre, desc;
+    Boolean flagVeutPayer, flagPaye;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,30 +47,55 @@ public class VentePageActivity extends AppCompatActivity {
 
         String sTitre = "#"+vente.getVenteId()+" "+vente.getMarque()+" ["+vente.getReference()+"]";
         String sSousTitre =  shortDateFormat.format(vente.getDateAchat());
-        String sDesc = "Prix : "+vente.getPrix()+" \n A payé : "+(vente.getPaye()?" le "+shortDateFormat.format(vente.getDatePaye()):"NON");
+        String sDesc = "<b>Prix :</b> "+vente.getPrix()+" \n<br><b>A payé :</b> "+(vente.getPaye()?" le "+
+                shortDateFormat.format(vente.getDatePaye()):"NON")+"\n";
 
         titre.setText(sTitre);
         sousTitre.setText(sSousTitre);
-        desc.setText(sDesc);
+
+        // récupération des infos de l'acheteur
+        long idAcheteur = vente.getAcheteurId();
+        AcheteurDAO acheteurDAO = new AcheteurDAO(VentePageActivity.this);
+        acheteurDAO.open();
+        Acheteur acheteur = acheteurDAO.getAcheteur(idAcheteur);
+
+        sDesc += "<br><b>Nom :</b> "+acheteur.getNom()+ "<br><b>Prénom :</b> "+acheteur.getPrenom()+
+                "<br><b>Adresse :</b> "+acheteur.getAdresse()+ "<br><b>Tel :</b> "+acheteur.getTel()+
+                "<br><b>Statut :</b> "+acheteur.getType();
+        desc.setText(Html.fromHtml(sDesc));
 
         // switch pour payer ou non ---------------------------------------------------------------
+        Button confirm = (Button) findViewById(R.id.bConfirm);
         Switch switchPaye = (Switch) findViewById(R.id.switchPaye);
-        boolean flagPaye = vente.getPaye();
+        flagVeutPayer = false;      // pour le bouton de confirmation
+        flagPaye = vente.getPaye(); // pour le statut de la vente
         switchPaye.setSelected(flagPaye);
 
-        if(flagPaye) // déjà payé
+        if(flagPaye){ // déjà payé
             switchPaye.setVisibility(View.GONE);
+            confirm.setVisibility(View.GONE);
+        }
 
-        // action de paie
-        switchPaye.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    Log.i("JOJO-SwitchPaye","isChecked:"+isChecked);
+            public void onClick(View v) {
+
+                if(flagVeutPayer){
+                    Log.i("JOJO-ConfirmPAIEMENT","CONFIRM PAIEMENT");
                     VenteDAO venteDAO = new VenteDAO(VentePageActivity.this);
                     venteDAO.open();
                     venteDAO.setPaye(vente);
+                    startActivity(new Intent(VentePageActivity.this,MainActivity.class));
                 }
+            }
+        });
+
+        // action de paiement
+        switchPaye.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            Log.i("JOJO-SwitchPaye","isChecked:"+isChecked+" / flagVeutPayer = "+isChecked);
+            flagVeutPayer = isChecked;
             }
         });
         //-----------------------------------------------------------------------------------------

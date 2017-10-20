@@ -82,7 +82,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:textStyle="bold"
                     android:textSize="25sp"
                     android:text="text"/>
 
@@ -91,6 +90,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Payer maintenant" />
+
+                <Button
+                    android:id="@+id/bConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Confirmer paiement" />
 
             </LinearLayout>
 

@@ -2,6 +2,9 @@ package fr.utbm.lo52.taaroaffbad.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
+
 import fr.utbm.lo52.taaroaffbad.Beans.Acheteur;
 
 /**
@@ -19,26 +22,37 @@ public class AcheteurDAO extends BaseDAO {
     public static final String DROP_ACHETEUR =  "DROP TABLE IF EXISTS " + handler.TABLE_ACHETEUR + ";";
 
     // insert into table FABRICANT
-    public void addAcheteur(Acheteur a) {
+    public long addAcheteur(Acheteur a) {
         ContentValues values = new ContentValues();
-        values.put(handler.ACH_ID, a.getId());
+        values.putNull(handler.ACH_ID);
         values.put(handler.ACH_NOM, a.getNom());
+        values.put(handler.ACH_PRENOM, a.getPrenom());
+        values.put(handler.ACH_ADR, a.getAdresse());
+        values.put(handler.ACH_TEL, a.getTel());
         values.put(handler.ACH_TYPE, a.getType());
 
-        sqlite.insert(handler.TABLE_ACHETEUR, null, values);
+        return sqlite.insert(handler.TABLE_ACHETEUR, null, values);
     }
 
     /*public void supprimer(long id) {
         // CODE
     }*/
 
-    /*public void modifier(Volant m) {
-        // CODE
-    }*/
-
     public Acheteur getAcheteur(long id) {
-        // CODE
-        Acheteur a = new Acheteur();
+
+        Log.i("JOJO-AchID",id+"");
+        Acheteur a = null;
+        Cursor c = sqlite.rawQuery("select * from " + handler.TABLE_ACHETEUR +
+                " where " + handler.ACH_ID + "=" + id, new String[] {});
+        while (c.moveToNext()) {
+            a = new Acheteur(c.getInt(0),
+                    c.getString(1),
+                    c.getString(2),
+                    c.getString(3),
+                    c.getString(4),
+                    c.getString(5));
+        }
+        c.close();
         return a;
     }
 

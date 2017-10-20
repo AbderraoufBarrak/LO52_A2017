@@ -35,8 +35,10 @@ import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
+import fr.utbm.lo52.taaroaffbad.Beans.Acheteur;
 import fr.utbm.lo52.taaroaffbad.Beans.Vente;
 import fr.utbm.lo52.taaroaffbad.Beans.Volant;
+import fr.utbm.lo52.taaroaffbad.Database.AcheteurDAO;
 import fr.utbm.lo52.taaroaffbad.Database.VenteDAO;
 import fr.utbm.lo52.taaroaffbad.Database.VolantDAO;
 import fr.utbm.lo52.taaroaffbad.R;
@@ -144,6 +146,7 @@ public class VolantPageActivity extends AppCompatActivity {
                         try {
 
                             String sNom = cmdNom.getText().toString().toUpperCase();
+                            String sPrenom = cmdPrenom.getText().toString().toLowerCase();
                             String sTel = cmdTelephone.getText().toString();
                             String sAdr = cmdAdresse.getText().toString().toUpperCase();
                             final String qteTmp = cmdQuantite.getText().toString();
@@ -154,11 +157,24 @@ public class VolantPageActivity extends AppCompatActivity {
                             if(volant.getStock() < Integer.parseInt(cmdQuantite.getText().toString()))
                                 throw new Exception("Pas assez de stock !");
 
-                            Vente vente = new Vente(1,          // venteID
+                            // Ajoute l'acheteur en BDD
+                            Acheteur acheteur = new Acheteur(0,         // acheteurID : incrémental en BDD
+                                    sNom,
+                                    sPrenom,
+                                    sAdr,
+                                    sTel,
+                                    checkStatut.isChecked()?"club":"particulier"
+                            );
+
+                            AcheteurDAO acheteurDAO = new AcheteurDAO(VolantPageActivity.this);
+                            acheteurDAO.open();
+                            long idNewAcheteur = acheteurDAO.addAcheteur(acheteur);
+
+                            Vente vente = new Vente(0,          // venteID : incrémental en BDD
                                     volant.getMarque(),         // marque
                                     volant.getReference(),      // référence
                                     0,                          // fabID
-                                    0,                          // achID
+                                    idNewAcheteur,                          // achID
                                     nouveauPrix,  // prix
                                     checkPaye.isChecked(),                        // boolPaye
                                     Integer.parseInt(qteTmp),                     // qte

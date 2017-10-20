@@ -9,6 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import fr.utbm.lo52.taaroaffbad.Activity.MainActivity;
+import fr.utbm.lo52.taaroaffbad.Beans.Volant;
+
+import static fr.utbm.lo52.taaroaffbad.Database.BaseDAO.handler;
+
 public class Database extends SQLiteOpenHelper {
 
 
@@ -57,12 +62,18 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_ACHETEUR = "acheteur";
     public static final String ACH_ID = "num_acheteur";
     public static final String ACH_NOM = "nom_acheteur";
+    public static final String ACH_PRENOM = "prenom_acheteur";
+    public static final String ACH_ADR = "adresse_acheteur";
+    public static final String ACH_TEL = "tel_acheteur";
     public static final String ACH_TYPE = "type_acheteur";
 
     // create table ACHETEUR
     private static final String CREATE_ACHETEUR = "create table " + TABLE_ACHETEUR
             + "(" + ACH_ID + " integer primary key autoincrement, "
             + ACH_NOM + " text not null, "
+            + ACH_PRENOM+ " text not null, "
+            + ACH_ADR + " text not null, "
+            + ACH_TEL + " text not null, "
             + ACH_TYPE + " text not null"
             + ");";
 
@@ -86,7 +97,7 @@ public class Database extends SQLiteOpenHelper {
             + VEN_VOL_REF + " text not null, "
             + VEN_FAB_ID + " integer not null, "
             + VEN_ACH_ID + " integer not null, "
-            + VEN_PRIX + " numeric not null, " // nb
+            + VEN_PRIX + " real not null, " // nb
             + VEN_PAYE + " numeric not null, "   // nb
             + VEN_QUANTITE + " numeric not null, "
             + VEN_DATE_VENTE + " text not null, "
@@ -109,6 +120,12 @@ public class Database extends SQLiteOpenHelper {
         database.execSQL(CREATE_VOLANT);
         database.execSQL(CREATE_VENTE);
         Log.i("YVAN-DB","CREATION DES TABLES");
+
+        database.execSQL("INSERT INTO "+handler.TABLE_VOLANT+" VALUES('2016-2017', '2017-2018', 'YONEX', 'AS 30', 3, 27, 500)");
+        database.execSQL("INSERT INTO "+handler.TABLE_VOLANT+" VALUES('2016-2017', '2017-2018', 'RSL', 'RSL GRADE 1', 3, 21, 6000)");
+        database.execSQL("INSERT INTO "+handler.TABLE_VOLANT+" VALUES('2016-2017', '2017-2018', 'RSL', 'RSL GRADE 3', 3, 16.70, 5000)");
+        database.execSQL("INSERT INTO "+handler.TABLE_VOLANT+" VALUES('2016-2017', '2017-2018', 'RSL', 'RSL GRADE 9', 3, 13.70, 10000)");
+        Log.i("YVAN-DB","INSERTION DES VOLANTS");
     }
 
     @Override

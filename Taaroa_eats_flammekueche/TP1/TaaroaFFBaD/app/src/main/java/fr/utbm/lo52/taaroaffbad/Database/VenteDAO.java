@@ -52,17 +52,7 @@ public class VenteDAO extends BaseDAO {
     }
 
     public ArrayList<Vente> getVente () {
-        Cursor c =
-                sqlite.rawQuery(
-                        "select * " +
-                                //VolantDAO + ", " +
-                                //REF + ", "
-                                //+ CLASSEMENT +
-                                " from " +
-                                handler.TABLE_VENTE //+
-                        //" where marque = ? and ref = ?"
-                        , new String[] {/*marque, ref*/});
-
+        Cursor c = sqlite.rawQuery("select * from " + handler.TABLE_VENTE, new String[] {});
 
         Vente vente;
         ArrayList<Vente> venteList = new ArrayList<Vente>();
@@ -74,7 +64,7 @@ public class VenteDAO extends BaseDAO {
                                 ,c.getString(2)
                                 ,c.getInt(3)
                                 ,c.getInt(4)
-                                ,c.getInt(5)
+                                ,c.getDouble(5)
                                 ,c.getInt(6)>0
                                 ,c.getInt(7)
                                 ,dateAchat

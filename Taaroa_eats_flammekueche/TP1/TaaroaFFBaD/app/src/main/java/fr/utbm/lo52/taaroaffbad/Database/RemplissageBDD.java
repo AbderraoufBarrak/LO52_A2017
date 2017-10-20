@@ -32,8 +32,6 @@ public class RemplissageBDD {
             volantsDAO.addVolant(volantToAdd_2);
             volantsDAO.addVolant(volantToAdd_3);
             volantsDAO.addVolant(volantToAdd_4);
-
-            volantsDAO.getVolant(); // log
         }
 
         // insert into VENTE

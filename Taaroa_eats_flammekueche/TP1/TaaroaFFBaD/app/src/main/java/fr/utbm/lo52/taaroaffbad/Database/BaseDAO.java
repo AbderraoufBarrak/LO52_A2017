@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 public abstract class BaseDAO {
 
     //TODO: /!\ incrémenter s'il y a changement de la structure de la BDD
-    protected final static int VERSION = 10;
+    protected final static int VERSION = 15;
     protected final static String NOM = "database.db";
 
     protected SQLiteDatabase sqlite = null;

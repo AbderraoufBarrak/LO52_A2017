@@ -12,14 +12,14 @@ public class Vente implements Serializable{
     private int fabricantId;
     private String marque;
     private String reference;
-    private int acheteurId;
+    private long acheteurId;
     private double prix;
     private Boolean paye;
     private int quantite;
     private Date dateAchat;
     private Date datePaye;
 
-    public Vente(int VenteId, String marque, String reference, int fabricantId, int acheteurId, double prix, Boolean paye, int quantite, Date dateAchat, Date datePaye) {
+    public Vente(int VenteId, String marque, String reference, int fabricantId, long acheteurId, double prix, Boolean paye, int quantite, Date dateAchat, Date datePaye) {
         this.venteId = VenteId;
         this.fabricantId = fabricantId;
         this.marque = marque;
@@ -73,7 +73,7 @@ public class Vente implements Serializable{
         this.reference = reference;
     }
 
-    public int getAcheteurId() {
+    public long getAcheteurId() {
         return acheteurId;
     }
 
