@@ -1,9 +1,5 @@
 package fr.utbm.entity;
 
-/**
- * Created by Exige on 06/10/2017.
- */
-
 public class Acheter {
 
     private long id;

@@ -10,10 +10,6 @@ import java.util.List;
 
 import fr.utbm.entity.Volant;
 
-/**
- * Created by Exige on 23/09/2017.
- */
-
 public class VolantsDAO extends DAOManager {
 
     public static final String TABLE_NAME = "Volant";

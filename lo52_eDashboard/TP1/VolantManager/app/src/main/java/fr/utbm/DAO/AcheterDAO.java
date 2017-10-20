@@ -13,10 +13,6 @@ import fr.utbm.entity.Acheter;
 import fr.utbm.entity.Date;
 import fr.utbm.entity.Volant;
 
-/**
- * Created by Exige on 06/10/2017.
- */
-
 public class AcheterDAO extends DAOManager {
 
     public static final String ID = "id";

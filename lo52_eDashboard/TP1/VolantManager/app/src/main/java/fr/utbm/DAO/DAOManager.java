@@ -7,10 +7,6 @@ import android.util.Log;
 
 import fr.utbm.database.DatabaseHandler;
 
-/**
- * Created by Exige on 23/09/2017.
- */
-
 public abstract class DAOManager {
 
     protected final static int VERSION = 22; // Incrémente-moi si la structure de la base de données change !

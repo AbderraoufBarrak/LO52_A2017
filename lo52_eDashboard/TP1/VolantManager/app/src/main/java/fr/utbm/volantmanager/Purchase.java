@@ -29,7 +29,6 @@ import fr.utbm.volantmanager.R;
 // TODO - Ajouter plus d'entrées en BDD. Garder le remplissage ici BDD ici ? Le basculer sur la première activité ? Faudrait qu'il soit fixe aussi, au lieu de tout supprimer & remettre à chaque fois
 // TODO - Tri sur la ListView ? par date ? par acheteur ? par prix ?
 // TODO - Y'a des open() sans close() partout
-// TODO - Le code est moche là
 // TODO - Surbrillance item selectionné
 
 public class Purchase extends AppCompatActivity {
@@ -44,7 +43,6 @@ public class Purchase extends AppCompatActivity {
 
         final ListView achatsLV = (ListView) findViewById(R.id.achats_lv);
 
-
         AcheterDAO acheterDAO = new AcheterDAO(Purchase.this);
         AcheteurDAO acheteurDAO = new AcheteurDAO(Purchase.this);
         DateDAO dateDAO = new DateDAO(Purchase.this);
@@ -56,30 +54,6 @@ public class Purchase extends AppCompatActivity {
         dateDAO.open();
         lotVolantDAO.open();
         volantDAO.open();
-
-        //acheterDAO.eraseContent();
-        //acheteurDAO.eraseContent();
-        //dateDAO.eraseContent();
-
-
-        // AJOUTS D'ACHATS
-        /*// Ajout d'une Date
-        String dateString = "06/10/2017";
-        java.util.Date date = null;
-        try {
-            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            date = df.parse(dateString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        dateDAO.addDate(new Date(date));
-
-        // Ajout d'un acheteur
-        acheteurDAO.addAcheteur(new Acheteur("Micka", "LeDieu", "UTBM"));
-
-        // Ajout d'un achat
-        acheterDAO.addAcheter(new Acheter(lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID), dateDAO.getMaxID(dateDAO.TABLE_NAME, dateDAO.ID), acheteurDAO.getMaxID(acheteurDAO.TABLE_NAME, acheteurDAO.MATRICULE), 10, false));
-        acheterDAO.addAcheter(new Acheter(lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID) - 1, dateDAO.getMaxID(dateDAO.TABLE_NAME, dateDAO.ID), acheteurDAO.getMaxID(acheteurDAO.TABLE_NAME, acheteurDAO.MATRICULE), 3, true));*/
 
         // Récupération des achats
         List<Acheter> achats = new ArrayList<>();

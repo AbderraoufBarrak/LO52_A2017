@@ -19,10 +19,6 @@ import fr.utbm.beans.LotInfo;
 import fr.utbm.volantmanager.R;
 import fr.utbm.volantmanager.VolantsDisplay;
 
-/**
- * Created by Exige on 30/09/2017.
- */
-
 public class CustomAdapter extends BaseAdapter {
 
     private Activity activity;

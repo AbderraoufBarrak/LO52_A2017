@@ -21,10 +21,6 @@ import fr.utbm.beans.AchatInfo;
 import fr.utbm.beans.LotInfo;
 import fr.utbm.volantmanager.R;
 
-/**
- * Created by Exige on 07/10/2017.
- */
-
 public class AchatInfoCustomAdapter extends BaseAdapter {
 
     private Activity activity;

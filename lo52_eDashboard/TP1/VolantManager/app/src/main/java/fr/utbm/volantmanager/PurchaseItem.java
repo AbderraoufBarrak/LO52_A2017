@@ -134,7 +134,6 @@ public class PurchaseItem extends AppCompatActivity {
             updatePayedButton.setVisibility(View.GONE);
         }
 
-
         volantsSP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 String ref = ((TextView)view.findViewById(R.id.lot_ref_tv)).getText().toString();
@@ -200,7 +199,7 @@ public class PurchaseItem extends AppCompatActivity {
             acheterDAO.open();
 
             dateDAO.addDate(new Date(new java.util.Date()));
-            acheteurDAO.addAcheteur(new Acheteur(acheteurName.getText().toString(), acheteurFamily.getText().toString(), acheteurSociety.getText().toString()));
+            long acheteurID = acheteurDAO.addAcheteur(new Acheteur(acheteurName.getText().toString(), acheteurFamily.getText().toString(), acheteurSociety.getText().toString()));
 
             String prixString = ((TextView) findViewById(R.id.lot_prix_tv)).getText().toString();
             float prix = Float.valueOf(prixString.substring(0, prixString.length() - 1).replace(',','.'));
@@ -208,7 +207,7 @@ public class PurchaseItem extends AppCompatActivity {
             String tailleString = ((TextView) findViewById(R.id.lot_taille_tv)).getText().toString();
             int taille = Integer.valueOf(tailleString);
             long lotID = volantsDAO.getLotVolantID(((TextView) findViewById(R.id.lot_marque_tv)).getText().toString(), ((TextView) findViewById(R.id.lot_ref_tv)).getText().toString());
-            acheterDAO.addAcheter(new Acheter(lotID, dateDAO.getMaxID(dateDAO.TABLE_NAME, dateDAO.ID), acheteurDAO.getMaxID(acheteurDAO.TABLE_NAME, acheteurDAO.MATRICULE), Integer.valueOf(this.quantity.getText().toString()), payed.isChecked()));
+            acheterDAO.addAcheter(new Acheter(lotID, dateDAO.getMaxID(dateDAO.TABLE_NAME, dateDAO.ID), acheteurID, Integer.valueOf(this.quantity.getText().toString()), payed.isChecked()));
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
