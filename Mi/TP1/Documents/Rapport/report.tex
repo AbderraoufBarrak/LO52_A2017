@@ -298,13 +298,13 @@ Pour ce faire, nous insérer dans le dossier "assets", un container spécialisé
 Ensuite, nous avons créer une classe "DataBaseHelper", constitué des méthodes
 suivantes:
 \begin{itemize}
-  \item "CreateDataBase", permettant de créer une bdd vide, afin de la remplir avec
+  \item "createDataBase", permettant de créer une bdd vide, afin de la remplir avec
   nos données.
-  \item "CheckDataBase", permettant de vérifier si une bdd est déja existante, afin
+  \item "checkDataBase", permettant de vérifier si une bdd est déja existante, afin
   d'éviter une recopie à chaque ouverture de l'application.
-  \item "CopyDataBase", qui nous permet de copier les données de notre fichier ".SQL"
+  \item "copyDataBase", qui nous permet de copier les données de notre fichier ".SQL"
   dans la dbb de l'application.
-  \item "OpenDataBase", permettant d'ouvrir notre base de données.
+  \item "openDataBase", permettant d'ouvrir notre base de données.
 \end{itemize}
 Ainsi, lors de l'ouverture de notre application, nous ne reste plus cas effectuer
 un appel à la fonction de création de la bdd, puis de demander son ouverture. \newline
