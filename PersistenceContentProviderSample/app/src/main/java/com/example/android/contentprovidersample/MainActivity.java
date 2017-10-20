@@ -16,9 +16,9 @@
 
 package com.example.android.contentprovidersample;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -29,15 +29,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.provider.SampleContentProvider;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
 
 /**
  * Not very relevant to Room. This just shows data from {@link SampleContentProvider}.
@@ -49,12 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int LOADER_CHEESES = 1;
     private CheeseAdapter mCheeseAdapter;
-
-
-    public void seeDescription(View view) {
-        Intent intent = new Intent(this, DisplayDescription.class);
-        startActivity(intent);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,18 +125,28 @@ public class MainActivity extends AppCompatActivity {
             notifyDataSetChanged();
         }
 
-        static class ViewHolder extends RecyclerView.ViewHolder {
+        static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
             TextView mText;
             ImageView mImage;
+            private final Context context;
 
             ViewHolder(ViewGroup parent) {
                 super(LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.item_card, parent, false));
                 mText = itemView.findViewById(R.id.card_title);
                 mImage = itemView.findViewById(R.id.card_image);
+                itemView.setClickable(true);
+                itemView.setOnClickListener(this);
+                context = itemView.getContext();
             }
 
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"The Item Clicked is: "+getAdapterPosition(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, DisplayDescription.class);
+                context.startActivity(intent);
+            }
         }
 
     }
