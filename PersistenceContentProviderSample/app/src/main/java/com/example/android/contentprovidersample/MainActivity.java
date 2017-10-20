@@ -16,6 +16,7 @@
 
 package com.example.android.contentprovidersample;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -26,12 +27,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.provider.SampleContentProvider;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 
 /**
@@ -43,8 +48,13 @@ import com.example.android.contentprovidersample.provider.SampleContentProvider;
 public class MainActivity extends AppCompatActivity {
 
     private static final int LOADER_CHEESES = 1;
-
     private CheeseAdapter mCheeseAdapter;
+
+
+    public void seeDescription(View view) {
+        Intent intent = new Intent(this, DisplayDescription.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
