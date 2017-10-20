@@ -33,6 +33,7 @@
         </activity>
         <activity
             android:name=".PurchaseItem"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/purchase_item_activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

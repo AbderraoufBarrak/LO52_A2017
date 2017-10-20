@@ -29,7 +29,8 @@ public class VolantsDAO extends DAOManager {
                     MARQUE + " TEXT, " +
                     REF + " TEXT, " +
                     CLASSEMENT + " INTEGER, " +
-                    LOT_ID + " INTEGER);";
+                    LOT_ID + " INTEGER, " +
+                    "FOREIGN KEY(" + LOT_ID + ") REFERENCES " + LotVolantDAO.TABLE_NAME + "(" + LotVolantDAO.ID + "));";
 
     public static final String TABLE_DROP =
             "DROP TABLE IF EXISTS " + TABLE_NAME + ";";

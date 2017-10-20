@@ -30,6 +30,7 @@ import fr.utbm.volantmanager.R;
 // TODO - Tri sur la ListView ? par date ? par acheteur ? par prix ?
 // TODO - Y'a des open() sans close() partout
 // TODO - Le code est moche là
+// TODO - Surbrillance item selectionné
 
 public class Purchase extends AppCompatActivity {
 

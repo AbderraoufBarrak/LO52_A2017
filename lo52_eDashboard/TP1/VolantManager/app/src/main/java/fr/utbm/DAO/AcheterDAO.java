@@ -34,7 +34,10 @@ public class AcheterDAO extends DAOManager {
                     DATE_ID + " INTEGER, " +
                     ACHETEUR_ID + " INTEGER, " +
                     QUANTITE + " INTEGER, " +
-                    PAYED + " INTEGER);";
+                    PAYED + " INTEGER, " +
+                    "FOREIGN KEY(" + LOT_ID + ") REFERENCES " + LotVolantDAO.TABLE_NAME + "(" + LotVolantDAO.ID + "), " +
+                    "FOREIGN KEY(" + DATE_ID + ") REFERENCES " + DateDAO.TABLE_NAME + "(" + DateDAO.ID + "), " +
+                    "FOREIGN KEY(" + ACHETEUR_ID + ") REFERENCES " + AcheteurDAO.TABLE_NAME + "(" + AcheteurDAO.MATRICULE + "));";
 
     public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
 
