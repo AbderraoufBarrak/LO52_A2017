@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Stock extends AppCompatActivity {
 
@@ -14,15 +15,21 @@ public class Stock extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
 
-        ArrayList<String> text = new ArrayList<>();
-        text.add("Yonex - AS30 - Stock de 500 - 27 euros le tube");
-        text.add("RSL - Grade 3 - Stock de 5000 - 16,70 euros le tube");
-        text.add("RSL - Grade A9 - Stock de 10000 - 13.70 euros le tube");
-        text.add("RSL - Grade A1  - Stock de 6000 - 21 euros le tube");
+        List<ListEntry> stock = genererStock();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_activated_1, text);
 
         ListView listView = (ListView) findViewById(R.id.listview);
+
+        StockAdapter adapter = new StockAdapter(this, stock);
         listView.setAdapter(adapter);
+    }
+
+    private List<ListEntry> genererStock(){
+        List<ListEntry> stocks = new ArrayList<ListEntry>();
+        stocks.add(new ListEntry("Yonex", "AS30", 500));
+        stocks.add(new ListEntry("RSL", "Grade 3", 5000));
+        stocks.add(new ListEntry("RSL", "Grade A9", 10000));
+        stocks.add(new ListEntry("RSL", "Grade A1", 6000));
+        return stocks;
     }
 }
