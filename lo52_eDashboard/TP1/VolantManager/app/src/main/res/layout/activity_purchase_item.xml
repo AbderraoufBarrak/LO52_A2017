@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".PurchaseItem">
 
     <ScrollView
@@ -47,21 +49,6 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view" />
-
-            <TextView
-                android:id="@+id/quantity_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:textAlignment="center"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/minus_b"
-                app:layout_constraintRight_toLeftOf="@+id/plus_b"
-                app:layout_constraintTop_toTopOf="@+id/minus_b" />
 
             <View
                 android:id="@+id/view"
@@ -209,12 +196,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
                 android:onClick="decreaseQuantity"
                 android:text="@string/minus"
-                app:layout_constraintRight_toLeftOf="@+id/quantity_tv"
-                app:layout_constraintTop_toBottomOf="@+id/volants_sp" />
+                app:layout_constraintTop_toBottomOf="@+id/volants_sp"
+                app:layout_constraintRight_toLeftOf="@+id/quantity_et"
+                android:layout_marginRight="8dp" />
 
             <CheckBox
                 android:id="@+id/payed_box"
@@ -242,6 +229,22 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/quantity_et"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorBaseText"
+                android:ems="10"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/colorBaseText"
+                app:layout_constraintBottom_toBottomOf="@+id/plus_b"
+                app:layout_constraintRight_toLeftOf="@+id/plus_b"
+                app:layout_constraintTop_toTopOf="@+id/plus_b" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
