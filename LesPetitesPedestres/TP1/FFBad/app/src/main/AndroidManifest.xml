@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.utbm.lpp.ffbad">
 
-    <!-- TODO: <div>Icons made by <a href="https://www.flaticon.com/authors/dot-on-paper" title="Dot on Paper">Dot on Paper</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
     <application
         android:name=".FFBadApplication"
         android:allowBackup="true"
@@ -10,21 +9,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".LardeSports_Welcome" />
-        <activity android:name=".Stock">
+        <activity android:name=".activity.MainActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OperationActivity" />
-        <activity android:name=".Purchase" />
-        <activity android:name=".BasicActivity" />
-        <activity
-            android:name=".activity_purchase"
-            android:label="@string/title_activity_purchase"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
