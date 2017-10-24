@@ -2,10 +2,6 @@ package fr.utbm.util;
 
 import fr.utbm.volantmanager.R;
 
-/**
- * Created by Exige on 07/10/2017.
- */
-
 public class ColorQuantityMatcher {
 
     public ColorQuantityMatcher() {

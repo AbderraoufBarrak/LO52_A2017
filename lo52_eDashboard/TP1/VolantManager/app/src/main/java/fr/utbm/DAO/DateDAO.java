@@ -14,10 +14,6 @@ import java.util.Locale;
 import fr.utbm.entity.Acheteur;
 import fr.utbm.entity.Date;
 
-/**
- * Created by Exige on 06/10/2017.
- */
-
 public class DateDAO extends DAOManager {
 
     public static final String ID = "id";

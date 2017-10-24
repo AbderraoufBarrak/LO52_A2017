@@ -11,10 +11,6 @@ import java.util.List;
 import fr.utbm.beans.LotInfo;
 import fr.utbm.entity.LotVolant;
 
-/**
- * Created by Exige on 06/10/2017.
- */
-
 public class LotVolantDAO extends DAOManager {
 
     public static final String ID = "id";

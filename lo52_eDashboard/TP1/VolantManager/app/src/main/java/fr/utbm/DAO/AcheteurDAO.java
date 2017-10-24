@@ -11,10 +11,6 @@ import java.util.List;
 import fr.utbm.entity.Acheteur;
 import fr.utbm.entity.Volant;
 
-/**
- * Created by Exige on 06/10/2017.
- */
-
 public class AcheteurDAO extends DAOManager {
 
     public static final String MATRICULE = "matricule";
@@ -66,14 +62,21 @@ public class AcheteurDAO extends DAOManager {
     /**
      * Ajoute un acheteur en base de données
      */
-    public void addAcheteur(Acheteur a) {
-        a.setMatricule(getMaxID(TABLE_NAME, MATRICULE) + 1);
-        Log.d("eDBTEAM/AcheteurDAO", "addAcheteur -> " + a.toString());
-        ContentValues cv = new ContentValues();
-        cv.put(AcheteurDAO.NOM, a.getNom());
-        cv.put(AcheteurDAO.PRENOM, a.getPrénom());
-        cv.put(AcheteurDAO.SOCIETE, a.getSociété());
-        sqLiteDatabase.insert(TABLE_NAME, null, cv);
+    public long addAcheteur(Acheteur a) {
+        long id = this.existAcheteur(a);
+        if(id == -1) {
+            a.setMatricule(getMaxID(TABLE_NAME, MATRICULE) + 1);
+            Log.d("eDBTEAM/AcheteurDAO", "addAcheteur -> " + a.toString());
+            ContentValues cv = new ContentValues();
+            cv.put(AcheteurDAO.NOM, a.getNom());
+            cv.put(AcheteurDAO.PRENOM, a.getPrénom());
+            cv.put(AcheteurDAO.SOCIETE, a.getSociété());
+            sqLiteDatabase.insert(TABLE_NAME, null, cv);
+            return a.getMatricule();
+        } else {
+            Log.d("eDBTEAM/AcheteurDAO", "acheteurID -> " + id);
+            return id;
+        }
     }
 
     /**
@@ -82,6 +85,21 @@ public class AcheteurDAO extends DAOManager {
      */
     public void deleteAcheteur(long matricule) {
         sqLiteDatabase.delete(TABLE_NAME, MATRICULE + " = ?", new String[] {String.valueOf(matricule)});
+    }
+
+    public long existAcheteur(Acheteur a) {
+        Cursor c =
+                sqLiteDatabase.rawQuery(
+                        "select " +
+                                MATRICULE +
+                                " from " +
+                                TABLE_NAME + " where " + NOM + " = ? and " + PRENOM + " = ? and " + SOCIETE + " = ?", new String[] {a.getNom(), a.getPrénom(), a.getSociété()});
+
+        if(c.moveToNext()) {
+            return c.getLong(0);
+        } else {
+            return -1;
+        }
     }
 
     /**

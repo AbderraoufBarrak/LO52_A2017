@@ -7,13 +7,9 @@ import android.util.Log;
 
 import fr.utbm.database.DatabaseHandler;
 
-/**
- * Created by Exige on 23/09/2017.
- */
-
 public abstract class DAOManager {
 
-    protected final static int VERSION = 16; // Incrémente-moi si la structure de la base de données change !
+    protected final static int VERSION = 23; // Incrémente-moi si la structure de la base de données change !
     protected final static String NAME = "database.db";
 
     protected SQLiteDatabase sqLiteDatabase = null;

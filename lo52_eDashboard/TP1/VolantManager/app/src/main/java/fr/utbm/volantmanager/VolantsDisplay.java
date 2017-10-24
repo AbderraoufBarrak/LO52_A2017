@@ -37,8 +37,6 @@ public class VolantsDisplay extends AppCompatActivity {
         ListView volantsLV = (ListView) findViewById(R.id.volants_lv);
         Spinner sortSP = (Spinner) findViewById(R.id.sort_sp);
 
-
-
         // --- DATABASE ---
 
         // Instanciation directe du DAO (penser à passer par les couches controller/service plus tard)

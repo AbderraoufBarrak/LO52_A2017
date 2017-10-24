@@ -2,10 +2,6 @@ package fr.utbm.beans;
 
 import java.util.Date;
 
-/**
- * Created by Exige on 07/10/2017.
- */
-
 public class AchatInfo {
 
     private long id;

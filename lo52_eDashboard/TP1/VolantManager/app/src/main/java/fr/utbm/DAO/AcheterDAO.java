@@ -13,10 +13,6 @@ import fr.utbm.entity.Acheter;
 import fr.utbm.entity.Date;
 import fr.utbm.entity.Volant;
 
-/**
- * Created by Exige on 06/10/2017.
- */
-
 public class AcheterDAO extends DAOManager {
 
     public static final String ID = "id";
@@ -34,7 +30,10 @@ public class AcheterDAO extends DAOManager {
                     DATE_ID + " INTEGER, " +
                     ACHETEUR_ID + " INTEGER, " +
                     QUANTITE + " INTEGER, " +
-                    PAYED + " INTEGER);";
+                    PAYED + " INTEGER, " +
+                    "FOREIGN KEY(" + LOT_ID + ") REFERENCES " + LotVolantDAO.TABLE_NAME + "(" + LotVolantDAO.ID + "), " +
+                    "FOREIGN KEY(" + DATE_ID + ") REFERENCES " + DateDAO.TABLE_NAME + "(" + DateDAO.ID + "), " +
+                    "FOREIGN KEY(" + ACHETEUR_ID + ") REFERENCES " + AcheteurDAO.TABLE_NAME + "(" + AcheteurDAO.MATRICULE + "));";
 
     public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
 

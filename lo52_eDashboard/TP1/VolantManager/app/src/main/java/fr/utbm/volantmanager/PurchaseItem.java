@@ -3,6 +3,8 @@ package fr.utbm.volantmanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,7 +42,7 @@ public class PurchaseItem extends AppCompatActivity {
 
     private CustomAdapter adapter;
     private List<LotInfo> myLotInfos = new ArrayList<>();
-    private TextView quantity;
+    //private TextView quantity;
     private TextView totalPrice;
     private VolantsDAO volantsDAO;
     private LotVolantDAO lotVolantDAO;
@@ -49,6 +51,7 @@ public class PurchaseItem extends AppCompatActivity {
     private TextView acheteurSociety;
     private CheckBox payed;
     private Intent intent;
+    private EditText quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +62,7 @@ public class PurchaseItem extends AppCompatActivity {
 
         Spinner volantsSP = (Spinner) findViewById(R.id.volants_sp);
         totalPrice = (TextView) findViewById(R.id.total_price_tv);
-        quantity = (TextView) findViewById(R.id.quantity_tv);
+        //quantity = (TextView) findViewById(R.id.quantity_tv);
         acheteurName = (TextView) findViewById(R.id.acheteur_name_et);
         acheteurFamily = (TextView) findViewById(R.id.acheteur_family_et);
         acheteurSociety = (TextView) findViewById(R.id.acheteur_society_et);
@@ -69,6 +72,8 @@ public class PurchaseItem extends AppCompatActivity {
         final Button minusQuantity = (Button) findViewById(R.id.minus_b);
         final Button updatePayedButton = (Button) findViewById(R.id.updatePayed_b);
         final Button valideButton = (Button) findViewById(R.id.validate_b);
+        quantity = (EditText) findViewById(R.id.quantity_et);
+
 
         volantsDAO = new VolantsDAO(PurchaseItem.this);
         lotVolantDAO = new LotVolantDAO(PurchaseItem.this);
@@ -101,6 +106,7 @@ public class PurchaseItem extends AppCompatActivity {
             acheteurSociety.setText(retrievedInfos.getAcheteurSociété());
             acheteurSociety.setFocusable(false);
             quantity.setText("" + retrievedInfos.getQuantité());
+            quantity.setFocusable(false);
 
             int position = 0;
             int index = 0;
@@ -134,7 +140,6 @@ public class PurchaseItem extends AppCompatActivity {
             updatePayedButton.setVisibility(View.GONE);
         }
 
-
         volantsSP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 String ref = ((TextView)view.findViewById(R.id.lot_ref_tv)).getText().toString();
@@ -162,6 +167,29 @@ public class PurchaseItem extends AppCompatActivity {
                 } else {
                     payed.setTextColor(getResources().getColor(R.color.unpayed));
                     payed.setText("Non payé");
+                }
+
+            }
+        });
+
+        quantity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Log.d("eDBTEAM/PurchaseItem", "TextChanged -> " + quantity.getText().toString());
+                if(!quantity.getText().toString().equals("")) {
+                    totalPrice.setText("" + String.format("%.2f", updatePrice()) + "€");
+                } else {
+                    quantity.setText("0");
                 }
 
             }
@@ -200,7 +228,7 @@ public class PurchaseItem extends AppCompatActivity {
             acheterDAO.open();
 
             dateDAO.addDate(new Date(new java.util.Date()));
-            acheteurDAO.addAcheteur(new Acheteur(acheteurName.getText().toString(), acheteurFamily.getText().toString(), acheteurSociety.getText().toString()));
+            long acheteurID = acheteurDAO.addAcheteur(new Acheteur(acheteurName.getText().toString(), acheteurFamily.getText().toString(), acheteurSociety.getText().toString()));
 
             String prixString = ((TextView) findViewById(R.id.lot_prix_tv)).getText().toString();
             float prix = Float.valueOf(prixString.substring(0, prixString.length() - 1).replace(',','.'));
@@ -208,7 +236,7 @@ public class PurchaseItem extends AppCompatActivity {
             String tailleString = ((TextView) findViewById(R.id.lot_taille_tv)).getText().toString();
             int taille = Integer.valueOf(tailleString);
             long lotID = volantsDAO.getLotVolantID(((TextView) findViewById(R.id.lot_marque_tv)).getText().toString(), ((TextView) findViewById(R.id.lot_ref_tv)).getText().toString());
-            acheterDAO.addAcheter(new Acheter(lotID, dateDAO.getMaxID(dateDAO.TABLE_NAME, dateDAO.ID), acheteurDAO.getMaxID(acheteurDAO.TABLE_NAME, acheteurDAO.MATRICULE), Integer.valueOf(this.quantity.getText().toString()), payed.isChecked()));
+            acheterDAO.addAcheter(new Acheter(lotID, dateDAO.getMaxID(dateDAO.TABLE_NAME, dateDAO.ID), acheteurID, Integer.valueOf(this.quantity.getText().toString()), payed.isChecked()));
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }

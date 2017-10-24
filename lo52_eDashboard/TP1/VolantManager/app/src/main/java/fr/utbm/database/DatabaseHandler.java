@@ -5,14 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import fr.utbm.DAO.AcheteurDAO;
+import fr.utbm.DAO.DateDAO;
 import fr.utbm.DAO.LotVolantDAO;
 import fr.utbm.DAO.VolantsDAO;
 import fr.utbm.entity.LotVolant;
 import fr.utbm.entity.Volant;
-
-/**
- * Created by Exige on 23/09/2017.
- */
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -33,7 +31,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     VOLANT_MARQUE + " TEXT, " +
                     VOLANT_REF + " TEXT, " +
                     VOLANT_CLASSEMENT + " INTEGER, " +
-                    VOLANT_LOT_ID + " INTEGER);";
+                    VOLANT_LOT_ID + " INTEGER, " +
+                    "FOREIGN KEY(" + VOLANT_LOT_ID + ") REFERENCES " + LotVolantDAO.TABLE_NAME + "(" + LotVolantDAO.ID + "));";
 
     public static final String VOLANTS_TABLE_DROP = "DROP TABLE IF EXISTS " + VOLANTS_TABLE_NAME + ";";
 
@@ -111,7 +110,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     ACHETER_DATE_ID + " INTEGER, " +
                     ACHETER_ACHETEUR_ID + " INTEGER, " +
                     ACHETER_QUANTITE + " INTEGER, " +
-                    ACHETER_PAYED + " INTEGER);";
+                    ACHETER_PAYED + " INTEGER, " +
+                    "FOREIGN KEY(" + ACHETER_LOT_ID + ") REFERENCES " + LotVolantDAO.TABLE_NAME + "(" + LotVolantDAO.ID + "), " +
+                    "FOREIGN KEY(" + ACHETER_DATE_ID + ") REFERENCES " + DateDAO.TABLE_NAME + "(" + DateDAO.ID + "), " +
+                    "FOREIGN KEY(" + ACHETER_ACHETEUR_ID + ") REFERENCES " + AcheteurDAO.TABLE_NAME + "(" + AcheteurDAO.MATRICULE + "));";
 
     public static final String ACHETER_TABLE_DROP = "DROP TABLE IF EXISTS " + ACHETER_TABLE_NAME + ";";
 
@@ -122,20 +124,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(VOLANTS_TABLE_CREATE);
         sqLiteDatabase.execSQL(LOTVOLANT_TABLE_CREATE);
         sqLiteDatabase.execSQL(ACHETEUR_TABLE_CREATE);
         sqLiteDatabase.execSQL(DATE_TABLE_CREATE);
+        sqLiteDatabase.execSQL(VOLANTS_TABLE_CREATE);
         sqLiteDatabase.execSQL(ACHETER_TABLE_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         Log.d("eDBTEAM/DatabaseHandler", "Updating database (from v" + oldVersion + " to v" + newVersion + ")");
-        sqLiteDatabase.execSQL(VOLANTS_TABLE_DROP);
         sqLiteDatabase.execSQL(LOTVOLANT_TABLE_DROP);
         sqLiteDatabase.execSQL(ACHETEUR_TABLE_DROP);
         sqLiteDatabase.execSQL(DATE_TABLE_DROP);
+        sqLiteDatabase.execSQL(VOLANTS_TABLE_DROP);
         sqLiteDatabase.execSQL(ACHETER_TABLE_DROP);
         onCreate(sqLiteDatabase);
     }

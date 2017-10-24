@@ -1,9 +1,5 @@
 package fr.utbm.entity;
 
-/**
- * Created by Exige on 23/09/2017.
- */
-
 public class Volant {
 
     private long id;
