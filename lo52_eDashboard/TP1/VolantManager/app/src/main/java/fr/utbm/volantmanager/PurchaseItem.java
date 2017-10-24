@@ -8,21 +8,15 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import fr.utbm.DAO.AcheterDAO;
@@ -36,7 +30,6 @@ import fr.utbm.entity.Acheter;
 import fr.utbm.entity.Acheteur;
 import fr.utbm.entity.Date;
 import fr.utbm.util.CustomAdapter;
-import fr.utbm.volantmanager.R;
 
 public class PurchaseItem extends AppCompatActivity {
 

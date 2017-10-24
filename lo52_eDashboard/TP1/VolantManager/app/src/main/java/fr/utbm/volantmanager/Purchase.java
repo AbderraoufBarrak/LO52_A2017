@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +19,10 @@ import fr.utbm.DAO.LotVolantDAO;
 import fr.utbm.DAO.VolantsDAO;
 import fr.utbm.beans.AchatInfo;
 import fr.utbm.entity.Acheter;
-import fr.utbm.entity.Acheteur;
-import fr.utbm.entity.Date;
 import fr.utbm.util.AchatInfoCustomAdapter;
-import fr.utbm.util.CustomAdapter;
-import fr.utbm.volantmanager.R;
 
-// TODO - L'affichage de l'activité Purchase est peut-être pas opti
-// TODO - Ajouter plus d'entrées en BDD. Garder le remplissage ici BDD ici ? Le basculer sur la première activité ? Faudrait qu'il soit fixe aussi, au lieu de tout supprimer & remettre à chaque fois
+
 // TODO - Tri sur la ListView ? par date ? par acheteur ? par prix ?
-// TODO - Y'a des open() sans close() partout
 // TODO - Surbrillance item selectionné
 
 public class Purchase extends AppCompatActivity {
@@ -82,5 +76,16 @@ public class Purchase extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        // avec le bouton retour, on retombe automatiquement sur la page d'accueil
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        return true;
     }
 }

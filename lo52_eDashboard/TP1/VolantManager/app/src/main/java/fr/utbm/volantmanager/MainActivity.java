@@ -3,6 +3,8 @@ package fr.utbm.volantmanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
             volantsDAO.addVolant(new Volant("eDBTEAM", "B3ST V0LANT", "3", (int) (lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID))));
             volantsDAO.addVolant(new Volant("Undefined", "Undefined", "0", (int) (lotVolantDAO.getMaxID(lotVolantDAO.TABLE_NAME, lotVolantDAO.ID))));
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        // on ne fait rien quand on est sur la page d'accueil
+        return true;
     }
 
     /**
