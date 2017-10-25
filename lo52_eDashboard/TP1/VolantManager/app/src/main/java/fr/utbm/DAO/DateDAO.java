@@ -5,13 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-import fr.utbm.entity.Acheteur;
 import fr.utbm.entity.Date;
 
 public class DateDAO extends DAOManager {
@@ -90,7 +87,7 @@ public class DateDAO extends DAOManager {
                                 " from " +
                                 TABLE_NAME, null);
 
-        Date date = new Date(0, null);
+        Date date;
         List<Date> dates = new ArrayList<>();
         while (c.moveToNext()) {
             date = new Date(c.getLong(0), new java.util.Date(c.getString(1)));

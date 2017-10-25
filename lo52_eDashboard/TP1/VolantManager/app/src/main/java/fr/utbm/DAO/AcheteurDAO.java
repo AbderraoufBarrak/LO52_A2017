@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.utbm.entity.Acheteur;
-import fr.utbm.entity.Volant;
 
 public class AcheteurDAO extends DAOManager {
 

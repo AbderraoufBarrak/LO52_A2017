@@ -16,7 +16,6 @@ import java.util.List;
 import fr.utbm.DAO.LotVolantDAO;
 import fr.utbm.DAO.VolantsDAO;
 import fr.utbm.beans.LotInfo;
-import fr.utbm.entity.LotVolant;
 import fr.utbm.entity.Volant;
 import fr.utbm.util.CustomAdapter;
 

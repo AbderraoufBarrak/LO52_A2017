@@ -8,9 +8,6 @@ import android.util.Log;
 import fr.utbm.DAO.AcheteurDAO;
 import fr.utbm.DAO.DateDAO;
 import fr.utbm.DAO.LotVolantDAO;
-import fr.utbm.DAO.VolantsDAO;
-import fr.utbm.entity.LotVolant;
-import fr.utbm.entity.Volant;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 

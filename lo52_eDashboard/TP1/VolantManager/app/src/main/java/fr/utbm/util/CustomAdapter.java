@@ -1,7 +1,6 @@
 package fr.utbm.util;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import java.util.List;
 
 import fr.utbm.beans.LotInfo;
 import fr.utbm.volantmanager.R;
-import fr.utbm.volantmanager.VolantsDisplay;
 
 public class CustomAdapter extends BaseAdapter {
 

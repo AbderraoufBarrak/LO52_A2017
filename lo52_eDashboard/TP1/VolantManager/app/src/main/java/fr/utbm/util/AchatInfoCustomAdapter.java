@@ -2,23 +2,17 @@ package fr.utbm.util;
 
 import android.app.Activity;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import fr.utbm.beans.AchatInfo;
-import fr.utbm.beans.LotInfo;
 import fr.utbm.volantmanager.R;
 
 public class AchatInfoCustomAdapter extends BaseAdapter {

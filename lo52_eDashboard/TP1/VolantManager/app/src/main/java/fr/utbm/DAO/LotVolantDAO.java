@@ -154,7 +154,7 @@ public class LotVolantDAO extends DAOManager {
                                 " from " +
                                 TABLE_NAME + " l inner join " + vDAO.TABLE_NAME + " v on l." + ID + "=v." + vDAO.LOT_ID, null);
 
-        LotInfo vi = new LotInfo(0, null, null, null, 0, 0);
+        LotInfo vi;
         List<LotInfo> vis = new ArrayList<>();
         while (c.moveToNext()) {
             vi = new LotInfo(c.getLong(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4), c.getFloat(5));

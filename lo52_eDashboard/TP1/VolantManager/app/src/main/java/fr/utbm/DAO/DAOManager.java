@@ -3,7 +3,6 @@ package fr.utbm.DAO;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import fr.utbm.database.DatabaseHandler;
 

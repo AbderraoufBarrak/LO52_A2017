@@ -184,23 +184,6 @@ public class VolantsDAO extends DAOManager {
         return volants;
     }
 
-    /*public long getLotVolantID(int taille, float prix, String marque, String ref, LotVolantDAO lvDAO) {
-        Cursor c =
-                sqLiteDatabase.rawQuery(
-                        "select v." +
-                                LOT_ID +
-                                " from " +
-                                TABLE_NAME + " v inner join " + lvDAO.TABLE_NAME + " l on v." + ID + "=l." + lvDAO.ID +
-                                " where l." + lvDAO.TAILLE + " = ? and l." + lvDAO.PRIX + " between ? and ? and v." + MARQUE + " = ? and v." + REF + " = ?", new String[] {String.valueOf(taille), String.valueOf(prix - 0.01), String.valueOf(prix + 0.01), marque, ref});
-        long id = 0;
-        Log.d("eDBTEAM/VolantsDAO", "getVolantID(" + String.valueOf(taille) + ", " + String.valueOf(prix) + ", " + marque + ", " + ref + ")");
-        while (c.moveToNext()) {
-            id = c.getLong(0);
-            Log.d("eDBTEAM/LotVolantDAO", "getLotVolantID -> " + id);
-        }
-        c.close();
-        return id;
-    }*/
 
     public boolean isEmpty(){
         Cursor c =

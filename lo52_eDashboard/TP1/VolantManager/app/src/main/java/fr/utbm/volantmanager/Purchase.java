@@ -21,10 +21,6 @@ import fr.utbm.beans.AchatInfo;
 import fr.utbm.entity.Acheter;
 import fr.utbm.util.AchatInfoCustomAdapter;
 
-
-// TODO - Tri sur la ListView ? par date ? par acheteur ? par prix ?
-// TODO - Surbrillance item selectionné
-
 public class Purchase extends AppCompatActivity {
 
     private AchatInfoCustomAdapter adapter;
@@ -65,7 +61,6 @@ public class Purchase extends AppCompatActivity {
 
         adapter = new AchatInfoCustomAdapter(this, achatInfos);
         achatsLV.setAdapter(adapter);
-
         adapter.updateRecords(achatInfos);
 
         achatsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -35,7 +35,6 @@ public class PurchaseItem extends AppCompatActivity {
 
     private CustomAdapter adapter;
     private List<LotInfo> myLotInfos = new ArrayList<>();
-    //private TextView quantity;
     private TextView totalPrice;
     private VolantsDAO volantsDAO;
     private LotVolantDAO lotVolantDAO;
@@ -55,7 +54,6 @@ public class PurchaseItem extends AppCompatActivity {
 
         Spinner volantsSP = (Spinner) findViewById(R.id.volants_sp);
         totalPrice = (TextView) findViewById(R.id.total_price_tv);
-        //quantity = (TextView) findViewById(R.id.quantity_tv);
         acheteurName = (TextView) findViewById(R.id.acheteur_name_et);
         acheteurFamily = (TextView) findViewById(R.id.acheteur_family_et);
         acheteurSociety = (TextView) findViewById(R.id.acheteur_society_et);

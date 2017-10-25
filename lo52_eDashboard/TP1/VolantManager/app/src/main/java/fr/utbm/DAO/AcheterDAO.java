@@ -10,8 +10,6 @@ import java.util.List;
 
 import fr.utbm.beans.AchatInfo;
 import fr.utbm.entity.Acheter;
-import fr.utbm.entity.Date;
-import fr.utbm.entity.Volant;
 
 public class AcheterDAO extends DAOManager {
 
@@ -178,7 +176,7 @@ public class AcheterDAO extends DAOManager {
                                 lotVolantDAO.TABLE_NAME + " lot inner join " + TABLE_NAME + " acher on lot." +  lotVolantDAO.ID + "=acher." + LOT_ID + " inner join " + acheteurDAO.TABLE_NAME + " acheur on acher." + ACHETEUR_ID + "=acheur." + acheteurDAO.MATRICULE + " inner join " + dateDAO.TABLE_NAME + " dat on acher." + DATE_ID + "=dat." + dateDAO.ID + " inner join " + vDAO.TABLE_NAME + " vol on lot." + lotVolantDAO.ID + "=vol." + vDAO.ID,null);
 
 
-        AchatInfo achat = new AchatInfo(0, false, 0, 0, 0, 0, null, null, null, null, 0, 0, null, null, null);
+        AchatInfo achat;
         List<AchatInfo> achats = new ArrayList<>();
         Log.d("eDBTEAM/AcheterDAO", "cursorsize -> " + c.getCount());
         while (c.moveToNext()) {
