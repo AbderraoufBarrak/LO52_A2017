@@ -35,6 +35,7 @@ public class StockAdapter extends ArrayAdapter {
             viewHolder.marque = (TextView) convertView.findViewById(R.id.marque);
             viewHolder.ref = (TextView) convertView.findViewById(R.id.ref);
             viewHolder.stock = (TextView) convertView.findViewById(R.id.stock);
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
             convertView.setTag(viewHolder);
         }
 
@@ -43,6 +44,8 @@ public class StockAdapter extends ArrayAdapter {
         viewHolder.marque.setText(elem.getMarque());
         viewHolder.ref.setText(elem.getRef());
         viewHolder.stock.setText("" + elem.getStock());
+        viewHolder.image.setImageResource(elem.getImage());
+
 
         return convertView;
     }
@@ -51,5 +54,6 @@ public class StockAdapter extends ArrayAdapter {
         public TextView marque;
         public TextView ref;
         public TextView stock;
+        public ImageView image;
     }
 }

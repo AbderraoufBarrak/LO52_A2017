@@ -1,5 +1,14 @@
 package io.hervenrv.shuttlesmgmt;
 
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 /**
  * Created by basile on 21/10/17.
  */
@@ -7,12 +16,14 @@ package io.hervenrv.shuttlesmgmt;
 public class ListEntry {
     private String marque;
     private String ref;
+    private int imageId;
     private int stock;
 
-    public ListEntry(String marque, String ref, int stock){
+    public ListEntry(String marque, String ref, int stock, int imageId){
         this.marque = marque;
         this.ref = ref;
         this.stock = stock;
+        this.imageId = imageId;
     }
 
     public String getMarque(){
@@ -37,6 +48,14 @@ public class ListEntry {
 
     public void setStock(int stock){
         this.stock = stock;
+    }
+
+    public  void setImage(int imageId){
+        this.imageId = imageId;
+    }
+
+    public int getImage(){
+        return imageId;
     }
 
 }
