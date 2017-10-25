@@ -138,19 +138,28 @@ public class MainActivity extends AppCompatActivity {
                 mImage = itemView.findViewById(R.id.card_image);
                 itemView.setClickable(true);
                 itemView.setOnClickListener(this);
+
+                itemView.findViewById(R.id.action_acheter).setClickable(true);
+                itemView.findViewById(R.id.action_acheter).setOnClickListener(this);
+                itemView.findViewById(R.id.action_vendre).setClickable(true);
+                itemView.findViewById(R.id.action_vendre).setOnClickListener(this);
                 context = itemView.getContext();
             }
 
             @Override
             public void onClick(View v) {
                 int item_row = getAdapterPosition() + 1;
-                Toast.makeText(context,"The Item Clicked is: "+item_row,Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, DisplayDescription.class);
-                intent.putExtra("ITEM_ROW", item_row);
-                context.startActivity(intent);
+                if (v.getId() == R.id.action_acheter){
+                    Toast.makeText(context,"You pressed 'achat' button",Toast.LENGTH_SHORT).show();
+                }else if(v.getId() == R.id.action_vendre){
+                    Toast.makeText(context,"You pressed 'vendre' button",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(context,"The Item Clicked is: "+item_row,Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, DisplayDescription.class);
+                    intent.putExtra("ITEM_ROW", item_row);
+                    context.startActivity(intent);
+                }
             }
         }
-
     }
-
 }

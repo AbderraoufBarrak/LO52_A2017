@@ -49,12 +49,12 @@
 
         <Button
             android:id="@+id/action_acheter"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/card_image"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="?attr/colorPrimary"
-            android:text="Acheter" />
+            android:text="Acheter"
+            android:textColor="?attr/colorPrimary" />
 
         <Button
             android:id="@+id/action_vendre"
