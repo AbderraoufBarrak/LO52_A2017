@@ -83,7 +83,7 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         return db.insert(FFBadDbContract.Customer.TABLE_NAME, null, values);
     }
 
-    private long createSale(SQLiteDatabase db, int customer_id, int shuttlecock_id, double price, int quantity, boolean is_paid) {
+    static public long createSale(SQLiteDatabase db, int customer_id, int shuttlecock_id, double price, int quantity, boolean is_paid) {    //TODO remettre en pas static et private
         ContentValues values = new ContentValues();
 
         values.put(FFBadDbContract.Sale.COLUMN_NAME_CUSTOMER, customer_id);

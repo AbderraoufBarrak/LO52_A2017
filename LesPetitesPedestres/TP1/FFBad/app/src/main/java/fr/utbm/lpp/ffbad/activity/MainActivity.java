@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import fr.utbm.lpp.ffbad.R;
+import fr.utbm.lpp.ffbad.activity.fragment.BuyFormFragment;
 import fr.utbm.lpp.ffbad.activity.fragment.InfoFragment;
 import fr.utbm.lpp.ffbad.activity.fragment.SaleListFragment;
 import fr.utbm.lpp.ffbad.activity.fragment.StockListFragment;
