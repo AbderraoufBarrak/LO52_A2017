@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import fr.utbm.lpp.ffbad.FFBadApplication;
@@ -25,7 +26,8 @@ import fr.utbm.lpp.ffbad.data.db.FFbadDbHelper;
 public class BuyFormFragment extends Fragment {
 
     Button _btnbuy;
-    EditText _txtbrand, _txtmodel, _txtquantity, _txtbuyerName, _txtpayed;
+    EditText _txtbrandmodel, _txtquantity, _txtbuyerName;
+    Switch _swipayed;
 
 
 
@@ -55,26 +57,28 @@ public class BuyFormFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         final FFBadApplication app = (FFBadApplication) getActivity().getApplication();
         _btnbuy = (Button) getView().findViewById(R.id.btnbuy);
-        _txtbrand = (EditText) getView().findViewById(R.id.txtbrand);
-        _txtmodel = (EditText) getView().findViewById(R.id.txtmodel);
+        _txtbrandmodel = (EditText) getView().findViewById(R.id.txtbrandmodel);
         _txtquantity = (EditText) getView().findViewById(R.id.txtquantity);
         _txtbuyerName = (EditText) getView().findViewById(R.id.txtbuyerName);
-        _txtpayed = (EditText) getView().findViewById(R.id.txtpayed);
+        _swipayed = (Switch) getView().findViewById(R.id.swipayed);
         _btnbuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                String brand = _txtbrand.getText().toString();
-                String model = _txtmodel.getText().toString();
+                String model = _txtbrandmodel.getText().toString();
                 String quantity = _txtquantity.getText().toString();
                 String buyerName = _txtbuyerName.getText().toString();
-                String payed = _txtpayed.getText().toString();
+
                 int customer_id = 152;
                 int shuttlecock_id = 14;
                 double price = 42.53;
                 int quantity2 = 7;
-                boolean is_paid = false;
+                boolean is_paid = _swipayed.isChecked();
                 FFbadDbHelper.createSale(app.getDb(), customer_id, shuttlecock_id, price, quantity2, is_paid);
-                Toast.makeText(getContext(), "update db", Toast.LENGTH_LONG).show();
+                if(is_paid) {
+                    Toast.makeText(getContext(), "update db", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), "update db nop", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
