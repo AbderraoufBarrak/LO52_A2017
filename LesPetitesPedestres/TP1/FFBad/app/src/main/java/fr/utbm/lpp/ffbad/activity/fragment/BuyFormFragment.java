@@ -18,7 +18,7 @@ import fr.utbm.lpp.ffbad.data.db.FFbadDbHelper;
 public class BuyFormFragment extends Fragment {
 
     Button _btnbuy;
-    EditText _txtbrandmodel, _txtquantity, _txtbuyerName;
+    EditText _txtbrandmodel, _txtquantity, _txtbuyerName, _txtprice;
     Switch _swipayed;
 
 
@@ -51,6 +51,8 @@ public class BuyFormFragment extends Fragment {
         _btnbuy = (Button) getView().findViewById(R.id.btnbuy);
         _txtbrandmodel = (EditText) getView().findViewById(R.id.txtbrandmodel);
         _txtquantity = (EditText) getView().findViewById(R.id.txtquantity);
+        _txtprice = (EditText) getView().findViewById(R.id.txtprice);
+        _txtprice.setText("42.30");
         _txtbuyerName = (EditText) getView().findViewById(R.id.txtbuyerName);
         _swipayed = (Switch) getView().findViewById(R.id.swipayed);
         _btnbuy.setOnClickListener(new View.OnClickListener() {
