@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_stock) {
             setFragment(StockListFragment.newInstance());
         } else if (id == R.id.nav_purchase) {
-
+            setFragment(BuyFormFragment.newInstance());
         } else if (id == R.id.nav_info) {
             setFragment(InfoFragment.newInstance());
         }

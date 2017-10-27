@@ -24,7 +24,8 @@
         android:hint="Model"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="73dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtbrand" />
 
     <EditText
         android:id="@+id/txtquantity"
@@ -34,7 +35,8 @@
         android:hint="Quantity"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="116dp" />
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtmodel" />
 
     <EditText
         android:id="@+id/txtbuyerName"
@@ -44,7 +46,8 @@
         android:hint="Buyer's name"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="159dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtquantity" />
 
     <EditText
         android:id="@+id/txtpayed"
@@ -54,13 +57,15 @@
         android:hint="Payed?"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="202dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtbuyerName" />
 
     <Button
         android:id="@+id/btnbuy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buy"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="323dp" />
+        tools:layout_editor_absoluteX="148dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtpayed" />
 </android.support.constraint.ConstraintLayout>
