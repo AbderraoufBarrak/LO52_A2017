@@ -29,14 +29,19 @@ public class MainActivity extends AppCompatActivity
 
     private DrawerLayout drawer;
 
+    private NavigationView navigationView;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         setContentView(R.layout.activity_main);
         setupDrawerLayout();
 
-        // Initial view
-//        setFragment(SaleListFragment.newInstance());
+        if (savedInstanceState == null) {
+            setupInitialFragment();
+        }
     }
 
     protected void setupDrawerLayout() {
@@ -49,10 +54,10 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
 
-        // Select the 1st item in the drawer
+    private void setupInitialFragment() {
         navigationView.getMenu().getItem(0).setChecked(true);
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
     }
