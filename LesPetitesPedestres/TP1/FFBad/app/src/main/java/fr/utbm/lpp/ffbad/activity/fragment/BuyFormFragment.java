@@ -1,14 +1,7 @@
 package fr.utbm.lpp.ffbad.activity.fragment;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
-import android.support.v4.view.LayoutInflaterCompat;
-import android.support.v4.widget.TextViewCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +13,6 @@ import android.widget.Toast;
 
 import fr.utbm.lpp.ffbad.FFBadApplication;
 import fr.utbm.lpp.ffbad.R;
-import fr.utbm.lpp.ffbad.data.db.FFBadDbContract;
 import fr.utbm.lpp.ffbad.data.db.FFbadDbHelper;
 
 public class BuyFormFragment extends Fragment {
@@ -65,19 +57,19 @@ public class BuyFormFragment extends Fragment {
             @Override
             public void onClick(View v){
                 String model = _txtbrandmodel.getText().toString();
-                String quantity = _txtquantity.getText().toString();
                 String buyerName = _txtbuyerName.getText().toString();
 
                 int customer_id = 152;
                 int shuttlecock_id = 14;
                 double price = 42.53;
-                int quantity2 = 7;
+
+                int quantity = Integer.parseInt(_txtquantity.getText().toString());
                 boolean is_paid = _swipayed.isChecked();
-                FFbadDbHelper.createSale(app.getDb(), customer_id, shuttlecock_id, price, quantity2, is_paid);
+                FFbadDbHelper.createSale(app.getDb(), customer_id, shuttlecock_id, price, quantity, is_paid);
                 if(is_paid) {
-                    Toast.makeText(getContext(), "update db", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "update db y", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getContext(), "update db nop", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "update db n", Toast.LENGTH_LONG).show();
                 }
             }
         });
