@@ -47,7 +47,7 @@ public class AchatAdapter extends ArrayAdapter<Achat> {
         viewHolder.acheteur.setText(s.getAcheteur());
         viewHolder.ref.setText(s.getRef());
         viewHolder.qtt.setText(s.getQtt()+"");
-        viewHolder.prix.setText(s.getPrix()+"€");
+        viewHolder.prix.setText(String.format("%.2f",s.getPrix())+" €");
         viewHolder.paye.setImageDrawable(new ColorDrawable(s.isPaye()? Color.GREEN : Color.RED));
 
         return convertView;

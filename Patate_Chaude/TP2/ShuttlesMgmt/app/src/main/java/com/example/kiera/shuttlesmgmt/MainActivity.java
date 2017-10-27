@@ -11,8 +11,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
     public void clicStock(View view){
@@ -22,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void clicAchats(View view){
         Intent i = new Intent(this, AchatsActivity.class);
+        startActivity(i);
+    }
+
+    public void clicNouvelAchat(View view){
+        Intent i = new Intent(this, NouvelAchatActivity.class);
         startActivity(i);
     }
 }

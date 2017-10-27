@@ -49,7 +49,7 @@ public class StockAdapter extends ArrayAdapter<Stock>{
         viewHolder.marque.setText(s.getMarque());
         viewHolder.ref.setText(s.getRef());
         viewHolder.qtt.setText(s.getQtt()+"");
-        viewHolder.prix.setText(s.getPrix()+"€");
+        viewHolder.prix.setText(String.format("%.2f",s.getPrix())+" €");
         viewHolder.image.setImageResource(s.getImage());
 
         return convertView;

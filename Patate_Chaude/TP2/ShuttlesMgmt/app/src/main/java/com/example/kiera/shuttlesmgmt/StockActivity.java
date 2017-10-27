@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +27,19 @@ public class StockActivity extends AppCompatActivity {
     }
 
     private List<Stock> genererStock(){
-        List<Stock> s = new ArrayList<Stock>();
-        s.add(new Stock(R.drawable.t1, "Yonex", "AS30", 500, 27));
-        s.add(new Stock(R.drawable.t2, "RSL", "Grade 3", 5000, 16.7));
-        s.add(new Stock(R.drawable.t3, "RSL", "Grade A9", 10000, 13.7));
-        s.add(new Stock(R.drawable.t4, "RSL", "Grade A1", 6000, 21));
+        //List<Stock> s = new ArrayList<Stock>();
+
+        //Toast toast = Toast.makeText(this, "donnees fixes : "+R.drawable.t1, Toast.LENGTH_SHORT);
+        //toast.show();
+
+        //s.add(new Stock(R.drawable.t1, "Yonex", "AS30", 500, 27));
+        //s.add(new Stock(R.drawable.t2, "RSL", "Grade 3", 5000, 16.7));
+        //s.add(new Stock(R.drawable.t3, "RSL", "Grade A9", 10000, 13.7));
+        //s.add(new Stock(R.drawable.t4, "RSL", "Grade A1", 6000, 21));
+
+        Stock_BDD sBDD = new Stock_BDD(this);
+        List<Stock> s = sBDD.selectAll();
+        sBDD.close();
         return s;
     }
 
