@@ -1,13 +1,13 @@
-package com.example.shuttlesmgmt;
+package com.example.shuttlesmgmt.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.ListView;
+
+import com.example.shuttlesmgmt.entity.Achat;
+import com.example.shuttlesmgmt.R;
+import com.example.shuttlesmgmt.adapter.AchatAdapter;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

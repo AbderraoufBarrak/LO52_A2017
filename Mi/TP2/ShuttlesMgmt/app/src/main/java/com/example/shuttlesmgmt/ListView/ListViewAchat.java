@@ -1,7 +1,9 @@
-package com.example.shuttlesmgmt;
+package com.example.shuttlesmgmt.ListView;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.shuttlesmgmt.R;
 
 public class ListViewAchat extends AppCompatActivity {
 

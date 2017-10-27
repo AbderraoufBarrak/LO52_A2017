@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.shuttlesmgmt.MainActivity">
+    tools:context="com.example.shuttlesmgmt.activity.MainActivity">
 
     <Button
         android:id="@+id/btn_achat"
@@ -31,11 +31,22 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bonjour, appuyer sur l'un des deux bouttons"
+        android:text="Bonjour, appuyer sur l'un des 3 buttons"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         tools:layout_editor_absoluteX="171dp"
         tools:layout_editor_absoluteY="16dp"
         tools:text="@string/text" />
+
+    <Button
+        android:id="@+id/btn_dbAchat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DBAchat"
+        tools:text="DBAchat"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="134dp"
+        android:layout_marginLeft="161dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -1,9 +1,13 @@
-package com.example.shuttlesmgmt;
+package com.example.shuttlesmgmt.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
+
+import com.example.shuttlesmgmt.R;
+import com.example.shuttlesmgmt.entity.Stock;
+import com.example.shuttlesmgmt.adapter.StockAdapter;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

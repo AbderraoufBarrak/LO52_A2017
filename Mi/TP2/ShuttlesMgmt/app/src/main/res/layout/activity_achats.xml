@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.shuttlesmgmt.AchatsActivity">
+    tools:context="com.example.shuttlesmgmt.activity.AchatsActivity">
 
     <ListView
         android:id="@+id/id_listAchat"

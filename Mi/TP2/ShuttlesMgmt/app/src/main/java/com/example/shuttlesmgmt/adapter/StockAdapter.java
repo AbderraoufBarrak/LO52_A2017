@@ -1,4 +1,4 @@
-package com.example.shuttlesmgmt;
+package com.example.shuttlesmgmt.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.shuttlesmgmt.R;
+import com.example.shuttlesmgmt.entity.Stock;
+
 import java.util.List;
 
 /**

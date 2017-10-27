@@ -1,4 +1,4 @@
-package com.example.shuttlesmgmt;
+package com.example.shuttlesmgmt.entity;
 
 /**
  * Created by Michel on 2017/10/7.

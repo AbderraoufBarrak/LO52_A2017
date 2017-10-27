@@ -1,15 +1,16 @@
-package com.example.shuttlesmgmt;
+package com.example.shuttlesmgmt.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.shuttlesmgmt.entity.Achat;
+import com.example.shuttlesmgmt.R;
 
 import java.util.List;
 
