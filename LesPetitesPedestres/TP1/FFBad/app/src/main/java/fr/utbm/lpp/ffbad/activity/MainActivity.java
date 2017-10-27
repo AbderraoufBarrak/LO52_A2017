@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -23,7 +24,7 @@ import fr.utbm.lpp.ffbad.activity.fragment.StockListFragment;
 
 
 public class MainActivity extends AppCompatActivity
-    implements NavigationView.OnNavigationItemSelectedListener {
+    implements NavigationView.OnNavigationItemSelectedListener, SaleListFragment.OnSaleListFragmentEvent {
     public static final String TAG = "MainActivity";
 
     private DrawerLayout drawer;
@@ -95,9 +96,29 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void setFragment(Fragment fragment) {
+    private void setFragment(Fragment fragment, boolean addToStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        if(addToStack) {
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+    private void setFragment(Fragment fragment) {
+        setFragment(fragment, false);
+    }
+
+    @Override
+    public void onNewSaleElement() {
+        setFragment(BuyFormFragment.newInstance(), true);
+    }
+
+    @Override
+    public void onEditSaleElement(long id) {
+        // TODO
+        setFragment(BuyFormFragment.newInstance(), true);
     }
 }
