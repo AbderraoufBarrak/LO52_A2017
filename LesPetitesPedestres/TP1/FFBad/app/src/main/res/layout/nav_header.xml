@@ -18,13 +18,13 @@
         android:layout_height="60dp"
         android:adjustViewBounds="false"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/ic_badminton_shuttlecock_white" />
+        app:srcCompat="@drawable/ic_badminton_shuttlecock" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textColor="@color/colorPrimary"/>
 
 </LinearLayout>
