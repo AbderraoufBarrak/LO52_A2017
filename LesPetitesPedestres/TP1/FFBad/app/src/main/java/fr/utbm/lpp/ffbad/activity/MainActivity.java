@@ -125,6 +125,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onEditSaleElement(long id) {
         // TODO
-        setFragment(BuyFormFragment.newInstance(), true);
+        setFragment(BuyFormFragment.newInstance(id), true);
     }
 }

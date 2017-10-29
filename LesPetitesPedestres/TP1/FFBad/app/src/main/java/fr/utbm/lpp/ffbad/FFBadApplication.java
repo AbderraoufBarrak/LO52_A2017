@@ -19,4 +19,5 @@ public class FFBadApplication extends Application {
     public SQLiteDatabase getDb() {
         return db;
     }
+
 }

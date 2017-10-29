@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,11 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 import fr.utbm.lpp.ffbad.FFBadApplication;
 import fr.utbm.lpp.ffbad.R;
+import fr.utbm.lpp.ffbad.data.Sale;
 import fr.utbm.lpp.ffbad.data.adapter.SaleCursorAdapter;
 import fr.utbm.lpp.ffbad.data.adapter.ShuttlecockCursorAdapter;
 import fr.utbm.lpp.ffbad.data.db.FFBadDbContract;
@@ -29,9 +33,16 @@ public class BuyFormFragment extends Fragment {
     Spinner _spimodel;
 
 
-
     public static BuyFormFragment newInstance() {
         Bundle args = new Bundle();
+        BuyFormFragment fragment = new BuyFormFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static BuyFormFragment newInstance(long ID) {
+        Bundle args = new Bundle();
+        args.putLong("0", ID);
         BuyFormFragment fragment = new BuyFormFragment();
         fragment.setArguments(args);
         return fragment;
@@ -74,6 +85,9 @@ public class BuyFormFragment extends Fragment {
                 null
         );
 
+
+
+
         _spimodel = (Spinner) getView().findViewById(R.id.spimodel);
         ShuttlecockCursorAdapter adapter = new ShuttlecockCursorAdapter(this.getContext(), cursor);
         _spimodel.setAdapter(adapter);
@@ -84,6 +98,32 @@ public class BuyFormFragment extends Fragment {
         _txtprice.setText("42.30");
         _txtbuyerName = (EditText) getView().findViewById(R.id.txtbuyerName);
         _swipayed = (Switch) getView().findViewById(R.id.swipayed);
+
+        if(this.getArguments() != null){
+            final String MY_QUERY = "" +
+                    "SELECT * " +
+                    "FROM sale " +
+                        "INNER JOIN shuttlecock ON shuttlecock._id = sale.shuttlecock_id " +
+                        "INNER JOIN customer ON customer._id = sale.customer_id " +
+                    "WHERE sale._id = ?";
+
+            Log.d("SQL", MY_QUERY);
+
+            long a = getArguments().getLong("0");
+            String[] b = new String[1];
+            String c = String.valueOf(a);
+            Arrays.fill(b, c);
+            Cursor cursordb = app.getDb().rawQuery(MY_QUERY, b);    //TODO régler le problème d'index
+
+            Sale sale = FFBadDbContract.Sale.getFromCursor(cursordb);
+
+            _txtquantity.setText(sale.getQuantity());
+            //_txtprice.setText(sale.getPrice());
+            //_txtbuyerName.setText(sale.getCustomer());
+            _swipayed.setEnabled(sale.isPaid());
+            //_spimodel.setSelected();
+        }
+
         _btnbuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -105,6 +145,5 @@ public class BuyFormFragment extends Fragment {
                 }
             }
         });
-
     }
 }
