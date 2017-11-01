@@ -67,8 +67,8 @@ public class ProductDAOImpl extends DAO<Product> {
                 ShuttlesSchema.Product.PRODUCT_NAME + " = ? and " +
                 ShuttlesSchema.Product.PRODUCT_REFERENCE + " = ? and " +
                 ShuttlesSchema.Product.PRODUCT_STOCK + " = ? and " +
-                ShuttlesSchema.Product.PRODUCT_PRICE + " = ? " +
-                ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID,
+                ShuttlesSchema.Product.PRODUCT_PRICE + " = ? and " +
+                ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID + " = ? ",
                 obj.getProduct()
         );
         if(c != null){
@@ -91,12 +91,8 @@ public class ProductDAOImpl extends DAO<Product> {
                         " ) FROM " +
                         ShuttlesSchema.Product.PRODUCT_TABLE_NAME,
                 null);
-        if(c != null){
-            if(c.moveToFirst()){
-                return c.getLong(0) == 0;
-            }else{
-                return false;
-            }
+        if(c.moveToFirst()){
+            return c.getLong(0) == 0;
         }else{
             return false;
         }
@@ -104,7 +100,6 @@ public class ProductDAOImpl extends DAO<Product> {
 
     @Override
     public void readData(int datafile, Context c) {
-        if(deleteAll()==true){
             InputStream inputstream = c.getResources().openRawResource(datafile);
             List<Product> listProduct = new ArrayList<>();
             Product product;
@@ -137,7 +132,6 @@ public class ProductDAOImpl extends DAO<Product> {
             }else{
                 Log.i("AppInfo", "Jai pas trouve le fichier");
             }
-        }
     }
 
     @Override

@@ -12,7 +12,7 @@ public class ShuttlesSchema {
     public static final String COMMA = ",";
     public static final String SEMI_COLON = ";";
     public static final String START = " ( ";
-    public static final String END = " );";
+    public static final String END = " )" + SEMI_COLON;
     public static final String INTEGER = " INTEGER";
     public static final String PK_AUTO = " PRIMARY KEY AUTOINCREMENT";
     public static final String INTEGER_PK_AUTO = INTEGER + PK_AUTO + COMMA;
@@ -64,8 +64,8 @@ public class ShuttlesSchema {
                         ORDER_QUANTITY + INTEGER + COMMA +
                         ORDER_TOTAL_PRICE + INTEGER + COMMA +
                         ORDER_ISPAID + INTEGER + COMMA +
-                        FK + ORDER_PRODUCT_ID + REFERENCE + Product.PRODUCT_TABLE_NAME + START + Product.PRODUCT_ID + ")" + SEMI_COLON +
-                        FK + ORDER_CUSTOMER_ID + REFERENCE + Customer.CUSTOMER_TABLE_NAME + START + Customer.CUSTOMER_ID + END;
+                        FK + ORDER_PRODUCT_ID + REFERENCE + Product.PRODUCT_TABLE_NAME + START + Product.PRODUCT_ID + "), "+
+                        FK + ORDER_CUSTOMER_ID + REFERENCE + Customer.CUSTOMER_TABLE_NAME + START + Customer.CUSTOMER_ID + " ) "+END;
         public static final String ORDER_TABLE_DROP = DROP + ORDER_TABLE_NAME + SEMI_COLON;
 
         String[] ORDERS_COLUMS = new String[]{
@@ -119,7 +119,7 @@ public class ShuttlesSchema {
                         PRODUCT_STOCK + INTEGER + COMMA +
                         PRODUCT_PRICE + INTEGER + COMMA +
                         PRODUCT_SUPPLIER_ID + INTEGER + COMMA +
-                        FK + PRODUCT_SUPPLIER_ID + REFERENCE + Supplier.SUPPLIER_TABLE_NAME + START + Supplier.SUPPLIER_ID +END;
+                        FK + PRODUCT_SUPPLIER_ID + REFERENCE + Supplier.SUPPLIER_TABLE_NAME + START + Supplier.SUPPLIER_ID + " ) " + END;
         public static final String PRODUCT_TABLE_DROP = DROP + PRODUCT_TABLE_NAME + SEMI_COLON;
 
         String[] PRODUCTS_COLUMNS = new String[]{

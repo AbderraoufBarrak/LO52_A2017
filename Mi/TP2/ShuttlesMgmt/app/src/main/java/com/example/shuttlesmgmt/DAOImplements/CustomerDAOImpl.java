@@ -179,12 +179,9 @@ public class CustomerDAOImpl extends DAO<Customer> {
                         " ) FROM " +
                         ShuttlesSchema.Customer.CUSTOMER_TABLE_NAME,
                 null);
-        if(c != null){
-            if(c.moveToFirst()){
-                return c.getLong(0) == 0;
-            }else{
-                return false;
-            }
+
+        if(c.moveToFirst()){
+            return c.getLong(0) == 0;
         }else{
             return false;
         }
@@ -192,7 +189,6 @@ public class CustomerDAOImpl extends DAO<Customer> {
 
     @Override
     public void readData(int datafile, Context c) {
-        if(deleteAll()==true){
             InputStream inputstream = c.getResources().openRawResource(datafile);
             List<Customer> listCustomer = new ArrayList<>();
             Customer customer;
@@ -223,5 +219,4 @@ public class CustomerDAOImpl extends DAO<Customer> {
                 Log.i("AppInfo", "Jai pas trouve le fichier");
             }
         }
-    }
 }

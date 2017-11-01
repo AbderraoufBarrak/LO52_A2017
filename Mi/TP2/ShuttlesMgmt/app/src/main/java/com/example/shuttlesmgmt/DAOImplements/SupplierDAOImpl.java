@@ -158,12 +158,8 @@ public class SupplierDAOImpl extends DAO<Supplier> {
                         " ) FROM " +
                         ShuttlesSchema.Supplier.SUPPLIER_TABLE_NAME,
                 null);
-        if(c != null){
-            if(c.moveToFirst()){
-                return c.getLong(0) == 0;
-            }else{
-                return false;
-            }
+        if(c.moveToFirst()){
+            return c.getLong(0) == 0;
         }else{
             return false;
         }
@@ -171,7 +167,6 @@ public class SupplierDAOImpl extends DAO<Supplier> {
 
     @Override
     public void readData(int datafile, Context c) {
-        if(deleteAll()==true){
             InputStream inputstream = c.getResources().openRawResource(datafile);
             List<Supplier> listSupplier = new ArrayList<>();
             Supplier supplier;
@@ -201,7 +196,6 @@ public class SupplierDAOImpl extends DAO<Supplier> {
             }else{
                 Log.i("AppInfo", "Jai pas trouve le fichier");
             }
-        }
     }
 
     @Override

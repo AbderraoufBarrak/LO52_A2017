@@ -123,12 +123,9 @@ public class OrderDAOImpl extends DAO<Order> {
                         " ) FROM " +
                         ShuttlesSchema.Order.ORDER_TABLE_NAME,
                 null);
-        if(c != null){
-            if(c.moveToFirst()){
-                return c.getLong(0) == 0;
-            }else{
-                return false;
-            }
+
+        if(c.moveToFirst()){
+            return c.getLong(0) == 0;
         }else{
             return false;
         }
@@ -192,7 +189,6 @@ public class OrderDAOImpl extends DAO<Order> {
 
     @Override
     public void readData(int datafile, Context c) {
-        if(deleteAll()==true){
             InputStream inputstream = c.getResources().openRawResource(datafile);
             List<Order> listOrder = new ArrayList<>();
             Order order;
@@ -225,7 +221,6 @@ public class OrderDAOImpl extends DAO<Order> {
             }else{
                 Log.i("AppInfo", "Jai pas trouve le fichier");
             }
-        }
     }
 
     @Override

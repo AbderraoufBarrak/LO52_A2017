@@ -41,18 +41,20 @@ public class DBMode extends AppCompatActivity {
         productDAO.openWrite();
 
         if(supplierDAO.isEmpty()){
+            Log.i("AppInfo", "SupplierDAO is empty");
             supplierDAO.readData(R.raw.data_supplier, DBMode.this);
         }
         if(productDAO.isEmpty()){
+            Log.i("AppInfo", "ProductDAO is empty");
             productDAO.readData(R.raw.data_product, DBMode.this);
         }
         if(customerDAO.isEmpty()) {
+            Log.i("AppInfo", "CustomerDAO is empty");
             customerDAO.readData(R.raw.data_customer, DBMode.this);
         }
         if(orderDAO.isEmpty()){
-            if(customerDAO.isEmpty()==false && productDAO.isEmpty() == false){
-                orderDAO.readData(R.raw.data_order, DBMode.this);
-            }
+            Log.i("AppInfo", "OrderDAO is empty");
+            orderDAO.readData(R.raw.data_order, DBMode.this);
         }
     }
 
