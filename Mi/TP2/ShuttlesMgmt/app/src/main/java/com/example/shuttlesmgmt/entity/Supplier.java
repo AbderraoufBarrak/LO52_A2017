@@ -1,33 +1,33 @@
 package com.example.shuttlesmgmt.entity;
 
 /**
- * Created by Michel on 2017/10/27.
+ * Created by Michel on 2017/10/30.
  */
 
-public class Customer {
+public class Supplier {
     private long id;
     private String name;
     private String add;
     private String phone;
-    private String[] customer;
+    private String[] supplier;
 
-    public Customer(){
+    public Supplier(){
 
     }
 
-    public Customer(long id, String name, String add, String phone){
+    public Supplier(long id, String name, String add, String phone){
         this.id = id;
         this.name = name;
         this.add = add;
         this.phone = phone;
     }
 
-    public long getId(){
-        return id;
-    }
-
     public void setId(long id){
         this.id = id;
+    }
+
+    public long getId(){
+        return id;
     }
 
     public String getName(){
@@ -50,16 +50,15 @@ public class Customer {
         return phone;
     }
 
-    public void setPhone(String phone){
-        this.phone = phone;
+    public void setPhone(String p){
+        this.phone = p;
     }
 
-    public String[] getCustomer(){
-        customer = new String[]{
+    public String[] getSupplier(){
+        return supplier = new String[]{
                 getName(),
                 getAdd(),
                 getPhone()
         };
-        return customer;
     }
 }

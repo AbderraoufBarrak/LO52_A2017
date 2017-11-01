@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.shuttlesmgmt.R;
+import com.example.shuttlesmgmt.activity.DBActivity.DBMode;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         dbBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, AchatsActivity.class);//Changement de class apres
+                Intent intent = new Intent(MainActivity.this, DBMode.class);
                 startActivity(intent);
             }
         });

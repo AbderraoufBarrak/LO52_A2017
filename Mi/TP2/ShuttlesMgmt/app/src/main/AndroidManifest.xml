@@ -25,7 +25,20 @@
             android:label="@string/title_activity_stock"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ListView.ListviewStock" />
-        <activity android:name=".ListView.ListViewAchat"></activity>
+        <activity android:name=".ListView.ListViewAchat" />
+        <activity android:name=".activity.DBActivity.DBMode" />
+        <activity android:name=".activity.DBActivity.CustomerActivity" />
+        <activity android:name=".activity.DBActivity.SupplierActivity" />
+        <activity android:name=".activity.DBActivity.OrderActivity" />
+        <activity android:name=".activity.DBActivity.ProductActivity" />
+        <activity android:name=".activity.addActivity.AddCustomer" />
+        <activity android:name=".activity.addActivity.AddSupplier" />
+        <activity android:name=".activity.addActivity.AddOrder" />
+        <activity android:name=".activity.addActivity.AddProduct" />
+        <activity android:name=".ListView.ListViewCustomer" />
+        <activity android:name=".ListView.ListViewSupplier" />
+        <activity android:name=".ListView.ListViewOrder" />
+        <activity android:name=".ListView.ListViewProduct"></activity>
     </application>
 
 </manifest>
