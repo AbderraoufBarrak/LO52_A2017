@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/addCustomer"
+        android:title="addC"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/addSupplier"
+        android:title="addS"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/addProduct"
+        android:title="addP"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_supplier"
+        android:title="Supplier"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_order"
+        android:title="Order"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_customer"
+        android:title="Customer"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_product"
+        android:title="Product"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/addOrder"
+        android:title="addO"
+        app:showAsAction="always" />
+
+</menu>
