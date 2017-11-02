@@ -72,4 +72,9 @@ public class Sale {
     public void setPaid(boolean paid) {
         isPaid = paid;
     }
+
+    @Override
+    public String toString() {
+        return "[id=" + id + ", price=" + getPrice() + ", quantity=" + getQuantity() + ", isPaid=" + isPaid() + ", customer=" + getCustomer() + ", shuttlecock=" + getShuttlecock() + "]";
+    }
 }
