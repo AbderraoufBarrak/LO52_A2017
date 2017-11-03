@@ -25,27 +25,30 @@
         android:textStyle="bold"
         tools:text="Marque" />
 
-    <TextView android:id="@+id/ref"
+    <TextView
+        android:id="@+id/qtt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
         android:layout_toEndOf="@+id/marque"
-        tools:text="Reference" />
+        android:textColor="@android:color/black"
+        tools:text="Qtt" />
 
-    <TextView android:id="@+id/qtt"
+    <TextView
+        android:id="@+id/ref"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
         android:layout_alignStart="@+id/marque"
         android:layout_below="@+id/marque"
-        tools:text="QTT" />
+        android:textColor="@android:color/black"
+        tools:text="Reference" />
 
-    <TextView android:id="@+id/prix"
+    <TextView
+        android:id="@+id/prix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/qtt"
+        android:layout_toEndOf="@+id/marque"
         android:textColor="@android:color/black"
-        android:layout_alignStart="@+id/ref"
-        android:layout_below="@+id/ref"
         tools:text="prix" />
 
 </RelativeLayout>
