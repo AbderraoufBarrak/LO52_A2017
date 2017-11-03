@@ -61,7 +61,7 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         db.execSQL(FFBadDbContract.Purchase.SQL_DELETE_ENTRIES);
     }
 
-    private long createShuttlecock (SQLiteDatabase db, String brand, String ref, int stock, double price, int rating) {
+    static public long createShuttlecock (SQLiteDatabase db, String brand, String ref, int stock, double price, int rating) {
         ContentValues values = new ContentValues();
 
         values.put(FFBadDbContract.Shuttlecock.COLUMN_NAME_BRAND, brand);
@@ -74,7 +74,7 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         return rowID;
     }
 
-    private long createCustomer(SQLiteDatabase db, String name, CustomerType type) {
+    static public long createCustomer(SQLiteDatabase db, String name, CustomerType type) {
         ContentValues values = new ContentValues();
 
         values.put(FFBadDbContract.Customer.COLUMN_NAME_NAME, name);
@@ -83,7 +83,7 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         return db.insert(FFBadDbContract.Customer.TABLE_NAME, null, values);
     }
 
-    static public long createSale(SQLiteDatabase db, int customer_id, int shuttlecock_id, double price, int quantity, boolean is_paid) {    //TODO remettre en pas static et private
+    static public long createSale(SQLiteDatabase db, long customer_id, long shuttlecock_id, double price, int quantity, boolean is_paid) {
         ContentValues values = new ContentValues();
 
         values.put(FFBadDbContract.Sale.COLUMN_NAME_CUSTOMER, customer_id);

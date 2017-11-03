@@ -17,7 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import fr.utbm.lpp.ffbad.R;
-import fr.utbm.lpp.ffbad.activity.fragment.BuyFormFragment;
+import fr.utbm.lpp.ffbad.activity.fragment.SaleFormFragment;
 import fr.utbm.lpp.ffbad.activity.fragment.InfoFragment;
 import fr.utbm.lpp.ffbad.activity.fragment.SaleListFragment;
 import fr.utbm.lpp.ffbad.activity.fragment.StockListFragment;
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_stock) {
             setFragment(StockListFragment.newInstance());
         } else if (id == R.id.nav_purchase) {
-            setFragment(BuyFormFragment.newInstance());
+            setFragment(SaleFormFragment.newInstance());
         } else if (id == R.id.nav_info) {
             setFragment(InfoFragment.newInstance());
         }
@@ -119,12 +119,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onNewSaleElement() {
-        setFragment(BuyFormFragment.newInstance(), true);
+        setFragment(SaleFormFragment.newInstance(), true);
     }
 
     @Override
     public void onEditSaleElement(long id) {
-        // TODO
-        setFragment(BuyFormFragment.newInstance(id), true);
+        // FIXME: 03/11/17 Incorrect id due to multiple '_id' columns with JOIN
+        setFragment(SaleFormFragment.newInstance(id), true);
     }
 }
