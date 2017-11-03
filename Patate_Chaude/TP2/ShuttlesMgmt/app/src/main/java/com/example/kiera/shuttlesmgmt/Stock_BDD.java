@@ -85,5 +85,13 @@ public class Stock_BDD extends DAO_Base{
         }
         return 0;
     }
+
+    public int getQtt(String ref){
+        Cursor c = mDb.rawQuery("select "+QTT+" from " + TABLE + " where " + REF + " = ?", new String[]{ref});
+        if (c.moveToFirst()){
+            return c.getInt(0);
+        }
+        return 0;
+    }
 }
 

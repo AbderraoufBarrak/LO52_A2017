@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +26,7 @@ public class NouvelAchatActivity extends AppCompatActivity {
 
     private EditText editNom, editQtt;
     private CheckBox cbPaye;
-    private TextView prix;
+    private TextView prix, stock;
     private Spinner spinRef;
 
     @Override
@@ -37,6 +38,7 @@ public class NouvelAchatActivity extends AppCompatActivity {
         editQtt = (EditText)findViewById(R.id.editQtt);
         cbPaye = (CheckBox) findViewById(R.id.cbPaye);
         prix = (TextView) findViewById(R.id.textPrix);
+        stock = (TextView) findViewById(R.id.stockActuelView);
 
         Stock_BDD sb = new Stock_BDD(this);
         spinRef = (Spinner)findViewById(R.id.spinnerTube);
@@ -78,6 +80,7 @@ public class NouvelAchatActivity extends AppCompatActivity {
                 if(s.length() != 0) {
                     Stock_BDD sb = new Stock_BDD(NouvelAchatActivity.this);
                     double p = sb.getPrix((String) spinRef.getSelectedItem());
+                    sb.close();
                     prix.setText(String.format("%.2f", p*Integer.parseInt(s.toString()))+" €");
                 }else{
                     prix.setText("0.00 €");
@@ -96,6 +99,10 @@ public class NouvelAchatActivity extends AppCompatActivity {
                 if(!Objects.equals(qtt, "")) {
                     Stock_BDD sb = new Stock_BDD(NouvelAchatActivity.this);
                     double p = sb.getPrix((String) spinRef.getSelectedItem());
+                    int q = sb.getQtt((String) spinRef.getSelectedItem());
+                    sb.close();
+                    stock.setText("Stock : "+q);
+                    editQtt.setFilters(new InputFilter[]{ new InputFilterMinMax(1, q)});
                     prix.setText(String.format("%.2f", p*Integer.parseInt(qtt))+" €");
                 }else{
                     prix.setText("0.00 €");
