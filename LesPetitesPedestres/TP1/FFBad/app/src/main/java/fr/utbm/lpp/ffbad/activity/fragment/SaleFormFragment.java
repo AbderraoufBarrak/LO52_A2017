@@ -125,7 +125,7 @@ public class SaleFormFragment extends Fragment {
             _txtquantity.setText(String.valueOf(sale.getQuantity()));
             _swipayed.setChecked(sale.isPaid());
 
-            _txtprice.setText(String.valueOf(sale.getPrice()*sale.getQuantity()));
+            _txtprice.setText(String.format("%.2f", sale.getPrice()*sale.getQuantity()));
 
 
             _spiCustomer.setEnabled(false);

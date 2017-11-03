@@ -43,7 +43,9 @@ public class SaleCursorAdapter extends CursorAdapter {
         int quantity = Integer.parseInt(String.valueOf(sale.getQuantity()));
         float price = quantity * unit_price;
 
-        txtPrice.setText(String.valueOf(price));
+
+
+        txtPrice.setText(String.format("%.2f", price));
         txtQuantity.setText(String.valueOf(sale.getQuantity()));
         txtShuttlecock.setText(sale.getShuttlecock().getBrand() + " - " + sale.getShuttlecock().getReference());
         txtCustomerName.setText(sale.getCustomer().getName());
