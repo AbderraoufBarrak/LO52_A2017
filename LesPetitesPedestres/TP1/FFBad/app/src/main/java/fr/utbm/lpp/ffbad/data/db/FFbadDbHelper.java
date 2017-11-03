@@ -49,8 +49,8 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         createCustomer(db, "FFBad Belfort", CustomerType.Association);
         createCustomer(db, "Florian Staine", CustomerType.Particular);
 
-        createSale(db, 1, 2, 3.50, 4, true);
-        createSale(db, 2, 2, 4.50, 4, false);
+        createSale(db, 1, 2, 3.50, 5, true);
+        createSale(db, 2, 2, 4.50, 7, false);
     }
 
     private static void deleteEntries(SQLiteDatabase db) {
