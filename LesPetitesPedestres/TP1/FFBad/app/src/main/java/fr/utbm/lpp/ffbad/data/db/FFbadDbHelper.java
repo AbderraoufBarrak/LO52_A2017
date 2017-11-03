@@ -33,7 +33,7 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    private void createEntries(SQLiteDatabase db) {
+    private static void createEntries(SQLiteDatabase db) {
         Log.i("DbHelper", "Recreate entries");
         db.execSQL(FFBadDbContract.Shuttlecock.SQL_CREATE_ENTRIES);
         db.execSQL(FFBadDbContract.Trader.SQL_CREATE_ENTRIES);
@@ -53,12 +53,17 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         createSale(db, 2, 2, 4.50, 4, false);
     }
 
-    private void deleteEntries(SQLiteDatabase db) {
+    private static void deleteEntries(SQLiteDatabase db) {
         db.execSQL(FFBadDbContract.Shuttlecock.SQL_DELETE_ENTRIES);
         db.execSQL(FFBadDbContract.Trader.SQL_DELETE_ENTRIES);
         db.execSQL(FFBadDbContract.Customer.SQL_DELETE_ENTRIES);
         db.execSQL(FFBadDbContract.Sale.SQL_DELETE_ENTRIES);
         db.execSQL(FFBadDbContract.Purchase.SQL_DELETE_ENTRIES);
+    }
+
+    public static void resetEntries(SQLiteDatabase db) {
+        deleteEntries(db);
+        createEntries(db);
     }
 
     static public long createShuttlecock (SQLiteDatabase db, String brand, String ref, int stock, double price, int rating) {

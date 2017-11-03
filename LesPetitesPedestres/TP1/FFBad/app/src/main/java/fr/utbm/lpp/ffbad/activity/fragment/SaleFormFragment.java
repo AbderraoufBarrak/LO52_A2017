@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ import fr.utbm.lpp.ffbad.data.db.FFbadDbHelper;
 public class SaleFormFragment extends Fragment {
 
     public static final String ARG_SALE_ID = "saleId";
+
+    private OnSaleFormFragmentEvent eventManager;
 
     private Sale sale = null;
 
@@ -69,6 +72,7 @@ public class SaleFormFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        this.eventManager = (OnSaleFormFragmentEvent) getActivity();
         final FFBadApplication app = (FFBadApplication) getActivity().getApplication();
 
         _spimodel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -100,7 +104,7 @@ public class SaleFormFragment extends Fragment {
 
         if(this.getArguments() != null && this.getArguments().containsKey(ARG_SALE_ID)) { // Edit existing sale
             final String saleQuery = "" +
-                    "SELECT *.* " +
+                    "SELECT * " +
                     "FROM sale " +
                     "INNER JOIN shuttlecock ON shuttlecock._id = sale.shuttlecock_id " +
                     "INNER JOIN customer ON customer._id = sale.customer_id " +
@@ -187,6 +191,7 @@ public class SaleFormFragment extends Fragment {
                     float price = -1f;
                     try {
                         price = Float.parseFloat(_txtprice.getText().toString());
+                        Log.d("Price", "" + price);
                     } catch (NumberFormatException e) {
                         _txtprice.setError("Incorrect price");
                         valid = false;
@@ -203,8 +208,15 @@ public class SaleFormFragment extends Fragment {
                         Toast.makeText(getContext(), "Done: " + id, Toast.LENGTH_LONG).show();
                     }
                 }
-                // Todo Retourner à la liste ?
+                eventManager.onSaleFormCompleted();
             }
         });
+    }
+
+    public interface OnSaleFormFragmentEvent {
+        /**
+         * Event triggered for creating a new element
+         */
+        void onSaleFormCompleted();
     }
 }
