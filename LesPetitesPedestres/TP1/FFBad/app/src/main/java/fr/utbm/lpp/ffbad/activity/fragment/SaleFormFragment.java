@@ -123,8 +123,10 @@ public class SaleFormFragment extends Fragment {
             _spiCustomer.setAdapter(customerAdapter);
 
             _txtquantity.setText(String.valueOf(sale.getQuantity()));
-            _txtprice.setText(String.valueOf(sale.getPrice()));
             _swipayed.setChecked(sale.isPaid());
+
+            _txtprice.setText(String.valueOf(sale.getPrice()*sale.getQuantity()));
+
 
             _spiCustomer.setEnabled(false);
             _spimodel.setEnabled(false);

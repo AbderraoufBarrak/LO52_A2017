@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import fr.utbm.lpp.ffbad.R;
 import fr.utbm.lpp.ffbad.data.Sale;
@@ -38,7 +39,11 @@ public class SaleCursorAdapter extends CursorAdapter {
 
         Sale sale = FFBadDbContract.Sale.getFromCursor(cursor);
 
-        txtPrice.setText(String.valueOf(sale.getPrice()));
+        float unit_price = Float.parseFloat(String.valueOf(sale.getPrice()));
+        int quantity = Integer.parseInt(String.valueOf(sale.getQuantity()));
+        float price = quantity * unit_price;
+
+        txtPrice.setText(String.valueOf(price));
         txtQuantity.setText(String.valueOf(sale.getQuantity()));
         txtShuttlecock.setText(sale.getShuttlecock().getBrand() + " - " + sale.getShuttlecock().getReference());
         txtCustomerName.setText(sale.getCustomer().getName());
