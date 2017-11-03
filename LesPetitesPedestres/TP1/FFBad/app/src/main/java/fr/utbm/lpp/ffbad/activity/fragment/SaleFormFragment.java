@@ -127,13 +127,15 @@ public class SaleFormFragment extends Fragment {
 
             _txtprice.setText(String.format("%.2f", sale.getPrice()*sale.getQuantity()));
 
+            _swipayed.setTextOff("NOT PAYED");
+            _swipayed.setTextOn("PAYED");
 
             _spiCustomer.setEnabled(false);
             _spimodel.setEnabled(false);
             _txtquantity.setEnabled(false);
             _txtprice.setEnabled(false);
             if (sale.isPaid()) {
-//                _swipayed.setEnabled(false);
+                _swipayed.setEnabled(false);
             }
         } else { // Create new sale
             String[] projection = {
