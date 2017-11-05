@@ -1,26 +1,26 @@
-package com.example.shuttlesmgmt.activity.DBActivity;
+package com.example.shuttlesmgmt.activity.Version2.DBActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.shuttlesmgmt.DAO.DAO;
 import com.example.shuttlesmgmt.DAOImplements.CustomerDAOImpl;
 import com.example.shuttlesmgmt.DAOImplements.OrderDAOImpl;
 import com.example.shuttlesmgmt.DAOImplements.ProductDAOImpl;
 import com.example.shuttlesmgmt.DAOImplements.SupplierDAOImpl;
 import com.example.shuttlesmgmt.R;
-import com.example.shuttlesmgmt.activity.addActivity.AddCustomer;
-import com.example.shuttlesmgmt.activity.addActivity.AddOrder;
-import com.example.shuttlesmgmt.activity.addActivity.AddProduct;
-import com.example.shuttlesmgmt.activity.addActivity.AddSupplier;
+import com.example.shuttlesmgmt.activity.Version2.addActivity.AddCustomer;
+import com.example.shuttlesmgmt.activity.Version2.addActivity.AddOrder;
+import com.example.shuttlesmgmt.activity.Version2.addActivity.AddProduct;
+import com.example.shuttlesmgmt.activity.Version2.addActivity.AddSupplier;
+import com.example.shuttlesmgmt.db.DBHandler;
 import com.example.shuttlesmgmt.entity.Customer;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +35,18 @@ public class DBMode extends AppCompatActivity {
         SupplierDAOImpl supplierDAO = new SupplierDAOImpl(DBMode.this);
         OrderDAOImpl orderDAO = new OrderDAOImpl(DBMode.this);
         ProductDAOImpl productDAO = new ProductDAOImpl(DBMode.this);
+
         customerDAO.openWrite();
         supplierDAO.openWrite();
         orderDAO.openWrite();
         productDAO.openWrite();
+
+        orderDAO.upgradeDB();
+
+        orderDAO.deleteAll();
+        customerDAO.deleteAll();
+        supplierDAO.deleteAll();
+        productDAO.deleteAll();
 
         if(supplierDAO.isEmpty()){
             Log.i("AppInfo", "SupplierDAO is empty");
@@ -56,6 +64,11 @@ public class DBMode extends AppCompatActivity {
             Log.i("AppInfo", "OrderDAO is empty");
             orderDAO.readData(R.raw.data_order, DBMode.this);
         }
+
+        customerDAO.close();
+        supplierDAO.close();
+        orderDAO.close();
+        productDAO.close();
     }
 
     @Override
@@ -103,8 +116,9 @@ public class DBMode extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //gere le click sur une action de l'actionbar
-    public boolean onOptionsItemsSelected(MenuItem item){
+    //gere les clics des items du menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_customer:
                 onClickCustomer();
@@ -131,8 +145,7 @@ public class DBMode extends AppCompatActivity {
                 onClickAddOrder();
                 return true;
         }
-
         return super.onOptionsItemSelected(item);
-    }
 
+    }
 }

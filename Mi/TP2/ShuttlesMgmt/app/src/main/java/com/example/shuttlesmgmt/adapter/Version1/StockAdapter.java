@@ -1,4 +1,4 @@
-package com.example.shuttlesmgmt.adapter;
+package com.example.shuttlesmgmt.adapter.Version1;
 
 import android.content.Context;
 import android.util.Log;
@@ -24,7 +24,8 @@ public class StockAdapter extends ArrayAdapter<Stock> {
     int idDrawable;
 
     public StockAdapter(Context app, List<Stock> object){
-       super(app, 0, object);
+
+        super(app, 0, object);
     }
 
     @Override

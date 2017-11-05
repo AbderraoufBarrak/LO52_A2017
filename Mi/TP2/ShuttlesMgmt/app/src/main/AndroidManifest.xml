@@ -17,28 +17,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.AchatsActivity"
+            android:name=".activity.Version1.AchatsActivity"
             android:label="@string/title_activity_achats"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.StockActivity"
+            android:name=".activity.Version1.StockActivity"
             android:label="@string/title_activity_stock"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ListView.ListviewStock" />
-        <activity android:name=".ListView.ListViewAchat" />
-        <activity android:name=".activity.DBActivity.DBMode" />
-        <activity android:name=".activity.DBActivity.CustomerActivity" />
-        <activity android:name=".activity.DBActivity.SupplierActivity" />
-        <activity android:name=".activity.DBActivity.OrderActivity" />
-        <activity android:name=".activity.DBActivity.ProductActivity" />
-        <activity android:name=".activity.addActivity.AddCustomer" />
-        <activity android:name=".activity.addActivity.AddSupplier" />
-        <activity android:name=".activity.addActivity.AddOrder" />
-        <activity android:name=".activity.addActivity.AddProduct" />
-        <activity android:name=".ListView.ListViewCustomer" />
-        <activity android:name=".ListView.ListViewSupplier" />
-        <activity android:name=".ListView.ListViewOrder" />
-        <activity android:name=".ListView.ListViewProduct"></activity>
+        <activity android:name=".ListView.Version1.ListviewStock" />
+        <activity android:name=".ListView.Version1.ListViewAchat" />
+        <activity android:name=".activity.Version2.DBActivity.DBMode" />
+        <activity android:name=".activity.Version2.DBActivity.CustomerActivity" />
+        <activity android:name=".activity.Version2.DBActivity.SupplierActivity" />
+        <activity android:name=".activity.Version2.DBActivity.OrderActivity" />
+        <activity android:name=".activity.Version2.DBActivity.ProductActivity" />
+        <activity android:name=".activity.Version2.addActivity.AddCustomer" />
+        <activity android:name=".activity.Version2.addActivity.AddSupplier" />
+        <activity android:name=".activity.Version2.addActivity.AddOrder" />
+        <activity android:name=".activity.Version2.addActivity.AddProduct" />
+        <activity android:name=".ListView.Version2.ListViewCustomer" />
+        <activity android:name=".ListView.Version2.ListViewSupplier" />
+        <activity android:name=".ListView.Version2.ListViewOrder" />
+        <activity android:name=".ListView.Version2.ListViewProduct"></activity>
     </application>
 
 </manifest>

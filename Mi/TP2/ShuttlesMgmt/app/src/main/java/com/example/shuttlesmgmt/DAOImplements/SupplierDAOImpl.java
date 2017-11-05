@@ -60,20 +60,12 @@ public class SupplierDAOImpl extends DAO<Supplier> {
     public boolean isExist(Supplier obj) {
 
         Cursor c = getDBRead().rawQuery(
-                "SELECT " +
-                        ShuttlesSchema.Supplier.SUPPLIER_ID +
-                        " FROM " +
-                        ShuttlesSchema.Supplier.SUPPLIER_TABLE_NAME +
-                        " WHERE " +
-                        ShuttlesSchema.Supplier.SUPPLIER_NAME + " = ? and " +
-                        ShuttlesSchema.Supplier.SUPPLIER_ADDRESSE + " = ? and " +
-                        ShuttlesSchema.Supplier.SUPPLIER_PHONE + " = ? ",
-                obj.getSupplier()
-
+                "SELECT * FROM " + ShuttlesSchema.Supplier.SUPPLIER_TABLE_NAME,
+                null
         );
         if(c != null){
             while(c.moveToNext()){
-                if(c.getLong(0)==obj.getId()){
+                if(c.getString(1).contentEquals(obj.getName())&& c.getString(2).contentEquals(obj.getAdd())){
                     c.close();
                     return true;
                 }
@@ -136,6 +128,7 @@ public class SupplierDAOImpl extends DAO<Supplier> {
                         c.getString(2),
                         c.getString(3)
                 );
+                Log.i("AppInfoSupplier", supplier.toString());
                 listSupplier.add(supplier);
             }
             c.close();
@@ -221,5 +214,43 @@ public class SupplierDAOImpl extends DAO<Supplier> {
     @Override
     public boolean delete(long id) {
         return getDBWrite().delete(ShuttlesSchema.Supplier.SUPPLIER_TABLE_NAME, ShuttlesSchema.Supplier.SUPPLIER_ID + " = ? ", new String[] {Long.toString(id)})>0;
+    }
+
+    public List<String> getListSuppliersName(){
+        String query = "SELECT " +
+                ShuttlesSchema.Supplier.SUPPLIER_NAME +
+                " FROM " +
+                ShuttlesSchema.Supplier.SUPPLIER_TABLE_NAME +
+                " ORDER BY "+ ShuttlesSchema.Supplier.SUPPLIER_NAME +" ASC";
+        Cursor c = getDBRead().rawQuery(query, null);
+        List<String> listSupplier = new ArrayList<>();
+        if(c != null){
+            while(c.moveToNext()){
+                listSupplier.add(c.getString(0));
+            }
+            c.close();
+            return listSupplier;
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public long fetchByName(String name) {
+        String query = "SELECT " +
+                ShuttlesSchema.Supplier.SUPPLIER_ID +
+                " FROM " +
+                ShuttlesSchema.Supplier.SUPPLIER_TABLE_NAME +
+                " WHERE " +
+                ShuttlesSchema.Supplier.SUPPLIER_NAME + " =  ? ";
+        Cursor c = getDBRead().rawQuery(query, new String[]{name});
+        if(c != null){
+            c.moveToNext();
+            c.close();
+            return c.getLong(0);
+
+        }else{
+            return 0;
+        }
     }
 }

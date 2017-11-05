@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.shuttlesmgmt.R;
-import com.example.shuttlesmgmt.activity.DBActivity.DBMode;
+import com.example.shuttlesmgmt.activity.Version2.DBActivity.DBMode;
+import com.example.shuttlesmgmt.activity.Version1.AchatsActivity;
+import com.example.shuttlesmgmt.activity.Version1.StockActivity;
+import com.example.shuttlesmgmt.db.DBHandler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Button achatBtn = (Button) findViewById(R.id.btn_achat);
         final Button stockBtn = (Button) findViewById(R.id.btn_stock);
-        final Button dbBtn = (Button) findViewById(R.id.btn_dbAchat);
+        final Button dbBtn = (Button) findViewById(R.id.btn_dbmode);
 
         achatBtn.setOnClickListener(new View.OnClickListener() {
             @Override

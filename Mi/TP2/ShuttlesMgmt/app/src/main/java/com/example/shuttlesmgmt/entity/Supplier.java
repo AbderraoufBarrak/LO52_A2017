@@ -61,4 +61,14 @@ public class Supplier {
                 getPhone()
         };
     }
+
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", add='" + add + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

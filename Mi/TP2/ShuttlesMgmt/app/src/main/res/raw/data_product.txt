@@ -1,4 +1,4 @@
-0 - a1013 - Yonex - AS30 - 500 - 27
+4 - a1013 - Yonex - AS30 - 500 - 27
 1 - a1015 - RSL - Grade 3 - 5000 - 16.70
 2 - as30 - RSL - Grade A9 - 10000 - 13.70
 3 - rla9 - RSL - Grade A1  - 6000 - 21

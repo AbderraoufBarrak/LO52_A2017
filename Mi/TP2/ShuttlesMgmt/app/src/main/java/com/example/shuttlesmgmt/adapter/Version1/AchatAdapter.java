@@ -1,4 +1,4 @@
-package com.example.shuttlesmgmt.adapter;
+package com.example.shuttlesmgmt.adapter.Version1;
 
 import android.content.Context;
 import android.graphics.Color;

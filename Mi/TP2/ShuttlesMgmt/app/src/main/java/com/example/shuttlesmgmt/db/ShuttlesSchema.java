@@ -48,12 +48,12 @@ public class ShuttlesSchema {
     public class Order implements BaseColumns{
         //Table Orders
         public static final String ORDER_ID = "order_id";
-        public static final String ORDER_PRODUCT_ID = Product.PRODUCT_ID;
+        public static final String ORDER_PRODUCT_ID = "o" + Product.PRODUCT_ID;
         public static final String ORDER_DATE = "order_date";
         public static final String ORDER_ISPAID = "order_ispaid";
         public static final String ORDER_QUANTITY = "quantity";
-        public static final String ORDER_TOTAL_PRICE = "total_price";
-        public static final String ORDER_CUSTOMER_ID = Customer.CUSTOMER_ID;
+        public static final String ORDER_CUSTOMER_ID = "c" + Customer.CUSTOMER_ID;
+        public static final String ORDER_PRICE = "order_price";
         public static final String ORDER_TABLE_NAME = "orders";
         public static final String ORDER_TABLE_CREATE =
                 CREATE_TAB  + ORDER_TABLE_NAME + START +
@@ -62,8 +62,8 @@ public class ShuttlesSchema {
                         ORDER_DATE + DATE + COMMA +
                         ORDER_CUSTOMER_ID + INTEGER + COMMA +
                         ORDER_QUANTITY + INTEGER + COMMA +
-                        ORDER_TOTAL_PRICE + INTEGER + COMMA +
                         ORDER_ISPAID + INTEGER + COMMA +
+                        ORDER_PRICE + INTEGER + COMMA +
                         FK + ORDER_PRODUCT_ID + REFERENCE + Product.PRODUCT_TABLE_NAME + START + Product.PRODUCT_ID + "), "+
                         FK + ORDER_CUSTOMER_ID + REFERENCE + Customer.CUSTOMER_TABLE_NAME + START + Customer.CUSTOMER_ID + " ) "+END;
         public static final String ORDER_TABLE_DROP = DROP + ORDER_TABLE_NAME + SEMI_COLON;
@@ -74,7 +74,6 @@ public class ShuttlesSchema {
                 ORDER_CUSTOMER_ID,
                 ORDER_DATE,
                 ORDER_QUANTITY,
-                ORDER_TOTAL_PRICE,
                 ORDER_ISPAID,
         };
     }
@@ -109,7 +108,8 @@ public class ShuttlesSchema {
         public static final String PRODUCT_REFERENCE = "product_ref";
         public static final String PRODUCT_STOCK = "product_stock";
         public static final String PRODUCT_PRICE = "product_price";
-        public static final String PRODUCT_SUPPLIER_ID = Supplier.SUPPLIER_ID;
+        public static final String PRODUCT_SUPPLIER_ID = "p" + Supplier.SUPPLIER_ID;
+        public static final String PRODUCT_IMAGE = "product_image";
         public static final String PRODUCT_TABLE_NAME = "products";
         public static final String PRODUCT_TABLE_CREATE =
                 CREATE_TAB  + PRODUCT_TABLE_NAME + START +
@@ -119,6 +119,7 @@ public class ShuttlesSchema {
                         PRODUCT_STOCK + INTEGER + COMMA +
                         PRODUCT_PRICE + INTEGER + COMMA +
                         PRODUCT_SUPPLIER_ID + INTEGER + COMMA +
+                        PRODUCT_IMAGE + TEXT + COMMA +
                         FK + PRODUCT_SUPPLIER_ID + REFERENCE + Supplier.SUPPLIER_TABLE_NAME + START + Supplier.SUPPLIER_ID + " ) " + END;
         public static final String PRODUCT_TABLE_DROP = DROP + PRODUCT_TABLE_NAME + SEMI_COLON;
 
@@ -128,7 +129,8 @@ public class ShuttlesSchema {
                 PRODUCT_REFERENCE,
                 PRODUCT_STOCK,
                 PRODUCT_PRICE,
-                PRODUCT_SUPPLIER_ID
+                PRODUCT_SUPPLIER_ID,
+                PRODUCT_IMAGE
         };
     }
 }

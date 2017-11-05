@@ -59,20 +59,12 @@ public class CustomerDAOImpl extends DAO<Customer> {
     @Override
     public boolean isExist(Customer obj) {
         Cursor c = getDBRead().rawQuery(
-                "SELECT " +
-                        ShuttlesSchema.Customer.CUSTOMER_ID +
-                        " FROM " +
-                        ShuttlesSchema.Customer.CUSTOMER_TABLE_NAME +
-                        " WHERE " +
-                        ShuttlesSchema.Customer.CUSTOMER_NAME + " = ? and " +
-                        ShuttlesSchema.Customer.CUSTOMER_ADDRESSE + " = ? and " +
-                        ShuttlesSchema.Customer.CUSTOMER_PHONE + " = ? ",
-                obj.getCustomer()
-
+                "SELECT * FROM " + ShuttlesSchema.Customer.CUSTOMER_TABLE_NAME,
+                null
         );
         if(c != null){
             while(c.moveToNext()){
-                if(c.getLong(0)==obj.getId()){
+                if(c.getString(1).contentEquals(obj.getName()) && c.getString(2).contentEquals(obj.getAdd())){
                     c.close();
                     return true;
                 }
@@ -90,8 +82,10 @@ public class CustomerDAOImpl extends DAO<Customer> {
             values.put(ShuttlesSchema.Customer.CUSTOMER_ADDRESSE, obj.getAdd());
             values.put(ShuttlesSchema.Customer.CUSTOMER_PHONE, obj.getPhone());
             getDBWrite().insert(ShuttlesSchema.Customer.CUSTOMER_TABLE_NAME, null, values);
+            //Log.i("AppInfo", "Obj created successfull");
             return true;
         }else{
+            Log.i("AppInfo", "Can't create the obj because already existed");
             return false;
         }
     }
@@ -133,6 +127,7 @@ public class CustomerDAOImpl extends DAO<Customer> {
                         c.getString(2),
                         c.getString(3)
                 );
+                Log.i("AppInfoCustomer", customer.toString());
                 listCustomer.add(customer);
             }
             c.close();
@@ -196,7 +191,7 @@ public class CustomerDAOImpl extends DAO<Customer> {
             String lines;
 
             if(inputstream != null){
-                //Log.i("AppInfo", "J'ai trouve le fichier");
+                //Log.i("AppInfo", "J'ai trouve le fichier " + Integer.toString(datafile));
                 InputStreamReader inputreader = new InputStreamReader(inputstream);
                 BufferedReader buffreader = new BufferedReader(inputreader);
 
@@ -216,7 +211,46 @@ public class CustomerDAOImpl extends DAO<Customer> {
                 }
                 addAll(listCustomer);
             }else{
-                Log.i("AppInfo", "Jai pas trouve le fichier");
+                Log.i("AppInfo", "Jai pas trouve le fichier " + Integer.toString(datafile));
             }
         }
+
+        public List<String> getListCustomersName(){
+            String query = "SELECT " +
+                    ShuttlesSchema.Customer.CUSTOMER_NAME +
+                    " FROM " +
+                    ShuttlesSchema.Customer.CUSTOMER_TABLE_NAME +
+                    " ORDER BY "+ ShuttlesSchema.Customer.CUSTOMER_NAME + " ASC";
+            Cursor c = getDBRead().rawQuery(query, null);
+            List<String> listCustomersName = new ArrayList<>();
+            if(c != null){
+                while(c.moveToNext()){
+                    listCustomersName.add(c.getString(0));
+                }
+                c.close();
+                return listCustomersName;
+            }else{
+                return null;
+            }
+        }
+
+    @Override
+    public long fetchByName(String name) {
+        String query = "SELECT " +
+                ShuttlesSchema.Customer.CUSTOMER_ID +
+                " FROM " +
+                ShuttlesSchema.Customer.CUSTOMER_TABLE_NAME +
+                " WHERE " +
+                ShuttlesSchema.Customer.CUSTOMER_NAME + " =  ? ";
+        Cursor c = getDBRead().rawQuery(query, new String[]{name});
+        if(c != null){
+            c.moveToNext();
+            Long id = c.getLong(0);
+            c.close();
+            return id;
+
+        }else{
+            return 0;
+        }
+    }
 }

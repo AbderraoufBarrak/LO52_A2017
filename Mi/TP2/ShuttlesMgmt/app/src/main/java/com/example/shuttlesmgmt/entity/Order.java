@@ -15,18 +15,30 @@ public class Order {
     private boolean isPaid;
     private int quantity;
     private double total_price;
+    private String CustomerName;
+    private String ProductName;
     private String[] order;
 
     public Order(){
 
     }
 
-    public Order(long id, Date date, boolean isPaid, int quantity, double price, long idC, long idP){
+    //pour un total imposé
+    public Order(long id, Date date, boolean isPaid, int quantity, long idC, long idP, double price){
         this.id = id;
         this.date = date;
         this.isPaid = isPaid;
         this.quantity = quantity;
+        this.idCustomer = idC;
+        this.idProduct = idP;
         this.total_price = price;
+    }
+
+    public Order(long id, Date date, boolean isPaid, int quantity, long idC, long idP){
+        this.id = id;
+        this.date = date;
+        this.isPaid = isPaid;
+        this.quantity = quantity;
         this.idCustomer = idC;
         this.idProduct = idP;
     }
@@ -87,16 +99,47 @@ public class Order {
         return total_price;
     }
 
+    public String getCustomerName(){
+        return CustomerName;
+    }
+
+    public void setCustomerName(String n){
+        this.CustomerName = n;
+    }
+
+    public String getProductName(){
+        return ProductName;
+    }
+
+    public void setProductName(String n){
+        this.ProductName = n;
+    }
+
     public String[] getOrder(){
-        SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
-        String date = s.format(getDate());
         return order = new String[]{
-              date,
+              StringToDate(getDate()),
                 Boolean.toString(getIsPaid()),
                 Integer.toString(getQuantity()),
-                Double.toString(getPrice()),
                 Long.toString(getIdCustomer()),
                 Long.toString(getIdProduct())
         };
+    }
+
+    public String StringToDate(Date d){
+        SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+        return s.format(d);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", idCustomer=" + idCustomer +
+                ", idProduct=" + idProduct +
+                ", date=" + date +
+                ", isPaid=" + isPaid +
+                ", quantity=" + quantity +
+                ", total_price=" + total_price +
+                '}';
     }
 }

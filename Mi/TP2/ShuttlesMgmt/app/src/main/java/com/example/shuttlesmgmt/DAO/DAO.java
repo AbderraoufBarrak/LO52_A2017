@@ -34,6 +34,9 @@ public abstract class DAO<T> {
         return sqldb;
     }
 
+    public void upgradeDB(){
+        dbhandler.onUpgrade(sqldb, dbhandler.getVersion(), dbhandler.getVersion()+1);
+    }
     public SQLiteDatabase getDBRead(){
         return openRead();
     }
@@ -128,4 +131,11 @@ public abstract class DAO<T> {
      * @param c context
      */
     public abstract void readData(int datafile, Context c);
+
+    /**
+     * find id by name
+     * @param name
+     * @return id
+     */
+    public abstract long fetchByName(String name);
 }

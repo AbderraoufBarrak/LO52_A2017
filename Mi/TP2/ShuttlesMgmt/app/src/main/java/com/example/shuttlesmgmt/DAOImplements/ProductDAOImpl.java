@@ -59,21 +59,12 @@ public class ProductDAOImpl extends DAO<Product> {
     @Override
     public boolean isExist(Product obj) {
         Cursor c = getDBRead().rawQuery(
-                "SELECT " +
-                ShuttlesSchema.Product.PRODUCT_ID +
-                " FROM " +
-                ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
-                " WHERE " +
-                ShuttlesSchema.Product.PRODUCT_NAME + " = ? and " +
-                ShuttlesSchema.Product.PRODUCT_REFERENCE + " = ? and " +
-                ShuttlesSchema.Product.PRODUCT_STOCK + " = ? and " +
-                ShuttlesSchema.Product.PRODUCT_PRICE + " = ? and " +
-                ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID + " = ? ",
-                obj.getProduct()
+                "SELECT * FROM " + ShuttlesSchema.Product.PRODUCT_TABLE_NAME,
+                null
         );
         if(c != null){
             while(c.moveToNext()){
-                if(c.getLong(0)==obj.getId()){
+                if(c.getString(1).contentEquals(obj.getName()) && c.getString(2).contentEquals(obj.getRef()) && c.getLong(5)==obj.getIdSupplier()){
                     c.close();
                     return true;
                 }
@@ -117,11 +108,11 @@ public class ProductDAOImpl extends DAO<Product> {
                         splits = lines.split(" - ");
                         product = new Product();
                         product.setIdSupplier(Long.valueOf(splits[0]));
+                        product.setImage(splits[1]);
                         product.setName(splits[2]);
                         product.setRef(splits[3]);
                         product.setQuantity(Integer.valueOf(splits[4]));
                         product.setPrice(Double.valueOf(splits[5]));
-                        //product.setImage(splits[1])
                         listProduct.add(product);
                     }
                     buffreader.close();
@@ -143,6 +134,7 @@ public class ProductDAOImpl extends DAO<Product> {
             values.put(ShuttlesSchema.Product.PRODUCT_STOCK, obj.getQuantity());
             values.put(ShuttlesSchema.Product.PRODUCT_PRICE, obj.getPrice());
             values.put(ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID, obj.getIdSupplier());
+            values.put(ShuttlesSchema.Product.PRODUCT_IMAGE, obj.getImage());
             getDBWrite().insert(ShuttlesSchema.Product.PRODUCT_TABLE_NAME, null, values);
             return true;
         }else{
@@ -152,10 +144,24 @@ public class ProductDAOImpl extends DAO<Product> {
 
     @Override
     public Product fetchById(long id) {
+        String query = "SELECT " +
+                ShuttlesSchema.Product.PRODUCT_ID + "," +
+                ShuttlesSchema.Product.PRODUCT_NAME + "," +
+                ShuttlesSchema.Product.PRODUCT_REFERENCE + "," +
+                ShuttlesSchema.Product.PRODUCT_STOCK  + "," +
+                ShuttlesSchema.Product.PRODUCT_PRICE + "," +
+                ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID + "," +
+                ShuttlesSchema.Product.PRODUCT_IMAGE +"," +
+                ShuttlesSchema.Supplier.SUPPLIER_NAME +
+                " FROM " +
+                ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
+                " INNER JOIN " +
+                ShuttlesSchema.Supplier.SUPPLIER_TABLE_NAME +
+                " ON " +
+                ShuttlesSchema.Supplier.SUPPLIER_ID + " = " +  ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID +
+                " WHERE " + ShuttlesSchema.Product.PRODUCT_ID + " = ? ";
         Cursor c = getDBRead().rawQuery(
-                "SELECT * FROM " +
-                        ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
-                        " WHERE " + ShuttlesSchema.Product.PRODUCT_ID + " = ? ",
+               query,
                 new String[]{Long.toString(id)});
 
         if(c != null){
@@ -167,6 +173,8 @@ public class ProductDAOImpl extends DAO<Product> {
             product.setQuantity(c.getInt(3));
             product.setPrice(c.getDouble(4));
             product.setIdSupplier(c.getLong(5));
+            product.setImage(c.getString(6));
+            product.setSupplierName(c.getString(7));
             c.close();
             return product;
         }else{
@@ -176,12 +184,29 @@ public class ProductDAOImpl extends DAO<Product> {
 
     @Override
     public List<Product> fetchAll() {
-        Cursor c = getDBRead().rawQuery("SELECT * FROM " + ShuttlesSchema.Product.PRODUCT_TABLE_NAME, null);
+        String query = "SELECT " +
+                ShuttlesSchema.Product.PRODUCT_ID + "," +
+                ShuttlesSchema.Product.PRODUCT_NAME + "," +
+                ShuttlesSchema.Product.PRODUCT_REFERENCE + "," +
+                ShuttlesSchema.Product.PRODUCT_STOCK  + "," +
+                ShuttlesSchema.Product.PRODUCT_PRICE + "," +
+                ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID + "," +
+                ShuttlesSchema.Product.PRODUCT_IMAGE +"," +
+                ShuttlesSchema.Supplier.SUPPLIER_NAME +
+                " FROM " +
+                ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
+                " INNER JOIN " +
+                ShuttlesSchema.Supplier.SUPPLIER_TABLE_NAME +
+                " ON " +
+                ShuttlesSchema.Supplier.SUPPLIER_ID + " = " +  ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID;
+        Cursor c = getDBRead().rawQuery(query, null);
         Product product;
         List<Product> listProduct = new ArrayList<>();
         if(c != null){
             while(c.moveToNext()){
-                product = new Product(c.getLong(0),c.getLong(5), c.getString(1), c.getString(2), c.getInt(3), c.getDouble(4));
+                product = new Product(c.getLong(0),c.getLong(5), c.getString(1), c.getString(2), c.getInt(3), c.getDouble(4), c.getString(6));
+                product.setSupplierName(c.getString(7));
+                Log.i("AppInfoProduct", product.toString());
                 listProduct.add(product);
             }
             c.close();
@@ -205,6 +230,7 @@ public class ProductDAOImpl extends DAO<Product> {
             values.put(ShuttlesSchema.Product.PRODUCT_STOCK, obj.getQuantity());
             values.put(ShuttlesSchema.Product.PRODUCT_PRICE, obj.getPrice());
             values.put(ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID, obj.getIdSupplier());
+            values.put(ShuttlesSchema.Product.PRODUCT_IMAGE, obj.getImage());
             getDBWrite().update(ShuttlesSchema.Product.PRODUCT_TABLE_NAME, values, ShuttlesSchema.Product.PRODUCT_ID + " = ? ", new String[]{Long.toString(obj.getId())});
             return true;
         }else{
@@ -220,5 +246,70 @@ public class ProductDAOImpl extends DAO<Product> {
     @Override
     public boolean delete(long id) {
         return getDBWrite().delete(ShuttlesSchema.Product.PRODUCT_TABLE_NAME, ShuttlesSchema.Product.PRODUCT_ID + " = ? ", new String[] {Long.toString(id)})>0;
+    }
+
+    public List<String> getListProductsName(){
+        String query = "SELECT " +
+                ShuttlesSchema.Product.PRODUCT_NAME +
+                " FROM " +
+                ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
+                " ORDER BY " + ShuttlesSchema.Product.PRODUCT_NAME + " ASC";
+        Cursor c = getDBRead().rawQuery(query, null);
+        List<String> listProductsName = new ArrayList<>();
+        if(c != null){
+            while(c.moveToNext()){
+                listProductsName.add(c.getString(0));
+            }
+            c.close();
+            return listProductsName;
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public long fetchByName(String name) {
+        return 0;
+    }
+
+    public long fetchByNameAndRef(String name, String ref){
+        String query = "SELECT " +
+                ShuttlesSchema.Product.PRODUCT_ID +
+                ShuttlesSchema.Product.PRODUCT_REFERENCE +
+                " FROM " +
+                ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
+                " WHERE " +
+                ShuttlesSchema.Product.PRODUCT_NAME + " =  ? and " +
+                ShuttlesSchema.Product.PRODUCT_REFERENCE + " = ? ";
+        Cursor c = getDBRead().rawQuery(query, new String[]{name, ref});
+        if(c != null){
+            c.moveToNext();
+            c.close();
+            return c.getLong(0);
+
+        }else{
+            return 0;
+        }
+    }
+
+    public List<String> getListProductsRef(String name){
+        String query = "SELECT " +
+                ShuttlesSchema.Product.PRODUCT_REFERENCE +
+                " FROM " +
+                ShuttlesSchema.Product.PRODUCT_TABLE_NAME+
+                " WHERE " +
+                ShuttlesSchema.Product.PRODUCT_NAME + " =  ? " +
+                " ORDER BY " + ShuttlesSchema.Product.PRODUCT_REFERENCE +" ASC";
+        Cursor c = getDBRead().rawQuery(query, new String[]{name});
+        List<String> listProductsRef = new ArrayList<>();
+        if(c != null){
+            while(c.moveToNext()){
+                listProductsRef.add(c.getString(0));
+            }
+            c.close();
+            return listProductsRef;
+        }else{
+            return null;
+        }
     }
 }

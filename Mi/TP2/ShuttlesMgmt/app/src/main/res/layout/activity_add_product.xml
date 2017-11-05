@@ -4,6 +4,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.shuttlesmgmt.activity.addActivity.AddProduct">
+    tools:context=".activity.Version2.addActivity.AddProduct">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintLeft_toLeftOf="@+id/textView7"
+        android:layout_marginLeft="1dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reference"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintLeft_toLeftOf="@+id/textView5"
+        android:layout_marginLeft="0dp" />
+
+    <EditText
+        android:id="@+id/id_ETname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:layout_marginTop="26dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_sp"
+        app:layout_constraintRight_toRightOf="@+id/id_sp" />
+
+    <EditText
+        android:id="@+id/id_ETref"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Reference"
+        android:inputType="textPersonName"
+        android:layout_marginTop="26dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_ETname"
+        app:layout_constraintRight_toRightOf="@+id/id_ETname" />
+
+    <Spinner
+        android:id="@+id/id_sp"
+        android:layout_width="217dp"
+        android:layout_height="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView7"
+        android:layout_marginLeft="59dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="1dp"
+        android:layout_marginStart="59dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supplier"
+        tools:layout_editor_absoluteX="-2dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantiy"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintLeft_toLeftOf="@+id/textView6"
+        android:layout_marginLeft="0dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintLeft_toLeftOf="@+id/textView8"
+        android:layout_marginLeft="0dp" />
+
+    <EditText
+        android:id="@+id/id_ETquantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Quantiy"
+        android:inputType="numberSigned"
+        android:layout_marginTop="26dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_ETref"
+        app:layout_constraintRight_toRightOf="@+id/id_ETref" />
+
+    <EditText
+        android:id="@+id/id_ETprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="26dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_ETquantity"
+        app:layout_constraintRight_toRightOf="@+id/id_ETquantity" />
+    <Button
+        android:id="@+id/id_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginLeft="62dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="338dp" />
+
+    <Button
+        android:id="@+id/id_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintLeft_toRightOf="@+id/id_add"
+        android:layout_marginLeft="51dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="338dp" />
 
 </android.support.constraint.ConstraintLayout>

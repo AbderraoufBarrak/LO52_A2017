@@ -67,23 +67,14 @@ public class OrderDAOImpl extends DAO<Order> {
     @Override
     public boolean isExist(Order obj) {
         Cursor c = getDBRead().rawQuery(
-                "SELECT " +
-                    ShuttlesSchema.Order.ORDER_ID +
-                    " FROM " +
-                    ShuttlesSchema.Order.ORDER_TABLE_NAME +
-                    " WHERE " +
-                    ShuttlesSchema.Order.ORDER_DATE + " = ? and " +
-                    ShuttlesSchema.Order.ORDER_ISPAID + " = ? and " +
-                    ShuttlesSchema.Order.ORDER_QUANTITY + " = ? and " +
-                    ShuttlesSchema.Order.ORDER_TOTAL_PRICE + " = ? and " +
-                    ShuttlesSchema.Order.ORDER_CUSTOMER_ID + " = ? and " +
-                    ShuttlesSchema.Order.ORDER_PRODUCT_ID + " = ? ",
-                obj.getOrder()
+                "SELECT * FROM " +  ShuttlesSchema.Order.ORDER_TABLE_NAME,
+                null
         );
         if(c != null){
             while(c.moveToNext()){
-                if(c.getLong(0)==obj.getId()){
+                if(c.getLong(1)==obj.getIdProduct() && c.getString(2).contentEquals(new SimpleDateFormat().format(obj.getDate())) && c.getLong(3) == obj.getIdCustomer() && c.getInt(4)==obj.getQuantity()){
                     c.close();
+                    Log.i("Appinfo", "Order created");
                     return true;
                 }
             }
@@ -99,9 +90,9 @@ public class OrderDAOImpl extends DAO<Order> {
             values.put(ShuttlesSchema.Order.ORDER_DATE, new SimpleDateFormat("dd/MM/yyyy").format(obj.getDate()));
             values.put(ShuttlesSchema.Order.ORDER_ISPAID, obj.getIsPaid());
             values.put(ShuttlesSchema.Order.ORDER_QUANTITY, obj.getQuantity());
-            values.put(ShuttlesSchema.Order.ORDER_TOTAL_PRICE, obj.getPrice());
             values.put(ShuttlesSchema.Order.ORDER_CUSTOMER_ID, obj.getIdCustomer());
             values.put(ShuttlesSchema.Order.ORDER_PRODUCT_ID, obj.getIdProduct());
+            values.put(ShuttlesSchema.Order.ORDER_PRICE, obj.getPrice());
             getDBWrite().insert(ShuttlesSchema.Order.ORDER_TABLE_NAME, null, values);
             return true;
         }else{
@@ -132,22 +123,47 @@ public class OrderDAOImpl extends DAO<Order> {
     }
 
     public Order fetchById2(long id) throws ParseException{
-        Cursor c = getDBRead().rawQuery(
-                "SELECT * FROM " +
-                        ShuttlesSchema.Order.ORDER_TABLE_NAME +
-                        " WHERE " + ShuttlesSchema.Order.ORDER_ID +" = ? ",
+        String query = "SELECT " +
+                ShuttlesSchema.Order.ORDER_ID + "," +
+                ShuttlesSchema.Order.ORDER_PRODUCT_ID + "," +
+                ShuttlesSchema.Order.ORDER_DATE + "," +
+                ShuttlesSchema.Order.ORDER_CUSTOMER_ID  + "," +
+                ShuttlesSchema.Order.ORDER_QUANTITY + "," +
+                ShuttlesSchema.Order.ORDER_ISPAID + "," +
+                ShuttlesSchema.Product.PRODUCT_NAME +"," +
+                ShuttlesSchema.Product.PRODUCT_PRICE + "," +
+                ShuttlesSchema.Customer.CUSTOMER_NAME +  "," +
+                ShuttlesSchema.Order.ORDER_PRICE +
+                " FROM " +
+                ShuttlesSchema.Order.ORDER_TABLE_NAME +
+                " INNER JOIN " +
+                ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
+                " ON " +
+                ShuttlesSchema.Product.PRODUCT_ID + " = " +  ShuttlesSchema.Order.ORDER_PRODUCT_ID +
+                " INNER JOIN " +
+                ShuttlesSchema.Customer.CUSTOMER_TABLE_NAME +
+                " ON " +
+                ShuttlesSchema.Customer.CUSTOMER_ID + " = " + ShuttlesSchema.Order.ORDER_CUSTOMER_ID +
+                " WHERE " + ShuttlesSchema.Order.ORDER_ID +" = ? ";
+        Cursor c = getDBRead().rawQuery(query,
                 new String[]{Long.toString(id)});
 
         if(c != null){
             c.moveToFirst();
             Order order = new Order();
             order.setId(c.getLong(0));
-            order.setDate(StringToDate(c.getString(3)));//3
-            order.setIdCustomer(c.getLong(4));
             order.setIdProduct(c.getLong(1));
-            order.setIsPaid(Boolean.valueOf(c.getString(7)));
-            order.setPrice(c.getDouble(6));
-            order.setQuantity(c.getInt(5));
+            order.setDate(StringToDate(c.getString(2)));
+            order.setIdCustomer(c.getLong(3));
+            order.setQuantity(c.getInt(4));
+            order.setIsPaid(Boolean.valueOf(c.getString(5)));
+            order.setProductName(c.getString(6));
+            if(c.getDouble(9) >0){
+                order.setPrice(c.getDouble(9));
+            }else{
+                order.setPrice(order.getQuantity() * c.getDouble(7));
+            }
+            order.setCustomerName(c.getString(8));
             c.close();
             return order;
         }else{
@@ -162,22 +178,47 @@ public class OrderDAOImpl extends DAO<Order> {
     }
 
     public List<Order> fetchAll2()throws ParseException{
-        Cursor c = getDBRead().rawQuery(
-                "SELECT * FROM " +
-                        ShuttlesSchema.Order.ORDER_TABLE_NAME,
-                null);
+        String query = "SELECT " +
+                ShuttlesSchema.Order.ORDER_ID + "," +
+                ShuttlesSchema.Order.ORDER_PRODUCT_ID + "," +
+                ShuttlesSchema.Order.ORDER_DATE + "," +
+                ShuttlesSchema.Order.ORDER_CUSTOMER_ID  + "," +
+                ShuttlesSchema.Order.ORDER_QUANTITY + "," +
+                ShuttlesSchema.Order.ORDER_ISPAID + "," +
+                ShuttlesSchema.Product.PRODUCT_NAME +"," +
+                ShuttlesSchema.Product.PRODUCT_PRICE + "," +
+                ShuttlesSchema.Customer.CUSTOMER_NAME + "," +
+                ShuttlesSchema.Order.ORDER_PRICE +
+                " FROM " +
+                ShuttlesSchema.Order.ORDER_TABLE_NAME +
+                " INNER JOIN " +
+                ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
+                " ON " +
+                ShuttlesSchema.Product.PRODUCT_ID + " = " +  ShuttlesSchema.Order.ORDER_PRODUCT_ID +
+                " INNER JOIN " +
+                ShuttlesSchema.Customer.CUSTOMER_TABLE_NAME +
+                " ON " +
+                ShuttlesSchema.Customer.CUSTOMER_ID + " = " + ShuttlesSchema.Order.ORDER_CUSTOMER_ID;
+        Cursor c = getDBRead().rawQuery(query,  null);
         Order order;
         List<Order> listOrder = new ArrayList<>();
         if(c != null){
             while(c.moveToNext()){
-                order = new Order(c.getLong(0),
-                        StringToDate(c.getString(2)),
-                        Boolean.valueOf(c.getString(6)),
-                        c.getInt(4),
-                        c.getDouble(5),
-                        c.getLong(3),
-                        c.getLong(1)
-                );
+                order = new Order();
+                order.setId(c.getLong(0));
+                order.setIdProduct(c.getLong(1));
+                order.setDate(StringToDate(c.getString(2)));
+                order.setIdCustomer(c.getLong(3));
+                order.setQuantity(c.getInt(4));
+                order.setIsPaid(Boolean.valueOf(c.getString(5)));
+                order.setProductName(c.getString(6));
+                if(c.getDouble(9) >0){
+                    order.setPrice(c.getDouble(9));
+                }else{
+                    order.setPrice(order.getQuantity() * c.getDouble(7));
+                }
+                order.setCustomerName(c.getString(8));
+                Log.i("AppInfoOrder", order.toString());
                 listOrder.add(order);
             }
             c.close();
@@ -209,8 +250,10 @@ public class OrderDAOImpl extends DAO<Order> {
                         order.setIdCustomer(Long.valueOf(splits[1]));
                         order.setDate(StringToDate(splits[3]));
                         order.setQuantity(Integer.valueOf(splits[2]));
-                        order.setPrice(Double.valueOf(splits[4]));
-                        order.setIsPaid(Boolean.valueOf(splits[5]));
+                        order.setIsPaid(Boolean.valueOf(splits[4]));
+                        if(splits.length == 6){
+                            order.setPrice(Double.valueOf(splits[5]));
+                        }
                         listOrder.add(order);
                     }
                     buffreader.close();
@@ -228,11 +271,11 @@ public class OrderDAOImpl extends DAO<Order> {
         if(isExist(obj) == false){
             ContentValues values = new ContentValues();
             values.put(ShuttlesSchema.Order.ORDER_PRODUCT_ID, obj.getIdProduct());
-            values.put(ShuttlesSchema.Order.ORDER_DATE, String.valueOf(obj.getDate()));
+            values.put(ShuttlesSchema.Order.ORDER_DATE, new SimpleDateFormat("dd/MM/yyyy").format(obj.getDate()));
             values.put(ShuttlesSchema.Order.ORDER_CUSTOMER_ID, obj.getIdCustomer());
             values.put(ShuttlesSchema.Order.ORDER_QUANTITY, obj.getQuantity());
-            values.put(ShuttlesSchema.Order.ORDER_TOTAL_PRICE, obj.getPrice());
             values.put(ShuttlesSchema.Order.ORDER_ISPAID, obj.getIsPaid());
+            values.put(ShuttlesSchema.Order.ORDER_PRICE, obj.getPrice());
             getDBWrite().update(ShuttlesSchema.Order.ORDER_TABLE_NAME, values, ShuttlesSchema.Order.ORDER_ID + " = ? ", new String[]{Long.toString(obj.getId())});
             return true;
         }else{
@@ -254,5 +297,10 @@ public class OrderDAOImpl extends DAO<Order> {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Date date = format.parse(s);
         return date;
+    }
+
+    @Override
+    public long fetchByName(String name) {
+        return 0;
     }
 }

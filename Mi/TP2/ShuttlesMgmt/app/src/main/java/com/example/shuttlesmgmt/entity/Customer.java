@@ -62,4 +62,15 @@ public class Customer {
         };
         return customer;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", add='" + add + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
+
 }

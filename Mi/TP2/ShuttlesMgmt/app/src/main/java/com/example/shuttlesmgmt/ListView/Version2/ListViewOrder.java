@@ -1,15 +1,15 @@
-package com.example.shuttlesmgmt.ListView;
+package com.example.shuttlesmgmt.ListView.Version2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.shuttlesmgmt.R;
 
-public class ListViewAchat extends AppCompatActivity {
+public class ListViewOrder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listview_achat);
+        setContentView(R.layout.activity_list_view_order);
     }
 }
