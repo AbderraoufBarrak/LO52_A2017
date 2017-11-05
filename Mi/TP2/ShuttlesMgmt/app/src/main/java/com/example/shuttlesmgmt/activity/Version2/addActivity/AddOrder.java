@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shuttlesmgmt.DAOImplements.CustomerDAOImpl;
@@ -31,16 +32,16 @@ public class AddOrder extends Activity implements View.OnClickListener {
 
     private EditText quantity, price;
     private Button add, back;
-    private Spinner spCustomer, spProductName;
+    private Spinner spCustomer, spProductName, spProductRef;
     private OrderDAOImpl orderDAO;
     private CustomerDAOImpl customerDAO;
     private ProductDAOImpl productDAO;
     private List<String> listProductName, listProductRef, listCustomerName;
     private Order order = new Order();
-    private ArrayAdapter<String> spinnerAdapterCustomer, spinnerAdapterProductName;
+    private ArrayAdapter<String> spinnerAdapterCustomer, spinnerAdapterProductName, spinnerAdapterProductRef;
     private Switch isPaid;
     private Boolean isPaidValue;
-    private String customerValue, productNameValue, quantityValue, priceValue;
+    private String customerValue, productNameValue, quantityValue, priceValue, refValue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +65,11 @@ public class AddOrder extends Activity implements View.OnClickListener {
 
         spCustomer = (Spinner) findViewById(R.id.id_spCustomer);
         spProductName = (Spinner) findViewById(R.id.id_spProduct);
+        spProductRef = (Spinner) findViewById(R.id.id_spRef);
 
         spCustomer.setAdapter(spinnerAdapterCustomer);
         spProductName.setAdapter(spinnerAdapterProductName);
+        spProductRef.setAdapter(spinnerAdapterProductRef);
 
         listCustomerName = new ArrayList<String>();
         listProductName = new ArrayList<String>();
@@ -96,7 +99,9 @@ public class AddOrder extends Activity implements View.OnClickListener {
         spProductName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                listProductRef = productDAO.getListProductsRef(spProductName.getSelectedItem().toString());
+                spinnerAdapterProductRef = new ArrayAdapter<String>(AddOrder.this, R.layout.spinner_item, listProductRef);
+                spProductRef.setAdapter(spinnerAdapterProductRef);
             }
 
             @Override
@@ -117,6 +122,8 @@ public class AddOrder extends Activity implements View.OnClickListener {
             quantityValue = quantity.getText().toString();
             priceValue = price.getText().toString();
             isPaidValue = isPaid.isChecked();
+            refValue = spProductRef.getSelectedItem().toString();
+
             if(quantityValue.contentEquals("")){
                 Toast.makeText(getApplicationContext(), "Les champs ne peuvent pas être vide !", Toast.LENGTH_LONG).show();
             }else{
@@ -130,10 +137,9 @@ public class AddOrder extends Activity implements View.OnClickListener {
                 order.setDate(new Date());
                 order.setQuantity(Integer.valueOf(quantityValue));
                 order.setIsPaid(isPaidValue);
-                //BUG SUR LE ID DU PRODUIT A FIXER
-                if(customerDAO.fetchByName(order.getCustomerName()) != 0 && productDAO.fetchByName(order.getProductName()) != 0){
+                if((productDAO.fetchByNameAndRef(order.getProductName(), refValue) != 0) && (customerDAO.fetchByName(order.getCustomerName()) != 0)){
                     order.setIdCustomer(customerDAO.fetchByName(order.getCustomerName()));
-                    order.setIdProduct(productDAO.fetchByName(order.getProductName()));
+                    order.setIdProduct(productDAO.fetchByNameAndRef(order.getProductName(), refValue));
                     if(orderDAO.create(order)== true){
                         price.setText("");
                         quantity.setText("");

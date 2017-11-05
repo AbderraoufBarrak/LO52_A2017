@@ -3,12 +3,14 @@ package com.example.shuttlesmgmt.activity.Version2.DBActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.shuttlesmgmt.DAOImplements.OrderDAOImpl;
+import com.example.shuttlesmgmt.activity.Version2.modifyActivity.modifyOrder;
 import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddCustomer;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddOrder;
@@ -23,15 +25,17 @@ import java.util.List;
 
 public class OrderActivity extends AppCompatActivity{
     private ListView lv;
+    private  List<Order> listOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         lv = (ListView) findViewById(R.id.id_listOrder);
-        OrderDAOImpl orderDAO = new OrderDAOImpl(OrderActivity.this);
+        OrderDAOImpl orderDAO = new OrderDAOImpl(
+                OrderActivity.this);
         orderDAO.openRead();
-        List<Order> listOrder = new ArrayList<>();
+        listOrder = new ArrayList<>();
         try {
             listOrder = orderDAO.fetchAll2();
         } catch (ParseException e) {
@@ -39,7 +43,14 @@ public class OrderActivity extends AppCompatActivity{
         }
         OrderAdapter orderAdapter = new OrderAdapter(this, listOrder);
         lv.setAdapter(orderAdapter);
-
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getBaseContext(), modifyOrder.class);
+                intent.putExtra("orderInfo", listOrder.get(position).getId());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

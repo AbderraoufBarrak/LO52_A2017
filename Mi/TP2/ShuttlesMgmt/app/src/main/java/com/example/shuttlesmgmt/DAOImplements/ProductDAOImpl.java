@@ -275,21 +275,17 @@ public class ProductDAOImpl extends DAO<Product> {
     public long fetchByNameAndRef(String name, String ref){
         String query = "SELECT " +
                 ShuttlesSchema.Product.PRODUCT_ID +
-                ShuttlesSchema.Product.PRODUCT_REFERENCE +
                 " FROM " +
                 ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
                 " WHERE " +
                 ShuttlesSchema.Product.PRODUCT_NAME + " =  ? and " +
                 ShuttlesSchema.Product.PRODUCT_REFERENCE + " = ? ";
         Cursor c = getDBRead().rawQuery(query, new String[]{name, ref});
-        if(c != null){
-            c.moveToNext();
-            c.close();
-            return c.getLong(0);
-
-        }else{
-            return 0;
-        }
+        c.moveToNext();
+        long id = c.getLong(0);
+        Log.i("AppInfo", "id " + id);
+        c.close();
+        return id;
     }
 
     public List<String> getListProductsRef(String name){
@@ -308,6 +304,24 @@ public class ProductDAOImpl extends DAO<Product> {
             }
             c.close();
             return listProductsRef;
+        }else{
+            return null;
+        }
+    }
+
+    public String getProductRef(long id){
+        String query = "SELECT " +
+                ShuttlesSchema.Product.PRODUCT_REFERENCE +
+                " FROM " +
+                ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
+                " WHERE " +
+                ShuttlesSchema.Product.PRODUCT_ID + " = ? ";
+        Cursor c = getDBRead().rawQuery(query, new String[]{Long.toString(id)});
+        if(c != null){
+            c.moveToNext();
+            String ref = c.getString(0);
+            c.close();
+            return ref;
         }else{
             return null;
         }

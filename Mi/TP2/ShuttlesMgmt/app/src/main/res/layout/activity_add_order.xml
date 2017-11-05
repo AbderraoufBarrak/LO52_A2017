@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:text="Quantity"
         tools:layout_editor_absoluteX="4dp"
-        android:layout_marginTop="57dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        android:layout_marginTop="49dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Spinner
         android:id="@+id/id_spCustomer"
@@ -63,21 +63,24 @@
         android:text="Payer"
         android:textOff="Non Payer"
         android:textOn="Payer"
-        tools:layout_editor_absoluteX="157dp"
-        android:layout_marginTop="110dp"
-        app:layout_constraintTop_toBottomOf="@+id/id_ETQuantity" />
+        android:layout_marginTop="70dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_ETQuantity"
+        android:layout_marginLeft="143dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="143dp" />
 
     <EditText
         android:id="@+id/id_ETQuantity"
         android:layout_width="255dp"
         android:layout_height="52dp"
-        android:layout_marginTop="35dp"
         android:ems="10"
         android:hint="Quantity"
         android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/id_spProduct"
         app:layout_constraintLeft_toRightOf="@+id/textView13"
-        android:layout_marginLeft="49dp" />
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_spRef" />
 
     <Button
         android:id="@+id/id_add"
@@ -87,7 +90,8 @@
         android:layout_marginLeft="69dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="412dp" />
+        android:layout_marginTop="412dp"
+        android:layout_marginStart="69dp" />
 
     <Button
         android:id="@+id/id_back"
@@ -97,26 +101,47 @@
         app:layout_constraintLeft_toRightOf="@+id/id_add"
         android:layout_marginLeft="54dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="412dp" />
+        android:layout_marginTop="412dp"
+        android:layout_marginStart="54dp" />
 
     <EditText
         android:id="@+id/id_ETPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="23dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="7dp"
         android:ems="10"
         android:hint="Special Price"
         android:inputType="numberDecimal"
         app:layout_constraintLeft_toRightOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/id_ETQuantity" />
+        app:layout_constraintTop_toBottomOf="@+id/id_ETQuantity"
+        android:layout_marginStart="42dp" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="39dp"
         android:text="Special Price"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
         tools:layout_editor_absoluteX="4dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Reference"
+        tools:layout_editor_absoluteX="4dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <Spinner
+        android:id="@+id/id_spRef"
+        android:layout_width="230dp"
+        android:layout_height="29dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/id_spProduct" />
+
 </android.support.constraint.ConstraintLayout>

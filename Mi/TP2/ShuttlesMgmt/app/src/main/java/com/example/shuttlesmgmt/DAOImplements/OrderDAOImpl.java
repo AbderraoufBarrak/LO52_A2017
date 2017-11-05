@@ -88,7 +88,7 @@ public class OrderDAOImpl extends DAO<Order> {
         if(isExist(obj) == false){
             ContentValues values = new ContentValues();
             values.put(ShuttlesSchema.Order.ORDER_DATE, new SimpleDateFormat("dd/MM/yyyy").format(obj.getDate()));
-            values.put(ShuttlesSchema.Order.ORDER_ISPAID, obj.getIsPaid());
+            values.put(ShuttlesSchema.Order.ORDER_ISPAID, String.valueOf(obj.getIsPaid()));
             values.put(ShuttlesSchema.Order.ORDER_QUANTITY, obj.getQuantity());
             values.put(ShuttlesSchema.Order.ORDER_CUSTOMER_ID, obj.getIdCustomer());
             values.put(ShuttlesSchema.Order.ORDER_PRODUCT_ID, obj.getIdProduct());
@@ -156,7 +156,7 @@ public class OrderDAOImpl extends DAO<Order> {
             order.setDate(StringToDate(c.getString(2)));
             order.setIdCustomer(c.getLong(3));
             order.setQuantity(c.getInt(4));
-            order.setIsPaid(Boolean.valueOf(c.getString(5)));
+            order.setIsPaid(Boolean.parseBoolean(c.getString(5)));
             order.setProductName(c.getString(6));
             if(c.getDouble(9) >0){
                 order.setPrice(c.getDouble(9));
@@ -210,7 +210,7 @@ public class OrderDAOImpl extends DAO<Order> {
                 order.setDate(StringToDate(c.getString(2)));
                 order.setIdCustomer(c.getLong(3));
                 order.setQuantity(c.getInt(4));
-                order.setIsPaid(Boolean.valueOf(c.getString(5)));
+                order.setIsPaid(Boolean.parseBoolean(c.getString(5)));
                 order.setProductName(c.getString(6));
                 if(c.getDouble(9) >0){
                     order.setPrice(c.getDouble(9));
@@ -250,7 +250,7 @@ public class OrderDAOImpl extends DAO<Order> {
                         order.setIdCustomer(Long.valueOf(splits[1]));
                         order.setDate(StringToDate(splits[3]));
                         order.setQuantity(Integer.valueOf(splits[2]));
-                        order.setIsPaid(Boolean.valueOf(splits[4]));
+                        order.setIsPaid(Boolean.parseBoolean(splits[4]));
                         if(splits.length == 6){
                             order.setPrice(Double.valueOf(splits[5]));
                         }
@@ -268,19 +268,15 @@ public class OrderDAOImpl extends DAO<Order> {
 
     @Override
     public boolean update(Order obj) {
-        if(isExist(obj) == false){
-            ContentValues values = new ContentValues();
-            values.put(ShuttlesSchema.Order.ORDER_PRODUCT_ID, obj.getIdProduct());
-            values.put(ShuttlesSchema.Order.ORDER_DATE, new SimpleDateFormat("dd/MM/yyyy").format(obj.getDate()));
-            values.put(ShuttlesSchema.Order.ORDER_CUSTOMER_ID, obj.getIdCustomer());
-            values.put(ShuttlesSchema.Order.ORDER_QUANTITY, obj.getQuantity());
-            values.put(ShuttlesSchema.Order.ORDER_ISPAID, obj.getIsPaid());
-            values.put(ShuttlesSchema.Order.ORDER_PRICE, obj.getPrice());
-            getDBWrite().update(ShuttlesSchema.Order.ORDER_TABLE_NAME, values, ShuttlesSchema.Order.ORDER_ID + " = ? ", new String[]{Long.toString(obj.getId())});
-            return true;
-        }else{
-            return false;
-        }
+        ContentValues values = new ContentValues();
+        values.put(ShuttlesSchema.Order.ORDER_PRODUCT_ID, obj.getIdProduct());
+        values.put(ShuttlesSchema.Order.ORDER_DATE, new SimpleDateFormat("dd/MM/yyyy").format(obj.getDate()));
+        values.put(ShuttlesSchema.Order.ORDER_CUSTOMER_ID, obj.getIdCustomer());
+        values.put(ShuttlesSchema.Order.ORDER_QUANTITY, obj.getQuantity());
+        values.put(ShuttlesSchema.Order.ORDER_ISPAID, String.valueOf(obj.getIsPaid()));
+        values.put(ShuttlesSchema.Order.ORDER_PRICE, obj.getPrice());
+        getDBWrite().update(ShuttlesSchema.Order.ORDER_TABLE_NAME, values, ShuttlesSchema.Order.ORDER_ID + " = ? ", new String[]{Long.toString(obj.getId())});
+        return true;
     }
 
     @Override
