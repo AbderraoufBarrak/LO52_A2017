@@ -4,12 +4,47 @@ android:orientation="vertical"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
 
-
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:orientation="horizontal"
+        android:background="#bab9b9">
+
+        <TextView
+            android:id="@+id/tvVolantMarqueTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="MARQUE"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvVolantRefTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="REFERENCE"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvVolantQteTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="QUANTITE"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
 
     <ListView
     android:id="@+id/listVolant"
