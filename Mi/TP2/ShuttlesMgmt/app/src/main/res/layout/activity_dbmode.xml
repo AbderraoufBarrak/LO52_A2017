@@ -6,4 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".activity.Version2.DBActivity.DBMode">
 
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="346dp"
+        android:layout_height="39dp"
+        android:text="Supplier, Order, Product, Customer : Print a list of them"
+        tools:layout_editor_absoluteX="9dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADDP: Add a new Product"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView27"
+        app:layout_constraintLeft_toLeftOf="@+id/textView29" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADDS: Add a new Supplier"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView26"
+        app:layout_constraintLeft_toLeftOf="@+id/textView28" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADDC: Add a new Customer"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView25"
+        app:layout_constraintLeft_toLeftOf="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:text="Choose one option in the menu"
+        app:layout_constraintLeft_toLeftOf="@+id/textView25"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADDO: Add a new Order"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView24"
+        app:layout_constraintLeft_toLeftOf="@+id/textView26" />
 </android.support.constraint.ConstraintLayout>

@@ -11,6 +11,8 @@ import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.entity.Order;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -58,5 +60,59 @@ public class OrderAdapter extends ArrayAdapter<Order>{
 
     public class OrderViewHolder{
         public TextView buyer, product, date, quantity, price;
+    }
+
+    public List<Order> sortList(List<Order> listOrder, int i){
+        switch(i){
+            case 0:
+                Collections.sort(listOrder, new Comparator<Order>() {
+                    @Override
+                    public int compare(Order o1, Order o2) {
+                        return Double.compare(o1.getPrice(), o2.getPrice());
+                    }
+                });
+                break;
+            case 1:
+                Collections.sort(listOrder, new Comparator<Order>() {
+                    @Override
+                    public int compare(Order o1, Order o2) {
+                        return o1.getQuantity()-o2.getQuantity();
+                    }
+                });
+                break;
+            case 2:
+                Collections.sort(listOrder, new Comparator<Order>() {
+                    @Override
+                    public int compare(Order o1, Order o2) {
+                        return o1.getDate().compareTo(o2.getDate());
+                    }
+                });
+                break;
+            case 3:
+                Collections.sort(listOrder, new Comparator<Order>() {
+                    @Override
+                    public int compare(Order o1, Order o2) {
+                        return o1.getCustomerName().compareToIgnoreCase(o2.getCustomerName());
+                    }
+                });
+                break;
+            case 4:
+                Collections.sort(listOrder, new Comparator<Order>() {
+                    @Override
+                    public int compare(Order o1, Order o2) {
+                        return o1.getProductName().compareToIgnoreCase(o2.getProductName());
+                    }
+                });
+                break;
+            case 5:
+                Collections.sort(listOrder, new Comparator<Order>() {
+                    @Override
+                    public int compare(Order o1, Order o2) {
+                        return Boolean.compare(o1.getIsPaid(), o2.getIsPaid());
+                    }
+                });
+                break;
+        }
+        return listOrder;
     }
 }

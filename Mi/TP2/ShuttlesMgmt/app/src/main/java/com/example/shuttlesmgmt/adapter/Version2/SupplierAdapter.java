@@ -51,4 +51,5 @@ public class SupplierAdapter extends ArrayAdapter<Supplier> {
     class SupplierViewHolder{
         public TextView name, add, phone;
     }
+
 }

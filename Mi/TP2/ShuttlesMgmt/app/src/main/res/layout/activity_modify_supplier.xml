@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shuttlesmgmt.activity.Version2.modifyActivity.modifySupplier">
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="27dp" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        app:layout_constraintLeft_toLeftOf="@+id/textView20"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="41dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number"
+        app:layout_constraintLeft_toLeftOf="@+id/textView21"
+        android:layout_marginLeft="-16dp"
+        android:layout_marginTop="51dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+    <Button
+        android:id="@+id/id_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modify"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="374dp"
+        android:layout_marginLeft="44dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="44dp" />
+
+    <Button
+        android:id="@+id/id_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="374dp"
+        android:text="Back"
+        app:layout_constraintLeft_toRightOf="@+id/id_modify"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="67dp" />
+
+    <EditText
+        android:id="@+id/id_ETname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toRightOf="@+id/textView20"
+        android:layout_marginLeft="89dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/id_ETphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        app:layout_constraintRight_toRightOf="@+id/id_ETaddress"
+        android:layout_marginTop="22dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_ETaddress"
+        android:layout_marginRight="0dp" />
+
+    <EditText
+        android:id="@+id/id_ETaddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPostalAddress"
+        app:layout_constraintRight_toRightOf="@+id/id_ETname"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_ETname"
+        android:layout_marginRight="0dp" />
+    <Button
+        android:id="@+id/id_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_back"
+        android:layout_marginLeft="44dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+</android.support.constraint.ConstraintLayout>

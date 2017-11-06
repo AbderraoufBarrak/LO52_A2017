@@ -22,6 +22,7 @@ import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.DBActivity.OrderActivity;
 import com.example.shuttlesmgmt.entity.Customer;
 import com.example.shuttlesmgmt.entity.Order;
+import com.example.shuttlesmgmt.entity.Product;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class AddOrder extends Activity implements View.OnClickListener {
     private Switch isPaid;
     private Boolean isPaidValue;
     private String customerValue, productNameValue, quantityValue, priceValue, refValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,12 +142,18 @@ public class AddOrder extends Activity implements View.OnClickListener {
                 if((productDAO.fetchByNameAndRef(order.getProductName(), refValue) != 0) && (customerDAO.fetchByName(order.getCustomerName()) != 0)){
                     order.setIdCustomer(customerDAO.fetchByName(order.getCustomerName()));
                     order.setIdProduct(productDAO.fetchByNameAndRef(order.getProductName(), refValue));
-                    if(orderDAO.create(order)== true){
-                        price.setText("");
-                        quantity.setText("");
-                        Log.i("AppInfo", order.toString());
-                        Toast.makeText(getApplicationContext(), "New Order added !", Toast.LENGTH_LONG).show();
+                    productDAO.getDBWrite();
+                    if(productDAO.decreaseQuantity(order.getIdProduct(), order.getQuantity())==true){
+                        if(orderDAO.create(order)== true){
+                            price.setText("");
+                            quantity.setText("");
+                            Log.i("AppInfo", order.toString());
+                            Toast.makeText(getApplicationContext(), "New Order added !", Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Insufficient quantity !", Toast.LENGTH_LONG).show();
                     }
+
                 }else{
                     Toast.makeText(getApplicationContext(), "ID customer ou ID product n'est pas correct revoir le code !", Toast.LENGTH_LONG).show();
                 }

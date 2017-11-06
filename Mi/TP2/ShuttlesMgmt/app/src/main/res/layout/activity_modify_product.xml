@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.Version2.addActivity.AddProduct">
+    tools:context="com.example.shuttlesmgmt.activity.Version2.modifyActivity.modifyProduct">
 
     <TextView
         android:id="@+id/textView5"
@@ -33,10 +33,9 @@
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="26dp"
         app:layout_constraintTop_toBottomOf="@+id/id_sp"
-        app:layout_constraintLeft_toRightOf="@+id/textView5"
-        android:layout_marginLeft="74dp" />
+        app:layout_constraintRight_toRightOf="@+id/id_sp" />
 
     <EditText
         android:id="@+id/id_ETref"
@@ -51,13 +50,13 @@
 
     <Spinner
         android:id="@+id/id_sp"
-        android:layout_width="136dp"
+        android:layout_width="217dp"
         android:layout_height="24dp"
-        android:layout_marginStart="59dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
         app:layout_constraintLeft_toRightOf="@+id/textView7"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="59dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="1dp"
+        android:layout_marginStart="59dp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -110,34 +109,31 @@
         app:layout_constraintTop_toBottomOf="@+id/id_ETquantity"
         app:layout_constraintRight_toRightOf="@+id/id_ETquantity" />
     <Button
-        android:id="@+id/id_add"
+        android:id="@+id/id_modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:layout_marginLeft="62dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Modify"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="338dp" />
+        android:layout_marginTop="374dp"
+        android:layout_marginLeft="44dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:id="@+id/id_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="374dp"
         android:text="Back"
-        app:layout_constraintLeft_toRightOf="@+id/id_add"
-        android:layout_marginLeft="51dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="338dp" />
-
+        app:layout_constraintLeft_toRightOf="@+id/id_modify"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
-        android:id="@+id/id_addSupplier"
-        android:layout_width="90dp"
+        android:id="@+id/id_delete"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="0dp"
-        android:text="add New Supplier"
-        app:layout_constraintLeft_toRightOf="@+id/id_sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="274dp" />
-
+        android:text="Delete"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_back"
+        android:layout_marginLeft="44dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </android.support.constraint.ConstraintLayout>

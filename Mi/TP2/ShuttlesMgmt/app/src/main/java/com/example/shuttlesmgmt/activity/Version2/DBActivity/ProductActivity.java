@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.example.shuttlesmgmt.DAOImplements.ProductDAOImpl;
 import com.example.shuttlesmgmt.R;
@@ -13,6 +17,7 @@ import com.example.shuttlesmgmt.activity.Version2.addActivity.AddCustomer;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddOrder;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddProduct;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddSupplier;
+import com.example.shuttlesmgmt.activity.Version2.modifyActivity.modifyProduct;
 import com.example.shuttlesmgmt.adapter.Version2.ProductAdapter;
 import com.example.shuttlesmgmt.entity.Product;
 
@@ -21,18 +26,55 @@ import java.util.List;
 
 public class ProductActivity extends AppCompatActivity {
     private ListView lv;
-
+    private ArrayAdapter<String> spAdapter;
+    private Spinner sp;
+    private  List<Product> listProduct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
         lv = (ListView) findViewById(R.id.id_listProduct);
+        sp = (Spinner) findViewById(R.id.id_spSort);
+
         ProductDAOImpl productDAO = new ProductDAOImpl(ProductActivity.this);
         productDAO.openRead();
-        List<Product> listProduct = new ArrayList<>();
+        listProduct = new ArrayList<>();
         listProduct = productDAO.fetchAll();
-        ProductAdapter productAdapter = new ProductAdapter(this, listProduct);
+        final ProductAdapter productAdapter = new ProductAdapter(this, listProduct);
         lv.setAdapter(productAdapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getBaseContext(), modifyProduct.class);
+                intent.putExtra("productInfo", listProduct.get(position).getId());
+                startActivity(intent);
+            }
+        });
+
+        spAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, getResources().getStringArray(R.array.sortTypeProduct));
+        sp.setAdapter(spAdapter);
+
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(parent.getItemAtPosition(position).equals("Price")){
+                    listProduct = productAdapter.sortList(listProduct, 1);
+                }else if(parent.getItemAtPosition(position).equals("Quantity")){
+                    listProduct = productAdapter.sortList(listProduct, 0);
+                }else if(parent.getItemAtPosition(position).equals("Name")){
+                    listProduct = productAdapter.sortList(listProduct, 3);
+                }else if((parent.getItemAtPosition(position).equals("Reference"))){
+                    listProduct = productAdapter.sortList(listProduct, 2);
+                }
+                lv.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override

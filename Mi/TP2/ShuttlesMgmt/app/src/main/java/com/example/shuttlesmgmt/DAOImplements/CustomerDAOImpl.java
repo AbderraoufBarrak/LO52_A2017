@@ -85,7 +85,7 @@ public class CustomerDAOImpl extends DAO<Customer> {
             //Log.i("AppInfo", "Obj created successfull");
             return true;
         }else{
-            Log.i("AppInfo", "Can't create the obj because already existed");
+            Log.i("AppInfo", "Can't create the obj because already exists");
             return false;
         }
     }

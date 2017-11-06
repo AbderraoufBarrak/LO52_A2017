@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sortQuantity">Quantity</string>
+    <string name="sortPrice">Price</string>
+    <string name="sortRef">Reference</string>
+    <string name="sortName">Name</string>
+    <string-array name="sortTypeProduct">
+        <item>@string/sortName</item>
+        <item>@string/sortRef</item>
+        <item>@string/sortQuantity</item>
+        <item>@string/sortPrice</item>
+    </string-array>
+</resources>

@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.entity.Product;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -61,5 +63,47 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     class ProductViewHolder{
         public ImageView image;
         public TextView name, ref, price, quantity;
+    }
+
+    public List<Product> sortList(List<Product> listProduct, int i){
+        switch (i){
+            case 0:
+                //tri par quantite
+                Collections.sort(listProduct, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return o1.getQuantity() - o2.getQuantity();
+                    }
+                });
+                break;
+            case 1:
+                //tri par prix
+                Collections.sort(listProduct, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return Double.compare(o1.getPrice(), o2.getPrice());
+                    }
+                });
+                break;
+            case 2:
+                //tri par reference
+                Collections.sort(listProduct, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return o1.getRef().compareToIgnoreCase(o2.getRef());
+                    }
+                });
+                break;
+            case 3:
+                //Par défault tri par nom du produit
+                Collections.sort(listProduct, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return o1.getName().compareToIgnoreCase(o2.getName());
+                    }
+                });
+                break;
+        }
+        return listProduct;
     }
 }

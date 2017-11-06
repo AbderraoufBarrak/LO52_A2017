@@ -9,20 +9,19 @@
         android:id="@+id/id_prix"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginLeft="0dp"
         android:text="Prix/u"
         android:textAlignment="center"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/idQuantite"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_marginLeft="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="65dp" />
 
     <TextView
         android:id="@+id/idQuantite"
         android:layout_width="85dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
         android:ems="10"
         android:text="Quantité"
         android:textAlignment="center"
@@ -30,14 +29,15 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/idRef"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/nomStock" />
+        tools:text="@string/nomStock"
+        android:layout_marginLeft="-6dp"
+        android:layout_marginTop="65dp" />
 
     <TextView
         android:id="@+id/idMarque"
         android:layout_width="85dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginLeft="47dp"
         android:ems="10"
         android:text="Marque"
         android:textAlignment="center"
@@ -45,14 +45,14 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/nomMarque" />
+        tools:text="@string/nomMarque"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="65dp" />
 
     <TextView
         android:id="@+id/idRef"
         android:layout_width="85dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
         android:layout_weight="1"
         android:ems="10"
         android:text="Référence"
@@ -61,16 +61,36 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/idMarque"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/nomRef" />
+        tools:text="@string/nomRef"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="65dp" />
 
     <ListView
         android:id="@+id/id_listProduct"
-        android:layout_width="367dp"
-        android:layout_height="478dp"
+        android:layout_width="365dp"
+        android:layout_height="396dp"
         tools:layout_editor_absoluteX="-2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="35dp"
-        app:layout_constraintVertical_bias="0.416" />
+        android:layout_marginTop="60dp"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/id_spSort"
+        android:layout_width="71dp"
+        android:layout_height="26dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView23"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="60dp"
+        android:layout_height="27dp"
+        android:text="Order by :"
+        android:layout_marginLeft="52dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp" />
 </android.support.constraint.ConstraintLayout>

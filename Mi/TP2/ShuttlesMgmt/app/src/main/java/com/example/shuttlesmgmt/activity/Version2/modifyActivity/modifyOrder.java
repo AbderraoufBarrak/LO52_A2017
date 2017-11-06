@@ -31,12 +31,13 @@ public class modifyOrder extends Activity implements View.OnClickListener {
     private TextView customer, productName, productRef;
     private EditText quantity, price;
     private Switch isPaid;
-    private Button modify, back;
+    private Button modify, back, delete;
     private OrderDAOImpl orderDAO;
     private ProductDAOImpl productDAO;
     private Intent intent;
     private Boolean isPaidValue;
     private String quantityValue, priceValue;
+    private int oldQuantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class modifyOrder extends Activity implements View.OnClickListener {
 
         modify = (Button) findViewById(R.id.id_modify);
         back = (Button) findViewById(R.id.id_back);
+        delete = (Button) findViewById(R.id.id_delete);
 
         listOrder = new ArrayList<Order>();
         try {
@@ -73,22 +75,26 @@ public class modifyOrder extends Activity implements View.OnClickListener {
         if(intent.getLongExtra("orderInfo", -1) != -1){
             Long id = intent.getLongExtra("orderInfo", -1);
 
+            Log.i("AppInfo", Long.toString(listOrder.get(id.intValue()-1).getId()));
             order = listOrder.get(id.intValue()-1);
+
             customer.setText(order.getCustomerName());
             customer.setFocusable(false);
             productName.setText(order.getProductName());
             productName.setFocusable(false);
-            productRef.setText(productDAO.getProductRef(id));
+            productRef.setText(productDAO.getProductRef(order.getIdProduct()));
             productRef.setFocusable(false);
 
             quantity.setText(Integer.toString(order.getQuantity()));
-            price.setText(Double.toString(order.getPrice()) + " €");
+            oldQuantity = order.getQuantity();
+            price.setText(Double.toString(order.getPrice()));
 
             isPaid.setChecked(order.getIsPaid());
         }
 
         modify.setOnClickListener(this);
         back.setOnClickListener(this);
+        delete.setOnClickListener(this);
     }
 
     @Override
@@ -104,21 +110,32 @@ public class modifyOrder extends Activity implements View.OnClickListener {
                 if(priceValue.contentEquals("") || priceValue.contentEquals("0")){
                     order.setPrice(0);
                 }else{
-                    if(order.getPrice() != Double.valueOf(priceValue.replace(" €", ""))){
-                        order.setPrice(Double.valueOf(priceValue.replace(" €", "")));
-                    }else{
-                        order.setPrice(Double.valueOf(priceValue.replace("€", "")));
-                    }
+                    order.setPrice(Double.valueOf(priceValue));
                 }
                 order.setDate(new Date());
-                order.setQuantity(Integer.valueOf(quantityValue));
-                order.setIsPaid(isPaidValue);
+                if(productDAO.modifyQuantity(order.getIdProduct(), Integer.valueOf(quantityValue), oldQuantity)==true){
+                    order.setQuantity(Integer.valueOf(quantityValue));
+                    order.setIsPaid(isPaidValue);
                     if(orderDAO.update(order)== true){
                         Log.i("AppInfo", order.toString());
                         Toast.makeText(getApplicationContext(), "Order modified !", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Order already existed !", Toast.LENGTH_LONG).show();
                     }
+                }else{
+                    Toast.makeText(getApplicationContext(), "Insufficient quantity !", Toast.LENGTH_LONG).show();
+                }
+
                 }
         }else if(back.isPressed()){
+            Intent intent = new Intent(modifyOrder.this, OrderActivity.class);
+            startActivity(intent);
+            productDAO.close();
+            orderDAO.close();
+            this.finish();
+        }else if(delete.isPressed()){
+            orderDAO.delete(order.getId());
+            Toast.makeText(getApplicationContext(), "Order deleted !", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(modifyOrder.this, OrderActivity.class);
             startActivity(intent);
             productDAO.close();

@@ -31,43 +31,40 @@ public class AddProduct extends Activity implements View.OnClickListener {
     private ArrayAdapter<String> spinnerAdapter;
     private EditText name, ref, quantity, price;
     private Spinner sp;
-    private Button add, back;
+    private Button add, back, addNewSupplier;
     private List<String> listSupplier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
+
         supplierDAO = new SupplierDAOImpl(this);
         productDAO = new ProductDAOImpl(this);
+
         productDAO.getDBWrite();
         supplierDAO.getDBRead();
+
         sp = (Spinner) findViewById(R.id.id_sp);
+
         name = (EditText) findViewById(R.id.id_ETname);
         ref = (EditText) findViewById(R.id.id_ETref);
         quantity = (EditText) findViewById(R.id.id_ETquantity);
         price = (EditText) findViewById(R.id.id_ETprice);
+
         add = (Button) findViewById(R.id.id_add);
         back = (Button) findViewById(R.id.id_back);
+        addNewSupplier = (Button) findViewById(R.id.id_addSupplier);
 
         sp.setAdapter(spinnerAdapter);
         listSupplier = new ArrayList<String>();
         listSupplier = supplierDAO.getListSuppliersName();
         spinnerAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, listSupplier);
         sp.setAdapter(spinnerAdapter);
-        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         add.setOnClickListener(this);
         back.setOnClickListener(this);
+        addNewSupplier.setOnClickListener(this);
     }
 
     @Override
@@ -104,11 +101,17 @@ public class AddProduct extends Activity implements View.OnClickListener {
                 }
             }
         }else if(back.isPressed()){
-                Intent intent = new Intent(AddProduct.this, ProductActivity.class);
-                startActivity(intent);
-                this.finish();
-                productDAO.close();
-                supplierDAO.close();
+            Intent intent = new Intent(AddProduct.this, ProductActivity.class);
+            startActivity(intent);
+            this.finish();
+            productDAO.close();
+            supplierDAO.close();
+        }else if(addNewSupplier.isPressed()){
+            Intent intent = new Intent(AddProduct.this, AddSupplier.class);
+            startActivity(intent);
+            this.finish();
+            productDAO.close();
+            supplierDAO.close();
         }
     }
 

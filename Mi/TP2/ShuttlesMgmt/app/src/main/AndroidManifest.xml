@@ -39,7 +39,10 @@
         <activity android:name=".ListView.Version2.ListViewSupplier" />
         <activity android:name=".ListView.Version2.ListViewOrder" />
         <activity android:name=".ListView.Version2.ListViewProduct" />
-        <activity android:name=".activity.Version2.modifyActivity.modifyOrder"></activity>
+        <activity android:name=".activity.Version2.modifyActivity.modifyOrder" />
+        <activity android:name=".activity.Version2.modifyActivity.modifyCustomer" />
+        <activity android:name=".activity.Version2.modifyActivity.modifySupplier" />
+        <activity android:name=".activity.Version2.modifyActivity.modifyProduct"></activity>
     </application>
 
 </manifest>

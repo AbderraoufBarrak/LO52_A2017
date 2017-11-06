@@ -145,7 +145,6 @@ public class ProductDAOImpl extends DAO<Product> {
     @Override
     public Product fetchById(long id) {
         String query = "SELECT " +
-                ShuttlesSchema.Product.PRODUCT_ID + "," +
                 ShuttlesSchema.Product.PRODUCT_NAME + "," +
                 ShuttlesSchema.Product.PRODUCT_REFERENCE + "," +
                 ShuttlesSchema.Product.PRODUCT_STOCK  + "," +
@@ -159,22 +158,30 @@ public class ProductDAOImpl extends DAO<Product> {
                 ShuttlesSchema.Supplier.SUPPLIER_TABLE_NAME +
                 " ON " +
                 ShuttlesSchema.Supplier.SUPPLIER_ID + " = " +  ShuttlesSchema.Product.PRODUCT_SUPPLIER_ID +
-                " WHERE " + ShuttlesSchema.Product.PRODUCT_ID + " = ? ";
-        Cursor c = getDBRead().rawQuery(
-               query,
-                new String[]{Long.toString(id)});
+                " WHERE " +
+                ShuttlesSchema.Product.PRODUCT_ID + " = ? ";
+
+        Cursor c = getDBRead().rawQuery( query,  new String[]{Long.toString(id)});
 
         if(c != null){
             c.moveToFirst();
             Product product = new Product();
-            product.setId(c.getLong(0));
-            product.setName(c.getString(1));
-            product.setRef(c.getString(2));
-            product.setQuantity(c.getInt(3));
-            product.setPrice(c.getDouble(4));
-            product.setIdSupplier(c.getLong(5));
-            product.setImage(c.getString(6));
-            product.setSupplierName(c.getString(7));
+            product.setId(id);
+            //Log.i("AppInfo", "ID " + product.getId());
+            product.setName(c.getString(0));
+            //Log.i("AppInfo", "NAME " + product.getName());
+            product.setRef(c.getString(1));
+            //Log.i("AppInfo", "REF " + product.getRef());
+            product.setQuantity(c.getInt(2));
+            //Log.i("AppInfo", "QUANTITY " + product.getQuantity());
+            product.setPrice(c.getDouble(3));
+            //Log.i("AppInfo", "PRICE " + product.getPrice());
+            product.setIdSupplier(c.getLong(4));
+            //Log.i("AppInfo", "ID SUPPLIER " + product.getIdSupplier());
+            product.setImage(c.getString(5));
+            //Log.i("AppInfo", "IMAGE " + product.getImage());
+            product.setSupplierName(c.getString(6));
+            Log.i("AppInfo", "SUPPLIER NAME " + product.getSupplierName());
             c.close();
             return product;
         }else{
@@ -204,8 +211,25 @@ public class ProductDAOImpl extends DAO<Product> {
         List<Product> listProduct = new ArrayList<>();
         if(c != null){
             while(c.moveToNext()){
-                product = new Product(c.getLong(0),c.getLong(5), c.getString(1), c.getString(2), c.getInt(3), c.getDouble(4), c.getString(6));
+                product = new Product();
+
+                product.setId(c.getLong(0));
+                //Log.i("AppInfo", "ID " + product.getId());
+                product.setName(c.getString(1));
+                //Log.i("AppInfo", "NAME " + product.getName());
+                product.setRef(c.getString(2));
+                //Log.i("AppInfo", "REF " + product.getRef());
+                product.setQuantity(c.getInt(3));
+                //Log.i("AppInfo", "QUANTITY " + product.getQuantity());
+                product.setPrice(c.getDouble(4));
+                //Log.i("AppInfo", "PRICE " + product.getPrice());
+                product.setIdSupplier(c.getLong(5));
+                //Log.i("AppInfo", "ID SUPPLIER " + product.getIdSupplier());
+                product.setImage(c.getString(6));
+                //Log.i("AppInfo", "IMAGE " + product.getImage());
                 product.setSupplierName(c.getString(7));
+                //Log.i("AppInfo", "SUPPLIER NAME " + product.getSupplierName());
+
                 Log.i("AppInfoProduct", product.toString());
                 listProduct.add(product);
             }
@@ -223,7 +247,7 @@ public class ProductDAOImpl extends DAO<Product> {
 
     @Override
     public boolean update(Product obj) {
-        if(isExist(obj) == false){
+        if(isExist(obj) == true){
             ContentValues values = new ContentValues();
             values.put(ShuttlesSchema.Product.PRODUCT_NAME, obj.getName());
             values.put(ShuttlesSchema.Product.PRODUCT_REFERENCE, obj.getRef());
@@ -283,8 +307,6 @@ public class ProductDAOImpl extends DAO<Product> {
         Cursor c = getDBRead().rawQuery(query, new String[]{name, ref});
         c.moveToNext();
         long id = c.getLong(0);
-        Log.i("AppInfo", "id " + id);
-        c.close();
         return id;
     }
 
@@ -310,20 +332,33 @@ public class ProductDAOImpl extends DAO<Product> {
     }
 
     public String getProductRef(long id){
-        String query = "SELECT " +
-                ShuttlesSchema.Product.PRODUCT_REFERENCE +
-                " FROM " +
-                ShuttlesSchema.Product.PRODUCT_TABLE_NAME +
-                " WHERE " +
-                ShuttlesSchema.Product.PRODUCT_ID + " = ? ";
-        Cursor c = getDBRead().rawQuery(query, new String[]{Long.toString(id)});
-        if(c != null){
-            c.moveToNext();
-            String ref = c.getString(0);
-            c.close();
-            return ref;
+        Product product = fetchById(id);
+        return product.getRef();
+
+    }
+
+    public boolean decreaseQuantity(Long id, int quantity){
+        Product product = fetchById(id);
+        //Log.i("AppInfo", product.getQuantity() + ">"+ quantity);
+        if(product.getQuantity()>=quantity){
+            product.setQuantity(product.getQuantity()-quantity);
+            return update(product);
         }else{
-            return null;
+            return false;
+        }
+    }
+
+    public boolean increaseQuantity(long id, int quantity){
+        Product product = fetchById(id);
+        product.setQuantity(product.getQuantity()+ quantity);
+        return update(product);
+    }
+
+    public boolean modifyQuantity(long id, int newQuantity, int oldQuantity){
+        if(increaseQuantity(id, oldQuantity)==true){
+            return decreaseQuantity(id, newQuantity);
+        }else{
+            return false;
         }
     }
 }

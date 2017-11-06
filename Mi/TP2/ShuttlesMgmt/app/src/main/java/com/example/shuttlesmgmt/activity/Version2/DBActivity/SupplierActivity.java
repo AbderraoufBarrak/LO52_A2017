@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.shuttlesmgmt.DAOImplements.SupplierDAOImpl;
@@ -13,6 +15,7 @@ import com.example.shuttlesmgmt.activity.Version2.addActivity.AddCustomer;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddOrder;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddProduct;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddSupplier;
+import com.example.shuttlesmgmt.activity.Version2.modifyActivity.modifySupplier;
 import com.example.shuttlesmgmt.adapter.Version2.SupplierAdapter;
 import com.example.shuttlesmgmt.entity.Supplier;
 
@@ -21,6 +24,7 @@ import java.util.List;
 
 public class SupplierActivity extends AppCompatActivity {
     private ListView lv;
+    List<Supplier> listSupplier;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +32,18 @@ public class SupplierActivity extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.id_listSupplier);
         SupplierDAOImpl supplierDAO = new SupplierDAOImpl(SupplierActivity.this);
         supplierDAO.openRead();
-        List<Supplier> listSupplier = new ArrayList<>();
+        listSupplier = new ArrayList<>();
         listSupplier = supplierDAO.fetchAll();
         SupplierAdapter supplierAdapter = new SupplierAdapter(this, listSupplier);
         lv.setAdapter(supplierAdapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getBaseContext(), modifySupplier.class);
+                intent.putExtra("supplierInfo", listSupplier.get(position).getId());
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

@@ -19,10 +19,9 @@ import java.util.List;
  */
 
 public class CustomerAdapter extends ArrayAdapter<Customer> {
-    private List<Customer> list;
+
     public CustomerAdapter(Context c, List<Customer> obj){
         super(c,0, obj);
-        this.list = obj;
     }
     @Override
     public int getCount(){
@@ -55,11 +54,6 @@ public class CustomerAdapter extends ArrayAdapter<Customer> {
 
     class CustomerViewHolder{
         public TextView name, add, phone;
-    }
-
-    public void updateRecord(List<Customer> obj){
-        this.list = obj;
-        notifyDataSetChanged();
     }
 
 }

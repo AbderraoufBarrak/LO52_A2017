@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.shuttlesmgmt.DAOImplements.CustomerDAOImpl;
+import com.example.shuttlesmgmt.activity.Version2.modifyActivity.modifyCustomer;
 import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddCustomer;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddOrder;
@@ -21,6 +24,7 @@ import java.util.List;
 
 public class CustomerActivity extends AppCompatActivity{
     private ListView lv;
+    private  List<Customer> listCustomer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +33,19 @@ public class CustomerActivity extends AppCompatActivity{
 
         CustomerDAOImpl customerDAO = new CustomerDAOImpl(CustomerActivity.this);
         customerDAO.openRead();
-        List<Customer> listCustomer = new ArrayList<Customer>();
+        listCustomer = new ArrayList<Customer>();
         listCustomer = customerDAO.fetchAll();
         CustomerAdapter customerAdapter = new CustomerAdapter(this, listCustomer);
         lv.setAdapter(customerAdapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getBaseContext(), modifyCustomer.class);
+                intent.putExtra("customerInfo", listCustomer.get(position).getId());
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

@@ -268,15 +268,19 @@ public class OrderDAOImpl extends DAO<Order> {
 
     @Override
     public boolean update(Order obj) {
-        ContentValues values = new ContentValues();
-        values.put(ShuttlesSchema.Order.ORDER_PRODUCT_ID, obj.getIdProduct());
-        values.put(ShuttlesSchema.Order.ORDER_DATE, new SimpleDateFormat("dd/MM/yyyy").format(obj.getDate()));
-        values.put(ShuttlesSchema.Order.ORDER_CUSTOMER_ID, obj.getIdCustomer());
-        values.put(ShuttlesSchema.Order.ORDER_QUANTITY, obj.getQuantity());
-        values.put(ShuttlesSchema.Order.ORDER_ISPAID, String.valueOf(obj.getIsPaid()));
-        values.put(ShuttlesSchema.Order.ORDER_PRICE, obj.getPrice());
-        getDBWrite().update(ShuttlesSchema.Order.ORDER_TABLE_NAME, values, ShuttlesSchema.Order.ORDER_ID + " = ? ", new String[]{Long.toString(obj.getId())});
-        return true;
+        if(isExist(obj)==false){
+            ContentValues values = new ContentValues();
+            values.put(ShuttlesSchema.Order.ORDER_PRODUCT_ID, obj.getIdProduct());
+            values.put(ShuttlesSchema.Order.ORDER_DATE, new SimpleDateFormat("dd/MM/yyyy").format(obj.getDate()));
+            values.put(ShuttlesSchema.Order.ORDER_CUSTOMER_ID, obj.getIdCustomer());
+            values.put(ShuttlesSchema.Order.ORDER_QUANTITY, obj.getQuantity());
+            values.put(ShuttlesSchema.Order.ORDER_ISPAID, String.valueOf(obj.getIsPaid()));
+            values.put(ShuttlesSchema.Order.ORDER_PRICE, obj.getPrice());
+            getDBWrite().update(ShuttlesSchema.Order.ORDER_TABLE_NAME, values, ShuttlesSchema.Order.ORDER_ID + " = ? ", new String[]{Long.toString(obj.getId())});
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override

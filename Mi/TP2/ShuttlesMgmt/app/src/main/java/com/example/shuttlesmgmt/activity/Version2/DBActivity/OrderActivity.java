@@ -7,7 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.example.shuttlesmgmt.DAOImplements.OrderDAOImpl;
 import com.example.shuttlesmgmt.activity.Version2.modifyActivity.modifyOrder;
@@ -26,14 +28,18 @@ import java.util.List;
 public class OrderActivity extends AppCompatActivity{
     private ListView lv;
     private  List<Order> listOrder;
+    private Spinner sp;
+    private ArrayAdapter<String> spAdapter;
+    private OrderAdapter orderAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         lv = (ListView) findViewById(R.id.id_listOrder);
-        OrderDAOImpl orderDAO = new OrderDAOImpl(
-                OrderActivity.this);
+        sp = (Spinner) findViewById(R.id.id_spSort);
+
+        OrderDAOImpl orderDAO = new OrderDAOImpl(OrderActivity.this);
         orderDAO.openRead();
         listOrder = new ArrayList<>();
         try {
@@ -41,7 +47,7 @@ public class OrderActivity extends AppCompatActivity{
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        OrderAdapter orderAdapter = new OrderAdapter(this, listOrder);
+        orderAdapter = new OrderAdapter(this, listOrder);
         lv.setAdapter(orderAdapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -51,6 +57,35 @@ public class OrderActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+        spAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, getResources().getStringArray(R.array.sortTypeOrder));
+        sp.setAdapter(spAdapter);
+
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(parent.getItemAtPosition(position).equals("Quantity")){
+                    listOrder = orderAdapter.sortList(listOrder, 1);
+                }else if(parent.getItemAtPosition(position).equals("Price")){
+                    listOrder = orderAdapter.sortList(listOrder, 0);
+                }else if(parent.getItemAtPosition(position).equals("Customer Name")){
+                    listOrder = orderAdapter.sortList(listOrder, 3);
+                }else if((parent.getItemAtPosition(position).equals("Date"))){
+                    listOrder = orderAdapter.sortList(listOrder, 2);
+                }else if((parent.getItemAtPosition(position).equals("Product Name"))){
+                    listOrder = orderAdapter.sortList(listOrder, 4);
+                }else if((parent.getItemAtPosition(position).equals("isPaid"))){
+                    listOrder = orderAdapter.sortList(listOrder, 5);
+                }
+                lv.setAdapter(orderAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
 
     @Override

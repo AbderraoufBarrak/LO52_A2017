@@ -246,8 +246,8 @@ public class SupplierDAOImpl extends DAO<Supplier> {
         Cursor c = getDBRead().rawQuery(query, new String[]{name});
         if(c != null){
             c.moveToNext();
-            c.close();
-            return c.getLong(0);
+            long id = c.getLong(0);
+            return id;
 
         }else{
             return 0;

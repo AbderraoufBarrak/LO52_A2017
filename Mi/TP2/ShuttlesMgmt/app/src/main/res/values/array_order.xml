@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sortPriceO">Price</string>
+    <string name="sortQuantityO">Quantity</string>
+    <string name="sortNameO">Product Name</string>
+    <string name="sortCustomerO">Customner Name</string>
+    <string name="sortisPaidO">isPaid</string>
+    <string-array name="sortTypeOrder">
+        <item>@string/sortCustomerO</item>
+        <item>@string/sortNameO</item>
+        <item>@string/sortQuantityO</item>
+        <item>@string/sortPriceO</item>
+        <item>@string/sortisPaidO</item>
+    </string-array>
+</resources>
