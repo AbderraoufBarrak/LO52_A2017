@@ -3,8 +3,11 @@ package fr.utbm.lpp.ffbad.activity.fragment;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.sax.TextElementListener;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +28,7 @@ import fr.utbm.lpp.ffbad.data.adapter.ShuttlecockCursorAdapter;
 import fr.utbm.lpp.ffbad.data.db.FFBadDbContract;
 import fr.utbm.lpp.ffbad.data.db.FFbadDbHelper;
 
-public class SaleFormFragment extends Fragment {
+public class SaleFormFragment extends Fragment implements TextWatcher {
 
     public static final String ARG_SALE_ID = "saleId";
 
@@ -34,13 +37,15 @@ public class SaleFormFragment extends Fragment {
     private Sale sale = null;
 
     private Button _btnbuy;
-    private EditText _txtquantity, _txtprice;
+    private EditText _txtquantity;
+    private TextView _txtprice;
     private Switch _swipayed;
     private Spinner _spimodel, _spiCustomer;
 
     private Integer stock = null;
     private Long shuttlecockId = null;
     private Long customerId = null;
+
 
     public static SaleFormFragment newInstance() {
         Bundle args = new Bundle();
@@ -66,6 +71,7 @@ public class SaleFormFragment extends Fragment {
         _txtquantity = v.findViewById(R.id.txtquantity);
         _txtprice = v.findViewById(R.id.txtprice);
         _swipayed = v.findViewById(R.id.swipayed);
+        _txtquantity.addTextChangedListener(this);
         return v;
     }
 
@@ -134,8 +140,12 @@ public class SaleFormFragment extends Fragment {
             _spimodel.setEnabled(false);
             _txtquantity.setEnabled(false);
             _txtprice.setEnabled(false);
+
             if (sale.isPaid()) {
                 _swipayed.setEnabled(false);
+                _btnbuy.setText("CANCEL");
+            } else {
+                _btnbuy.setText("UPDATE");
             }
         } else { // Create new sale
             String[] projection = {
@@ -215,6 +225,58 @@ public class SaleFormFragment extends Fragment {
                 eventManager.onSaleFormCompleted();
             }
         });
+    }
+
+
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        _txtprice.setText("Please, enter a quantity between 1 and 9999.");
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        final FFBadApplication app = (FFBadApplication) getActivity().getApplication();
+        final String saleQuery = "" +
+                "SELECT * " +
+                "FROM SHUTTLECOCK " +
+                "WHERE SHUTTLECOCK._id = ?";
+        String[] params = new String[] { String.valueOf(shuttlecockId) };
+        Cursor shuttlecockCursor = app.getDb().rawQuery(saleQuery, params);
+        shuttlecockCursor.moveToFirst();
+
+        double price = shuttlecockCursor.getDouble(shuttlecockCursor.getColumnIndex("price"));
+        boolean tryParseInt = false;
+        try {
+            Integer.parseInt(_txtquantity.getText().toString());
+            tryParseInt = true;
+        } catch (NumberFormatException e) {
+            tryParseInt = false;
+        }
+
+        if(tryParseInt && Integer.parseInt(_txtquantity.getText().toString()) < 10000){
+            price = price * Integer.parseInt(_txtquantity.getText().toString());
+            _txtprice.setText(Double.toString(price));
+        }
+
+        /*
+        ShuttlecockCursorAdapter shuttlecockAdapter = new ShuttlecockCursorAdapter(this.getContext(), shuttlecockCursor);
+
+        FFBadDbContract.Shuttlecock hey = FFBadDbContract.Shuttlecock.getFromCursor(shuttlecockCursor);
+*/
+
+
+/*
+        FFbadDbHelper.createSale(app.getDb(), customerId, shuttlecockId, price, quantity, _swipayed.isChecked());
+        ContentValues values = new ContentValues();
+        values.put(FFBadDbContract.Shuttlecock.COLUMN_NAME_STOCK, stock - quantity);
+        long id = app.getDb().update(FFBadDbContract.Shuttlecock.TABLE_NAME, values, "_id = ?", new String[] {});
+        Toast.makeText(getContext(), "Done: " + id, Toast.LENGTH_LONG).show();*/
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
     }
 
     public interface OnSaleFormFragmentEvent {

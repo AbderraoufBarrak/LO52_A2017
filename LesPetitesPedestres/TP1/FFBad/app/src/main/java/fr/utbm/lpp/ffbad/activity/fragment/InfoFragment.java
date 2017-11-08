@@ -32,12 +32,7 @@ public class InfoFragment extends Fragment {
     }
 
     private void setInfo() {
-        TextView flatIconsLicense = getView().findViewById(R.id.text_license_flaticons);
-        String content = getContext().getString(R.string.license_flaticons);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            flatIconsLicense.setText(Html.fromHtml(content, Html.FROM_HTML_MODE_LEGACY));
-        } else {
-            flatIconsLicense.setText(Html.fromHtml(content));
-        }
+        TextView text = getView().findViewById(R.id.text_info);
+        text.setText("This app was made by LesPetitesPedestres !");
     }
 }

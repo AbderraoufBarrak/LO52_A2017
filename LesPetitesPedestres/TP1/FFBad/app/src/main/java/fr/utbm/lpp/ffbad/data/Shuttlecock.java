@@ -7,6 +7,7 @@ public class Shuttlecock {
     private int rating;
     private int stock;
     private String icon;
+    private double price;
 
     public Shuttlecock(long id, String brand, String reference, int rating, int stock) {
         setId(id);
@@ -70,4 +71,12 @@ public class Shuttlecock {
     public void setIcon(String brand, String reference) {this.icon = brand.toLowerCase() + "_" + reference.toLowerCase();}
 
     public String getIcon() { return icon; }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }
