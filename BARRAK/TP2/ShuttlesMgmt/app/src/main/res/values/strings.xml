@@ -1,10 +1,47 @@
 <resources>
-    <string name="app_name">ShuttlesMgmt</string>
+    <string name="app_name">Shuttles Management App</string>
     <string name="listView">listView</string>
-
+    <string name="imageView">imageView</string>
     <string name="textView_name">textView_name</string>
     <string name="textView_grade">textView_name</string>
     <string name="textView_stock">textView_name</string>
     <string name="textView_price">textView_name</string>
+
+    <string name="option_stock">Stock</string>
+    <string name="option_achat">Achat</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <string-array name="navigation_drawer_items_array">
+        <item>Stock</item>
+        <item>Achat</item>
+        <item>Sign</item>
+    </string-array>
+
+    <!--These strings are for the form… -->
+    <string name="form_title">Enter your customer details :</string>
+    <string name="customer_name_hint">Customer Name</string>
+    <!--These strings are for the Tube list in form… -->
+    <string name="feedbacktype">Tube Reference</string>
+    <string name="customer_qte_hint">Quantity</string>
+
+    <string name="feedbacktype1">Tube1</string>
+    <string name="feedbacktype2">Tube2</string>
+    <string name="feedbacktype3">Tube3</string>
+    <string name="feedbacktype4">Tube4</string>
+    <string-array name="feedbacktypelist">
+        <item>@string/feedbacktype1</item>
+        <item>@string/feedbacktype2</item>
+        <item>@string/feedbacktype3</item>
+        <item>@string/feedbacktype4</item>
+    </string-array>
+    <string name="paiement">Payée</string>
+    <string name="addCustomer">Add Customer</string>
+
 
 </resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shuttlesmgmt.FormFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:id="@+id/TextViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/form_title"
+            android:textSize="12pt">
+        </TextView>
+        <EditText
+            android:layout_marginTop="8dp"
+            android:id="@+id/EditTextName"
+            android:layout_height="wrap_content"
+            android:hint="@string/customer_name_hint"
+            android:inputType="textPersonName"
+            android:layout_width="fill_parent">
+        </EditText>
+        <EditText
+            android:layout_marginTop="8dp"
+            android:id="@+id/EditTextQTE"
+            android:layout_height="wrap_content"
+            android:hint="@string/customer_qte_hint"
+            android:inputType="textPersonName"
+            android:layout_width="fill_parent">
+        </EditText>
+        <Spinner
+            android:id="@+id/SpinnerFeedbackType"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:prompt="@string/feedbacktype"
+            android:layout_width="fill_parent"
+            android:entries="@array/feedbacktypelist">
+        </Spinner>
+        <CheckBox
+            android:id="@+id/CheckBoxResponse"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:text="@string/paiement"
+            android:layout_width="fill_parent">
+        </CheckBox>
+
+        <Button
+            android:id="@+id/ButtonSendFeedback"
+            android:layout_marginTop="8dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="sendFeedback"
+            android:text="@string/addCustomer"></Button>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.shuttlesmgmt.MainActivity">
+    tools:context="com.example.shuttlesmgmt.StockFragment">
 
     <RelativeLayout
+        android:background="@android:color/white"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -24,12 +25,13 @@
         tools:layout_constraintTop_creator="1">
 
         <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:background="@android:color/white"
             android:divider="@android:drawable/bottom_bar"
-            android:dividerHeight="1dp"
-            android:id="@+id/listView"/>
+            android:dividerHeight="1dp" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
