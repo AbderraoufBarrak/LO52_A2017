@@ -2,7 +2,6 @@ package com.example.shuttlesmgmt.activity.Version2.addActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shuttlesmgmt.DAOImplements.CustomerDAOImpl;
@@ -20,11 +18,8 @@ import com.example.shuttlesmgmt.DAOImplements.OrderDAOImpl;
 import com.example.shuttlesmgmt.DAOImplements.ProductDAOImpl;
 import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.DBActivity.OrderActivity;
-import com.example.shuttlesmgmt.entity.Customer;
-import com.example.shuttlesmgmt.entity.Order;
-import com.example.shuttlesmgmt.entity.Product;
+import com.example.shuttlesmgmt.entity.Version2.Order;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -86,18 +81,6 @@ public class AddOrder extends Activity implements View.OnClickListener {
         spCustomer.setAdapter(spinnerAdapterCustomer);
         spProductName.setAdapter(spinnerAdapterProductName);
 
-        spCustomer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         spProductName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -127,10 +110,10 @@ public class AddOrder extends Activity implements View.OnClickListener {
             refValue = spProductRef.getSelectedItem().toString();
 
             if(quantityValue.contentEquals("")){
-                Toast.makeText(getApplicationContext(), "Les champs ne peuvent pas être vide !", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Le champ quantité ne peut pas être vide !", Toast.LENGTH_LONG).show();
             }else{
                 if(priceValue.contentEquals("")){
-
+                    //on fait rien si cest vide car une commande peut être gratuit
                 }else{
                     order.setPrice(Double.valueOf(priceValue));
                 }
@@ -139,6 +122,7 @@ public class AddOrder extends Activity implements View.OnClickListener {
                 order.setDate(new Date());
                 order.setQuantity(Integer.valueOf(quantityValue));
                 order.setIsPaid(isPaidValue);
+                //on test ici pour savoir id qu'on recoit n'est pas nulle pour les deux car dans le db on commence par 1 au lieu de 0
                 if((productDAO.fetchByNameAndRef(order.getProductName(), refValue) != 0) && (customerDAO.fetchByName(order.getCustomerName()) != 0)){
                     order.setIdCustomer(customerDAO.fetchByName(order.getCustomerName()));
                     order.setIdProduct(productDAO.fetchByNameAndRef(order.getProductName(), refValue));

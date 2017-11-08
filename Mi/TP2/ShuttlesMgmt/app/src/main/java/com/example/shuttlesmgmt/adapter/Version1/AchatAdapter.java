@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.shuttlesmgmt.entity.Achat;
+import com.example.shuttlesmgmt.entity.Version1.Achat;
 import com.example.shuttlesmgmt.R;
 
 import java.util.List;
@@ -50,16 +50,16 @@ public class AchatAdapter extends ArrayAdapter<Achat> {
             view.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
+        //recupere la position
         Achat a = getItem(i);
 
-        //il ne reste plus qu'à remplir notre vue
         viewHolder.marque.setText(a.getMarque());
         viewHolder.ref.setText(a.getRef());
         viewHolder.qtt.setText(a.getQuantite() + " unité");
         viewHolder.prix.setText(a.getPrix() + "€");
         viewHolder.acheteur.setText(a.getAcheteur());
         id = a.getImage();
+
         //converti de string en int
         idDrawable = getContext().getResources().getIdentifier(id,"drawable", getContext().getPackageName());
         viewHolder.image.setImageResource(idDrawable);

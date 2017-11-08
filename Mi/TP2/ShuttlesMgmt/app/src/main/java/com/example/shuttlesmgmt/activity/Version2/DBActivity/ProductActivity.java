@@ -19,7 +19,7 @@ import com.example.shuttlesmgmt.activity.Version2.addActivity.AddProduct;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddSupplier;
 import com.example.shuttlesmgmt.activity.Version2.modifyActivity.modifyProduct;
 import com.example.shuttlesmgmt.adapter.Version2.ProductAdapter;
-import com.example.shuttlesmgmt.entity.Product;
+import com.example.shuttlesmgmt.entity.Version2.Product;
 
 import java.util.ArrayList;
 import java.util.List;

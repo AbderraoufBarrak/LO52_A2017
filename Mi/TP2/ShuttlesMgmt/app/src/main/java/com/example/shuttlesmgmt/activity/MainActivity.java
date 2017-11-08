@@ -10,7 +10,6 @@ import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.DBActivity.DBMode;
 import com.example.shuttlesmgmt.activity.Version1.AchatsActivity;
 import com.example.shuttlesmgmt.activity.Version1.StockActivity;
-import com.example.shuttlesmgmt.db.DBHandler;
 
 public class MainActivity extends AppCompatActivity {
 

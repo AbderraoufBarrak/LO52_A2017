@@ -17,7 +17,7 @@ import com.example.shuttlesmgmt.activity.Version2.addActivity.AddOrder;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddProduct;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddSupplier;
 import com.example.shuttlesmgmt.adapter.Version2.CustomerAdapter;
-import com.example.shuttlesmgmt.entity.Customer;
+import com.example.shuttlesmgmt.entity.Version2.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,27 +98,35 @@ public class CustomerActivity extends AppCompatActivity{
         switch(item.getItemId()){
             case R.id.action_customer:
                 onClickCustomer();
+                this.finish();
                 return true;
             case R.id.action_order:
                 onClickOrder();
+                this.finish();
                 return true;
             case R.id.action_product:
                 onClickProduct();
+                this.finish();
                 return true;
             case R.id.action_supplier:
                 onClickSupplier();
+                this.finish();
                 return true;
             case R.id.addCustomer:
                 onClickAddCustomer();
+                this.finish();
                 return true;
             case R.id.addProduct:
                 onClickAddProduct();
+                this.finish();
                 return true;
             case R.id.addSupplier:
                 onClickAddSupplier();
+                this.finish();
                 return true;
             case R.id.addOrder:
                 onClickAddOrder();
+                this.finish();
                 return true;
         }
 

@@ -1,14 +1,12 @@
 package com.example.shuttlesmgmt.activity.Version2.DBActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.shuttlesmgmt.DAO.DAO;
 import com.example.shuttlesmgmt.DAOImplements.CustomerDAOImpl;
 import com.example.shuttlesmgmt.DAOImplements.OrderDAOImpl;
 import com.example.shuttlesmgmt.DAOImplements.ProductDAOImpl;
@@ -18,11 +16,6 @@ import com.example.shuttlesmgmt.activity.Version2.addActivity.AddCustomer;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddOrder;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddProduct;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddSupplier;
-import com.example.shuttlesmgmt.db.DBHandler;
-import com.example.shuttlesmgmt.entity.Customer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DBMode extends AppCompatActivity {
 

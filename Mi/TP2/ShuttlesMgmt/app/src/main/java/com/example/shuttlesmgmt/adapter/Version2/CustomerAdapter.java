@@ -8,10 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.shuttlesmgmt.R;
-import com.example.shuttlesmgmt.entity.Customer;
+import com.example.shuttlesmgmt.entity.Version2.Customer;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**

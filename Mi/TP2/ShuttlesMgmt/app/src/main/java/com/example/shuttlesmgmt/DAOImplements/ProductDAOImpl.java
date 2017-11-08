@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.example.shuttlesmgmt.DAO.DAO;
 import com.example.shuttlesmgmt.db.ShuttlesSchema;
-import com.example.shuttlesmgmt.entity.Product;
+import com.example.shuttlesmgmt.entity.Version2.Product;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -167,21 +167,13 @@ public class ProductDAOImpl extends DAO<Product> {
             c.moveToFirst();
             Product product = new Product();
             product.setId(id);
-            //Log.i("AppInfo", "ID " + product.getId());
             product.setName(c.getString(0));
-            //Log.i("AppInfo", "NAME " + product.getName());
             product.setRef(c.getString(1));
-            //Log.i("AppInfo", "REF " + product.getRef());
             product.setQuantity(c.getInt(2));
-            //Log.i("AppInfo", "QUANTITY " + product.getQuantity());
             product.setPrice(c.getDouble(3));
-            //Log.i("AppInfo", "PRICE " + product.getPrice());
             product.setIdSupplier(c.getLong(4));
-            //Log.i("AppInfo", "ID SUPPLIER " + product.getIdSupplier());
             product.setImage(c.getString(5));
-            //Log.i("AppInfo", "IMAGE " + product.getImage());
             product.setSupplierName(c.getString(6));
-            Log.i("AppInfo", "SUPPLIER NAME " + product.getSupplierName());
             c.close();
             return product;
         }else{
@@ -214,21 +206,13 @@ public class ProductDAOImpl extends DAO<Product> {
                 product = new Product();
 
                 product.setId(c.getLong(0));
-                //Log.i("AppInfo", "ID " + product.getId());
                 product.setName(c.getString(1));
-                //Log.i("AppInfo", "NAME " + product.getName());
                 product.setRef(c.getString(2));
-                //Log.i("AppInfo", "REF " + product.getRef());
                 product.setQuantity(c.getInt(3));
-                //Log.i("AppInfo", "QUANTITY " + product.getQuantity());
                 product.setPrice(c.getDouble(4));
-                //Log.i("AppInfo", "PRICE " + product.getPrice());
                 product.setIdSupplier(c.getLong(5));
-                //Log.i("AppInfo", "ID SUPPLIER " + product.getIdSupplier());
                 product.setImage(c.getString(6));
-                //Log.i("AppInfo", "IMAGE " + product.getImage());
                 product.setSupplierName(c.getString(7));
-                //Log.i("AppInfo", "SUPPLIER NAME " + product.getSupplierName());
 
                 Log.i("AppInfoProduct", product.toString());
                 listProduct.add(product);
@@ -339,7 +323,6 @@ public class ProductDAOImpl extends DAO<Product> {
 
     public boolean decreaseQuantity(Long id, int quantity){
         Product product = fetchById(id);
-        //Log.i("AppInfo", product.getQuantity() + ">"+ quantity);
         if(product.getQuantity()>=quantity){
             product.setQuantity(product.getQuantity()-quantity);
             return update(product);

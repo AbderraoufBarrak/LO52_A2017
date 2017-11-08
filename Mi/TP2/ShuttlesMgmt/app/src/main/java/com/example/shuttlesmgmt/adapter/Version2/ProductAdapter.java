@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.shuttlesmgmt.R;
-import com.example.shuttlesmgmt.entity.Product;
+import com.example.shuttlesmgmt.entity.Version2.Product;
 
 import java.util.Collections;
 import java.util.Comparator;

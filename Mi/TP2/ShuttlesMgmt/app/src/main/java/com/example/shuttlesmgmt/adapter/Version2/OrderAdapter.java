@@ -8,12 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.shuttlesmgmt.R;
-import com.example.shuttlesmgmt.entity.Order;
+import com.example.shuttlesmgmt.entity.Version2.Order;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,9 +61,11 @@ public class OrderAdapter extends ArrayAdapter<Order>{
         public TextView buyer, product, date, quantity, price;
     }
 
+    //partie tri
     public List<Order> sortList(List<Order> listOrder, int i){
         switch(i){
             case 0:
+                //tri par prix
                 Collections.sort(listOrder, new Comparator<Order>() {
                     @Override
                     public int compare(Order o1, Order o2) {
@@ -73,6 +74,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
                 });
                 break;
             case 1:
+                //tri par quantite
                 Collections.sort(listOrder, new Comparator<Order>() {
                     @Override
                     public int compare(Order o1, Order o2) {
@@ -81,6 +83,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
                 });
                 break;
             case 2:
+                //tri par date
                 Collections.sort(listOrder, new Comparator<Order>() {
                     @Override
                     public int compare(Order o1, Order o2) {
@@ -89,6 +92,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
                 });
                 break;
             case 3:
+                //tri par nom du client
                 Collections.sort(listOrder, new Comparator<Order>() {
                     @Override
                     public int compare(Order o1, Order o2) {
@@ -97,6 +101,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
                 });
                 break;
             case 4:
+                //tri par nom du produit
                 Collections.sort(listOrder, new Comparator<Order>() {
                     @Override
                     public int compare(Order o1, Order o2) {
@@ -105,6 +110,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
                 });
                 break;
             case 5:
+                //tri par si paye ou pas
                 Collections.sort(listOrder, new Comparator<Order>() {
                     @Override
                     public int compare(Order o1, Order o2) {

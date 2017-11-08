@@ -1,8 +1,4 @@
-package com.example.shuttlesmgmt.entity;
-
-import com.example.shuttlesmgmt.db.ShuttlesSchema;
-
-import java.util.Arrays;
+package com.example.shuttlesmgmt.entity.Version2;
 
 /**
  * Created by Michel on 2017/10/30.

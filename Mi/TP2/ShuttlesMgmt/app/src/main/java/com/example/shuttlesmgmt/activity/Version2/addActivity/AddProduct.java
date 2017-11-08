@@ -2,11 +2,8 @@ package com.example.shuttlesmgmt.activity.Version2.addActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +14,7 @@ import com.example.shuttlesmgmt.DAOImplements.ProductDAOImpl;
 import com.example.shuttlesmgmt.DAOImplements.SupplierDAOImpl;
 import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.DBActivity.ProductActivity;
-import com.example.shuttlesmgmt.entity.Product;
-import com.example.shuttlesmgmt.entity.Supplier;
+import com.example.shuttlesmgmt.entity.Version2.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,9 +80,13 @@ public class AddProduct extends Activity implements View.OnClickListener {
                 product.setRef(refValue);
                 product.setQuantity(Integer.valueOf(quantityValue));
                 product.setPrice(Double.valueOf(priceValue));
+
+                //on teste si l'id du supplier n'est pas nulle car dans le db on commence par 1
                 if(supplierDAO.fetchByName(supplierValue) != 0){
                     product.setIdSupplier(supplierDAO.fetchByName(supplierValue));
                     product.setImage("");
+
+                    //on teste si le produit à bien été créé sinon le produit existe deja dans le db
                     if(productDAO.create(product)==true){
                         name.setText("");
                         ref.setText("");

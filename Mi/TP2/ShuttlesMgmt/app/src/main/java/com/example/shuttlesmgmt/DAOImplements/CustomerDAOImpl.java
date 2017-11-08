@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.example.shuttlesmgmt.DAO.DAO;
 import com.example.shuttlesmgmt.db.ShuttlesSchema;
-import com.example.shuttlesmgmt.entity.Customer;
+import com.example.shuttlesmgmt.entity.Version2.Customer;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -82,7 +82,6 @@ public class CustomerDAOImpl extends DAO<Customer> {
             values.put(ShuttlesSchema.Customer.CUSTOMER_ADDRESSE, obj.getAdd());
             values.put(ShuttlesSchema.Customer.CUSTOMER_PHONE, obj.getPhone());
             getDBWrite().insert(ShuttlesSchema.Customer.CUSTOMER_TABLE_NAME, null, values);
-            //Log.i("AppInfo", "Obj created successfull");
             return true;
         }else{
             Log.i("AppInfo", "Can't create the obj because already exists");

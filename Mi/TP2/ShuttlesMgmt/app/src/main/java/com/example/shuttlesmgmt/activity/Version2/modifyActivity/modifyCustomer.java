@@ -2,19 +2,17 @@ package com.example.shuttlesmgmt.activity.Version2.modifyActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shuttlesmgmt.DAOImplements.CustomerDAOImpl;
 import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.DBActivity.CustomerActivity;
-import com.example.shuttlesmgmt.entity.Customer;
+import com.example.shuttlesmgmt.entity.Version2.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +53,7 @@ public class modifyCustomer extends Activity implements View.OnClickListener {
             Long id = intent.getLongExtra("customerInfo", -1);
 
             customer = listCustomer.get(id.intValue()-1);
+
             name.setText(customer.getName());
             address.setText(customer.getAdd());
             phone.setText(customer.getPhone());
@@ -78,6 +77,7 @@ public class modifyCustomer extends Activity implements View.OnClickListener {
                 customer.setName(nameValue);
                 customer.setAdd(addressValue);
                 customer.setPhone(phoneValue);
+
                 if(customerDAO.update(customer)== true){
                     Log.i("AppInfo", customer.toString());
                     Toast.makeText(getApplicationContext(), "Customer modified !", Toast.LENGTH_LONG).show();

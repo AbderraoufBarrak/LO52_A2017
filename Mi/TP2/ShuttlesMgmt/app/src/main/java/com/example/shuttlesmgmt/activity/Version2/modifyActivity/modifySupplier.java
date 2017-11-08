@@ -2,7 +2,6 @@ package com.example.shuttlesmgmt.activity.Version2.modifyActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +12,7 @@ import android.widget.Toast;
 import com.example.shuttlesmgmt.DAOImplements.SupplierDAOImpl;
 import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.DBActivity.SupplierActivity;
-import com.example.shuttlesmgmt.entity.Supplier;
+import com.example.shuttlesmgmt.entity.Version2.Supplier;
 
 import java.util.ArrayList;
 import java.util.List;

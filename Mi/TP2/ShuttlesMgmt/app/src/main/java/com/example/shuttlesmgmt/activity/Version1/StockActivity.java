@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.ListView;
 
 import com.example.shuttlesmgmt.R;
-import com.example.shuttlesmgmt.entity.Stock;
+import com.example.shuttlesmgmt.entity.Version1.Stock;
 import com.example.shuttlesmgmt.adapter.Version1.StockAdapter;
 
 import java.io.BufferedReader;

@@ -2,7 +2,6 @@ package com.example.shuttlesmgmt.activity.Version2.modifyActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,8 +15,7 @@ import com.example.shuttlesmgmt.DAOImplements.OrderDAOImpl;
 import com.example.shuttlesmgmt.DAOImplements.ProductDAOImpl;
 import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.DBActivity.OrderActivity;
-import com.example.shuttlesmgmt.entity.Order;
-import com.example.shuttlesmgmt.entity.Product;
+import com.example.shuttlesmgmt.entity.Version2.Order;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -75,18 +73,20 @@ public class modifyOrder extends Activity implements View.OnClickListener {
         if(intent.getLongExtra("orderInfo", -1) != -1){
             Long id = intent.getLongExtra("orderInfo", -1);
 
-            Log.i("AppInfo", Long.toString(listOrder.get(id.intValue()-1).getId()));
             order = listOrder.get(id.intValue()-1);
 
             customer.setText(order.getCustomerName());
             customer.setFocusable(false);
+
             productName.setText(order.getProductName());
             productName.setFocusable(false);
+
             productRef.setText(productDAO.getProductRef(order.getIdProduct()));
             productRef.setFocusable(false);
 
             quantity.setText(Integer.toString(order.getQuantity()));
             oldQuantity = order.getQuantity();
+
             price.setText(Double.toString(order.getPrice()));
 
             isPaid.setChecked(order.getIsPaid());
@@ -107,26 +107,31 @@ public class modifyOrder extends Activity implements View.OnClickListener {
             if(quantityValue.contentEquals("")){
                 Toast.makeText(getApplicationContext(), "Le champs quantité ne peut pas être vide !", Toast.LENGTH_LONG).show();
             }else{
+                //on met a 0 le prix si le champ est vide ou nulle sinon le valeur
                 if(priceValue.contentEquals("") || priceValue.contentEquals("0")){
                     order.setPrice(0);
                 }else{
                     order.setPrice(Double.valueOf(priceValue));
                 }
+
                 order.setDate(new Date());
+
+                //on teste ici pour la modification du produit si il y a assez de quantité dans le stock
                 if(productDAO.modifyQuantity(order.getIdProduct(), Integer.valueOf(quantityValue), oldQuantity)==true){
                     order.setQuantity(Integer.valueOf(quantityValue));
                     order.setIsPaid(isPaidValue);
+
                     if(orderDAO.update(order)== true){
                         Log.i("AppInfo", order.toString());
                         Toast.makeText(getApplicationContext(), "Order modified !", Toast.LENGTH_LONG).show();
                     }else{
-                        Toast.makeText(getApplicationContext(), "Order already existed !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Order already exists !", Toast.LENGTH_LONG).show();
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "Insufficient quantity !", Toast.LENGTH_LONG).show();
                 }
 
-                }
+            }
         }else if(back.isPressed()){
             Intent intent = new Intent(modifyOrder.this, OrderActivity.class);
             startActivity(intent);

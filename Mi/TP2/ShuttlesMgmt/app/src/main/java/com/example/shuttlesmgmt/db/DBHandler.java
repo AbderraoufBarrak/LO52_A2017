@@ -3,7 +3,6 @@ package com.example.shuttlesmgmt.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 /**
  * Created by Michel on 2017/10/8.

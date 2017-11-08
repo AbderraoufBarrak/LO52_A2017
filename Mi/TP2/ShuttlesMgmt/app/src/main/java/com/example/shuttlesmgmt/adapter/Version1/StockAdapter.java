@@ -1,7 +1,6 @@
 package com.example.shuttlesmgmt.adapter.Version1;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.shuttlesmgmt.R;
-import com.example.shuttlesmgmt.entity.Stock;
+import com.example.shuttlesmgmt.entity.Version1.Stock;
 
 import java.util.List;
 
@@ -24,7 +23,6 @@ public class StockAdapter extends ArrayAdapter<Stock> {
     int idDrawable;
 
     public StockAdapter(Context app, List<Stock> object){
-
         super(app, 0, object);
     }
 
@@ -52,13 +50,12 @@ public class StockAdapter extends ArrayAdapter<Stock> {
 
         Stock s = getItem(i);
 
-        //il ne reste plus qu'à remplir notre vue
         viewHolder.marque.setText(s.getMarque());
         viewHolder.ref.setText(s.getRef());
         viewHolder.qtt.setText(s.getQuantite());
         viewHolder.prix.setText(s.getPrix() + "€");
         id = s.getImage();
-        Log.i("AppInfo", "test");
+
         //converti de string en int
         idDrawable = getContext().getResources().getIdentifier(id,"drawable", getContext().getPackageName());
         viewHolder.image.setImageResource(idDrawable);

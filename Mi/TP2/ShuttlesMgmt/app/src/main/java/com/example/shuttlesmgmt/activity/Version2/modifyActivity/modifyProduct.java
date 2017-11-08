@@ -16,7 +16,7 @@ import com.example.shuttlesmgmt.DAOImplements.ProductDAOImpl;
 import com.example.shuttlesmgmt.DAOImplements.SupplierDAOImpl;
 import com.example.shuttlesmgmt.R;
 import com.example.shuttlesmgmt.activity.Version2.DBActivity.ProductActivity;
-import com.example.shuttlesmgmt.entity.Product;
+import com.example.shuttlesmgmt.entity.Version2.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,12 +86,11 @@ public class modifyProduct extends Activity implements View.OnClickListener {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     int pos = 0;
+                    //on cherche la meme valeur qu'on veut mettre dans la liste deroulante
                     while(parent.getItemAtPosition(pos).toString().equals(product.getSupplierName())==false){
-                        //Log.i("AppInfo", "FALSE , " + parent.getItemAtPosition(pos).toString() + " , " + product.getSupplierName());
                         pos++;
                     }
                     parent.setSelection(pos);
-                    //Log.i("AppInfo", parent.getItemAtPosition(pos).toString() + " , " + product.getSupplierName() + " , " + pos);
                 }
 
                 @Override
@@ -129,7 +128,7 @@ public class modifyProduct extends Activity implements View.OnClickListener {
                     Log.i("AppInfo", product.toString());
                     Toast.makeText(getApplicationContext(), "Order modified !", Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Order already existed !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Order already exists !", Toast.LENGTH_LONG).show();
                 }
             }
 

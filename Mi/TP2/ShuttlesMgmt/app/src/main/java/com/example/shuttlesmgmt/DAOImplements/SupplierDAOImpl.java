@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.example.shuttlesmgmt.DAO.DAO;
 import com.example.shuttlesmgmt.db.ShuttlesSchema;
-import com.example.shuttlesmgmt.entity.Supplier;
+import com.example.shuttlesmgmt.entity.Version2.Supplier;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

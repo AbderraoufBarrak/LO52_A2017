@@ -1,4 +1,4 @@
-package com.example.shuttlesmgmt.entity;
+package com.example.shuttlesmgmt.entity.Version2;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

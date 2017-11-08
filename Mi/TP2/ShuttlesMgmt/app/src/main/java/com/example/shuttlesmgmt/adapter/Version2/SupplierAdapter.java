@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.shuttlesmgmt.R;
-import com.example.shuttlesmgmt.entity.Supplier;
+import com.example.shuttlesmgmt.entity.Version2.Supplier;
 
 import java.util.List;
 

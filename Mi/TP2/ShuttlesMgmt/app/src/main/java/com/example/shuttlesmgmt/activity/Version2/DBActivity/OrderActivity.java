@@ -19,7 +19,7 @@ import com.example.shuttlesmgmt.activity.Version2.addActivity.AddOrder;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddProduct;
 import com.example.shuttlesmgmt.activity.Version2.addActivity.AddSupplier;
 import com.example.shuttlesmgmt.adapter.Version2.OrderAdapter;
-import com.example.shuttlesmgmt.entity.Order;
+import com.example.shuttlesmgmt.entity.Version2.Order;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -142,8 +142,8 @@ public class OrderActivity extends AppCompatActivity{
                 this.finish();
                 return true;
             case R.id.action_order:
-                this.finish();
                 onClickOrder();
+                this.finish();
                 return true;
             case R.id.action_product:
                 onClickProduct();
