@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import fr.utbm.lpp.ffbad.R;
 import fr.utbm.lpp.ffbad.data.Sale;
+import fr.utbm.lpp.ffbad.data.Shuttlecock;
 import fr.utbm.lpp.ffbad.data.db.FFBadDbContract;
 
 public class SaleCursorAdapter extends CursorAdapter {
@@ -38,12 +38,11 @@ public class SaleCursorAdapter extends CursorAdapter {
         List<TextView> txtList = Arrays.asList(txtPrice, txtQuantity, txtShuttlecock, txtCustomerName);
 
         Sale sale = FFBadDbContract.Sale.getFromCursor(cursor);
+        Shuttlecock shuttlecock = FFBadDbContract.Shuttlecock.getFromCursor(cursor);
 
-        float unit_price = Float.parseFloat(String.valueOf(sale.getPrice()));
+        float unit_price = Float.parseFloat(String.valueOf(shuttlecock.getPrice()));
         int quantity = Integer.parseInt(String.valueOf(sale.getQuantity()));
         float price = quantity * unit_price;
-
-
 
         txtPrice.setText(String.format("%.2f", price));
         txtQuantity.setText(String.valueOf(sale.getQuantity()));

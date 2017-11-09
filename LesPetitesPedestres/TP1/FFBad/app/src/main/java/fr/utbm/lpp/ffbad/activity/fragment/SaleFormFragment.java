@@ -3,7 +3,6 @@ package fr.utbm.lpp.ffbad.activity.fragment;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.sax.TextElementListener;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -131,8 +130,6 @@ public class SaleFormFragment extends Fragment implements TextWatcher {
             _txtquantity.setText(String.valueOf(sale.getQuantity()));
             _swipayed.setChecked(sale.isPaid());
 
-            _txtprice.setText(String.format("%.2f", sale.getPrice()*sale.getQuantity()));
-
             _swipayed.setTextOff("NOT PAYED");
             _swipayed.setTextOn("PAYED");
 
@@ -215,19 +212,17 @@ public class SaleFormFragment extends Fragment implements TextWatcher {
                     }
 
                     if (valid) {
-                        FFbadDbHelper.createSale(app.getDb(), customerId, shuttlecockId, price, quantity, _swipayed.isChecked());
+                        FFbadDbHelper.createSale(app.getDb(), customerId, shuttlecockId, quantity, _swipayed.isChecked());
                         ContentValues values = new ContentValues();
                         values.put(FFBadDbContract.Shuttlecock.COLUMN_NAME_STOCK, stock - quantity);
-                        long id = app.getDb().update(FFBadDbContract.Shuttlecock.TABLE_NAME, values, "_id = ?", new String[] {});
+                        long id = app.getDb().update(FFBadDbContract.Shuttlecock.TABLE_NAME, values, "_id = ?", new String[] {shuttlecockId.toString()});
                         Toast.makeText(getContext(), "Done: " + id, Toast.LENGTH_LONG).show();
+                        eventManager.onSaleFormCompleted();
                     }
                 }
-                eventManager.onSaleFormCompleted();
             }
         });
     }
-
-
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

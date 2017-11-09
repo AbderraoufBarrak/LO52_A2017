@@ -49,8 +49,8 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         createCustomer(db, "FFBad Belfort", CustomerType.Association);
         createCustomer(db, "Florian Staine", CustomerType.Particular);
 
-        createSale(db, 1, 2, 3.50, 5, true);
-        createSale(db, 2, 2, 4.50, 7, false);
+        createSale(db, 1, 2, 5, true);
+        createSale(db, 2, 2, 7, false);
     }
 
     private static void deleteEntries(SQLiteDatabase db) {
@@ -88,12 +88,11 @@ public class FFbadDbHelper extends SQLiteOpenHelper {
         return db.insert(FFBadDbContract.Customer.TABLE_NAME, null, values);
     }
 
-    static public long createSale(SQLiteDatabase db, long customer_id, long shuttlecock_id, double price, int quantity, boolean is_paid) {
+    static public long createSale(SQLiteDatabase db, long customer_id, long shuttlecock_id,  int quantity, boolean is_paid) {
         ContentValues values = new ContentValues();
 
         values.put(FFBadDbContract.Sale.COLUMN_NAME_CUSTOMER, customer_id);
         values.put(FFBadDbContract.Sale.COLUMN_NAME_SHUTTLECOCK, shuttlecock_id);
-        values.put(FFBadDbContract.Sale.COLUMN_NAME_PRICE, price);
         values.put(FFBadDbContract.Sale.COLUMN_NAME_QUANTITY, quantity);
         values.put(FFBadDbContract.Sale.COLUMN_NAME_IS_PAID, is_paid);
 

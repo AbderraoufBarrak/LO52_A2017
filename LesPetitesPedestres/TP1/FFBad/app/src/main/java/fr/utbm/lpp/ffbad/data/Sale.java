@@ -4,15 +4,13 @@ public class Sale {
     private long id;
     private Customer customer;
     private Shuttlecock shuttlecock;
-    private float price;
     private int quantity;
     private boolean isPaid;
 
-    public Sale(long id, Customer customer, Shuttlecock shuttlecock, float price, int quantity, boolean isPaid) {
+    public Sale(long id, Customer customer, Shuttlecock shuttlecock, int quantity, boolean isPaid) {
         setId(id);
         setCustomer(customer);
         setShuttlecock(shuttlecock);
-        setPrice(price);
         setQuantity(quantity);
         setPaid(isPaid);
     }
@@ -41,18 +39,6 @@ public class Sale {
         this.shuttlecock = shuttlecock;
     }
 
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        if (price < 0) {
-            this.price = 0f;
-        } else {
-            this.price = price;
-        }
-    }
-
     public int getQuantity() {
         return quantity;
     }
@@ -75,6 +61,6 @@ public class Sale {
 
     @Override
     public String toString() {
-        return "[id=" + id + ", price=" + getPrice() + ", quantity=" + getQuantity() + ", isPaid=" + isPaid() + ", customer=" + getCustomer() + ", shuttlecock=" + getShuttlecock() + "]";
+        return "[id=" + id + ", quantity=" + getQuantity() + ", isPaid=" + isPaid() + ", customer=" + getCustomer() + ", shuttlecock=" + getShuttlecock() + "]";
     }
 }

@@ -108,11 +108,10 @@ public class FFBadDbContract {
             long id = cursor.getLong(cursor.getColumnIndex(_ID));
             fr.utbm.lpp.ffbad.data.Customer customer = Customer.getFromCursor(cursor);
             fr.utbm.lpp.ffbad.data.Shuttlecock shuttlecock = Shuttlecock.getFromCursor(cursor);
-            float price = cursor.getFloat(cursor.getColumnIndex(COLUMN_NAME_PRICE));
             int quantity = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_QUANTITY));
             boolean isPaid = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_IS_PAID)) == 1;
 
-            return new fr.utbm.lpp.ffbad.data.Sale(id, customer, shuttlecock, price, quantity, isPaid);
+            return new fr.utbm.lpp.ffbad.data.Sale(id, customer, shuttlecock, quantity, isPaid);
         }
     }
 
