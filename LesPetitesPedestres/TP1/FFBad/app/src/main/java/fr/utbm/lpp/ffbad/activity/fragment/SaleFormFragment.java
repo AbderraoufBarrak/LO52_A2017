@@ -244,7 +244,7 @@ public class SaleFormFragment extends Fragment implements TextWatcher {
         String[] params = new String[] { String.valueOf(shuttlecockId) };
         Cursor shuttlecockCursor = app.getDb().rawQuery(saleQuery, params);
         shuttlecockCursor.moveToFirst();
-
+        if(shuttlecockCursor.getCount() == 0) {return;}
         double price = shuttlecockCursor.getDouble(shuttlecockCursor.getColumnIndex("price"));
         boolean tryParseInt = false;
         try {
