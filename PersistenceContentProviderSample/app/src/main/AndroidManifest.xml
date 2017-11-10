@@ -37,7 +37,9 @@
             android:exported="true"
             android:permission="com.example.android.contentprovidersample.provider.READ_WRITE" />
 
-        <activity android:name=".DisplayDescription" android:parentActivityName=".MainActivity" ></activity>
+        <activity
+            android:name=".DisplayDescription"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
