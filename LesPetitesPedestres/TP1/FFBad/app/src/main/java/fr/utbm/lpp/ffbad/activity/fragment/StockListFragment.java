@@ -40,7 +40,8 @@ public class StockListFragment extends ListFragment {
                 FFBadDbContract.Shuttlecock.COLUMN_NAME_BRAND,
                 FFBadDbContract.Shuttlecock.COLUMN_NAME_REFERENCE,
                 FFBadDbContract.Shuttlecock.COLUMN_NAME_STOCK,
-                FFBadDbContract.Shuttlecock.COLUMN_NAME_RATING
+                FFBadDbContract.Shuttlecock.COLUMN_NAME_RATING,
+                FFBadDbContract.Shuttlecock.COLUMN_NAME_PRICE
         };
 
         FFBadApplication app = (FFBadApplication) getActivity().getApplication();

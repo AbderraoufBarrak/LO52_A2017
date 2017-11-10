@@ -150,7 +150,8 @@ public class SaleFormFragment extends Fragment implements TextWatcher {
                     FFBadDbContract.Shuttlecock.COLUMN_NAME_BRAND,
                     FFBadDbContract.Shuttlecock.COLUMN_NAME_REFERENCE,
                     FFBadDbContract.Shuttlecock.COLUMN_NAME_STOCK,
-                    FFBadDbContract.Shuttlecock.COLUMN_NAME_RATING
+                    FFBadDbContract.Shuttlecock.COLUMN_NAME_RATING,
+                    FFBadDbContract.Shuttlecock.COLUMN_NAME_PRICE
             };
 
             Cursor shuttlecockCursor = app.getDb().query(

@@ -9,13 +9,14 @@ public class Shuttlecock {
     private String icon;
     private double price;
 
-    public Shuttlecock(long id, String brand, String reference, int rating, int stock) {
+    public Shuttlecock(long id, String brand, String reference, int rating, int stock, double price) {
         setId(id);
         setIcon(brand, reference);
         setBrand(brand);
         setReference(reference);
         setRating(rating);
         setStock(stock);
+        setPrice(price);
     }
 
     public long getId() {

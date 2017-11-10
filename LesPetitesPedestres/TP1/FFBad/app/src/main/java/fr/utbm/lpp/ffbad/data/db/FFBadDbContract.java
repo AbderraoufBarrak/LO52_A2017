@@ -35,8 +35,9 @@ public class FFBadDbContract {
             String reference = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_REFERENCE));
             int rating = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_RATING));
             int stock = cursor.getInt(cursor.getColumnIndex(COLUMN_NAME_STOCK));
+            double price = cursor.getFloat(cursor.getColumnIndex(COLUMN_NAME_PRICE));
 
-            return new fr.utbm.lpp.ffbad.data.Shuttlecock(id, brand, reference, rating, stock);
+            return new fr.utbm.lpp.ffbad.data.Shuttlecock(id, brand, reference, rating, stock, price);
         }
     }
 
