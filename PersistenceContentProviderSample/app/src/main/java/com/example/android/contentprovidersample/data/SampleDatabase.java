@@ -42,7 +42,7 @@ public abstract class SampleDatabase extends RoomDatabase {
     @SuppressWarnings("WeakerAccess")
     public abstract VolantDao volant();
 
-    //@SuppressWarnings("WeakerAccess")
+    @SuppressWarnings("WeakerAccess")
     public abstract HistoriqueDao historique();
 
     /** The only instance */
