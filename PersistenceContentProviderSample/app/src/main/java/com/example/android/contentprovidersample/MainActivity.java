@@ -162,4 +162,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void view_all_history(View view){
+        Toast.makeText(this,"You pressed 'history' button",Toast.LENGTH_SHORT).show();
+    }
 }

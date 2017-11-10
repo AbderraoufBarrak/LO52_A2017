@@ -63,4 +63,5 @@ dependencies {
     compile "android.arch.persistence.room:runtime:$architectureComponentsVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$architectureComponentsVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$architectureComponentsVersion"
+    implementation "com.android.support:design:$supportLibraryVersion"
 }
