@@ -39,7 +39,10 @@ public class Historique {
             historique.volant_id = values.getAsLong(COLUMN_VOLANT_ID);
         }
         if (values.containsKey(COLUMN_DATE)) {
-            historique.date = (Date) values.get(COLUMN_DATE);
+            Object date = values.get(COLUMN_DATE);
+            if (date.getClass().isAssignableFrom(Date.class)) {
+              historique.date = (Date) date;
+            }
         }
         return historique;
     }
