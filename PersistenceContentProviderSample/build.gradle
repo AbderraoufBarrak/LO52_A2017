@@ -42,8 +42,8 @@ ext {
     buildToolsVersion = '26.0.1'
 
     // App dependencies
-    supportLibraryVersion = '26.0.2'
-    architectureComponentsVersion = '1.0.0-alpha9'
+    supportLibraryVersion = '27.0.0'
+    architectureComponentsVersion = '1.0.0'
 }
 
 task clean(type: Delete) {
