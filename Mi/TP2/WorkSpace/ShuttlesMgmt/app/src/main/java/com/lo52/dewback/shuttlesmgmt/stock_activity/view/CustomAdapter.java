@@ -79,10 +79,10 @@ public class CustomAdapter extends ArrayAdapter<StockDataBean> implements View.O
             result=convertView;
         }
 
-        viewHolder.brandTxtView.setText(StockDataBean.getBrand());
-        viewHolder.nameTxtView.setText(StockDataBean.getName());
-        viewHolder.priceTxtView.setText(Double.toString(StockDataBean.getPrice()));
-        viewHolder.stockTxtView.setText(Integer.toString(StockDataBean.getStock()));
+        viewHolder.brandTxtView.setText(String.format("Marque : %s",StockDataBean.getBrand()));
+        viewHolder.nameTxtView.setText(String.format("Nom : %s",StockDataBean.getName()));
+        viewHolder.priceTxtView.setText(String.format("Prix : %s €",Double.toString(StockDataBean.getPrice())));
+        viewHolder.stockTxtView.setText(String.format("Stock : %s",Integer.toString(StockDataBean.getStock())));
         //TODO ajouter un update de l'image dans l'ImageView overview
 
         // Return the completed view to render on screen
