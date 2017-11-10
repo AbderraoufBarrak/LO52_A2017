@@ -25,6 +25,9 @@ import android.support.annotation.VisibleForTesting;
 
 import com.example.android.contentprovidersample.R;
 
+import java.util.Calendar;
+import java.util.Date;
+
 
 /**
  * The Room database.
@@ -78,6 +81,7 @@ public abstract class SampleDatabase extends RoomDatabase {
     private void populateInitialData() {
         if (volant().count() == 0) {
             Volant volant = new Volant();
+            Historique historique = new Historique();
             beginTransaction();
             try {
                 for (int i = 0; i < Volant.VOLANTS_NOMS.length; i++) {
@@ -85,6 +89,8 @@ public abstract class SampleDatabase extends RoomDatabase {
                     volant.image = Volant.VOLANTS_IMAGES[i];
                     volant().insert(volant);
                 }
+                historique.date = Calendar.getInstance().getTime();
+                historique.volant_id = 0;
                 setTransactionSuccessful();
             } finally {
                 endTransaction();
