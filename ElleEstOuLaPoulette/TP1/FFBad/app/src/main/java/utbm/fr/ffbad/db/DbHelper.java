@@ -46,7 +46,7 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        InputStream is = this.context.getResources().openRawResource(R.raw.shuttlecock2);
+        InputStream is = this.context.getResources().openRawResource(R.raw.shuttlecock3);
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader bfr = new BufferedReader(isr);
         String query = "";
@@ -55,23 +55,28 @@ public class DbHelper extends SQLiteOpenHelper {
             while((line = bfr.readLine()) != null){
                 query+=line+"\n";
             }
-            System.out.println(query);
-            db.execSQL(query);
+            String[] sqlStatements;
+            sqlStatements= query.split(";");
+           // db.beginTransaction();
+            for (String statement : sqlStatements) {
+                try {
+                    db.execSQL(statement);
+                }
+                catch (SQLException e){
+                    Log.e("Erreur sql",e.toString());
+                }
+            }
+           // db.endTransaction();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (SQLException e){
-            Log.e("Erreur sql",e.toString());
         }
+
+
 
     }
 
     public List<StockLine> getStock(){
-
-        List<StockLine> stockLinesResult = new ArrayList<>();
-
-        String query_str = "SELECT * FROM TUBE";
-
-        //TEST
+        //TEsT
         ArrayList<String> arrTblNames = new ArrayList<String>();
         Cursor cu = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
 
@@ -82,23 +87,26 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         }
         Log.d("TABLES", arrTblNames.toString());
-        //TEST
+        //TEsT
+
+        List<StockLine> stockLinesResult = new ArrayList<>();
+
+        String query_str = "SELECT * FROM TUBE";
 
         Cursor c = this.db.rawQuery(query_str ,null);
-        c.moveToFirst();
-        List<String> results= new ArrayList<String>();
-        int totalPO = c.getCount();
-        do
-        {
-            String ref = c.getString(0);
+        if(c.moveToFirst()){
+            List<String> results= new ArrayList<String>();
+            do
+            {
+                String ref = c.getString(0);
+                String image = c.getString(4);
+                StockLine line = new StockLine(new Volant(ref,"default"),new Tube(12,25,ref,image));
+                stockLinesResult.add(line);
 
-            StockLine line = new StockLine(new Volant(ref,"default"),new Tube(12,25,ref,""));
+            }while(c.moveToNext());
 
-            c.moveToNext();
-            totalPO = totalPO -1;
-        }while(c.moveToNext());
-        c.close();
-
+            c.close();
+        }
         return stockLinesResult;
     }
 
