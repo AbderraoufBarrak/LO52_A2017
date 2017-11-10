@@ -83,6 +83,9 @@ public class CustomAdapter extends ArrayAdapter<StockDataBean> implements View.O
         viewHolder.nameTxtView.setText(String.format("Nom : %s",StockDataBean.getName()));
         viewHolder.priceTxtView.setText(String.format("Prix : %s €",Double.toString(StockDataBean.getPrice())));
         viewHolder.stockTxtView.setText(String.format("Stock : %s",Integer.toString(StockDataBean.getStock())));
+        viewHolder.overviewImgView.setImageResource(StockDataBean.getOverviewImgRes());
+        viewHolder.overviewImgView.setAdjustViewBounds(true);
+
         //TODO ajouter un update de l'image dans l'ImageView overview
 
         // Return the completed view to render on screen

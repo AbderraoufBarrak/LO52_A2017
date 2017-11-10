@@ -1,7 +1,7 @@
 package com.lo52.dewback.shuttlesmgmt.stock_activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.lo52.dewback.shuttlesmgmt.R;
@@ -24,10 +24,10 @@ public class Stock extends AppCompatActivity {
 
         dataModels = new ArrayList<>();
         //TODO Utiliser la BDD pour gather les données (passer par une classe de DAO)
-        dataModels.add(new StockDataBean("Yonex", "AS30", 27.0, 500));
-        dataModels.add(new StockDataBean("RSL", "Grade 3", 16.7, 5000));
-        dataModels.add(new StockDataBean("RSL", "Grade A9", 13.7, 10000));
-        dataModels.add(new StockDataBean("RSL", "Grade A1", 21.0, 6000));
+        dataModels.add(new StockDataBean("Yonex", "YONEX_AS30", 27.0, 500, R.drawable.yonex_as30));
+        dataModels.add(new StockDataBean("RSL", "Grade 3", 16.7, 5000, R.drawable.rsl_grade_a3));
+        dataModels.add(new StockDataBean("RSL", "Grade A9", 13.7, 10000, R.drawable.rsl_grade_a9));
+        dataModels.add(new StockDataBean("RSL", "Grade A1", 21.0, 6000, R.drawable.rsl_grade_a1));
 
         adapter = new CustomAdapter(dataModels, getApplicationContext());
 

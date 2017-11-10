@@ -49,6 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
+        android:maxWidth="80dp"
+        android:maxHeight="80dp"
         android:src="@android:drawable/ic_dialog_info" />
 
 </RelativeLayout>
