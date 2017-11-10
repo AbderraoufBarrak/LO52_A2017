@@ -59,7 +59,7 @@ public class SampleContentProviderTest {
 
     @Test
     public void cheese_initiallyEmpty() {
-        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
+        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_VOLANT,
                 new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(0));
@@ -68,10 +68,10 @@ public class SampleContentProviderTest {
 
     @Test
     public void cheese_insert() {
-        final Uri itemUri = mContentResolver.insert(SampleContentProvider.URI_CHEESE,
+        final Uri itemUri = mContentResolver.insert(SampleContentProvider.URI_VOLANT,
                 cheeseWithName("Daigo"));
         assertThat(itemUri, notNullValue());
-        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
+        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_VOLANT,
                 new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(1));
@@ -82,12 +82,12 @@ public class SampleContentProviderTest {
 
     @Test
     public void cheese_update() {
-        final Uri itemUri = mContentResolver.insert(SampleContentProvider.URI_CHEESE,
+        final Uri itemUri = mContentResolver.insert(SampleContentProvider.URI_VOLANT,
                 cheeseWithName("Daigo"));
         assertThat(itemUri, notNullValue());
         final int count = mContentResolver.update(itemUri, cheeseWithName("Queso"), null, null);
         assertThat(count, is(1));
-        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
+        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_VOLANT,
                 new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(1));
@@ -98,17 +98,17 @@ public class SampleContentProviderTest {
 
     @Test
     public void cheese_delete() {
-        final Uri itemUri = mContentResolver.insert(SampleContentProvider.URI_CHEESE,
+        final Uri itemUri = mContentResolver.insert(SampleContentProvider.URI_VOLANT,
                 cheeseWithName("Daigo"));
         assertThat(itemUri, notNullValue());
-        final Cursor cursor1 = mContentResolver.query(SampleContentProvider.URI_CHEESE,
+        final Cursor cursor1 = mContentResolver.query(SampleContentProvider.URI_VOLANT,
                 new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor1, notNullValue());
         assertThat(cursor1.getCount(), is(1));
         cursor1.close();
         final int count = mContentResolver.delete(itemUri, null, null);
         assertThat(count, is(1));
-        final Cursor cursor2 = mContentResolver.query(SampleContentProvider.URI_CHEESE,
+        final Cursor cursor2 = mContentResolver.query(SampleContentProvider.URI_VOLANT,
                 new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor2, notNullValue());
         assertThat(cursor2.getCount(), is(0));
@@ -117,14 +117,14 @@ public class SampleContentProviderTest {
 
     @Test
     public void cheese_bulkInsert() {
-        final int count = mContentResolver.bulkInsert(SampleContentProvider.URI_CHEESE,
+        final int count = mContentResolver.bulkInsert(SampleContentProvider.URI_VOLANT,
                 new ContentValues[]{
                         cheeseWithName("Peynir"),
                         cheeseWithName("Queso"),
                         cheeseWithName("Daigo"),
                 });
         assertThat(count, is(3));
-        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
+        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_VOLANT,
                 new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(3));
@@ -135,17 +135,17 @@ public class SampleContentProviderTest {
     public void cheese_applyBatch() throws RemoteException, OperationApplicationException {
         final ArrayList<ContentProviderOperation> operations = new ArrayList<>();
         operations.add(ContentProviderOperation
-                .newInsert(SampleContentProvider.URI_CHEESE)
+                .newInsert(SampleContentProvider.URI_VOLANT)
                 .withValue(Volant.COLUMN_NAME, "Peynir")
                 .build());
         operations.add(ContentProviderOperation
-                .newInsert(SampleContentProvider.URI_CHEESE)
+                .newInsert(SampleContentProvider.URI_VOLANT)
                 .withValue(Volant.COLUMN_NAME, "Queso")
                 .build());
         final ContentProviderResult[] results = mContentResolver.applyBatch(
                 SampleContentProvider.AUTHORITY, operations);
         assertThat(results.length, is(2));
-        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_CHEESE,
+        final Cursor cursor = mContentResolver.query(SampleContentProvider.URI_VOLANT,
                 new String[]{Volant.COLUMN_NAME}, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(2));

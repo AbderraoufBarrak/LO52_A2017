@@ -19,6 +19,7 @@ package com.example.android.contentprovidersample.data;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.support.annotation.VisibleForTesting;
 
@@ -28,7 +29,8 @@ import com.example.android.contentprovidersample.R;
 /**
  * The Room database.
  */
-@Database(entities = {Volant.class}, version = 1)
+@Database(entities = {Volant.class, Historique.class}, version = 1)
+@TypeConverters(Converters.class)
 public abstract class SampleDatabase extends RoomDatabase {
 
     /**
@@ -36,6 +38,9 @@ public abstract class SampleDatabase extends RoomDatabase {
      */
     @SuppressWarnings("WeakerAccess")
     public abstract VolantDao volant();
+
+    //@SuppressWarnings("WeakerAccess")
+    public abstract HistoriqueDao historique();
 
     /** The only instance */
     private static SampleDatabase sInstance;

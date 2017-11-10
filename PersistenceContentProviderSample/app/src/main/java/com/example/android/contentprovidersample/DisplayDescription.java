@@ -26,7 +26,7 @@ public class DisplayDescription extends AppCompatActivity {
                     switch (id) {
                         case LOADER_CHEESES:
                             return new CursorLoader(getApplicationContext(),
-                                    SampleContentProvider.URI_CHEESE,
+                                    SampleContentProvider.URI_VOLANT,
                                     new String[]{Volant.COLUMN_NAME},
                                     null, null, null);
                         default:

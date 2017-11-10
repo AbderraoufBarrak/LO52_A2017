@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c9c4cc8340f4a931769d941a2e02b45d",
+    "identityHash": "7b1e8df30c97b5f423c259350c573aa0",
     "entities": [
       {
         "tableName": "volants",
@@ -44,11 +44,64 @@
           }
         ],
         "foreignKeys": []
+      },
+      {
+        "tableName": "historique",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `volant_id` INTEGER NOT NULL, `date` INTEGER, FOREIGN KEY(`volant_id`) REFERENCES `volants`(`_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "volant_id",
+            "columnName": "volant_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_historique__id",
+            "unique": false,
+            "columnNames": [
+              "_id"
+            ],
+            "createSql": "CREATE  INDEX `index_historique__id` ON `${TABLE_NAME}` (`_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "volants",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "volant_id"
+            ],
+            "referencedColumns": [
+              "_id"
+            ]
+          }
+        ]
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c9c4cc8340f4a931769d941a2e02b45d\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"7b1e8df30c97b5f423c259350c573aa0\")"
     ]
   }
 }
