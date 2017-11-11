@@ -16,6 +16,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.shuttlesmgmt.SQLiteDatabase.Achat;
+import com.example.shuttlesmgmt.SQLiteDatabase.DatabaseHelper;
+import com.example.shuttlesmgmt.SQLiteDatabase.Stock;
+
 public class MainActivityTDrawer extends AppCompatActivity {
 
     private String[] mNavigationDrawerItemTitles;
@@ -29,6 +33,20 @@ public class MainActivityTDrawer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        DatabaseHelper db = new DatabaseHelper(this);
+        db.removeAll();
+        //inserting stock
+        db.addStock(new Stock("Yonex","Grade AS30", 500,27));
+        db.addStock(new Stock("RSL","AS30", 5000,17));
+        db.addStock(new Stock("YRSL","Grade A9", 10000,30));
+        db.addStock(new Stock("NRSL","Grade A1", 6000,45));
+        //inserting achats
+        db.addAchat(new Achat("Customer1","RSL",30,160,1));
+        db.addAchat(new Achat("Customer2","NRSL",10,200,0));
+        db.addAchat(new Achat("Customer3","Yonex",15,97,1));
+
+
         setContentView(R.layout.activity_main_tdrawer);
         mTitle = mDrawerTitle = getTitle();
         mNavigationDrawerItemTitles= getResources().getStringArray(R.array.navigation_drawer_items_array);
@@ -64,7 +82,7 @@ public class MainActivityTDrawer extends AppCompatActivity {
 
     }
 
-    private void selectItem(int position) {
+    public void selectItem(int position) {
 
         Fragment fragment = null;
 

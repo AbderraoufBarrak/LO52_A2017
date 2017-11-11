@@ -31,7 +31,6 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@android:color/white"
-            android:divider="@android:drawable/bottom_bar"
             android:dividerHeight="1dp" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
