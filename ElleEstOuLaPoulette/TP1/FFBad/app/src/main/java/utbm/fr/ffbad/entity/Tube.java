@@ -1,5 +1,10 @@
 package utbm.fr.ffbad.entity;
 
+import android.media.Image;
+import android.support.v4.content.ContextCompat;
+
+import utbm.fr.ffbad.R;
+
 /**
  * Created by Clément on 20/10/2017.
  */
@@ -9,12 +14,13 @@ public class Tube {
     private int prix;
     private String ref;
     private int nb_volant;
-    private String image;
+    private String imageName;
 
-    public Tube(int stock, int prix, String ref, String image) {
+    public Tube(int stock, int prix, String ref, String imageName) {
         this.stock = stock;
         this.prix = prix;
         this.ref = ref;
+        this.imageName = imageName;
     }
 
     public int getStock() {
@@ -49,7 +55,7 @@ public class Tube {
         this.nb_volant = nb_volant;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageName() {
+        return imageName;
     }
 }

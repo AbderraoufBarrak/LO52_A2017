@@ -2,7 +2,6 @@ package utbm.fr.ffbad.db;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import utbm.fr.ffbad.R;
+import utbm.fr.ffbad.entity.PurchaseLine;
 import utbm.fr.ffbad.entity.StockLine;
 import utbm.fr.ffbad.entity.Tube;
 import utbm.fr.ffbad.entity.Volant;
@@ -29,18 +29,21 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "SHUTTLECOCK";
 
     private SQLiteDatabase db;
-    private DbUtil dbUtil;
+    private Context context;
 
     public DbHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+        this.context = context;
         this.db = getReadableDatabase();
-        dbUtil = new DbUtil(this.db, context);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         Cursor cu = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
-        if(cu.getCount()<=1) dbUtil.executeScript(R.raw.shuttlecock3);
+        if(cu.getCount()<=1)
+        {
+            DbUtil.executeScript(db,this.context,R.raw.shuttlecock);
+        }
     }
 
     public List<StockLine> getStock(){
@@ -57,6 +60,29 @@ public class DbHelper extends SQLiteOpenHelper {
             c.close();
         }
         return stockLinesResult;
+    }
+
+    public List<PurchaseLine> getPurchases(){
+        List<PurchaseLine> purchaseLines = new ArrayList<>();
+        /*String query_str = "SELECT ";
+        Cursor c = this.db.rawQuery(query_str ,null);
+        if(c.moveToFirst()){
+            do{
+                String buyerName = "Michel";
+                Double price = 0.0;
+                Integer qty = 2;
+                String ref = "D6r27-H59p";
+                boolean paid = false;
+                PurchaseLine line = new PurchaseLine(buyerName,price,qty,ref,paid);
+                purchaseLines.add(line);
+            }while(c.moveToNext());
+            c.close();
+        }*/
+        for(int i=0; i<10;i++){
+            PurchaseLine line = new PurchaseLine("Michel",42.03,12,"D6r27-H59p",i%2 == 0);
+            purchaseLines.add(line);
+        }
+        return purchaseLines;
     }
 
     @Override

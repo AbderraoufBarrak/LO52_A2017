@@ -1,7 +1,7 @@
 package utbm.fr.ffbad.adapter;
 
 import android.content.Context;
-import android.net.Uri;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,10 +60,14 @@ public class StockListAdapter extends BaseAdapter {
         text.setText("Marque : "+line.getVolant().getMarque()+"\t- Reference : "+line.getVolant().getRef()+
                     "\t- Stock : "+line.getTube().getStock());
 
-        Uri.Builder builder = new Uri.Builder();
+        ImageView imgV = (ImageView) vi.findViewById(R.id.imageTube);
+        imgV.setImageResource(context.getResources().getIdentifier(line.getTube().getImageName(),"drawable",context.getPackageName()));
+
+
+        /*Uri.Builder builder = new Uri.Builder();
         builder.path(line.getTube().getImage());
         Uri uri = builder.build();
-        image.setImageURI(uri);
+        image.setImageURI(uri);*/
 
         return vi;
     }

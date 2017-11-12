@@ -21,15 +21,7 @@ import utbm.fr.ffbad.R;
 
 public class DbUtil {
 
-    private SQLiteDatabase db;
-    private Context context;
-
-    public DbUtil(SQLiteDatabase db, Context context){
-        this.db = db;
-        this.context = context;
-    }
-
-    public List<SQLException> executeScript(int resId){
+    public static List<SQLException> executeScript(SQLiteDatabase db, Context context, int resId){
         InputStream is = context.getResources().openRawResource(resId);
         ArrayList<SQLException> errors = new ArrayList<>();
         InputStreamReader isr = new InputStreamReader(is);
@@ -57,7 +49,7 @@ public class DbUtil {
         return errors;
     }
 
-    public List<String> getTableNames(){
+    public static List<String> getTableNames(SQLiteDatabase db){
         ArrayList<String> arrTblNames = new ArrayList<String>();
         Cursor cu = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
         if (cu.moveToFirst()) {
