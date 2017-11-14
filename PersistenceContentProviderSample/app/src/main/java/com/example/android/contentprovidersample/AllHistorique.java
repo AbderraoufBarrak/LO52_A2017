@@ -1,7 +1,6 @@
 package com.example.android.contentprovidersample;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -13,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,10 +84,8 @@ public class AllHistorique extends AppCompatActivity {
         @Override
         public void onBindViewHolder(CheeseAdapter.ViewHolder holder, int position) {
             if (mCursor.moveToPosition(position)) {
-                holder.mText.setText(mCursor.getString(
+                holder.item_title.setText(mCursor.getString(
                         mCursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
-                holder.mImage.setImageResource(mCursor.getInt(
-                        mCursor.getColumnIndexOrThrow(Volant.COLUMN_IMAGE)));
             }
         }
 
@@ -105,15 +101,20 @@ public class AllHistorique extends AppCompatActivity {
 
         static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-            TextView mText;
-            ImageView mImage;
+            TextView item_title;
+            TextView item_who;
+            TextView item_quantity;
+            TextView item_price;
+
             private final Context context;
 
             ViewHolder(ViewGroup parent) {
                 super(LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.item_card, parent, false));
-                mText = itemView.findViewById(R.id.card_title);
-                mImage = itemView.findViewById(R.id.card_image);
+                        R.layout.item_historic, parent, false));
+                item_title = itemView.findViewById(R.id.item_title);
+                item_who = itemView.findViewById(R.id.item_who);
+                item_quantity = itemView.findViewById(R.id.item_quantity);
+                item_price = itemView.findViewById(R.id.item_price);
                 itemView.setClickable(true);
                 itemView.setOnClickListener(this);
 
