@@ -19,16 +19,17 @@ package com.example.android.contentprovidersample.data;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.support.annotation.VisibleForTesting;
 
-import com.example.android.contentprovidersample.R;
-
+import java.util.Calendar;
 
 /**
  * The Room database.
  */
-@Database(entities = {Volant.class}, version = 1)
+@Database(entities = {Volant.class, Historique.class}, version = 1)
+@TypeConverters(Converters.class)
 public abstract class SampleDatabase extends RoomDatabase {
 
     /**
@@ -36,6 +37,9 @@ public abstract class SampleDatabase extends RoomDatabase {
      */
     @SuppressWarnings("WeakerAccess")
     public abstract VolantDao volant();
+
+    @SuppressWarnings("WeakerAccess")
+    public abstract HistoriqueDao historique();
 
     /** The only instance */
     private static SampleDatabase sInstance;
@@ -73,12 +77,16 @@ public abstract class SampleDatabase extends RoomDatabase {
     private void populateInitialData() {
         if (volant().count() == 0) {
             Volant volant = new Volant();
+            Historique historique = new Historique();
             beginTransaction();
             try {
                 for (int i = 0; i < Volant.VOLANTS_NOMS.length; i++) {
                     volant.name = Volant.VOLANTS_NOMS[i];
                     volant.image = Volant.VOLANTS_IMAGES[i];
                     volant().insert(volant);
+                    historique.date = Calendar.getInstance().getTime();
+                    historique.volant_id = volant().getLastId();
+                    historique().insert(historique);
                 }
                 setTransactionSuccessful();
             } finally {

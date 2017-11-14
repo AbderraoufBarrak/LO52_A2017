@@ -64,4 +64,6 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$architectureComponentsVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$architectureComponentsVersion"
     implementation "com.android.support:design:$supportLibraryVersion"
+
+    debugCompile 'com.amitshekhar.android:debug-db:0.4.0'
 }
