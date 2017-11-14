@@ -40,7 +40,9 @@
         <activity
             android:name=".DisplayDescription"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".AllHistorique"></activity>
+        <activity
+            android:name=".AllHistorique"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
