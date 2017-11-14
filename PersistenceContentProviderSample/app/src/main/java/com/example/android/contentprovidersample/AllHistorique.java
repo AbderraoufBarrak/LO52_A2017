@@ -1,29 +1,13 @@
-/*
- * Copyright (C) 2017 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.contentprovidersample;
 
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,26 +20,19 @@ import android.widget.Toast;
 import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.provider.SampleContentProvider;
 
-/**
- * Not very relevant to Room. This just shows data from {@link SampleContentProvider}.
- *
- * <p>Since the data is exposed through the ContentProvider, other apps can read and write the
- * content in a similar manner to this.</p>
- */
-public class MainActivity extends AppCompatActivity {
-
+public class AllHistorique extends AppCompatActivity {
     private static final int LOADER_CHEESES = 1;
-    private CheeseAdapter mCheeseAdapter;
+    private AllHistorique.CheeseAdapter mCheeseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.activity_all_historique);
 
-        final RecyclerView list = findViewById(R.id.list);
-        list.setLayoutManager(new LinearLayoutManager(list.getContext()));
-        mCheeseAdapter = new CheeseAdapter();
-        list.setAdapter(mCheeseAdapter);
+        final RecyclerView list_historic = findViewById(R.id.list_historic);
+        list_historic.setLayoutManager(new LinearLayoutManager(list_historic.getContext()));
+        mCheeseAdapter = new AllHistorique.CheeseAdapter();
+        list_historic.setAdapter(mCheeseAdapter);
 
         getSupportLoaderManager().initLoader(LOADER_CHEESES, null, mLoaderCallbacks);
     }
@@ -96,17 +73,18 @@ public class MainActivity extends AppCompatActivity {
 
             };
 
+
     private static class CheeseAdapter extends RecyclerView.Adapter<CheeseAdapter.ViewHolder> {
 
         private Cursor mCursor;
 
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(parent);
+        public CheeseAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new CheeseAdapter.ViewHolder(parent);
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
+        public void onBindViewHolder(CheeseAdapter.ViewHolder holder, int position) {
             if (mCursor.moveToPosition(position)) {
                 holder.mText.setText(mCursor.getString(
                         mCursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
@@ -139,33 +117,15 @@ public class MainActivity extends AppCompatActivity {
                 itemView.setClickable(true);
                 itemView.setOnClickListener(this);
 
-                itemView.findViewById(R.id.action_acheter).setClickable(true);
-                itemView.findViewById(R.id.action_acheter).setOnClickListener(this);
-                itemView.findViewById(R.id.action_vendre).setClickable(true);
-                itemView.findViewById(R.id.action_vendre).setOnClickListener(this);
                 context = itemView.getContext();
             }
 
             @Override
             public void onClick(View v) {
                 int item_row = getAdapterPosition() + 1;
-                if (v.getId() == R.id.action_acheter){
-                    Toast.makeText(context,"You pressed 'achat' button",Toast.LENGTH_SHORT).show();
-                }else if(v.getId() == R.id.action_vendre){
-                    Toast.makeText(context,"You pressed 'vendre' button",Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(context,"The Item Clicked is: "+item_row,Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, DisplayDescription.class);
-                    intent.putExtra("ITEM_ROW", item_row);
-                    context.startActivity(intent);
-                }
+                Toast.makeText(context,"You pressed " + item_row + "case",Toast.LENGTH_SHORT).show();
             }
         }
     }
-
-    public void view_all_history(View view){
-        Toast.makeText(this,"You pressed 'history' button",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, AllHistorique.class);
-        this.startActivity(intent);
-    }
 }
+
