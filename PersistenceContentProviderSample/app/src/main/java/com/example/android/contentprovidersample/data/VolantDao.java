@@ -90,4 +90,6 @@ public interface VolantDao {
     @Update
     int update(Volant volant);
 
+    @Query("SELECT " + Volant.COLUMN_ID + " FROM " + Volant.TABLE_NAME + " ORDER BY " + Volant.COLUMN_ID + " DESC LIMIT 1")
+    int getLastId();
 }
