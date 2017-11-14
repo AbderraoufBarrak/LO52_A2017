@@ -42,6 +42,8 @@ public class Volant {
 
     public static final String COLUMN_IMAGE = "image";
 
+    public static final String COLUMN_PRIX = "prix";
+
     /** The unique ID of the volant. */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(index = true, name = COLUMN_ID)
@@ -53,6 +55,9 @@ public class Volant {
 
     @ColumnInfo(name = COLUMN_IMAGE)
     public int image;
+
+    @ColumnInfo(name = COLUMN_PRIX)
+    public double prix;
 
     /**
      * Create a new {@link Volant} from the specified {@link ContentValues}.
@@ -71,6 +76,9 @@ public class Volant {
         if (values.containsKey(COLUMN_IMAGE)) {
             volant.image = values.getAsInteger(COLUMN_IMAGE);
         }
+        if (values.containsKey(COLUMN_PRIX)) {
+            volant.prix = values.getAsInteger(COLUMN_PRIX);
+        }
         return volant;
     }
 
@@ -81,6 +89,10 @@ public class Volant {
 
     static final int[] VOLANTS_IMAGES = {
             R.drawable.as30, R.drawable.grade3, R.drawable.a9, R.drawable.a1
+    };
+
+    static final Double[] VOLANTS_PRIX = {
+            27., 16.7, 13.7, 21.
     };
 
 }

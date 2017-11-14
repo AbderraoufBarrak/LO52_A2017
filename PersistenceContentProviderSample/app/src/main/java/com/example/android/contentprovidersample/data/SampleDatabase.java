@@ -83,6 +83,7 @@ public abstract class SampleDatabase extends RoomDatabase {
                 for (int i = 0; i < Volant.VOLANTS_NOMS.length; i++) {
                     volant.name = Volant.VOLANTS_NOMS[i];
                     volant.image = Volant.VOLANTS_IMAGES[i];
+                    volant.prix = Volant.VOLANTS_PRIX[i];
                     volant().insert(volant);
                     historique.date = Calendar.getInstance().getTime();
                     historique.volant_id = volant().getLastId();

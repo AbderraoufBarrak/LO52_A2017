@@ -52,6 +52,8 @@ public class DisplayDescription extends AppCompatActivity {
                             mCursor.move(item_row);
                             TextView mText = findViewById(R.id.nomVolant);
                             mText.setText(mCursor.getString(mCursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
+                            TextView mPrix = findViewById(R.id.priceVolant);
+                            mPrix.setText(String.format("%.2f", mCursor.getDouble(mCursor.getColumnIndexOrThrow(Volant.COLUMN_PRIX))) + " €");
                             break;
                         case LOADER_HISTORIQUE:
                             mCursor = data;

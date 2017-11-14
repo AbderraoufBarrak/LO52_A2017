@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "7b1e8df30c97b5f423c259350c573aa0",
+    "identityHash": "9d92a7c55df23021b0a0f2d148a12076",
     "entities": [
       {
         "tableName": "volants",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `image` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `image` INTEGER NOT NULL, `prix` REAL NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -24,6 +24,12 @@
             "fieldPath": "image",
             "columnName": "image",
             "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "prix",
+            "columnName": "prix",
+            "affinity": "REAL",
             "notNull": true
           }
         ],
@@ -101,7 +107,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"7b1e8df30c97b5f423c259350c573aa0\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9d92a7c55df23021b0a0f2d148a12076\")"
     ]
   }
 }
