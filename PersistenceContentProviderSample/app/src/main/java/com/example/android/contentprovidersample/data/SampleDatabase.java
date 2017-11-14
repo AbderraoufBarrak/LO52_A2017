@@ -23,11 +23,7 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.support.annotation.VisibleForTesting;
 
-import com.example.android.contentprovidersample.R;
-
 import java.util.Calendar;
-import java.util.Date;
-
 
 /**
  * The Room database.
