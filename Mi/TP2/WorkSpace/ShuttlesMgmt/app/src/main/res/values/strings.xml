@@ -2,4 +2,6 @@
     <string name="app_name">LardeSports</string>
     <string name="button_Achat">Achat</string>
     <string name="button_stock">Stock</string>
+    <string name="shuttle_order_paid">Payé</string>
+    <string name="validation_button_label">Valider</string>
 </resources>
