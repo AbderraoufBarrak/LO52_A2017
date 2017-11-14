@@ -153,11 +153,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(context,"You pressed 'achat' button",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, AchatVenteActivity.class);
                     intent.putExtra("ITEM_ROW", item_row);
+                    intent.putExtra("ACTION", AchatVenteActivity.ACHETER);
                     context.startActivity(intent);
                 }else if(v.getId() == R.id.action_vendre){
                     Toast.makeText(context,"You pressed 'vendre' button",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, AchatVenteActivity.class);
                     intent.putExtra("ITEM_ROW", item_row);
+                    intent.putExtra("ACTION", AchatVenteActivity.VENDRE);
                     context.startActivity(intent);
                 }else {
                     Toast.makeText(context,"The Item Clicked is: "+item_row,Toast.LENGTH_SHORT).show();
