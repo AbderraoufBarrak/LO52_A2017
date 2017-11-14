@@ -43,4 +43,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomVolant" />
 
+    <TextView
+        android:id="@+id/derniereVente"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="derniereVente"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceVolant" />
+
+
+
 </android.support.constraint.ConstraintLayout>
