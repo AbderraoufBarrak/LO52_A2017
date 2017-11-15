@@ -44,7 +44,7 @@ import com.example.android.contentprovidersample.provider.SampleContentProvider;
 public class MainActivity extends AppCompatActivity {
 
     private static final int LOADER_CHEESES = 1;
-    private CheeseAdapter mCheeseAdapter;
+    private ListAdapter mListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
         final RecyclerView list = findViewById(R.id.list);
         list.setLayoutManager(new LinearLayoutManager(list.getContext()));
-        mCheeseAdapter = new CheeseAdapter();
-        list.setAdapter(mCheeseAdapter);
+        mListAdapter = new ListAdapter();
+        list.setAdapter(mListAdapter);
 
         new VolantCursorTask().execute();
     }
@@ -65,12 +65,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(Cursor allVolants) {
-            mCheeseAdapter.setCheeses(allVolants);
+            mListAdapter.setCheeses(allVolants);
         }
     }
 
 
-    private static class CheeseAdapter extends RecyclerView.Adapter<CheeseAdapter.ViewHolder> {
+    private static class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         private Cursor mCursor;
 

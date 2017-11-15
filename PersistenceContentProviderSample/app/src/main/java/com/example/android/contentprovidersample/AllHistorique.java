@@ -19,7 +19,7 @@ import com.example.android.contentprovidersample.data.SampleDatabase;
 
 public class AllHistorique extends AppCompatActivity {
     private static final int LOADER_CHEESES = 1;
-    private AllHistorique.CheeseAdapter mCheeseAdapter;
+    private ListAdapter mListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class AllHistorique extends AppCompatActivity {
 
         final RecyclerView list_historic = findViewById(R.id.list_historic);
         list_historic.setLayoutManager(new LinearLayoutManager(list_historic.getContext()));
-        mCheeseAdapter = new AllHistorique.CheeseAdapter();
-        list_historic.setAdapter(mCheeseAdapter);
+        mListAdapter = new ListAdapter();
+        list_historic.setAdapter(mListAdapter);
 
         new HistoriqueCursorTask().execute();
     }
@@ -40,21 +40,21 @@ public class AllHistorique extends AppCompatActivity {
         }
 
         protected void onPostExecute(Cursor allHistoric) {
-            mCheeseAdapter.setCheeses(allHistoric);
+            mListAdapter.setCheeses(allHistoric);
         }
     }
 
-    private static class CheeseAdapter extends RecyclerView.Adapter<CheeseAdapter.ViewHolder> {
+    private static class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         private Cursor mCursor;
 
         @Override
-        public CheeseAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new CheeseAdapter.ViewHolder(parent);
+        public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new ListAdapter.ViewHolder(parent);
         }
 
         @Override
-        public void onBindViewHolder(CheeseAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(ListAdapter.ViewHolder holder, int position) {
             if (mCursor.moveToPosition(position)) {
                 holder.item_title.setText(mCursor.getString(
                         mCursor.getColumnIndexOrThrow(Historique.COLUMN_ID)));
