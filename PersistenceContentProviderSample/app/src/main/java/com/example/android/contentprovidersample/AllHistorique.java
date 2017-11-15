@@ -2,9 +2,7 @@ package com.example.android.contentprovidersample;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.contentprovidersample.data.Historique;
-import com.example.android.contentprovidersample.data.Volant;
-import com.example.android.contentprovidersample.provider.SampleContentProvider;
+import com.example.android.contentprovidersample.data.SampleDatabase;
+
 
 public class AllHistorique extends AppCompatActivity {
     private static final int LOADER_CHEESES = 1;
@@ -33,45 +31,18 @@ public class AllHistorique extends AppCompatActivity {
         mCheeseAdapter = new AllHistorique.CheeseAdapter();
         list_historic.setAdapter(mCheeseAdapter);
 
-        getSupportLoaderManager().initLoader(LOADER_CHEESES, null, mLoaderCallbacks);
+        new HistoriqueCursorTask().execute();
     }
 
-    private LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks =
-            new LoaderManager.LoaderCallbacks<Cursor>() {
+    private class HistoriqueCursorTask extends AsyncTask<Void, Void, Cursor> {
+        protected Cursor doInBackground(Void... params) {
+            return SampleDatabase.getInstance(getApplicationContext()).historique().selectAll();
+        }
 
-                @Override
-                public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-                    switch (id) {
-                        case LOADER_CHEESES:
-                            return new CursorLoader(getApplicationContext(),
-                                    SampleContentProvider.URI_VOLANT,
-                                    new String[]{Volant.COLUMN_NAME},
-                                    null, null, null);
-                        default:
-                            throw new IllegalArgumentException();
-                    }
-                }
-
-                @Override
-                public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-                    switch (loader.getId()) {
-                        case LOADER_CHEESES:
-                            mCheeseAdapter.setCheeses(data);
-                            break;
-                    }
-                }
-
-                @Override
-                public void onLoaderReset(Loader<Cursor> loader) {
-                    switch (loader.getId()) {
-                        case LOADER_CHEESES:
-                            mCheeseAdapter.setCheeses(null);
-                            break;
-                    }
-                }
-
-            };
-
+        protected void onPostExecute(Cursor allHistoric) {
+            mCheeseAdapter.setCheeses(allHistoric);
+        }
+    }
 
     private static class CheeseAdapter extends RecyclerView.Adapter<CheeseAdapter.ViewHolder> {
 
