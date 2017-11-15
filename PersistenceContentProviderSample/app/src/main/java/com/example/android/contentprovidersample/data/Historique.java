@@ -19,6 +19,8 @@ public class Historique {
     public static final String COLUMN_ID = BaseColumns._ID;
     public static final String COLUMN_VOLANT_ID = "volant_id";
     public static final String COLUMN_DATE = "date";
+    public static final String COLUMN_WHO = "who";
+    public static final String COLUMN_QUANTITY = "quantity";
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(index = true, name = COLUMN_ID)
@@ -29,6 +31,12 @@ public class Historique {
 
     @ColumnInfo(name = COLUMN_DATE)
     public Date date;
+
+    @ColumnInfo(name = COLUMN_WHO)
+    public String who;
+
+    @ColumnInfo(name = COLUMN_QUANTITY)
+    public String quantity;
 
     public static Historique fromContentValues(ContentValues values) {
         final Historique historique = new Historique();
@@ -43,6 +51,12 @@ public class Historique {
             if (date.getClass().isAssignableFrom(Date.class)) {
               historique.date = (Date) date;
             }
+        }
+        if (values.containsKey(COLUMN_WHO)){
+            historique.who = values.getAsString(COLUMN_WHO);
+        }
+        if (values.containsKey(COLUMN_QUANTITY)){
+            historique.quantity = values.getAsString(COLUMN_QUANTITY);
         }
         return historique;
     }
