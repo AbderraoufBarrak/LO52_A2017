@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9d92a7c55df23021b0a0f2d148a12076",
+    "identityHash": "8aace1a890df0d4e80956dd2e32f360d",
     "entities": [
       {
         "tableName": "volants",
@@ -53,7 +53,7 @@
       },
       {
         "tableName": "historique",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `volant_id` INTEGER NOT NULL, `date` INTEGER, FOREIGN KEY(`volant_id`) REFERENCES `volants`(`_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `volant_id` INTEGER NOT NULL, `date` INTEGER, `who` TEXT, `quantity` INTEGER NOT NULL, FOREIGN KEY(`volant_id`) REFERENCES `volants`(`_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -72,6 +72,18 @@
             "columnName": "date",
             "affinity": "INTEGER",
             "notNull": false
+          },
+          {
+            "fieldPath": "who",
+            "columnName": "who",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "quantity",
+            "columnName": "quantity",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -107,7 +119,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9d92a7c55df23021b0a0f2d148a12076\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8aace1a890df0d4e80956dd2e32f360d\")"
     ]
   }
 }
