@@ -13,8 +13,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.contentprovidersample.data.Converters;
 import com.example.android.contentprovidersample.data.Historique;
 import com.example.android.contentprovidersample.data.SampleDatabase;
+
+import java.util.Date;
 
 
 public class AllHistorique extends AppCompatActivity {
@@ -59,11 +62,12 @@ public class AllHistorique extends AppCompatActivity {
                 holder.item_title.setText(mCursor.getString(
                         mCursor.getColumnIndexOrThrow(Historique.COLUMN_ID)));
                 holder.item_who.setText(mCursor.getString(
-                        mCursor.getColumnIndexOrThrow(Historique.COLUMN_ID)));
+                        mCursor.getColumnIndexOrThrow(Historique.COLUMN_WHO)));
                 holder.item_quantity.setText(mCursor.getString(
-                        mCursor.getColumnIndexOrThrow(Historique.COLUMN_ID)));
-                holder.item_price.setText(mCursor.getString(
-                        mCursor.getColumnIndexOrThrow(Historique.COLUMN_ID)));
+                        mCursor.getColumnIndexOrThrow(Historique.COLUMN_QUANTITY)));
+                holder.item_price.setText(
+                        (Converters.fromTimestamp(mCursor.getLong(mCursor.getColumnIndexOrThrow(Historique.COLUMN_DATE)))).toString());
+
             }
         }
 

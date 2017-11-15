@@ -36,7 +36,7 @@ public class Historique {
     public String who;
 
     @ColumnInfo(name = COLUMN_QUANTITY)
-    public String quantity;
+    public int quantity;
 
     public static Historique fromContentValues(ContentValues values) {
         final Historique historique = new Historique();
@@ -56,7 +56,7 @@ public class Historique {
             historique.who = values.getAsString(COLUMN_WHO);
         }
         if (values.containsKey(COLUMN_QUANTITY)){
-            historique.quantity = values.getAsString(COLUMN_QUANTITY);
+            historique.quantity = values.getAsInteger(COLUMN_QUANTITY);
         }
         return historique;
     }
