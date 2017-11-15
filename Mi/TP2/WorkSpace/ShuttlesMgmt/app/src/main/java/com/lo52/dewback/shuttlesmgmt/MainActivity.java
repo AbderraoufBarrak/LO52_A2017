@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.lo52.dewback.shuttlesmgmt.stock_activity.ShuttleOrderActivity;
 import com.lo52.dewback.shuttlesmgmt.stock_activity.Stock;
 
 
@@ -22,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void StockSend(View view){
         Intent intent = new Intent(this, Stock.class);
+        startActivity(intent);
+    }
+
+    public void OrderSend(View view){
+        Intent intent = new Intent(this, ShuttleOrderActivity.class);
         startActivity(intent);
     }
 }

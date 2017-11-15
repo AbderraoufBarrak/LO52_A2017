@@ -88,7 +88,7 @@ public class CustomAdapter extends ArrayAdapter<StockDataBean> implements View.O
 
         //TODO ajouter un update de l'image dans l'ImageView overview
 
-        // Return the completed view to render on screen
+        // Return the completed view to convert on screen
         return convertView;
     }
 }
