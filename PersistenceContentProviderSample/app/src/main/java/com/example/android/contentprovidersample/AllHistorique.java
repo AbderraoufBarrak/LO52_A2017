@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.contentprovidersample.data.Historique;
 import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.provider.SampleContentProvider;
 
@@ -85,7 +86,13 @@ public class AllHistorique extends AppCompatActivity {
         public void onBindViewHolder(CheeseAdapter.ViewHolder holder, int position) {
             if (mCursor.moveToPosition(position)) {
                 holder.item_title.setText(mCursor.getString(
-                        mCursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
+                        mCursor.getColumnIndexOrThrow(Historique.COLUMN_ID)));
+                holder.item_who.setText(mCursor.getString(
+                        mCursor.getColumnIndexOrThrow(Historique.COLUMN_ID)));
+                holder.item_quantity.setText(mCursor.getString(
+                        mCursor.getColumnIndexOrThrow(Historique.COLUMN_ID)));
+                holder.item_price.setText(mCursor.getString(
+                        mCursor.getColumnIndexOrThrow(Historique.COLUMN_ID)));
             }
         }
 
