@@ -87,30 +87,31 @@ public class ShuttleOrderActivity extends AppCompatActivity {
         /*
         Récupération des indexs des données initiales
          */
-        OrderDataBean initialData = null;
-        int initialDataProductIndex = -1;
+        boolean found = false;
         if(initialOrderId!=null){
             for(OrderDataBean order : orders){
-                if(Objects.equals(order.getOrderId(), initialOrderId)){
-                    initialData = order;
-                    initialDataProductIndex = stocks.indexOf(order.getProduct());
+                if(Objects.equals(initialOrderId, order.getOrderId())){
+                    int initialDataProductIndex = stocks.indexOf(order.getProduct());
+                    if(initialDataProductIndex>=0 && !found) {
+                        found = true;
+                        this.runOnUiThread(() -> {
+                            productNameView.setSelection(initialDataProductIndex);
+                            adapter.notifyDataSetChanged();
+                            productAmountNumberView.setText(String.valueOf(order.getProductAmount()));
+                            buyerNameTextView.setText(order.getBuyerName());
+                            orderPaidStateSwitch.setChecked(order.isOrderPaid());
+                        });
+                    }
                 }
             }
         }
 
-        /*
-        Injection des données initiales
-         */
-        if(initialData!=null){
-            productNameView.setSelection(initialDataProductIndex);
-            adapter.notifyDataSetChanged();
-            productAmountNumberView.setText(initialData.getProductAmount().toString());
-            buyerNameTextView.setText(initialData.getBuyerName());
-            orderPaidStateSwitch.setChecked(initialData.isOrderPaid());
-        }else{
-            productAmountNumberView.setText("0");
-            buyerNameTextView.setText("");
-            orderPaidStateSwitch.setChecked(false);
+        if(!found) {
+            this.runOnUiThread(() -> {
+                productAmountNumberView.setText("0");
+                buyerNameTextView.setText("");
+                orderPaidStateSwitch.setChecked(false);
+            });
         }
 
         /*

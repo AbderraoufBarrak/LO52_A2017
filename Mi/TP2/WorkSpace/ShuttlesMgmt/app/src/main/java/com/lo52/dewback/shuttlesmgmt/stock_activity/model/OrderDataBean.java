@@ -16,6 +16,7 @@ public class OrderDataBean {
     }
 
     public OrderDataBean(Integer orderId, StockDataBean product, Integer productAmount, String buyerName, boolean orderPaid) {
+        this.orderId = orderId;
         this.product = product;
         this.productAmount = productAmount;
         this.buyerName = buyerName;
