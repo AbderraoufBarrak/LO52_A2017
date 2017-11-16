@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -49,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         list.setAdapter(mListAdapter);
 
         new VolantCursorTask().execute();
+
+        FloatingActionButton mButton = findViewById(R.id.action_history);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"You pressed 'history' button",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), AllHistorique.class);
+                getApplicationContext().startActivity(intent);
+            }
+        });
     }
 
     private class VolantCursorTask extends AsyncTask<Void, Void, Cursor> {
@@ -135,11 +145,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-    }
-
-    public void view_all_history(View view){
-        Toast.makeText(this,"You pressed 'history' button",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, AllHistorique.class);
-        this.startActivity(intent);
     }
 }
