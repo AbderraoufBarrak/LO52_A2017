@@ -24,31 +24,21 @@
         android:id="@+id/priceVolant"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="50dp"
         android:text="priceVolant"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rateVolant" />
-
-    <RatingBar
-        android:id="@+id/rateVolant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomVolant" />
 
     <TextView
-        android:id="@+id/derniereVente"
+        android:id="@+id/quantiteVolants"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="derniereVente"
+        android:text="0"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -16,9 +16,7 @@ import java.util.Date;
 
 public class DisplayDescription extends AppCompatActivity {
 
-    private static final int LOADER_VOLANTS = 1;
-    private static final int LOADER_HISTORIQUE = 2;
-    private int item_row;
+    private int volant_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,44 +24,30 @@ public class DisplayDescription extends AppCompatActivity {
         setContentView(R.layout.activity_display_description);
 
         Intent intent = getIntent();
-        item_row = intent.getIntExtra("ITEM_ROW", 0);
+        volant_id = intent.getIntExtra("ITEM_ROW", 0);
 
-        new DescriptionCursorTask().execute(LOADER_VOLANTS);
-        new DescriptionCursorTask().execute(LOADER_HISTORIQUE);
+        new DescriptionTask().execute();
     }
 
-    private class DescriptionCursorTask extends AsyncTask<Integer, Void, Cursor> {
-        private int loader;
+    private class DescriptionTask extends AsyncTask<Void, Void, Void> {
+        private Cursor mVolants;
+        private int totalVolants;
 
-        protected Cursor doInBackground(Integer... params) {
-            this.loader = params[0];
-
-            switch (loader) {
-                case LOADER_VOLANTS:
-                    return SampleDatabase.getInstance(getApplicationContext()).volant().selectAll();
-                case LOADER_HISTORIQUE:
-                    return SampleDatabase.getInstance(getApplicationContext()).volantHistorique().selectByVolantId(item_row);
-                default:
-                    return null;
-            }
+        protected Void doInBackground(Void... params) {
+            mVolants =  SampleDatabase.getInstance(getApplicationContext()).volant().selectAll();
+            totalVolants = SampleDatabase.getInstance(getApplicationContext()).volantHistorique().quantiteVolant(volant_id);
+            return null;
         }
 
-        protected void onPostExecute(Cursor mCursor) {
-            switch (loader) {
-                case LOADER_VOLANTS:
-                    mCursor.move(item_row);
-                    TextView mText = findViewById(R.id.nomVolant);
-                    mText.setText(mCursor.getString(mCursor.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
-                    TextView mPrix = findViewById(R.id.priceVolant);
-                    mPrix.setText(String.format("%.2f", mCursor.getDouble(mCursor.getColumnIndexOrThrow(Volant.COLUMN_PRIX))) + " €");
-                    break;
-                case LOADER_HISTORIQUE:
-                    mCursor.moveToFirst();
-                    TextView mDerniereVente = findViewById(R.id.derniereVente);
-                    Date mDate = Converters.fromTimestamp(mCursor.getLong(mCursor.getColumnIndexOrThrow(Historique.COLUMN_DATE)));
-                    mDerniereVente.setText(mDate.toString());
-                    break;
-            }
+        protected void onPostExecute(Void result) {
+            mVolants.move(volant_id);
+            TextView mText = findViewById(R.id.nomVolant);
+            mText.setText(mVolants.getString(mVolants.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
+            TextView mPrix = findViewById(R.id.priceVolant);
+            mPrix.setText(String.format("%.2f", mVolants.getDouble(mVolants.getColumnIndexOrThrow(Volant.COLUMN_PRIX))) + " €");
+
+            TextView mQuantiteVolants = findViewById(R.id.quantiteVolants);
+            mQuantiteVolants.setText("Stock : " + totalVolants);
         }
 
     }

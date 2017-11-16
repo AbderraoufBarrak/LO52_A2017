@@ -14,4 +14,6 @@ public interface VolantHistoriqueDao {
             + " WHERE " + Volant.TABLE_NAME + "." + Volant.COLUMN_ID + " = :id")
     Cursor selectByVolantId(long id);
 
+    @Query("SELECT SUM(" + Historique.COLUMN_QUANTITY + ") FROM " + Historique.TABLE_NAME + " WHERE " + Historique.COLUMN_VOLANT_ID + " = :id")
+    int quantiteVolant(long id);
 }
