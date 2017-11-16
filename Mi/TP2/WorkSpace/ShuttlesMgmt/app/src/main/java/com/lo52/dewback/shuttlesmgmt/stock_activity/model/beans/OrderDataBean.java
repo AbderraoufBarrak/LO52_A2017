@@ -1,13 +1,12 @@
-package com.lo52.dewback.shuttlesmgmt.stock_activity.model;
+package com.lo52.dewback.shuttlesmgmt.stock_activity.model.beans;
 
 /**
  * Created by Guillaume on 10/11/2017.
  */
 
 public class OrderDataBean {
-    //TODO remove products name and brand, they will be retreived outside of this bean thanks to product id
     private Integer orderId;
-    private StockDataBean product;
+    private Integer productId;
     private Integer productAmount;
     private String buyerName;
     private boolean orderPaid;
@@ -15,9 +14,9 @@ public class OrderDataBean {
     public OrderDataBean() {
     }
 
-    public OrderDataBean(Integer orderId, StockDataBean product, Integer productAmount, String buyerName, boolean orderPaid) {
+    public OrderDataBean(Integer orderId, Integer productId, Integer productAmount, String buyerName, boolean orderPaid) {
         this.orderId = orderId;
-        this.product = product;
+        this.productId = productId;
         this.productAmount = productAmount;
         this.buyerName = buyerName;
         this.orderPaid = orderPaid;
@@ -31,12 +30,12 @@ public class OrderDataBean {
         this.orderId = orderId;
     }
 
-    public StockDataBean getProduct() {
-        return product;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProduct(StockDataBean product) {
-        this.product = product;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public Integer getProductAmount() {

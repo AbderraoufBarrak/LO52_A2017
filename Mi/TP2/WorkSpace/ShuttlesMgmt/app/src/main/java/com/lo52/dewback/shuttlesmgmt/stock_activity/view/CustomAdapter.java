@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lo52.dewback.shuttlesmgmt.R;
-import com.lo52.dewback.shuttlesmgmt.stock_activity.model.StockDataBean;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.model.beans.StockDataBean;
 
 import java.util.ArrayList;
 import java.util.List;

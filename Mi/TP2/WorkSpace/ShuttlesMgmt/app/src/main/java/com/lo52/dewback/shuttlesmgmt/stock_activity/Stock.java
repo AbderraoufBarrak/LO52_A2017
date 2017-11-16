@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.lo52.dewback.shuttlesmgmt.R;
-import com.lo52.dewback.shuttlesmgmt.stock_activity.model.StockDataBean;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.model.beans.StockDataBean;
 import com.lo52.dewback.shuttlesmgmt.stock_activity.view.CustomAdapter;
 
 import java.util.ArrayList;

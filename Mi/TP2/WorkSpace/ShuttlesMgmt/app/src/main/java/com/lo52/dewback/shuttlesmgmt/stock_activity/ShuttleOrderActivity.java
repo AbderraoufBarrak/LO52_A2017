@@ -3,17 +3,15 @@ package com.lo52.dewback.shuttlesmgmt.stock_activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import com.lo52.dewback.shuttlesmgmt.R;
-import com.lo52.dewback.shuttlesmgmt.stock_activity.model.OrderDataBean;
-import com.lo52.dewback.shuttlesmgmt.stock_activity.model.StockDataBean;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.model.beans.OrderDataBean;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.model.beans.StockDataBean;
 import com.lo52.dewback.shuttlesmgmt.stock_activity.view.IObjectConverter;
 
 import java.util.ArrayList;

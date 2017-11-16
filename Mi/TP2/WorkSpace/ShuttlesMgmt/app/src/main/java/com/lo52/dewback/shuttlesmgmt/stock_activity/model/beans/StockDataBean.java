@@ -1,17 +1,19 @@
-package com.lo52.dewback.shuttlesmgmt.stock_activity.model;
+package com.lo52.dewback.shuttlesmgmt.stock_activity.model.beans;
 
 /**
  * Created by Guillaume on 20/10/2017.
  */
 
 public class StockDataBean {
+    private Integer id;
     private String brand;
     private String name;
     private Double price;
     private Integer stock;
     private int overviewImgRes;
 
-    public StockDataBean(String brand, String name, Double price, Integer stock, int overviewImgRes) {
+    public StockDataBean(Integer id, String brand, String name, Double price, Integer stock, int overviewImgRes) {
+        this.id = id;
         this.brand = brand;
         this.name = name;
         this.price = price;
