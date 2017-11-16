@@ -33,7 +33,7 @@ public class CustomAdapter extends ArrayAdapter<StockDataBean> implements View.O
     }
 
     public CustomAdapter(List<StockDataBean> data, Context context) {
-        super(context, R.layout.row_item, data);
+        super(context, R.layout.stock_row_item, data);
         this.dataSet = new ArrayList<>(data);
         this.mContext=context;
     }
@@ -64,7 +64,6 @@ public class CustomAdapter extends ArrayAdapter<StockDataBean> implements View.O
 
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.row_item, parent, false);
             viewHolder.brandTxtView = (TextView) convertView.findViewById(R.id.brand);
             viewHolder.nameTxtView = (TextView) convertView.findViewById(R.id.name);
             viewHolder.priceTxtView = (TextView) convertView.findViewById(R.id.price);
