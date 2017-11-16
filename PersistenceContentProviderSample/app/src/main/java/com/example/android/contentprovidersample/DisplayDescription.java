@@ -7,12 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.android.contentprovidersample.data.Converters;
-import com.example.android.contentprovidersample.data.Historique;
-import com.example.android.contentprovidersample.data.SampleDatabase;
+import com.example.android.contentprovidersample.data.StarLordDatabase;
 import com.example.android.contentprovidersample.data.Volant;
-
-import java.util.Date;
 
 public class DisplayDescription extends AppCompatActivity {
 
@@ -34,8 +30,8 @@ public class DisplayDescription extends AppCompatActivity {
         private int totalVolants;
 
         protected Void doInBackground(Void... params) {
-            mVolants =  SampleDatabase.getInstance(getApplicationContext()).volant().selectAll();
-            totalVolants = SampleDatabase.getInstance(getApplicationContext()).volantHistorique().quantiteVolant(volant_id);
+            mVolants =  StarLordDatabase.getInstance(getApplicationContext()).volant().selectAll();
+            totalVolants = StarLordDatabase.getInstance(getApplicationContext()).volantHistorique().quantiteVolant(volant_id);
             return null;
         }
 

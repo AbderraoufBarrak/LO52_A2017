@@ -30,7 +30,7 @@ import java.util.Calendar;
  */
 @Database(entities = {Volant.class, Historique.class}, version = 1)
 @TypeConverters(Converters.class)
-public abstract class SampleDatabase extends RoomDatabase {
+public abstract class StarLordDatabase extends RoomDatabase {
 
     /**
      * @return The DAO for the Volant table.
@@ -45,18 +45,18 @@ public abstract class SampleDatabase extends RoomDatabase {
     public abstract VolantHistoriqueDao volantHistorique();
 
     /** The only instance */
-    private static SampleDatabase sInstance;
+    private static StarLordDatabase sInstance;
 
     /**
-     * Gets the singleton instance of SampleDatabase.
+     * Gets the singleton instance of StarLordDatabase.
      *
      * @param context The context.
-     * @return The singleton instance of SampleDatabase.
+     * @return The singleton instance of StarLordDatabase.
      */
-    public static synchronized SampleDatabase getInstance(Context context) {
+    public static synchronized StarLordDatabase getInstance(Context context) {
         if (sInstance == null) {
             sInstance = Room
-                    .databaseBuilder(context.getApplicationContext(), SampleDatabase.class, "ex")
+                    .databaseBuilder(context.getApplicationContext(), StarLordDatabase.class, "ex")
                     .build();
             sInstance.populateInitialData();
         }
@@ -71,7 +71,7 @@ public abstract class SampleDatabase extends RoomDatabase {
     @VisibleForTesting
     public static void switchToInMemory(Context context) {
         sInstance = Room.inMemoryDatabaseBuilder(context.getApplicationContext(),
-                SampleDatabase.class).build();
+                StarLordDatabase.class).build();
     }
 
     /**

@@ -34,7 +34,7 @@ import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.android.contentprovidersample.data.Volant;
-import com.example.android.contentprovidersample.data.SampleDatabase;
+import com.example.android.contentprovidersample.data.StarLordDatabase;
 import com.example.android.contentprovidersample.provider.SampleContentProvider;
 
 import org.junit.Before;
@@ -53,7 +53,7 @@ public class SampleContentProviderTest {
     @Before
     public void setUp() {
         final Context context = InstrumentationRegistry.getTargetContext();
-        SampleDatabase.switchToInMemory(context);
+        StarLordDatabase.switchToInMemory(context);
         mContentResolver = context.getContentResolver();
     }
 

@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.android.contentprovidersample.data.Historique;
-import com.example.android.contentprovidersample.data.SampleDatabase;
+import com.example.android.contentprovidersample.data.StarLordDatabase;
 import com.example.android.contentprovidersample.data.Volant;
 
 import java.util.Calendar;
@@ -59,7 +59,7 @@ public class AchatVenteActivity extends AppCompatActivity {
 
     private class VolantCursorTask extends AsyncTask<Void, Void, Cursor> {
         protected Cursor doInBackground(Void... params) {
-            return SampleDatabase.getInstance(getApplicationContext()).volant().selectAll();
+            return StarLordDatabase.getInstance(getApplicationContext()).volant().selectAll();
         }
 
         protected void onPostExecute(Cursor allVolants) {
@@ -83,7 +83,7 @@ public class AchatVenteActivity extends AppCompatActivity {
 
     private class InsertTask extends AsyncTask<Historique, Void, Void> {
         protected Void doInBackground(Historique... params) {
-            SampleDatabase.getInstance(getApplicationContext()).historique().insert(params[0]);
+            StarLordDatabase.getInstance(getApplicationContext()).historique().insert(params[0]);
             return null;
         }
 

@@ -24,8 +24,8 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.example.android.contentprovidersample.data.StarLordDatabase;
 import com.example.android.contentprovidersample.data.Volant;
-import com.example.android.contentprovidersample.data.SampleDatabase;
 
 import org.junit.After;
 import org.junit.Before;
@@ -39,12 +39,12 @@ import java.io.IOException;
 @SmallTest
 public class VolantTest {
 
-    private SampleDatabase mDatabase;
+    private StarLordDatabase mDatabase;
 
     @Before
     public void createDatabase() {
         mDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(),
-                SampleDatabase.class).build();
+                StarLordDatabase.class).build();
     }
 
     @After

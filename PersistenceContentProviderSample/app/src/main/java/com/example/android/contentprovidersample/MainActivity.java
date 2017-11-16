@@ -31,7 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.contentprovidersample.data.SampleDatabase;
+import com.example.android.contentprovidersample.data.StarLordDatabase;
 import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.provider.SampleContentProvider;
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class VolantCursorTask extends AsyncTask<Void, Void, Cursor> {
         protected Cursor doInBackground(Void... params) {
-            return SampleDatabase.getInstance(getApplicationContext()).volant().selectAll();
+            return StarLordDatabase.getInstance(getApplicationContext()).volant().selectAll();
         }
 
         protected void onPostExecute(Cursor allVolants) {

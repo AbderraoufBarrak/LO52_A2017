@@ -31,9 +31,9 @@ import android.support.annotation.Nullable;
 
 import com.example.android.contentprovidersample.data.Historique;
 import com.example.android.contentprovidersample.data.HistoriqueDao;
+import com.example.android.contentprovidersample.data.StarLordDatabase;
 import com.example.android.contentprovidersample.data.Volant;
 import com.example.android.contentprovidersample.data.VolantDao;
-import com.example.android.contentprovidersample.data.SampleDatabase;
 
 import java.util.ArrayList;
 
@@ -94,7 +94,7 @@ public class SampleContentProvider extends ContentProvider {
             if (context == null) {
                 return null;
             }
-            VolantDao volant = SampleDatabase.getInstance(context).volant();
+            VolantDao volant = StarLordDatabase.getInstance(context).volant();
             final Cursor cursor;
             if (code == CODE_VOLANT_DIR) {
                 cursor = volant.selectAll();
@@ -108,7 +108,7 @@ public class SampleContentProvider extends ContentProvider {
             if (context == null) {
                 return null;
             }
-            HistoriqueDao historique = SampleDatabase.getInstance(context).historique();
+            HistoriqueDao historique = StarLordDatabase.getInstance(context).historique();
             final Cursor cursor;
             if (code == CODE_HISTORIQUE_DIR) {
                 cursor = historique.selectAll();
@@ -152,12 +152,12 @@ public class SampleContentProvider extends ContentProvider {
                 }
                 switch (match_uri) {
                     case CODE_VOLANT_DIR:
-                        final long volant_id = SampleDatabase.getInstance(context).volant()
+                        final long volant_id = StarLordDatabase.getInstance(context).volant()
                                 .insert(Volant.fromContentValues(values));
                         context.getContentResolver().notifyChange(uri, null);
                         return ContentUris.withAppendedId(uri, volant_id);
                     case CODE_HISTORIQUE_DIR:
-                        final long historique_id = SampleDatabase.getInstance(context).volant()
+                        final long historique_id = StarLordDatabase.getInstance(context).volant()
                                 .insert(Volant.fromContentValues(values));
                         context.getContentResolver().notifyChange(uri, null);
                         return ContentUris.withAppendedId(uri, historique_id);
@@ -186,12 +186,12 @@ public class SampleContentProvider extends ContentProvider {
                 }
                 switch (match_uri) {
                     case CODE_VOLANT_ITEM:
-                        final int volant_count = SampleDatabase.getInstance(context).volant()
+                        final int volant_count = StarLordDatabase.getInstance(context).volant()
                                 .deleteById(ContentUris.parseId(uri));
                         context.getContentResolver().notifyChange(uri, null);
                         return volant_count;
                     case CODE_HISTORIQUE_ITEM:
-                        final int historique_count = SampleDatabase.getInstance(context).historique()
+                        final int historique_count = StarLordDatabase.getInstance(context).historique()
                                 .deleteById(ContentUris.parseId(uri));
                         context.getContentResolver().notifyChange(uri, null);
                         return historique_count;
@@ -219,14 +219,14 @@ public class SampleContentProvider extends ContentProvider {
                     case CODE_VOLANT_ITEM:
                         final Volant volant = Volant.fromContentValues(values);
                         volant.id = ContentUris.parseId(uri);
-                        final int volant_count = SampleDatabase.getInstance(context).volant()
+                        final int volant_count = StarLordDatabase.getInstance(context).volant()
                                 .update(volant);
                         context.getContentResolver().notifyChange(uri, null);
                         return volant_count;
                     case CODE_HISTORIQUE_ITEM:
                         final Historique historique = Historique.fromContentValues(values);
                         historique.id = ContentUris.parseId(uri);
-                        final int historique_count = SampleDatabase.getInstance(context).historique()
+                        final int historique_count = StarLordDatabase.getInstance(context).historique()
                                 .update(historique);
                         context.getContentResolver().notifyChange(uri, null);
                         return historique_count;
@@ -245,7 +245,7 @@ public class SampleContentProvider extends ContentProvider {
         if (context == null) {
             return new ContentProviderResult[0];
         }
-        final SampleDatabase database = SampleDatabase.getInstance(context);
+        final StarLordDatabase database = StarLordDatabase.getInstance(context);
         database.beginTransaction();
         try {
             final ContentProviderResult[] result = super.applyBatch(operations);
@@ -266,7 +266,7 @@ public class SampleContentProvider extends ContentProvider {
                 if (context == null) {
                     return 0;
                 }
-                final SampleDatabase database = SampleDatabase.getInstance(context);
+                final StarLordDatabase database = StarLordDatabase.getInstance(context);
                 switch (match_uri) {
                     case CODE_VOLANT_DIR:
                         final Volant[] volants = new Volant[valuesArray.length];

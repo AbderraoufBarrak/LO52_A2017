@@ -15,9 +15,7 @@ import android.widget.Toast;
 
 import com.example.android.contentprovidersample.data.Converters;
 import com.example.android.contentprovidersample.data.Historique;
-import com.example.android.contentprovidersample.data.SampleDatabase;
-
-import java.util.Date;
+import com.example.android.contentprovidersample.data.StarLordDatabase;
 
 
 public class AllHistorique extends AppCompatActivity {
@@ -39,7 +37,7 @@ public class AllHistorique extends AppCompatActivity {
 
     private class HistoriqueCursorTask extends AsyncTask<Void, Void, Cursor> {
         protected Cursor doInBackground(Void... params) {
-            return SampleDatabase.getInstance(getApplicationContext()).historique().selectAll();
+            return StarLordDatabase.getInstance(getApplicationContext()).historique().selectAll();
         }
 
         protected void onPostExecute(Cursor allHistoric) {
