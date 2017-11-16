@@ -2,5 +2,6 @@
     <string name="app_name">ShuttlesMgmt</string>
     <string name="activity_shop">Achats</string>
     <string name="activity_stock">Stock</string>
+    <string name="activity_formulaire">Nouvelle transaction</string>
     <string name="ref_colum">Référence</string>
 </resources>

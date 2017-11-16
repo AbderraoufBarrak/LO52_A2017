@@ -15,7 +15,7 @@ public class Stock extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
 
-        List<ListEntry> stock = genererStock();
+        List<StockListEntry> stock = genererStock();
 
         ListView listView = (ListView) findViewById(R.id.listview);
 
@@ -23,12 +23,12 @@ public class Stock extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    private List<ListEntry> genererStock(){
-        List<ListEntry> stocks = new ArrayList<ListEntry>();
-        stocks.add(new ListEntry("Yonex", "AS30", 500, R.drawable.yonex_as30));
-        stocks.add(new ListEntry("RSL", "Grade 3", 5000, R.drawable.rsl_3));
-        stocks.add(new ListEntry("RSL", "Grade A9", 10000, R.drawable.rsl_a9));
-        stocks.add(new ListEntry("RSL", "Grade A1", 6000, R.drawable.rsl_a1));
+    private List<StockListEntry> genererStock(){
+        List<StockListEntry> stocks = new ArrayList<StockListEntry>();
+        stocks.add(new StockListEntry("Yonex", "AS30", 500, R.drawable.yonex_as30));
+        stocks.add(new StockListEntry("RSL", "Grade 3", 5000, R.drawable.rsl_3));
+        stocks.add(new StockListEntry("RSL", "Grade A9", 10000, R.drawable.rsl_a9));
+        stocks.add(new StockListEntry("RSL", "Grade A1", 6000, R.drawable.rsl_a1));
         return stocks;
     }
 }

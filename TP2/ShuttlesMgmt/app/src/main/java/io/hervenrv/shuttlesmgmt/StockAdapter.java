@@ -18,7 +18,7 @@ import java.util.List;
 
 public class StockAdapter extends ArrayAdapter {
 
-    public StockAdapter(Context context, List<ListEntry> entries) {
+    public StockAdapter(Context context, List<StockListEntry> entries) {
         super(context, 0, entries);
     }
 
@@ -40,7 +40,7 @@ public class StockAdapter extends ArrayAdapter {
         }
 
         //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
-        ListEntry elem = (ListEntry) getItem(position);
+        StockListEntry elem = (StockListEntry) getItem(position);
         viewHolder.marque.setText(elem.getMarque());
         viewHolder.ref.setText(elem.getRef());
         viewHolder.stock.setText("" + elem.getStock());
