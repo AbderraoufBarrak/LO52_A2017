@@ -1,6 +1,7 @@
 package utbm.fr.ffbad;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import utbm.fr.ffbad.db.DbHelper;
 import utbm.fr.ffbad.entity.Purchase;
 import utbm.fr.ffbad.entity.PurchaseLine;
+import utbm.fr.ffbad.entity.StockLine;
 
 public class PurchaseFormActivity extends AppCompatActivity {
 
@@ -32,6 +34,7 @@ public class PurchaseFormActivity extends AppCompatActivity {
         tubeRef = getIntent().getStringExtra("TUBE_REF");
         prix = getIntent().getDoubleExtra("PRICE",0.00);
         dbHelper = new DbHelper(this,DbHelper.DATABASE_NAME,null,1);
+
     }
 
     public void submit(View v){
@@ -52,6 +55,8 @@ public class PurchaseFormActivity extends AppCompatActivity {
                 Purchase purchase = new Purchase(paid, buyer, ref[0]);
                 purchase.addLine(purchaseLine);
                 dbHelper.registerPurchase(purchase);
+                Intent intent = new Intent(PurchaseFormActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
         builder.setNegativeButton("NON PAYE", new DialogInterface.OnClickListener() {
@@ -63,6 +68,8 @@ public class PurchaseFormActivity extends AppCompatActivity {
                 Purchase purchase = new Purchase(paid, buyer, ref[0]);
                 purchase.addLine(purchaseLine);
                 dbHelper.registerPurchase(purchase);
+                Intent intent = new Intent(PurchaseFormActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
         builder.show();

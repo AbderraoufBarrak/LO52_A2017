@@ -116,6 +116,17 @@ public class DbHelper extends SQLiteOpenHelper {
         return new ArrayList<Purchase>(purchaseMap.values());
     }
 
+    public void updatePaid(boolean isPaid, String cmdRef){
+        SQLiteStatement stmt = db.compileStatement(
+                "UPDATE COMMANDE " +
+                "SET ESTPAYE = ?" +
+                "WHERE REF_DE_COMMANDE = ?"
+        );
+        stmt.bindLong(1, isPaid?1:0);
+        stmt.bindString(2, cmdRef);
+        stmt.execute();
+    }
+
     public void registerPurchase(Purchase purchase){
 
         SQLiteStatement stmt = db.compileStatement(
