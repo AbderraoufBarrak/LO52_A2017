@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         this.stock_listView = (ListView) findViewById(R.id.stock_listView);
 
         //Populating the listView
-        List<StockLine> stockLines = dbHelper.getStock();
+        final List<StockLine> stockLines = dbHelper.getStock();
         ListAdapter adapter = new StockListAdapter(this, stockLines);
         this.stock_listView.setAdapter(adapter);
 
@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this,PurchaseFormActivity.class);
-                intent.putExtra("test",i);
+                StockLine stockLine = stockLines.get(i);
+                intent.putExtra("TUBE_REF",stockLine.getTube().getRef());
+                intent.putExtra("PRICE",stockLine.getTube().getPrix());
                 startActivity(intent);
             }
         });

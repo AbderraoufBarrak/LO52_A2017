@@ -11,7 +11,7 @@ import utbm.fr.ffbad.R;
 
 public class Tube {
     private int stock;
-    private int prix;
+    private double prix;
     private String ref;
     private int nb_volant;
     private String imageName;
@@ -31,7 +31,7 @@ public class Tube {
         this.stock = stock;
     }
 
-    public int getPrix() {
+    public double getPrix() {
         return prix;
     }
 

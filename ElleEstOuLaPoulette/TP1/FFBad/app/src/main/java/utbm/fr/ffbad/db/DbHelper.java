@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -112,11 +113,33 @@ public class DbHelper extends SQLiteOpenHelper {
             }while(c.moveToNext());
             c.close();
         }
-//        for(int i=0; i<10;i++){
-//            PurchaseLine line = new PurchaseLine("Michel",42.03,12,"D6r27-H59p",i%2 == 0);
-//            purchaseLines.add(line);
-//        }
-        return  new ArrayList<Purchase>(purchaseMap.values());
+        return new ArrayList<Purchase>(purchaseMap.values());
+    }
+
+    public void registerPurchase(Purchase purchase){
+
+        SQLiteStatement stmt = db.compileStatement(
+                "INSERT INTO COMMANDE (NOM, REF_DE_COMMANDE, ESTPAYE)" +
+                "VALUES (?,?,?)"
+        );
+        stmt.bindString(1, purchase.getBuyer());
+        stmt.bindString(2,purchase.getCmdRef());
+        stmt.bindLong(3,purchase.isPaid()?1:0);
+        stmt.execute();
+
+        int i = 1;
+        for(PurchaseLine purchaseLine : purchase.getPurchaseLines()) {
+            SQLiteStatement stmt2 = db.compileStatement(
+                    "INSERT INTO LIGNE_COMMANDE (REF_DE_COMMANDE,TUBE_REF,NUMERO,PRIX_TOTAL,NOMBRE)" +
+                            "VALUES (?,?,?,?,?)"
+            );
+            stmt2.bindString(1, purchase.getCmdRef());
+            stmt2.bindString(2, purchaseLine.getRef());
+            stmt2.bindLong(3,i);
+            stmt2.bindDouble(4,purchase.getTotalPrice());
+            stmt2.bindLong(5,purchaseLine.getQuantity());
+            stmt2.execute();
+        }
     }
 
     @Override
