@@ -17,6 +17,7 @@ import java.util.List;
 import utbm.fr.ffbad.adapter.PurchaseListAdapter;
 import utbm.fr.ffbad.adapter.StockListAdapter;
 import utbm.fr.ffbad.db.DbHelper;
+import utbm.fr.ffbad.entity.Purchase;
 import utbm.fr.ffbad.entity.PurchaseLine;
 import utbm.fr.ffbad.entity.StockLine;
 
@@ -43,8 +44,8 @@ public class PurchaseActivity extends AppCompatActivity {
         this.purchaseListView = (ListView) findViewById(R.id.purchaseListView);
 
         //Populating the listView
-        List<PurchaseLine> purchaseLines = dbHelper.getPurchases();
-        ListAdapter adapter = new PurchaseListAdapter(this, purchaseLines);
+        List<Purchase> purchases = dbHelper.getPurchases();
+        ListAdapter adapter = new PurchaseListAdapter(this, purchases);
         this.purchaseListView.setAdapter(adapter);
 
 

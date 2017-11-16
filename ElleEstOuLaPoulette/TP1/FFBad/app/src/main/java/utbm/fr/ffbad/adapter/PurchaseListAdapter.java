@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import utbm.fr.ffbad.R;
+import utbm.fr.ffbad.entity.Purchase;
 import utbm.fr.ffbad.entity.PurchaseLine;
 
 /**
@@ -19,24 +20,24 @@ import utbm.fr.ffbad.entity.PurchaseLine;
 
 public class PurchaseListAdapter extends BaseAdapter {
 
-    private List<PurchaseLine> purchaseLines;
+    private List<Purchase> purchaseList;
     private static LayoutInflater inflate = null;
     private Context context;
 
-    public PurchaseListAdapter(Context ctx, List<PurchaseLine> purchaseLines) {
-        this.purchaseLines = purchaseLines;
+    public PurchaseListAdapter(Context ctx, List<Purchase> purchaseList) {
+        this.purchaseList = purchaseList;
         this.context = ctx;
         inflate = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return purchaseLines.size();
+        return purchaseList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return purchaseLines.get(i);
+        return purchaseList.get(i);
     }
 
     @Override
@@ -53,9 +54,16 @@ public class PurchaseListAdapter extends BaseAdapter {
 
         TextView txtView = (TextView) vi.findViewById(R.id.label);
         ImageView icon = (ImageView) vi.findViewById((R.id.icon));
-        PurchaseLine line = this.purchaseLines.get(i);
-        txtView.setText(line.getBuyerName() +" - " + line.getQuantity() + " x " + line.getRef() +" (" + line.getPrice() +" €)");
-        icon.setImageDrawable(context.getDrawable(line.isPaid() ? R.drawable.greenlight : R.drawable.redlight));
+        Purchase purchase = this.purchaseList.get(i);
+        String text = new String();
+        String firstLine = "Client : " + purchase.getBuyer() + " - " + "Réf : "+purchase.getCmdRef()+ " - " + purchase.getTotalPrice() + "€" +"\n\n";
+        String purchaseLines = new String();
+        for(PurchaseLine purchaseLine : purchase.getPurchaseLines()){
+            purchaseLines += purchaseLine.getRef() + " * " + purchaseLine.getQuantity() + " = "+purchaseLine.getPrice()+"€\n";
+        }
+        text = firstLine + purchaseLines;
+        txtView.setText(text);
+        icon.setImageDrawable(context.getDrawable(purchase.isPaid() ? R.drawable.greenlight : R.drawable.redlight));
 
         return vi;
     }

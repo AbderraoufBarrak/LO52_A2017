@@ -6,26 +6,19 @@ package utbm.fr.ffbad.entity;
 
 public class PurchaseLine{
 
-    private String buyerName;
-
     private Double price;
 
     private Integer quantity;
 
     private String ref;
 
-    private boolean Paid;
+    private String cmdRef;
 
-    public PurchaseLine(String buyerName, Double price, Integer quantity, String ref, boolean Paid) {
-        this.buyerName = buyerName;
+    public PurchaseLine( Double price, Integer quantity, String refTube, String cmdRef) {
         this.price = price;
         this.quantity = quantity;
-        this.ref = ref;
-        this.Paid = Paid;
-    }
-
-    public String getBuyerName() {
-        return buyerName;
+        this.ref = refTube;
+        this.cmdRef = cmdRef;
     }
 
     public Double getPrice() {
@@ -40,7 +33,5 @@ public class PurchaseLine{
         return ref;
     }
 
-    public boolean isPaid() {
-        return Paid;
-    }
+    public String getCmdRef(){return this.cmdRef;}
 }

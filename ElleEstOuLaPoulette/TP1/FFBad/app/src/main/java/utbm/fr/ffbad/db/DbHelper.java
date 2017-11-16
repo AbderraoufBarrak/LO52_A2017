@@ -12,9 +12,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import utbm.fr.ffbad.R;
+import utbm.fr.ffbad.entity.Purchase;
 import utbm.fr.ffbad.entity.PurchaseLine;
 import utbm.fr.ffbad.entity.StockLine;
 import utbm.fr.ffbad.entity.Tube;
@@ -43,6 +46,7 @@ public class DbHelper extends SQLiteOpenHelper {
         if(cu.getCount()<=1)
         {
             DbUtil.executeScript(db,this.context,R.raw.shuttlecock);
+            DbUtil.executeScript(db,this.context,R.raw.purchases);
         }
     }
 
@@ -72,27 +76,47 @@ public class DbHelper extends SQLiteOpenHelper {
         return stockLinesResult;
     }
 
-    public List<PurchaseLine> getPurchases(){
-        List<PurchaseLine> purchaseLines = new ArrayList<>();
-        /*String query_str = "SELECT ";
+    public List<Purchase> getPurchases(){
+
+        HashMap<String, Purchase> purchaseMap = new HashMap<String, Purchase>();
+
+        String query_str =
+                "SELECT COMMANDE.ESTPAYE, COMMANDE.NOM, COMMANDE.REF_DE_COMMANDE, LIGNE_COMMANDE.TUBE_REF, LIGNE_COMMANDE.NOMBRE, " +
+                "LIGNE_COMMANDE.PRIX_TOTAL  " +
+                "FROM COMMANDE " +
+                "INNER JOIN LIGNE_COMMANDE " +
+                "ON COMMANDE.REF_DE_COMMANDE = LIGNE_COMMANDE.REF_DE_COMMANDE";
+
         Cursor c = this.db.rawQuery(query_str ,null);
+
         if(c.moveToFirst()){
             do{
-                String buyerName = "Michel";
-                Double price = 0.0;
-                Integer qty = 2;
-                String ref = "D6r27-H59p";
-                boolean paid = false;
-                PurchaseLine line = new PurchaseLine(buyerName,price,qty,ref,paid);
-                purchaseLines.add(line);
+
+                Boolean isPaid = c.getInt(0) != 0;
+                String buyerName = c.getString(1);
+                String refCmd = c.getString(2);
+                String refTube = c.getString(3);
+                int quantity = c.getInt(4);
+                Double linePrice = c.getDouble(5);
+                Purchase purchase;
+                PurchaseLine purchaseLine = new PurchaseLine(linePrice, quantity, refTube, refCmd);
+
+                if(purchaseMap.containsKey(refCmd)){
+                    purchase = purchaseMap.get(refCmd);
+                }else{
+                    purchase = new Purchase(isPaid, buyerName,refCmd);
+                }
+
+                purchase.addLine(purchaseLine);
+                purchaseMap.put(refCmd, purchase);
             }while(c.moveToNext());
             c.close();
-        }*/
-        for(int i=0; i<10;i++){
-            PurchaseLine line = new PurchaseLine("Michel",42.03,12,"D6r27-H59p",i%2 == 0);
-            purchaseLines.add(line);
         }
-        return purchaseLines;
+//        for(int i=0; i<10;i++){
+//            PurchaseLine line = new PurchaseLine("Michel",42.03,12,"D6r27-H59p",i%2 == 0);
+//            purchaseLines.add(line);
+//        }
+        return  new ArrayList<Purchase>(purchaseMap.values());
     }
 
     @Override
