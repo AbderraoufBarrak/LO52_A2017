@@ -10,8 +10,12 @@ import android.widget.Spinner;
 import android.widget.Switch;
 
 import com.lo52.dewback.shuttlesmgmt.R;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.model.IOrderDao;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.model.IStockDao;
 import com.lo52.dewback.shuttlesmgmt.stock_activity.model.beans.OrderDataBean;
 import com.lo52.dewback.shuttlesmgmt.stock_activity.model.beans.StockDataBean;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.model.database.SQLiteOrderDao;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.model.database.SQLiteStockDao;
 import com.lo52.dewback.shuttlesmgmt.stock_activity.view.IObjectConverter;
 
 import java.util.ArrayList;
@@ -32,19 +36,16 @@ public class ShuttleOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shuttle_order);
 
+        IOrderDao orderDao = new SQLiteOrderDao(getApplicationContext());
+        IStockDao stockDao = new SQLiteStockDao(getApplicationContext());
+
         stockCenverter = object -> String.format("%s %s", object.getBrand(), object.getName());
 
-        StockDataBean yonexAS30Shuttle = new StockDataBean("Yonex", "YONEX_AS30", 27.0, 500, R.drawable.yonex_as30);
-        //TODO Utiliser la BDD pour gather les données (passer par une classe de DAO)
         orders = new ArrayList<>();
-        orders.add(new OrderDataBean(0, yonexAS30Shuttle, 10, "John Carter", false));
+        orders.addAll(orderDao.getOrders());
 
-        //TODO Utiliser la BDD pour gather les données (passer par une classe de DAO)
         stocks = new ArrayList<>();
-        stocks.add(yonexAS30Shuttle);
-        stocks.add(new StockDataBean("RSL", "Grade 3", 16.7, 5000, R.drawable.rsl_grade_a3));
-        stocks.add(new StockDataBean("RSL", "Grade A9", 13.7, 10000, R.drawable.rsl_grade_a9));
-        stocks.add(new StockDataBean("RSL", "Grade A1", 21.0, 6000, R.drawable.rsl_grade_a1));
+        stocks.addAll(stockDao.getStock());
 
         if(getIntent().getIntExtra(BUNDLE_ORDER_ID_KEY_STRING, DEFAULT_INT_VALUE)!=DEFAULT_INT_VALUE) {
             initGuiWithExistingOrder(getIntent().getIntExtra(BUNDLE_ORDER_ID_KEY_STRING, DEFAULT_INT_VALUE));
@@ -89,7 +90,7 @@ public class ShuttleOrderActivity extends AppCompatActivity {
         if(initialOrderId!=null){
             for(OrderDataBean order : orders){
                 if(Objects.equals(initialOrderId, order.getOrderId())){
-                    int initialDataProductIndex = stocks.indexOf(order.getProduct());
+                    int initialDataProductIndex = stocks.indexOf(order.getProductId());
                     if(initialDataProductIndex>=0 && !found) {
                         found = true;
                         this.runOnUiThread(() -> {
