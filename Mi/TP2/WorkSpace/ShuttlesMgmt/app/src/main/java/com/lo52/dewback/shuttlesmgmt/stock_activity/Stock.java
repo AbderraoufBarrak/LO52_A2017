@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.lo52.dewback.shuttlesmgmt.R;
-import com.lo52.dewback.shuttlesmgmt.stock_activity.model.beans.StockDataBean;
-import com.lo52.dewback.shuttlesmgmt.stock_activity.view.CustomAdapter;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.model.StockDataBean;
+import com.lo52.dewback.shuttlesmgmt.stock_activity.view.stock_CustomAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class Stock extends AppCompatActivity {
 
     List<StockDataBean> dataModels;
     ListView listView;
-    private static CustomAdapter adapter;
+    private static stock_CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class Stock extends AppCompatActivity {
         dataModels.add(new StockDataBean(0, "RSL", "Grade A9", 13.7, 10000, R.drawable.rsl_grade_a9));
         dataModels.add(new StockDataBean(0, "RSL", "Grade A1", 21.0, 6000, R.drawable.rsl_grade_a1));
 
-        adapter = new CustomAdapter(dataModels, getApplicationContext());
+        adapter = new stock_CustomAdapter(dataModels, getApplicationContext());
 
         listView=(ListView)findViewById(R.id.stockListView);
         listView.setAdapter(adapter);
