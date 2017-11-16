@@ -12,6 +12,9 @@ public class StockDataBean {
     private Integer stock;
     private int overviewImgRes;
 
+    public StockDataBean() {
+    }
+
     public StockDataBean(Integer id, String brand, String name, Double price, Integer stock, int overviewImgRes) {
         this.id = id;
         this.brand = brand;
@@ -19,6 +22,14 @@ public class StockDataBean {
         this.price = price;
         this.stock = stock;
         this.overviewImgRes = overviewImgRes;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getBrand() {

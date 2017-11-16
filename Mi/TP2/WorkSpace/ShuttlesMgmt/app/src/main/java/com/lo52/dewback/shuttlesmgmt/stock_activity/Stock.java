@@ -24,10 +24,10 @@ public class Stock extends AppCompatActivity {
 
         dataModels = new ArrayList<>();
         //TODO Utiliser la BDD pour gather les données (passer par une classe de DAO)
-        dataModels.add(new StockDataBean("Yonex", "YONEX_AS30", 27.0, 500, R.drawable.yonex_as30));
-        dataModels.add(new StockDataBean("RSL", "Grade 3", 16.7, 5000, R.drawable.rsl_grade_a3));
-        dataModels.add(new StockDataBean("RSL", "Grade A9", 13.7, 10000, R.drawable.rsl_grade_a9));
-        dataModels.add(new StockDataBean("RSL", "Grade A1", 21.0, 6000, R.drawable.rsl_grade_a1));
+        dataModels.add(new StockDataBean(0, "Yonex", "YONEX_AS30", 27.0, 500, R.drawable.yonex_as30));
+        dataModels.add(new StockDataBean(0, "RSL", "Grade 3", 16.7, 5000, R.drawable.rsl_grade_a3));
+        dataModels.add(new StockDataBean(0, "RSL", "Grade A9", 13.7, 10000, R.drawable.rsl_grade_a9));
+        dataModels.add(new StockDataBean(0, "RSL", "Grade A1", 21.0, 6000, R.drawable.rsl_grade_a1));
 
         adapter = new CustomAdapter(dataModels, getApplicationContext());
 
