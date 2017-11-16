@@ -1,15 +1,20 @@
 package com.example.android.contentprovidersample;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.android.contentprovidersample.data.Historique;
 import com.example.android.contentprovidersample.data.SampleDatabase;
 import com.example.android.contentprovidersample.data.Volant;
+
+import java.util.Calendar;
 
 public class AchatVenteActivity extends AppCompatActivity {
 
@@ -30,6 +35,19 @@ public class AchatVenteActivity extends AppCompatActivity {
 
         new VolantCursorTask().execute();
 
+        Button mButton = findViewById(R.id.actionValiderMarche);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                EditText mEdit   = findViewById(R.id.quantiteVolantsMarche);
+                Historique historique = new Historique();
+
+                historique.date = Calendar.getInstance().getTime();
+                historique.quantity = Integer.parseInt(mEdit.getText().toString());
+                historique.volant_id = item_row;
+
+                new InsertTask().execute(historique);
+            }
+        });
     }
 
     private class VolantCursorTask extends AsyncTask<Void, Void, Cursor> {
@@ -39,7 +57,7 @@ public class AchatVenteActivity extends AppCompatActivity {
 
         protected void onPostExecute(Cursor allVolants) {
             allVolants.move(item_row);
-            TextView mText =   findViewById(R.id.nomVolantMarche);
+            TextView mText = findViewById(R.id.nomVolantMarche);
             String prefixe = "";
             switch (action){
                 case ACHETER:
@@ -52,6 +70,18 @@ public class AchatVenteActivity extends AppCompatActivity {
             mText.setText(prefixe + allVolants.getString(allVolants.getColumnIndexOrThrow(Volant.COLUMN_NAME)));
             TextView mPrix = findViewById(R.id.prixVolantMarche);
             mPrix.setText(String.format("%.2f", allVolants.getDouble(allVolants.getColumnIndexOrThrow(Volant.COLUMN_PRIX))) + " €");
+        }
+
+    }
+
+    private class InsertTask extends AsyncTask<Historique, Void, Void> {
+        protected Void doInBackground(Historique... params) {
+            SampleDatabase.getInstance(getApplicationContext()).historique().insert(params[0]);
+            return null;
+        }
+
+        protected void onPostExecute(Void result) {
+            finish();
         }
 
     }
