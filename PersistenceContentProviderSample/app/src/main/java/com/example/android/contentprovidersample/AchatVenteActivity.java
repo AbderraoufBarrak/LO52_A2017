@@ -83,7 +83,15 @@ public class AchatVenteActivity extends AppCompatActivity {
 
     private class InsertTask extends AsyncTask<Historique, Void, Void> {
         protected Void doInBackground(Historique... params) {
-            StarLordDatabase.getInstance(getApplicationContext()).historique().insert(params[0]);
+            StarLordDatabase mDatabase = StarLordDatabase.getInstance(getApplicationContext());
+
+            mDatabase.beginTransaction();
+            mDatabase.historique().insert(params[0]);
+            if (mDatabase.volantHistorique().quantiteVolant(params[0].volant_id) > 0) {
+                mDatabase.setTransactionSuccessful();
+
+            }
+            mDatabase.endTransaction();
             return null;
         }
 
