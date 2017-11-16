@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     package="utbm.fr.ffbad">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/stocks_activity_title"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +24,9 @@
         Also you need to declare both activity class in manifest file like this:
         <activity
             android:name=".PurchaseActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/purchase_activity_title"></activity>
         <activity android:name=".PurchaseFormActivity"></activity>
     </application>
+
 
 </manifest>

@@ -3,10 +3,12 @@ package utbm.fr.ffbad;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -18,8 +20,6 @@ import utbm.fr.ffbad.entity.StockLine;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button achats_btn;
-
     private ListView stock_listView;
 
 
@@ -27,10 +27,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stock_layout);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.stock_toolbar);
+        setSupportActionBar(myToolbar);
+
+
         DbHelper dbHelper = new DbHelper(this,DbHelper.DATABASE_NAME,null,1);
 
         //Retrieving widgets
-        this.achats_btn = (Button) findViewById(R.id.achats_btn);
         this.stock_listView = (ListView) findViewById(R.id.stock_listView);
 
         //Populating the listView
@@ -47,13 +51,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        achats_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToPurchases();
-            }
-        });
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.purchase:
+                goToPurchases();
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_stock, menu);
+        return true;
     }
 
     private void goToPurchases(){

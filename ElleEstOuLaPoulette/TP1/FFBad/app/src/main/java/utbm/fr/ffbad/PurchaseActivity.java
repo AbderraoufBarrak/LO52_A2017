@@ -3,6 +3,10 @@ package utbm.fr.ffbad;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -22,9 +26,6 @@ import utbm.fr.ffbad.entity.StockLine;
 
 public class PurchaseActivity extends AppCompatActivity {
 
-
-    private Button stockButton;
-
     private ListView purchaseListView;
 
     @Override
@@ -32,10 +33,13 @@ public class PurchaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.purchase_layout);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.purchase_toolbar);
+        setSupportActionBar(myToolbar);
+
+
         DbHelper dbHelper = new DbHelper(this,DbHelper.DATABASE_NAME,null,1);
 
         //Retrieving widgets
-        stockButton = (Button) findViewById(R.id.stocksButton);
         this.purchaseListView = (ListView) findViewById(R.id.purchaseListView);
 
         //Populating the listView
@@ -44,12 +48,27 @@ public class PurchaseActivity extends AppCompatActivity {
         this.purchaseListView.setAdapter(adapter);
 
 
-        stockButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.stocks:
                 goToStocks();
-            }
-        });
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_purchases, menu);
+        return true;
     }
 
     private void goToStocks(){

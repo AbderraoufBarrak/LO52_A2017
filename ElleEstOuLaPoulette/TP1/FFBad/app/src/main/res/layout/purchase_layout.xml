@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-
-    <Button
-        android:id="@+id/stocksButton"
+    <android.support.v7.widget.Toolbar android:id="@+id/purchase_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Stocks" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        />
 
     <ListView
         android:id="@+id/purchaseListView"

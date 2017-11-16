@@ -53,8 +53,18 @@ public class DbHelper extends SQLiteOpenHelper {
         if(c.moveToFirst()){
             do{
                 String ref = c.getString(0);
+                Integer cost = Integer.parseInt(c.getString(2));
+                Integer nbStock = Integer.parseInt(c.getString(3));
                 String image = c.getString(4);
-                StockLine line = new StockLine(new Volant(ref,"default"),new Tube(12,25,ref,image));
+
+                //Retrieve the brand
+                String brandQuery_str = "SELECT MARQUE FROM VOLANT WHERE REF = '" + ref +"'";
+                Cursor brandC = this.db.rawQuery(brandQuery_str ,null);
+                String brand = "default";
+                if(brandC.moveToNext()){
+                   brand = brandC.getString(0);
+                }
+                StockLine line = new StockLine(new Volant(ref,brand),new Tube(nbStock,cost,ref,image));
                 stockLinesResult.add(line);
             }while(c.moveToNext());
             c.close();

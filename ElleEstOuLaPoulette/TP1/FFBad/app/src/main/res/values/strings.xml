@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FFBad</string>
+    <string name="stocks_activity_title">LardeSports - Stocks</string>
+    <string name="purchase_activity_title">LardeSports - Achats</string>
 </resources>

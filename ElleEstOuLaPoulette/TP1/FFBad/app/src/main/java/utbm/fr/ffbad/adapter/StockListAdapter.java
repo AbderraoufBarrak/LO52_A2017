@@ -58,7 +58,7 @@ public class StockListAdapter extends BaseAdapter {
 
         StockLine line = liste.get(position);
         text.setText("Marque : "+line.getVolant().getMarque()+"\t- Reference : "+line.getVolant().getRef()+
-                    "\t- Stock : "+line.getTube().getStock());
+                    "\nStock : "+line.getTube().getStock());
 
         ImageView imgV = (ImageView) vi.findViewById(R.id.imageTube);
         imgV.setImageResource(context.getResources().getIdentifier(line.getTube().getImageName(),"drawable",context.getPackageName()));
