@@ -21,7 +21,7 @@ public class AchatVenteActivity extends AppCompatActivity {
     public static final int ACHETER = 1;
     public static final int VENDRE = 2;
 
-    private int item_row;
+    private int volant_id;
     private int action;
 
     @Override
@@ -30,7 +30,7 @@ public class AchatVenteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_achat_vente);
 
         Intent intent = getIntent();
-        item_row = intent.getIntExtra("ITEM_ROW", 0);
+        volant_id = intent.getIntExtra("ITEM_ROW", 0);
         action = intent.getIntExtra("ACTION", 0);
 
         new VolantCursorTask().execute();
@@ -42,8 +42,15 @@ public class AchatVenteActivity extends AppCompatActivity {
                 Historique historique = new Historique();
 
                 historique.date = Calendar.getInstance().getTime();
-                historique.quantity = Integer.parseInt(mEdit.getText().toString());
-                historique.volant_id = item_row;
+                switch (action) {
+                    case ACHETER:
+                        historique.quantity = Integer.parseInt(mEdit.getText().toString());
+                        break;
+                    case VENDRE:
+                        historique.quantity = -Integer.parseInt(mEdit.getText().toString());
+                        break;
+                }
+                historique.volant_id = volant_id;
 
                 new InsertTask().execute(historique);
             }
@@ -56,7 +63,7 @@ public class AchatVenteActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(Cursor allVolants) {
-            allVolants.move(item_row);
+            allVolants.move(volant_id);
             TextView mText = findViewById(R.id.nomVolantMarche);
             String prefixe = "";
             switch (action){
