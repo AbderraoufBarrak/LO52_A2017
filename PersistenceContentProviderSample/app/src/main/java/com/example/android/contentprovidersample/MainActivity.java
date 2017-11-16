@@ -33,17 +33,9 @@ import android.widget.Toast;
 
 import com.example.android.contentprovidersample.data.StarLordDatabase;
 import com.example.android.contentprovidersample.data.Volant;
-import com.example.android.contentprovidersample.provider.SampleContentProvider;
 
-/**
- * Not very relevant to Room. This just shows data from {@link SampleContentProvider}.
- *
- * <p>Since the data is exposed through the ContentProvider, other apps can read and write the
- * content in a similar manner to this.</p>
- */
 public class MainActivity extends AppCompatActivity {
 
-    private static final int LOADER_CHEESES = 1;
     private ListAdapter mListAdapter;
 
     @Override

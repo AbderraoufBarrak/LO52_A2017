@@ -32,12 +32,6 @@
             </intent-filter>
         </activity>
 
-        <provider
-            android:name=".provider.SampleContentProvider"
-            android:authorities="com.example.android.contentprovidersample.provider"
-            android:exported="true"
-            android:permission="com.example.android.contentprovidersample.provider.READ_WRITE" />
-
         <activity
             android:name=".DisplayDescription"
             android:parentActivityName=".MainActivity" />
