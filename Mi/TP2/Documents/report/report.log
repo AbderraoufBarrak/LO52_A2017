@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.9.13)  16 NOV 2017 20:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.9.13)  17 NOV 2017 09:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -509,26 +509,324 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ]
 Chapter 1.
+
+Overfull \hbox (26.85812pt too wide) in paragraph at lines 50--55
+\T1/cmr/m/n/12 En nous référent à l'énoncé du tp, afin de ren-dre notre développe-ment d''application
+ []
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 58.
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:63: Missing $ inserted.
+<inserted text> 
+                $
+l.63 ...reste plus qu'Ã  attribuer la STRING "app_
+                                                  name" Ã  la variable:
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 63.
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:64: Missing $ inserted.
+<inserted text> 
+                $
+l.64 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no à in font cmr12!
+
+Overfull \hbox (19.89653pt too wide) in paragraph at lines 62--64
+\T1/cmr/m/n/12 Man-is-fest), il ne nous reste plus qu'à at-tribuer la STRING "app$[]\OML/cmm/m/it/12 ame\OT1/cmr/m/n/12 "\OML/cmm/m/it/12 lavariable \OT1/cmr/m/n/12 :$ 
+ []
+
+
+Overfull \hbox (40.8128pt too wide) in paragraph at lines 69--71
+[]\T1/cmr/m/n/12 Grâce à cette mé-canique, il nous est pos-si-ble de créer des vari-ables d'envirronment,
+ []
+
 [2
 
-] (/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.aux) )
+] <Rapport_screen_activity-Stock_liste.png, id=23, 264.23718pt x 438.13687pt>
+File: Rapport_screen_activity-Stock_liste.png Graphic file (type png)
+ <use Rapport_screen_activity-Stock_liste.png>
+Package pdftex.def Info: Rapport_screen_activity-Stock_liste.png used on input line 91.
+(pdftex.def)             Requested size: 199.16928pt x 330.24644pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+
+ []
+
+[3 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/Rapport_screen_activity-Stock_liste.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
+ [4] [5]
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:190: Package inputenc Error: Unicode char Ã\lst@EC© (U+9EA9)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.190 ...Utiliser la BDD pour gather les donnÃ©es 
+                                                  (passer par une classe de ...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:200: Missing $ inserted.
+<inserted text> 
+                $
+l.200 La derniÃ¨re partie reste la classe "achat_
+                                                 CustomAdapter", nous permet...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 200.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 202.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 202.
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 202.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 203.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 203.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 203.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 203.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 204.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 204.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 204.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 204.
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:206: Missing $ inserted.
+<inserted text> 
+                $
+l.206 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no à in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no à in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+
+Overfull \hbox (1405.01381pt too wide) in paragraph at lines 200--206
+[]\T1/cmr/m/n/12 La dernière par-tie reste la classe "achat$[]\OML/cmm/m/it/12 ustomAdapter\OT1/cmr/m/n/12 "\OML/cmm/m/it/12 ; nouspermettantdemettrejourslevisueldenotreappli:Vialeconstructeurdenotreclasse; nosdonnessontconnectnotre\OT1/cmr/m/n/12 "\OML/cmm/m/it/12 ListView\OT1/cmr/m/n/12 "\OML/cmm/m/it/12 ; quiautraversd[]ungettervapouvoirrcuprerdiffrentesdonnes\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 acheteur; prix; etc:::\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; etlessetterauxdiffrentslmentsgraphiquesenprsence; commelemontrelecodeci \OMS/cmsy/m/n/12 ^^@
+ []
+
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:209: Package inputenc Error: Unicode char Ã\lst@EC© (U+9EA9)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.209 ...tView.setText(String.format("RÃ©fÃ©rence 
+                                                  : %s",StockDataBean.getRef...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:209: Package inputenc Error: Unicode char Ã\lst@EC© (U+9EA9)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.209 ...tView.setText(String.format("RÃ©fÃ©rence 
+                                                  : %s",StockDataBean.getRef...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:210: Package inputenc Error: Unicode char â\lst@EC‚\lst@EC¬ (U+282E6C)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.210 ...iew.setText(String.format("Prix : %s â‚¬"
+                                                  ,Double.toString(StockData...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:211: Package inputenc Error: Unicode char Ã\lst@EC© (U+9EA9)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...TxtView.setText(String.format("QuantitÃ© 
+                                                  : %s",Integer.toString(Sto...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (57.0113pt too wide) in paragraph at lines 212--213
+[][][][][][][][][][][][][][]  
+ []
+
+[6] [7]
+Chapter 2.
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:239: Undefined control sequence.
+l.239  dans le dossier app\src
+                              \main\res\drawable-mdpi. Au niveau du code Jav...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:239: Undefined control sequence.
+l.239  dans le dossier app\src\main
+                                   \res\drawable-mdpi. Au niveau du code Jav...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:239: Undefined control sequence.
+l.239  dans le dossier app\src\main\res
+                                       \drawable-mdpi. Au niveau du code Jav...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:239: Undefined control sequence.
+l.239  dans le dossier app\src\main\res\drawable
+                                                -mdpi. Au niveau du code Jav...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:241: Missing $ inserted.
+<inserted text> 
+                $
+l.241  R.drawable.<nom_
+                       de_l_image>.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:241: Double subscript.
+l.241  R.drawable.<nom_de_l_
+                            image>.
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.tex:242: Missing $ inserted.
+<inserted text> 
+                $
+l.242 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+[8
+
+] <Rapport_screen_activity-ShuttleOrder_gui_spinner_collapsed.png, id=45, 263.48438pt x 237.88875pt>
+File: Rapport_screen_activity-ShuttleOrder_gui_spinner_collapsed.png Graphic file (type png)
+ <use Rapport_screen_activity-ShuttleOrder_gui_spinner_collapsed.png>
+Package pdftex.def Info: Rapport_screen_activity-ShuttleOrder_gui_spinner_collapsed.png used on input line 255.
+(pdftex.def)             Requested size: 199.16928pt x 179.82813pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
+
+ []
+
+<Rapport_screen_activity-ShuttleOrder_gui_spinner_expanded.png, id=46, 262.73157pt x 228.10219pt>
+File: Rapport_screen_activity-ShuttleOrder_gui_spinner_expanded.png Graphic file (type png)
+ <use Rapport_screen_activity-ShuttleOrder_gui_spinner_expanded.png>
+Package pdftex.def Info: Rapport_screen_activity-ShuttleOrder_gui_spinner_expanded.png used on input line 257.
+(pdftex.def)             Requested size: 199.16928pt x 172.92438pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
+
+ []
+
+[9 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/Rapport_screen_activity-ShuttleOrder_gui_spinner_collapsed.png> </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/Rapport_screen_activity-ShuttleOrder_gui_spinner_expanded.png>] <Rapport_screen_activity-MainActivity_intent_order.png, id=50, 445.665pt x 73.02281pt>
+File: Rapport_screen_activity-MainActivity_intent_order.png Graphic file (type png)
+ <use Rapport_screen_activity-MainActivity_intent_order.png>
+Package pdftex.def Info: Rapport_screen_activity-MainActivity_intent_order.png used on input line 282.
+(pdftex.def)             Requested size: 341.43306pt x 55.9447pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--283
+
+ []
+
+
+Overfull \hbox (0.13518pt too wide) in paragraph at lines 289--292
+[]\T1/cmr/m/n/12 Nous avons paramétré l'activité pour que le par-ent de celle-ci soit l'activité
+ []
+
+[10 </media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/Rapport_screen_activity-MainActivity_intent_order.png>] [11] (/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.aux) )
 (\end occurred inside a group at level 1)
 
 ### semi simple group (level 1) entered at line 38 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 3515 strings out of 494945
- 47837 string characters out of 6181032
- 120082 words of memory out of 5000000
- 6768 multiletter control sequences out of 15000+600000
- 13460 words of font info for 34 fonts, out of 8000000 for 9000
+ 3948 strings out of 494945
+ 53259 string characters out of 6181032
+ 143082 words of memory out of 5000000
+ 7187 multiletter control sequences out of 15000+600000
+ 15318 words of font info for 37 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,6n,40p,236b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2074.600pk>
-Output written on /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.pdf (3 pages, 38635 bytes).
+ 39i,6n,40p,236b,1666s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/promet/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy8.pfb>
+Output written on /media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/TP/Git/LO52_A2017/Mi/TP2/Documents/report/report.pdf (12 pages, 240914 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 32 compressed objects within 1 object stream
+ 427 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

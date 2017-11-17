@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/GRIDLAYOUT"
-    android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
@@ -42,4 +40,4 @@
         android:maxHeight="80dp"
         android:src="@android:drawable/ic_dialog_info" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
