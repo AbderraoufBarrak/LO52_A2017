@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.missornela.shuttlesmanagement">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ffbad"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"
+
+            android:label="@string/title_activity_main">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Controller.StockActivity"
+            android:label="@string/title_activity_stock"
+            android:icon="@drawable/as30_1_1"
+            />
+        <activity
+            android:name=".Controller.PurchaseActivity"
+            android:label="@string/title_activity_purchase"
+            />
+        <activity
+            android:name=".Controller.ShuttlesRegActivity"
+            android:label="@string/title_activity_shuttlesreg"
+            />
+
+    </application>
+
+</manifest>

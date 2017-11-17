@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Haribo SM </string>
+    <string name="purchase">PURCHASE</string>
+    <string name="stocks">STOCKS</string>
+    <string name="shuttlesreg">PURCHASE REGISTRATION</string>
+    <string name="thumbnail">thumbnail</string>
+    <string name="title_activity_main">ShuttlesManagement - Home</string>
+    <string name="title_activity_stock">ShuttlesManagement - Stocks</string>
+    <string name="title_activity_purchase">ShuttlesManagement - Purchases</string>
+    <string name="title_activity_shuttlesreg">ShuttlesManagement - Purchase Registration</string>
+</resources>
