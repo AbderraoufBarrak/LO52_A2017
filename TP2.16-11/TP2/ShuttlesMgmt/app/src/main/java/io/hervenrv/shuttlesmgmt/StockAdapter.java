@@ -56,6 +56,8 @@ public class StockAdapter extends ArrayAdapter {
         return convertView;
     }
 
+
+
     private class StockViewHolder{
         public TextView nom;
         public TextView marque;
