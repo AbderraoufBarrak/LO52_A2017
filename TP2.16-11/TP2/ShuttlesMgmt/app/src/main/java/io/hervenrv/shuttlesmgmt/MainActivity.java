@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //getApplicationContext().deleteDatabase("Achat.db");
-        //getApplicationContext().deleteDatabase("Produit.db");
+        getApplicationContext().deleteDatabase("Produit.db");
         //getApplicationContext().deleteDatabase("Stock.db");
 
         achatDAO = new AchatDAO(getApplicationContext());
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         //GenereAchats();
         //GenereStock();
-        //GenereProduits();
+        GenereProduits();
     }
 
     public void openAchat(View view) {

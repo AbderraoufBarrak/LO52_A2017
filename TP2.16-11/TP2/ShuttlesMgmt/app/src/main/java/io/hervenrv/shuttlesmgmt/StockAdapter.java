@@ -49,7 +49,7 @@ public class StockAdapter extends ArrayAdapter {
         Stock elem = (Stock) getItem(position);
         viewHolder.marque.setText(produitDAO.selectionner(elem.getRef()).getMarque());
         viewHolder.nom.setText(produitDAO.selectionner(elem.getRef()).getNom());
-        viewHolder.stock.setText(elem.getQuantite());
+        viewHolder.stock.setText(""+elem.getQuantite());
         viewHolder.image.setImageResource(produitDAO.selectionner(elem.getRef()).getImageID());
 
 
