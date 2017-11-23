@@ -1,7 +1,10 @@
 package io.hervenrv.shuttlesmgmt;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -14,7 +17,7 @@ public class StockAct extends AppCompatActivity {
 
     private ProduitDAO produitDAO;
     private StockDAO stockDAO;
-
+    private StockAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +27,31 @@ public class StockAct extends AppCompatActivity {
         produitDAO = MainActivity.produitDAO;
         stockDAO = MainActivity.stockDAO;
 
-        ArrayList<Stock> stock = stockDAO.getList();
+        final ArrayList<Stock> stock = stockDAO.getList();
 
         ListView listView = (ListView) findViewById(R.id.listview);
 
-        StockAdapter adapter = new StockAdapter(this, stock, produitDAO);
+        adapter = new StockAdapter(this, stock, produitDAO);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(StockAct.this, FormulaireAct.class);
+                Stock selected = stock.get(position);
+                intent.putExtra("REF", selected.getRef());
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        adapter.clear();
+        adapter.addAll(stockDAO.getList());
+        adapter.notifyDataSetChanged();
     }
 
 

@@ -59,7 +59,6 @@ public class AchatAdapter extends ArrayAdapter {
         viewHolder.prix.setText( produit_dao.selectionner(elem.getRef()).getPrix()*elem.getQuantite() + " €");
 
 
-
         return convertView;
     }
 
@@ -70,4 +69,6 @@ public class AchatAdapter extends ArrayAdapter {
         public TextView quantite;
         public TextView prix;
     }
+
+
 }
