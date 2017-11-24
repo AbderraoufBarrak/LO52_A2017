@@ -1,30 +1,23 @@
 package utbm.fr.ffbad;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.List;
 
 import utbm.fr.ffbad.adapter.PurchaseListAdapter;
-import utbm.fr.ffbad.adapter.StockListAdapter;
 import utbm.fr.ffbad.db.DbHelper;
 import utbm.fr.ffbad.entity.Purchase;
-import utbm.fr.ffbad.entity.PurchaseLine;
-import utbm.fr.ffbad.entity.StockLine;
 
 /**
  * Created by Antoine on 11/11/2017.
@@ -70,7 +63,7 @@ public class PurchaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.stocks:
-                goToStocks();
+                returnToStocks();
                 return true;
             default:
                 // If we got here, the user's action was not recognized.
@@ -87,14 +80,13 @@ public class PurchaseActivity extends AppCompatActivity {
         return true;
     }
 
-    private void goToStocks(){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+    private void returnToStocks(){
+        finish();
     }
 
     public void updatePayment(View v, final String ref){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Mettre à jour le payement ?");
+        builder.setMessage("Mettre à jour le payement");
         builder.setPositiveButton("PAYE", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
