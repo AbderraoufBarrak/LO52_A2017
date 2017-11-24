@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ShuttlesManagement</string>
+    <string-array name="shuttles_array">
+        <item>AS30</item>
+        <item>Grade 3</item>
+        <item>Grade A9</item>
+        <item>Grade A1</item>
+    </string-array>
+</resources>

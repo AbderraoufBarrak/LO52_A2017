@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/elmtAchat">
+
+
+
+    <TextView
+        android:text="Acheteur"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".25"
+        android:id="@+id/textAcheteur"/>
+
+    <TextView
+        android:text="Réf"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".25"
+        android:id="@+id/textReference"/>
+
+    <TextView
+        android:text="Quantité"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".25"
+        android:id="@+id/textQte"
+        android:background="#00ff00"/>
+
+    <TextView
+        android:text="Prix"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".25"
+        android:id="@+id/textPrix"
+        android:background="#ff0000"
+        />
+
+
+
+</LinearLayout>
