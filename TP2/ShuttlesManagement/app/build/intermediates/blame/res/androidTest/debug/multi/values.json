@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 45,
+                    "endOffset": 96
+                },
+                "from": {
+                    "file": "/vm/aelatifi-mboulgha/.android/build-cache/a5e59e4f42e7747d94e7bcd2ae903440ab1d54d7/output/res/values/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 229,
+                        "endColumn": 45,
+                        "endOffset": 270
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,77 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:2:1-22:12
+	package
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:3:5-44
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
+application
+ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:5:5-20:19
+MERGED from [com.android.support:appcompat-v7:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/f871469832d586d6370c1cf77577449050a50376/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/a843a991e43062c42ac6f90a3be575e0b008ee09/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/ad648126be15e3001b8376f183c7670ad813da2c/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/7f99b1fa4188efd26b4dc35b9ca45ca2e265d241/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/8d2b084fb8a49fdd9a4134c0ef2a86f0c458311e/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/648349bcb7963bb670ffde6f6bd0142d77364ef0/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/e7b4d7f4f419c78eb63225eaa00b00360c9f2af0/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/38739b4dc1272fabd42ebefa5ca7c8c83722c401/output/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-compat:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/1055b5f4e431c7abc7ccd1328273c4cf468aee7d/output/AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:9:9-35
+	android:allowBackup
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:10:9-40
+activity#com.aymane.shuttlesmanagement.MainActivity
+ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:11:9-17:20
+	android:name
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:11:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:12:13-16:29
+action#android.intent.action.MAIN
+ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:13:17-69
+	android:name
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:13:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:15:17-77
+	android:name
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:15:27-74
+activity#com.aymane.shuttlesmanagement.Main2Activity
+ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:18:9-51
+	android:name
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:18:19-48
+activity#com.aymane.shuttlesmanagement.Main3Activity
+ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:19:9-60
+	android:name
+		ADDED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml:19:19-48
+uses-sdk
+INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/f871469832d586d6370c1cf77577449050a50376/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/a843a991e43062c42ac6f90a3be575e0b008ee09/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/ad648126be15e3001b8376f183c7670ad813da2c/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/7f99b1fa4188efd26b4dc35b9ca45ca2e265d241/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/8d2b084fb8a49fdd9a4134c0ef2a86f0c458311e/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/648349bcb7963bb670ffde6f6bd0142d77364ef0/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/e7b4d7f4f419c78eb63225eaa00b00360c9f2af0/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/38739b4dc1272fabd42ebefa5ca7c8c83722c401/output/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-compat:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/1055b5f4e431c7abc7ccd1328273c4cf468aee7d/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:24.2.1] /vm/aelatifi-mboulgha/.android/build-cache/f871469832d586d6370c1cf77577449050a50376/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
+		INJECTED from /vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/src/main/AndroidManifest.xml
