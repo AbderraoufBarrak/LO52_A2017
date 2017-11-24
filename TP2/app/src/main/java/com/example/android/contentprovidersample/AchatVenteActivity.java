@@ -87,7 +87,7 @@ public class AchatVenteActivity extends AppCompatActivity {
 
             mDatabase.beginTransaction();
             mDatabase.historique().insert(params[0]);
-            if (mDatabase.volantHistorique().quantiteVolant(params[0].volant_id) > 0) {
+            if (mDatabase.volantHistorique().quantiteVolant(params[0].volant_id) >= 0) {
                 mDatabase.setTransactionSuccessful();
 
             }
