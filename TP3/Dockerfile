@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get update && \
-    apt-get install build-essential python bc -y
+    apt-get install build-essential python bc libncurses5-dev -y
 
 COPY aarch64-linux-android-4.9 /opt/aarch64-linux-android-4.9
 
