@@ -7,3 +7,6 @@ COPY aarch64-linux-android-4.9 /opt/aarch64-linux-android-4.9
 
 ENV ARCH arm64
 ENV CROSS_COMPILE /opt/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+
+RUN mkdir /mnt/hikey-linaro
+WORKDIR /mnt/hikey-linaro
