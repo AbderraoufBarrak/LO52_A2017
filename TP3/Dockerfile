@@ -10,3 +10,6 @@ ENV CROSS_COMPILE /opt/aarch64-linux-android-4.9/bin/aarch64-linux-android-
 
 RUN mkdir /mnt/hikey-linaro
 WORKDIR /mnt/hikey-linaro
+
+COPY entrypoint.sh /entrypoint.sh
+CMD ["/entrypoint.sh"]
