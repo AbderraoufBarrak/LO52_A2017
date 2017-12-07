@@ -4,3 +4,6 @@
 [submodule "TP3/hikey-linaro"]
 	path = TP3/hikey-linaro
 	url = https://android.googlesource.com/kernel/hikey-linaro
+[submodule "TP4/hikey"]
+	path = TP4/hikey
+	url = https://android.googlesource.com/device/linaro/hikey
