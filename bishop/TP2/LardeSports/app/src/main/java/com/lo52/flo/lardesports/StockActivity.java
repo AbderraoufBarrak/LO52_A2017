@@ -16,8 +16,15 @@ import java.util.Map;
 
 import static android.graphics.drawable.GradientDrawable.Orientation.BOTTOM_TOP;
 
+/**
+ * Activité permettant l'affichage des stocks
+ */
 public class StockActivity extends AppCompatActivity {
 
+    /**
+     * Fonction appelée lors de la création de l'activité
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

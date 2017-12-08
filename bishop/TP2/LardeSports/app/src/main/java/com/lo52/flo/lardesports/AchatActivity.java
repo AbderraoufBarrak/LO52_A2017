@@ -16,8 +16,15 @@ import java.util.Map;
 
 import static android.graphics.drawable.GradientDrawable.Orientation.BOTTOM_TOP;
 
+/**
+ * Activité gérant l'affichage de tous les achats
+ */
 public class AchatActivity extends AppCompatActivity {
 
+    /**
+     * Fonction onCreate appelée lors de la création de l'activité
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,11 @@ public class AchatActivity extends AppCompatActivity {
         list_achats.setOnItemClickListener(listview_listener);
     }
 
+    /**
+     * Fonction appelée lors de l'appuie sur un achat de la liste
+     * Elle lance l'activité VolantsGestionActivity en mode "lecture seule"
+     * @param achatIndice : indice de l'achat sur lequel l'utilisateur a cliqué
+     */
     private void onClickOnAchat(int achatIndice){
         Intent intent = new Intent(this, VolantsGestionActivity.class);
         intent.putExtra("LECUTRE_SEULE", true);
@@ -46,12 +58,22 @@ public class AchatActivity extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
+    /**
+     * Fonction appelée lorsque l'activité VolantsGestionActivity est terminée
+     * Elle actualise la liste des achats avec les nouvelles valeurs
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode==0)
             this.recreate();
     }
 
+    /**
+     * Défini l'action à réaliser lors de l'appuie sur un achat par l'utilisateur
+     */
     AdapterView.OnItemClickListener listview_listener = new AdapterView.OnItemClickListener() {
 
         @Override

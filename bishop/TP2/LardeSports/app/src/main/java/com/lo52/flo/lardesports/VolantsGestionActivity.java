@@ -17,6 +17,9 @@ import java.util.List;
 
 import static android.graphics.drawable.GradientDrawable.Orientation.BOTTOM_TOP;
 
+/**
+ * Activité permettant de gérer les différents achats
+ */
 public class VolantsGestionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private final List<String> tubeList = new ArrayList<String>();
@@ -37,6 +40,10 @@ public class VolantsGestionActivity extends AppCompatActivity implements Adapter
 
     private boolean readOnly;
 
+    /**
+     * Fonction appelée lors de la création de l'activité
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +64,6 @@ public class VolantsGestionActivity extends AppCompatActivity implements Adapter
 
         isPayedCheckBox = (CheckBox) findViewById(R.id.achat_paid);
 
-        // Spinner click listener
         marqueSpinner.setOnItemSelectedListener(this);
         tubeSpinner.setOnItemSelectedListener(this);
 
@@ -72,15 +78,13 @@ public class VolantsGestionActivity extends AppCompatActivity implements Adapter
             tubeList.add(article.getRef());
         }
 
-        // Creating adapter for spinner
         ArrayAdapter<String> marqueDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, marqueList);
         ArrayAdapter<String> tubeDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tubeList);
 
-        // attaching data adapter to spinner
         marqueSpinner.setAdapter(marqueDataAdapter);
         tubeSpinner.setAdapter(tubeDataAdapter);
 
-        // Set the readonly mode
+        // Gestion du mode lecture seule
         if(readOnly){
 
             int achatId = getIntent().getIntExtra("ACHAT_ID", -1);
@@ -110,6 +114,13 @@ public class VolantsGestionActivity extends AppCompatActivity implements Adapter
         }
     }
 
+    /**
+     * Fonction appelé lors de l'appuie sur un objet de la liste affichée
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -134,11 +145,18 @@ public class VolantsGestionActivity extends AppCompatActivity implements Adapter
 
     }
 
+    /**
+     * Fonction fermant l'activité lors de l'appuie sur la touche retour du téléphone
+     */
     @Override
     public void onBackPressed() {
         finish();
     }
 
+    /**
+     * Fonction appelée lors de l'appuie sur le bouton plus des quantités
+     * @param view
+     */
     public void onPlusButtonClick(View view){
         if(!readOnly){
             int newValue;
@@ -151,6 +169,10 @@ public class VolantsGestionActivity extends AppCompatActivity implements Adapter
         }
     }
 
+    /**
+     * Fonction appelée lors de l'appuie sur le bouton moins des quantités
+     * @param view
+     */
     public void onMinusButtonClick(View view){
         if(!readOnly){
             int newValue;
@@ -163,6 +185,10 @@ public class VolantsGestionActivity extends AppCompatActivity implements Adapter
         }
     }
 
+    /**
+     * Fonction appelée lors de l'appuie enregistré
+     * @param view
+     */
     public void onSaveButtonClick(View view){
 
         if(readOnly && currentId > 0){

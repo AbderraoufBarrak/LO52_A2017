@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * Classe permettant l'affichage du stock via un ArrayAdapter
+ */
 public class ArticleAdapter extends ArrayAdapter<Article> {
 
     private final Context context;
@@ -25,6 +28,13 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         this.articles = articles;
     }
 
+    /**
+     * Fonction surchargée permettant l'affichage
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null) {

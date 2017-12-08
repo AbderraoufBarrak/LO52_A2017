@@ -13,14 +13,21 @@ import java.util.HashMap;
  * Created by Flo on 24.10.2017.
  */
 
+/**
+ * Classe BDD
+ * Elle gère  toute la base de donnée de l'application
+ */
 public class BDD extends SQLiteOpenHelper {
 
+    // Nom de la table SQL
     private static final String DATABASE_NAME = "bdd.db" ;
 
+    // Attributs de la table stock
     public static final String STOCK_TABLE_NAME = "stock";
     public static final String STOCK_COLUMN_MARQUE_ID = "stock_marque_id";
     public static final String STOCK_COLUMN_QUANTITE = "stock_quantite";
 
+    // Attributs de la table volant
     public static final String VOLANTS_TABLE_NAME = "volant";
     public static final String VOLANTS_COLUMN_ID = "volant_id";
     public static final String VOLANTS_COLUMN_REF = "volant_ref";
@@ -29,6 +36,7 @@ public class BDD extends SQLiteOpenHelper {
     public static final String VOLANTS_COLUMN_DISTRIBUTEUR = "volant_distrib_id";
     public static final String VOLANTS_COLUMN_PRIX = "volant_prix";
 
+    // Attributs de la table des distributeurs
     public static final String DISTRIBUTEUR_TABLE_NAME = "distrib";
     public static final String DISTRIBUTEUR_COLUMN_ID = "distrib_id";
     public static final String DISTRIBUTEUR_COLUMN_NAME = "distrib_name";
@@ -37,10 +45,12 @@ public class BDD extends SQLiteOpenHelper {
     public static final String DISTRIBUTEUR_COLUMN_TEL = "distrib_tel";
     public static final String DISTRIBUTEUR_COLUMN_EMAIL = "distrib_email";
 
+    // Attributs de la table des marques
     public static final String MARQUE_TABLE_NAME = "marque";
     public static final String MARQUE_COLUMN_ID = "marque_id";
     public static final String MARQUE_COLUMN_LIBELLE = "marque_libelle";
 
+    // Attributs de la table des achats
     public static final String ACHAT_TABLE_NAME = "achat";
     public static final String ACHAT_COLUMN_ID = "achat_id";
     public static final String ACHAT_COLUMN_CLIENT_NAME = "achat_client_name";
@@ -48,18 +58,33 @@ public class BDD extends SQLiteOpenHelper {
     public static final String ACHAT_COLUMN_QUANTITE = "achat_quantite";
     public static final String ACHAT_COLUMN_PAYE = "achat_payé";
 
+    // Version de la base de données
     private int databaseVersion;
 
+    /**
+     * Constructeur
+     * @param context
+     */
     public BDD(Context context) {
         super(context, DATABASE_NAME, null, 1);
         databaseVersion = 1;
     }
 
+    /**
+     * Constructeur
+     * @param context
+     * @param databaseVersion
+     */
     public BDD(Context context, int databaseVersion) {
         super(context, DATABASE_NAME, null, databaseVersion);
         this.databaseVersion = databaseVersion;
     }
 
+    /**
+     * Fonction appelée lors de la création de la base de données
+     * Elle initialise celle-ci
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -104,6 +129,12 @@ public class BDD extends SQLiteOpenHelper {
         );
     }
 
+    /**
+     * Fonction appelée lors de la mise à jour de la base de données
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
@@ -115,6 +146,12 @@ public class BDD extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * Fonction permettant d'ajouter un article dans le stock dans la base de données
+     * @param marque_id
+     * @param qte
+     * @return
+     */
     public boolean insertStockArticle (int marque_id, int qte) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -124,6 +161,12 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant de mettre à jour un article du stock
+     * @param marque_id
+     * @param qte
+     * @return
+     */
     public boolean updateStockArticle (int marque_id, int qte) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -133,6 +176,16 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant d'ajouter un article dans la base de données
+     * @param id
+     * @param ref
+     * @param marque_id
+     * @param cat
+     * @param distributeur_id
+     * @param prix
+     * @return
+     */
     public boolean insertArticle (int id, String ref, int marque_id, Categorie cat, int distributeur_id, double prix) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -146,6 +199,16 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant de mettre à jour un article de la base de données
+     * @param id
+     * @param ref
+     * @param marque_id
+     * @param cat
+     * @param distributeur_id
+     * @param prix
+     * @return
+     */
     public boolean updateArticle (int id, String ref, int marque_id, Categorie cat, int distributeur_id, double prix) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -159,6 +222,16 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant d'ajouter un distributeur dans la base de données
+     * @param id
+     * @param name
+     * @param adress
+     * @param contact
+     * @param tel
+     * @param email
+     * @return
+     */
     public boolean insertDistributeur (int id, String name, String adress, String contact, String tel, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -172,6 +245,16 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant de mettre à jour un distributeur dans la base de données
+     * @param id
+     * @param name
+     * @param adress
+     * @param contact
+     * @param tel
+     * @param email
+     * @return
+     */
     public boolean updateDistributeur (int id, String name, String adress, String contact, String tel, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -185,6 +268,12 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant d'ajouter une marque dans la base de données
+     * @param id
+     * @param libelle
+     * @return
+     */
     public boolean insertMarque (int id, String libelle) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -194,6 +283,12 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant de mettre à jour une marque dans la base de données
+     * @param id
+     * @param libelle
+     * @return
+     */
     public boolean updateMarque (int id, String libelle) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -203,6 +298,14 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant d'ajouter un achat dans la base de données
+     * @param client_name
+     * @param volant_id
+     * @param qte
+     * @param isPayed
+     * @return
+     */
     public boolean insertAchat (String client_name, int volant_id, int qte, boolean isPayed) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -211,7 +314,6 @@ public class BDD extends SQLiteOpenHelper {
         if(isPayed) payedIntegerBool = 1;
         else payedIntegerBool = 0;
 
-        //contentValues.put(ACHAT_COLUMN_ID, id);
         contentValues.put(ACHAT_COLUMN_CLIENT_NAME, client_name);
         contentValues.put(ACHAT_COLUMN_VOLANT, volant_id);
         contentValues.put(ACHAT_COLUMN_QUANTITE, qte);
@@ -220,6 +322,15 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant de mettre à jour un achat dans la base de données
+     * @param id
+     * @param client_name
+     * @param volant_id
+     * @param qte
+     * @param isPayed
+     * @return
+     */
     public boolean updateAchat (int id, String client_name, int volant_id, int qte, boolean isPayed) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -232,6 +343,11 @@ public class BDD extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * Fonction permettant de savoir si un article existe dans la base de données
+     * @param id
+     * @return
+     */
     public boolean articleExists(int id) {
         Cursor cursor = this.getReadableDatabase().rawQuery( "select 1 from " + VOLANTS_TABLE_NAME + " where volant_id=" + id, null );
         boolean exists = (cursor.getCount() > 0);
@@ -239,6 +355,11 @@ public class BDD extends SQLiteOpenHelper {
         return exists;
     }
 
+    /**
+     * Fonction permettant de savoir si un distributeur existe dans la base de données
+     * @param id
+     * @return
+     */
     public boolean distributeurExists(int id) {
         Cursor cursor = this.getReadableDatabase().rawQuery( "select 1 from " + DISTRIBUTEUR_TABLE_NAME + " where distrib_id=" + id, null );
         boolean exists = (cursor.getCount() > 0);
@@ -246,6 +367,11 @@ public class BDD extends SQLiteOpenHelper {
         return exists;
     }
 
+    /**
+     * Fonction permettant de savoir si une marque existe dans la base de données
+     * @param id
+     * @return
+     */
     public boolean marqueExists(int id) {
         Cursor cursor = this.getReadableDatabase().rawQuery( "select 1 from " +MARQUE_TABLE_NAME + " where marque_id=" + id, null );
         boolean exists = (cursor.getCount() > 0);
@@ -253,6 +379,10 @@ public class BDD extends SQLiteOpenHelper {
         return exists;
     }
 
+    /**
+     * Fonction permettant d'obtenir un arrayList de tous les articles de la base de données
+     * @return
+     */
     public ArrayList<ArticleBDD> getAllArticles() {
         ArrayList<ArticleBDD> array_list = new ArrayList<ArticleBDD>();
 
@@ -275,6 +405,10 @@ public class BDD extends SQLiteOpenHelper {
         return array_list;
     }
 
+    /**
+     * Fonction permettant d'obtenir un arrayList de toud les achats présent dans la base de données
+     * @return
+     */
     public ArrayList<Achat> getAllAchats() {
         ArrayList<Achat> array_list = new ArrayList<Achat>();
 
@@ -295,6 +429,11 @@ public class BDD extends SQLiteOpenHelper {
         return array_list;
     }
 
+    /**
+     * Fonction permettant d'obtenir un achat grâce à son ID
+     * @param id
+     * @return
+     */
     public Achat getAchatWithId(int id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -313,6 +452,10 @@ public class BDD extends SQLiteOpenHelper {
         return null;
     }
 
+    /**
+     * Fonction permettant d'obtenir un arrayList de toutes les marques présentes dans la base de données
+     * @return
+     */
     public ArrayList<MarqueBDD> getAllMarques() {
         ArrayList<MarqueBDD> array_list = new ArrayList<MarqueBDD>();
 
@@ -330,6 +473,11 @@ public class BDD extends SQLiteOpenHelper {
         return array_list;
     }
 
+    /**
+     * Fonction permettant d'obtenir l'Id d'un article via sa référence
+     * @param ref
+     * @return
+     */
     public int getArticleIdWithRef(String ref) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -343,6 +491,11 @@ public class BDD extends SQLiteOpenHelper {
         return -1;
     }
 
+    /**
+     * Fonction permettant d'obtenir un arrayList des articles en fonction d'une marque
+     * @param marque_id
+     * @return
+     */
     public ArrayList<ArticleBDD> getArticlesWithMarque(int marque_id) {
         ArrayList<ArticleBDD> array_list = new ArrayList<ArticleBDD>();
 
@@ -366,6 +519,10 @@ public class BDD extends SQLiteOpenHelper {
         return array_list;
     }
 
+    /**
+     * Fonction permettant d'obtenir un HashMap des Id des articles avec les quantités disponibles de chacun dans le stock
+     * @return
+     */
     public HashMap<Integer, Integer> getStockArticles() {
 
         HashMap<Integer, Integer> stock = new HashMap<Integer, Integer>();
@@ -382,6 +539,11 @@ public class BDD extends SQLiteOpenHelper {
         return stock;
     }
 
+    /**
+     * Fonction d'obtenir un distributeur via son Id
+     * @param id
+     * @return
+     */
     public DistributeurBDD getDistributeurById(int id){
 
         DistributeurBDD distrib = null;
@@ -402,6 +564,11 @@ public class BDD extends SQLiteOpenHelper {
         return distrib;
     }
 
+    /**
+     * Fonctio permettant d'obtenir un article via son Id
+     * @param id
+     * @return
+     */
     public ArticleBDD getArticleBDDById(int id){
 
         ArticleBDD article = null;
@@ -422,6 +589,11 @@ public class BDD extends SQLiteOpenHelper {
         return article;
     }
 
+    /**
+     * Fonction permettant d'obtenir une marque via son id
+     * @param id
+     * @return
+     */
     public MarqueBDD getMarqueById(int id){
 
         MarqueBDD marqueBdd = null;
@@ -438,25 +610,47 @@ public class BDD extends SQLiteOpenHelper {
         return marqueBdd;
     }
 
+    /**
+     * Fonction permettant de connaître la version de la base de donnée
+     * @return
+     */
     public int getDatabaseVersion(){
         return  databaseVersion;
     }
 
+    /**
+     * Fonction permettant la supression d'un article via son Id
+     * @param id
+     * @return
+     */
     public Integer deleteArticle (Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(VOLANTS_TABLE_NAME, "volant_id = ? ", new String[] { Integer.toString(id) });
     }
 
+    /**
+     * Fonction permettant la supression d'un distributeur via son Id
+     * @param id
+     * @return
+     */
     public Integer deleteDistributeur (Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(DISTRIBUTEUR_TABLE_NAME, "distrib_id = ? ", new String[] { Integer.toString(id) });
     }
 
+    /**
+     * Fonction permettant la supression d'une marque via son Id
+     * @param id
+     * @return
+     */
     public Integer deleteMarque (Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(MARQUE_TABLE_NAME, "marque_id = ? ", new String[] { Integer.toString(id) });
     }
 
+    /**
+     * Fonction permettant l'initialisation de la BDD
+     */
     public void initBDD(){
 
         insertMarque(1, "Artengo");

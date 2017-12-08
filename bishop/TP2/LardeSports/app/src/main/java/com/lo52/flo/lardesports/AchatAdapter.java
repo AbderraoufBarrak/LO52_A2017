@@ -20,12 +20,25 @@ public class AchatAdapter extends ArrayAdapter<Achat> {
     private final Context context;
     private LinkedList<Achat> achats;
 
+    /**
+     * Constructeur
+     * @param context
+     * @param resource
+     * @param achats
+     */
     public AchatAdapter(Context context, int resource, LinkedList<Achat> achats) {
         super(context, resource, achats);
         this.context = context;
         this.achats = achats;
     }
 
+    /**
+     * Fonction surchargé permettant l'affichage des achats grâce à un ArrayAdapter
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null) {

@@ -4,6 +4,9 @@ package com.lo52.flo.lardesports;
  * Created by Flo on 06.11.2017.
  */
 
+/**
+ * Classe permettant de décrire un objet Article de la BDD
+ */
 public class ArticleBDD {
 
     private Integer id;
@@ -13,6 +16,15 @@ public class ArticleBDD {
     private Integer distrib_id;
     private Double prix;
 
+    /**
+     * Constructeur
+     * @param id
+     * @param ref
+     * @param marque_id
+     * @param cat
+     * @param distrib_id
+     * @param prix
+     */
     public ArticleBDD(Integer id, String ref, Integer marque_id, Categorie cat, Integer distrib_id, Double prix) {
         this.id = id;
         this.ref = ref;
