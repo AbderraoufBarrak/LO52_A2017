@@ -29,15 +29,21 @@
 5. Configuration avancée du noyau 
 
 5.1 	* compat ARMv8 Versatile uniquement : définir une envvar "ARCH" to "ARMv8 Versatile" 
+
 		*  option
 			* NFC : Networking support -> NFC subsystem support -> all options to Y
 			* driver de l'émulateur matériel : Networking support -> NFC subsystem support -> Near Field Communication (NFC) Devices -> "NFC Hardware simulator driver" to Y
-		* driver carte Intel PRO/Wireless 2200BG : Device Driver -> network driver -> Wireless LAN -> "Intel PRO/Wireless 2200BG and 2915ABG Network Connection" to Y
+
+		* driver carte Intel PRO/Wireless 2200BG : Device Driver -> network device support-> Wireless LAN -> "Intel PRO/Wireless 2200BG and 2915ABG Network Connection" to Y
+
 		* GPU 16 -> 32 : Device Driver -> Graphic support -> VGA Arbitration -> "Maximum number of GPUs" to 32
+
 		* activation option logo/image au boot : Device Drivers -> Graphics Support -> "Bootup logo" to Y -> "Black and white linux logo" to Y
+
 		* USB
 			* désactiv MTP Gadget : Device Drivers -> USB support -> USB Gadget Support -> "MTP gadget" to N
 			* activ USB LED : Device Drivers -> USB support -> "USB LED driver support" to Y
+
 		* mettre en dur TI SOC Drivers : Device Drivers -> SOC (System On Chip) specific Drivers -> "TI SOC drivers support" to Y
 
 5.2		config du wakelock : Power Management and ACPI options -> "user space wakeup sources interface" to Y
