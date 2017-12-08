@@ -2,14 +2,46 @@
 
 4. Configuration par défaut du noyau
 
-4.1.	Config par défaut de la carte Hikey : TP3/hikey-linaro/android/configs
+4.1.	Config par défaut de la carte Hikey : TP3/hikey-linaro/arch/arm64/configs/hikey_defconfig
 
 4.2.	* Compilation croisée parce que env cible différent de env hôte et que machine hôte plus puissante que machine cible (build plus rapide en cross-comp)
-	* Etapes pour préparer l'environnement avant compil : 
-		* s'assurer de disposer de la toolchain précompilée complète
-		* s'assurer de disposer de Python sur la machine hôte
-		* configurer ARCH et CROSS_COMPILE via une méthode au choix (var dans makefile du kernel, var d'environement ou passé en paramètre lors du make)
+		* Etapes pour préparer l'environnement avant compil : 
+			* s'assurer de disposer de la toolchain précompilée complète (binaires de cross-compilation)
+			* s'assurer de disposer de Python sur la machine hôte
+			* configurer ARCH et CROSS_COMPILE via une méthode au choix (var dans makefile du kernel, var d'environement ou passé en paramètre lors du make)
 
-4.3.	* Script bash avec :
-		* ARCH=aarch
-		* CROSS_COMPILE=~/TP3/aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel-cpp
+4.3.	* Script shell avec :
+			* ARCH=arm64
+			* CROSS_COMPILE=~/TP3/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+			* export ARCH
+			* export CROSS_COMPILE
+			
+4.4		* FAIT
+
+4.5		* "configuration written to .config" a été écrit dans la console, et un fichier .config a été créé
+		* le fichier résultant contient beaucoup plus de lignes de paramètres de configuration (107kb, contre 10kb pour le fichier de config initial), 
+			potentiellement tous les paramètres possibles, et ceux qui n'étaient pas spécifié sont en commentaire et sont suivi de "is not set".
+
+4.6 	* FAIT
+
+4.7 	* FAIT
+
+5. Configuration avancée du noyau 
+
+5.1 	* compat ARMv8 Versatile uniquement : définir une envvar "ARCH" to "ARMv8 Versatile" 
+		*  option
+			* NFC : Networking support -> NFC subsystem support -> all options to Y
+			* driver de l'émulateur matériel : Networking support -> NFC subsystem support -> Near Field Communication (NFC) Devices -> "NFC Hardware simulator driver" to Y
+		* driver carte Intel PRO/Wireless 2200BG : Device Driver -> network driver -> Wireless LAN -> "Intel PRO/Wireless 2200BG and 2915ABG Network Connection" to Y
+		* GPU 16 -> 32 : Device Driver -> Graphic support -> VGA Arbitration -> "Maximum number of GPUs" to 32
+		* activation option logo/image au boot : Device Drivers -> Graphics Support -> "Bootup logo" to Y -> "Black and white linux logo" to Y
+		* USB
+			* désactiv MTP Gadget : Device Drivers -> USB support -> USB Gadget Support -> "MTP gadget" to N
+			* activ USB LED : Device Drivers -> USB support -> "USB LED driver support" to Y
+		* mettre en dur TI SOC Drivers : Device Drivers -> SOC (System On Chip) specific Drivers -> "TI SOC drivers support" to Y
+
+5.2		config du wakelock : Power Management and ACPI options -> "user space wakeup sources interface" to Y
+
+5.3 	FAIT
+
+5.4 	TODO
