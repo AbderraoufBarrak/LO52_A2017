@@ -1,0 +1,15 @@
+
+
+4. Configuration par défaut du noyau
+
+4.1.	Config par défaut de la carte Hikey : TP3/hikey-linaro/android/configs
+
+4.2.	* Compilation croisée parce que env cible différent de env hôte et que machine hôte plus puissante que machine cible (build plus rapide en cross-comp)
+	* Etapes pour préparer l'environnement avant compil : 
+		* s'assurer de disposer de la toolchain précompilée complète
+		* s'assurer de disposer de Python sur la machine hôte
+		* configurer ARCH et CROSS_COMPILE via une méthode au choix (var dans makefile du kernel, var d'environement ou passé en paramètre lors du make)
+
+4.3.	* Script bash avec :
+		* ARCH=aarch
+		* CROSS_COMPILE=~/TP3/aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel-cpp
