@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lo52.flo.lardesports.MainActivity"
+    android:orientation="vertical"
+    android:background="#E1905C">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:layout_margin="5dp"
+        android:textStyle="italic"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stock"
+        android:id="@+id/stock_button"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:background="@drawable/button_menu"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:onClick="stockButton"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Achat"
+        android:id="@+id/achat_button"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:background="@drawable/button_menu"
+        android:onClick="achatButton"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gestion"
+        android:id="@+id/gestion_button"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:background="@drawable/button_menu"
+        android:onClick="gestionButton"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+</LinearLayout>

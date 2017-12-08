@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:background="#E1905C"
+    android:gravity="center_vertical"
+    android:id="@+id/achat_layout">
+
+    <TextView
+        android:id="@+id/acheteur_achat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dip"
+        android:layout_weight="0.35"
+        android:text="Acheteur"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.65"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/quantite_achat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quantité" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/ref_achat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Référence" />
+
+    </LinearLayout>
+</LinearLayout>
