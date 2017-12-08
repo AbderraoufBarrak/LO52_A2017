@@ -14,15 +14,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.aymane.shuttlesmanagement.MainActivity" >
+        <activity android:name="com.aymane.shuttlesmanagement.AchatsActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.aymane.shuttlesmanagement.Main2Activity" />
-        <activity android:name="com.aymane.shuttlesmanagement.Main3Activity" />
+        <activity android:name="com.aymane.shuttlesmanagement.StockActivity" />
+        <activity android:name="com.aymane.shuttlesmanagement.AcheterActivity" />
     </application>
 
 </manifest>

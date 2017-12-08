@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+        "outputFile": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 120
                 },
                 "from": {
-                    "file": "/vm/aelatifi-mboulgha/.android/build-cache/f871469832d586d6370c1cf77577449050a50376/output/res/values-land/values-land.xml",
+                    "file": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-land\\values-land.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "/vm/aelatifi-mboulgha/.android/build-cache/f871469832d586d6370c1cf77577449050a50376/output/res/values-land/values-land.xml",
+                    "file": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-land\\values-land.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 255
                 },
                 "from": {
-                    "file": "/vm/aelatifi-mboulgha/.android/build-cache/f871469832d586d6370c1cf77577449050a50376/output/res/values-land/values-land.xml",
+                    "file": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-land\\values-land.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 323
                 },
                 "from": {
-                    "file": "/vm/aelatifi-mboulgha/.android/build-cache/f871469832d586d6370c1cf77577449050a50376/output/res/values-land/values-land.xml",
+                    "file": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-land\\values-land.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,

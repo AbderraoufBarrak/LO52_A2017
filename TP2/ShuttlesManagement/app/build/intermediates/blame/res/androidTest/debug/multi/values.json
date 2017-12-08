@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "outputFile": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "/vm/aelatifi-mboulgha/.android/build-cache/a5e59e4f42e7747d94e7bcd2ae903440ab1d54d7/output/res/values/values.xml",
+                    "file": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\exploded-aar\\com.android.support.test\\rules\\0.5\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
-        "source": "/vm/aelatifi-mboulgha/.android/build-cache/f871469832d586d6370c1cf77577449050a50376/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+        "merged": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
     },
     {
-        "merged": "/vm/aelatifi-mboulgha/LO52_A2017/TP2/ShuttlesManagement/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
-        "source": "/vm/aelatifi-mboulgha/.android/build-cache/f871469832d586d6370c1cf77577449050a50376/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+        "merged": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Users\\.Aymane\\AndroidStudioProjects\\ShuttlesManagement\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
     }
 ]
