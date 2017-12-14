@@ -51,3 +51,43 @@
 5.3 	FAIT
 
 5.4 	TODO
+
+
+
+*************************** Jeudi aprem *****************************************
+
+Suite à la commande diff (diff entre fichier final et fichier intial)
+
+diff hikeylo52_defcong hikey_defconfig 
+
+0a1
+> CONFIG_LOCALVERSION_AUTO=y
+181a183
+> CONFIG_CFG80211_WEXT=y
+190,196d191
+< CONFIG_NFC=y
+< CONFIG_NFC_DIGITAL=y
+< CONFIG_NFC_NCI=y
+< CONFIG_NFC_NCI_SPI=y
+< CONFIG_NFC_HCI=y
+< CONFIG_NFC_SHDLC=y
+< CONFIG_NFC_SIM=y
+243d237
+< CONFIG_IPW2200=y
+285d278
+< CONFIG_VGA_ARB_MAX_GPUS=32
+298,300d290
+< CONFIG_LOGO=y
+< # CONFIG_LOGO_LINUX_VGA16 is not set
+< # CONFIG_LOGO_LINUX_CLUT224 is not set
+321d310
+< CONFIG_USB_LED=y
+329a319,320
+> CONFIG_USB_CONFIGFS_F_MTP=y
+> CONFIG_USB_CONFIGFS_F_PTP=y
+366d356
+< CONFIG_SOC_TI=y
+424a415
+> CONFIG_CRYPTO_MICHAEL_MIC=y
+432a424
+> CONFIG_CRC_CCITT=y
