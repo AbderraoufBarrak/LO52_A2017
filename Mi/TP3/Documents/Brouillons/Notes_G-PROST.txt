@@ -91,3 +91,28 @@ diff hikeylo52_defcong hikey_defconfig
 > CONFIG_CRYPTO_MICHAEL_MIC=y
 432a424
 > CONFIG_CRC_CCITT=y
+
+
+*******************Commande kernel compil ******************************
+
+make hikey_defconfig -> pour charger le configuration par defaut
+
+ARCH=arm64
+export ARCH
+CROSS_COMPILE=/media/promet/Documents/UTBM/Cours_Filiere_Infos/Cours/LO52/Noyau+linaro/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+export CROSS_COMPILE
+
+make menuconfig
+
+make -> pour compiler le kernel
+
+make savedefconfig” pour créer le fichier
+
+”mv defconfig arch/ < arch > /configs/ < filename > ” -> déplace le fichier créé et le renome
+
+
+RESULTAT:
+
+Initial kernel: vmlinux : 169.8
+
+Final kernel: vmlinux : 173.2
