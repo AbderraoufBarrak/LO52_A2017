@@ -58,6 +58,8 @@
 
 Suite à la commande diff (diff entre fichier final et fichier intial)
 
+
+
 diff hikeylo52_defcong hikey_defconfig 
 
 0a1
@@ -91,6 +93,89 @@ diff hikeylo52_defcong hikey_defconfig
 > CONFIG_CRYPTO_MICHAEL_MIC=y
 432a424
 > CONFIG_CRC_CCITT=y
+
+
+
+
+
+diff .config .configOr 
+
+gOr 
+917d916
+< CONFIG_WIRELESS_EXT=y
+920,921d918
+< CONFIG_WEXT_SPY=y
+< CONFIG_WEXT_PRIV=y
+930,935c927
+< CONFIG_CFG80211_WEXT_EXPORT=y
+< CONFIG_LIB80211=y
+< CONFIG_LIB80211_CRYPT_WEP=y
+< CONFIG_LIB80211_CRYPT_CCMP=y
+< CONFIG_LIB80211_CRYPT_TKIP=y
+< # CONFIG_LIB80211_DEBUG is not set
+---
+> # CONFIG_LIB80211 is not set
+959,979c951
+< CONFIG_NFC=y
+< CONFIG_NFC_DIGITAL=y
+< CONFIG_NFC_NCI=y
+< CONFIG_NFC_NCI_SPI=y
+< CONFIG_NFC_HCI=y
+< CONFIG_NFC_SHDLC=y
+< 
+< #
+< # Near Field Communication (NFC) devices
+< #
+< # CONFIG_NFC_PN533 is not set
+< # CONFIG_NFC_WILINK is not set
+< # CONFIG_NFC_TRF7970A is not set
+< CONFIG_NFC_SIM=y
+< # CONFIG_NFC_PORT100 is not set
+< # CONFIG_NFC_PN544 is not set
+< # CONFIG_NFC_MICROREAD is not set
+< # CONFIG_NFC_MRVL is not set
+< # CONFIG_NFC_ST21NFCA is not set
+< # CONFIG_NFC_ST21NFCB is not set
+< # CONFIG_NFC_NXP_NCI is not set
+---
+> # CONFIG_NFC is not set
+1606,1611c1578
+< CONFIG_IPW2200=y
+< # CONFIG_IPW2200_MONITOR is not set
+< # CONFIG_IPW2200_QOS is not set
+< # CONFIG_IPW2200_DEBUG is not set
+< CONFIG_LIBIPW=y
+< # CONFIG_LIBIPW_DEBUG is not set
+---
+> # CONFIG_IPW2200 is not set
+2540c2507
+< CONFIG_VGA_ARB_MAX_GPUS=32
+---
+> CONFIG_VGA_ARB_MAX_GPUS=16
+2677,2680c2644
+< CONFIG_LOGO=y
+< CONFIG_LOGO_LINUX_MONO=y
+< # CONFIG_LOGO_LINUX_VGA16 is not set
+< # CONFIG_LOGO_LINUX_CLUT224 is not set
+---
+> # CONFIG_LOGO is not set
+3039c3003
+< CONFIG_USB_LED=y
+---
+> # CONFIG_USB_LED is not set
+3099a3064,3065
+> CONFIG_USB_F_MTP=y
+> CONFIG_USB_F_PTP=y
+3113c3079,3080
+< # CONFIG_USB_CONFIGFS_F_MTP is not set
+---
+> CONFIG_USB_CONFIGFS_F_MTP=y
+> CONFIG_USB_CONFIGFS_F_PTP=y
+3469c3436
+< CONFIG_SOC_TI=y
+---
+> # CONFIG_SOC_TI is not set
+
 
 
 *******************Commande kernel compil ******************************
