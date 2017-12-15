@@ -1,14 +1,14 @@
 
 
-4. Configuration par défaut du noyau
+4. Configuration par dÃ©faut du noyau
 
-4.1.	Config par défaut de la carte Hikey : TP3/hikey-linaro/arch/arm64/configs/hikey_defconfig
+4.1.	Config par dÃ©faut de la carte Hikey : TP3/hikey-linaro/arch/arm64/configs/hikey_defconfig
 
-4.2.	* Compilation croisée parce que env cible différent de env hôte et que machine hôte plus puissante que machine cible (build plus rapide en cross-comp)
-		* Etapes pour préparer l'environnement avant compil : 
-			* s'assurer de disposer de la toolchain précompilée complète (binaires de cross-compilation)
-			* s'assurer de disposer de Python sur la machine hôte
-			* configurer ARCH et CROSS_COMPILE via une méthode au choix (var dans makefile du kernel, var d'environement ou passé en paramètre lors du make)
+4.2.	* Compilation croisÃ©e parce que env cible diffÃ©rent de env hÃ´te et que machine hÃ´te plus puissante que machine cible (build plus rapide en cross-comp)
+		* Etapes pour prÃ©parer l'environnement avant compil : 
+			* s'assurer de disposer de la toolchain prÃ©compilÃ©e complÃ¨te (binaires de cross-compilation)
+			* s'assurer de disposer de Python sur la machine hÃ´te
+			* configurer ARCH et CROSS_COMPILE via une mÃ©thode au choix (var dans makefile du kernel, var d'environement ou passÃ© en paramÃ¨tre lors du make)
 
 4.3.	* Script shell avec :
 			* ARCH=arm64
@@ -18,21 +18,21 @@
 			
 4.4		* FAIT
 
-4.5		* "configuration written to .config" a été écrit dans la console, et un fichier .config a été créé
-		* le fichier résultant contient beaucoup plus de lignes de paramètres de configuration (107kb, contre 10kb pour le fichier de config initial), 
-			potentiellement tous les paramètres possibles, et ceux qui n'étaient pas spécifié sont en commentaire et sont suivi de "is not set".
+4.5		* "configuration written to .config" a Ã©tÃ© Ã©crit dans la console, et un fichier .config a Ã©tÃ© crÃ©Ã©
+		* le fichier rÃ©sultant contient beaucoup plus de lignes de paramÃ¨tres de configuration (107kb, contre 10kb pour le fichier de config initial), 
+			potentiellement tous les paramÃ¨tres possibles, et ceux qui n'Ã©taient pas spÃ©cifiÃ© sont en commentaire et sont suivi de "is not set".
 
 4.6 	* FAIT
 
 4.7 	* FAIT
 
-5. Configuration avancée du noyau 
+5. Configuration avancÃ©e du noyau 
 
-5.1 	* compat ARMv8 Versatile uniquement : définir une envvar "ARCH" to "ARMv8 Versatile" 
+5.1 	* compat ARMv8 Versatile uniquement : dÃ©finir une envvar "ARCH" to "ARMv8 Versatile" 
 
 		*  option
 			* NFC : Networking support -> NFC subsystem support -> all options to Y
-			* driver de l'émulateur matériel : Networking support -> NFC subsystem support -> Near Field Communication (NFC) Devices -> "NFC Hardware simulator driver" to Y
+			* driver de l'Ã©mulateur matÃ©riel : Networking support -> NFC subsystem support -> Near Field Communication (NFC) Devices -> "NFC Hardware simulator driver" to Y
 
 		* driver carte Intel PRO/Wireless 2200BG : Device Driver -> network device support-> Wireless LAN -> "Intel PRO/Wireless 2200BG and 2915ABG Network Connection" to Y
 
@@ -41,7 +41,7 @@
 		* activation option logo/image au boot : Device Drivers -> Graphics Support -> "Bootup logo" to Y -> "Black and white linux logo" to Y
 
 		* USB
-			* désactiv MTP Gadget : Device Drivers -> USB support -> USB Gadget Support -> "MTP gadget" to N
+			* dÃ©sactiv MTP Gadget : Device Drivers -> USB support -> USB Gadget Support -> "MTP gadget" to N
 			* activ USB LED : Device Drivers -> USB support -> "USB LED driver support" to Y
 
 		* mettre en dur TI SOC Drivers : Device Drivers -> SOC (System On Chip) specific Drivers -> "TI SOC drivers support" to Y
@@ -56,7 +56,7 @@
 
 *************************** Jeudi aprem *****************************************
 
-Suite à la commande diff (diff entre fichier final et fichier intial)
+Suite Ã  la commande diff (diff entre fichier final et fichier intial)
 
 
 
@@ -191,13 +191,13 @@ make menuconfig
 
 make -> pour compiler le kernel
 
-make savedefconfig” pour créer le fichier
+make savedefconfigâ€ pour crÃ©er le fichier
 
-”mv defconfig arch/ < arch > /configs/ < filename > ” -> déplace le fichier créé et le renome
+â€mv defconfig arch/ < arch > /configs/ < filename > â€ -> dÃ©place le fichier crÃ©Ã© et le renome
 
 
 RESULTAT:
 
-Initial kernel: vmlinux : 169.8
+Initial kernel: vmlinux : 13.3
 
-Final kernel: vmlinux : 173.2
+Final kernel: vmlinux : 13.6
