@@ -12,6 +12,11 @@ import java.util.Random;
 import org.w3c.dom.Text;
 
 public class LO52MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    static {
+        System.loadLibrary("native-lib");
+    }
+
     TextView label;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +46,10 @@ public class LO52MainActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         String toDisplay;
         Random rand = new Random();
-
-        Log.d("bonjour", "avant switch");
         switch (view.getId()){
             case R.id.btnread :
-                Log.d("bonjour", "Bouton");
-                toDisplay = read("Salut", "Bonsoir");
+                toDisplay = read("Hey Ho, Hey Ho", " On rentre du boulot!");
                 label.setText("Read : " + toDisplay);
-                Log.i("bonjour", "Fin Bouton");
                 break;
             case R.id.btnwrite :
                 toDisplay = write("Papa Lama");
@@ -64,7 +65,7 @@ public class LO52MainActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btnreset :
                 label.setText("");
-                label.setText("Hey, le return code is : " + reset() + " ty for your attention." + "\nYou're a llama. Gracefully, Your D(e)ad Lama.");
+                label.setText("Hey, le return code label is :\n" + reset() + ".\nTy for your attention. You're a llama.\n\nGracefully, Your Dad Lama.");
                 break;
 
         }
@@ -83,7 +84,5 @@ public class LO52MainActivity extends AppCompatActivity implements View.OnClickL
     public native String reset();
 
     // Used to load the 'native-lib' library on application startup.
-    static {
-        System.loadLibrary("native-lib");
-    }
+
 }

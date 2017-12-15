@@ -14,7 +14,7 @@ Java_fr_utbm_lpp_lo52_1tp5_LO52MainActivity_stringFromJNI(
 
 
 
-
+extern "C"
 JNIEXPORT jstring JNICALL
 Java_fr_utbm_lpp_lo52_1tp5_LO52MainActivity_read(
         JNIEnv* env,
@@ -27,19 +27,20 @@ jobject /* this */, jstring x, jstring y) {
     return env->NewStringUTF(buff);
 }
 
+extern "C"
 JNIEXPORT jstring JNICALL
 Java_fr_utbm_lpp_lo52_1tp5_LO52MainActivity_write(
         JNIEnv* env,
         jobject /* this */, jstring x) {
     const char *name = env->GetStringUTFChars(x, 0);
     char buff[100];
-    strcpy(buff, "Hello ");
+    strcpy(buff, "Hello C++ from ");
     strcat(buff, name);
-    strcat(buff, " from C++");
 
     return env->NewStringUTF(buff);
 }
 
+extern "C"
 JNIEXPORT jint JNICALL
 Java_fr_utbm_lpp_lo52_1tp5_LO52MainActivity_start(
         JNIEnv* env,
@@ -48,6 +49,7 @@ Java_fr_utbm_lpp_lo52_1tp5_LO52MainActivity_start(
     return jni_i;
 }
 
+extern "C"
 JNIEXPORT jint JNICALL
 Java_fr_utbm_lpp_lo52_1tp5_LO52MainActivity_stop(
         JNIEnv* env,
@@ -56,10 +58,11 @@ Java_fr_utbm_lpp_lo52_1tp5_LO52MainActivity_stop(
     return jni_i;
 }
 
+extern "C"
 JNIEXPORT jstring JNICALL
 Java_fr_utbm_lpp_lo52_1tp5_LO52MainActivity_reset(
         JNIEnv* env,
         jobject /* this */) {
 
-    return env->NewStringUTF(strerror(rand()%20));
+    return env->NewStringUTF(strerror(1 + rand()%131));
 }
