@@ -13,6 +13,7 @@ LOCAL_SRC_FILEs := \
 		os/linux_usbfs.c
 
 LOCAL_C_INCLUDES += \
+		.\
 		TP4/libusb/os\
 
 

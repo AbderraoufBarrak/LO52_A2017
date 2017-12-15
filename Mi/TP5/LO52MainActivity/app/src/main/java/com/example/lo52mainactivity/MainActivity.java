@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                label.setText("");
+                et.setText("");
                 label.setText("return code = " + reset());
             }
         });
