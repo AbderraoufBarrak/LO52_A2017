@@ -1,0 +1,1 @@
+Include device/hikey/hikey/BoardConfig.mk
