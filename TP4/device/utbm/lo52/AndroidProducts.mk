@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-		$(LOCAL_DIR)/lo52_rocks.mk
+		$(LOCAL_DIR)/lo52.mk

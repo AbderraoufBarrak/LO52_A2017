@@ -1,1 +1,1 @@
-Include device/hikey/hikey/BoardConfig.mk
+include device/hikey/hikey/BoardConfig.mk

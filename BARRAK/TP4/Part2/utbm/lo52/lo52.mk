@@ -12,4 +12,4 @@ PRODUCT_NAME := lo52
 PRODUCT_DEVICE := lo52		
 PRODUCT_BRAND := Android			
 PRODUCT_MODEL := LO52 Utbm		
-Include $(call all-subdir-makefiles)		
+include $(call all-subdir-makefiles)		
