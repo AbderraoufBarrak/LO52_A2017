@@ -3,7 +3,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := core.c \
                    descriptor.c \
                    io.c \ 
-                   sync.c \
+                   sync.c 
 LOCAL_C_INCLUDES += libusb \
                     libusbi
 LOCAL_MODULE := libusb_lib
