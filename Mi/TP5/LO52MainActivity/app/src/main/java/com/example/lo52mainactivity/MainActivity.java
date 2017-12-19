@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Random random = new Random();
                 int number = 11 + random.nextInt()%6;
-                Log.i("APPINFO", "Start number" + Integer.toString(number));
                 label.setText(number + " / " + start(number) );
             }
         });
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Random random = new Random();
                 int number = 1 + random.nextInt()%10;
-                Log.i("APPINFO", "Stop number" + Integer.toString(number));
                 label.setText(number + " / " + stop(number) );
             }
         });
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String message = write(tv.getText().toString());
-                label.setText(message);
+                label.setText("Write " + message);
             }
         });
 
@@ -88,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String message = read(et.getText().toString());
-                label.setText(message);
+                label.setText("Read " + message);
             }
         });
         tv.setText(stringFromJNI());
