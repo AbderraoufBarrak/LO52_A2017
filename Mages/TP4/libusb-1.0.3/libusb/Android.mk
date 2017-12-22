@@ -5,7 +5,7 @@ LOCAL_SRC_FILES:= core.c \
                   io.c \
                   sync.c \
                   os/linux_usbfs.c
-LOCAL_C_INCLUDES += libusb\
+LOCAL_C_INCLUDES += libusb/ \
                     libusb/os/
 LOCAL_MODULE:= libusb
 LOCAL_MODULE_TAGS:= optional
