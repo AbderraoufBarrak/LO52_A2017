@@ -43,18 +43,18 @@
 \chapter{Objectif}
 Dans ce Tp, il nous fut proposé de travailler avec le NDK Android.
 Le NDK est un ensemble d'outils, permettant d'implémenter des éléments d'un
-projet en utilisant un langage natif, tel que le C et/où le C++.
+projet en utilisant un langage natif, tel que le C et le C++.
 Afin de déployer une couche JNI au sein d'une application Android.
 Le JNI est un mécanisme de programmation de plus en plus présent sous Android;
-permettant de déployer des binding Java <-> C/C++.
+permettant de déployer des binding.
 
 \chapter{Interface graphique}
-Dans un premiers temps, nous avons du déployer une application Android, avec
-une interface composé des éléments suivants:
+Dans un premier temps, nous avons dû déployer une application Android, avec une
+interface composée des éléments suivants;
 \begin{itemize}
   \item Un label
-  \item Un champs de saisie
-  \item  boutons
+  \item Un champ de saisi
+  \item Quatre boutons
 \end{itemize}
 
 Notre interface se présente donc comme suivant:
@@ -63,12 +63,12 @@ Notre interface se présente donc comme suivant:
 
 \chapter{JNI}
 
-Apèrs avoir créer notre application android (en spécifant lors que la crétion,
-la prise en compte de "#include C++ Support"), nous nous sommes tourné vers
+Apèrs avoir créé notre application Android (en spécifant lors de la création,
+la prise en compte du paramètre "#include C++ Support"), nous nous sommes tourné vers
 l'intégration de la JNI au sein de notre projet.
 
-Pour cela nous avons commencé par déclaré les prototypes des fonctions natives,
-(au sein d'une classe C++) que nous devions intégrer, en respectant le standart
+Pour cela nous avons commencé par déclarer les prototypes des fonctions natives,
+(au sein d'une classe C++) que nous devions intégrer, en respectant le standard
 de programmation imposé par la JNI.
 
 \section{JNI - Prototype de fonction}
@@ -80,7 +80,7 @@ Nous avons déployé cinq fonctions en respectant la norme suivante:
   (JNIEnv * env, jObject this, <TYPE parameter>);
 \end{lstlisting}
 
-Ainsi, les prototypes de nos fonctions furent déclaré comme suivant:
+Ainsi, les prototypes de nos fonctions furent déclarés comme suivant:
 
 \begin{lstlisting}
 #include <jni.h>
@@ -118,8 +118,8 @@ JNIEXPORT jstring JNICALL Java_com_lo52_dewback_tp5_LO52MainActivity_reset
 \section{JNI - Code C++}
 
 Par la suite,
-au sein de notre de notre classe Java principale "LO52MainActivity.java", nous
-avons utilisé la fonction suivante afin de charger notre bibliothèque JNI.
+au sein de notre classe Java principale "LO52MainActivity.java", nous avons
+utilisé la fonction suivante afin de charger notre bibliothèque JNI.
 
 \begin{lstlisting}
   static {
@@ -139,7 +139,7 @@ référence un code natif.
    native String reset();
 \end{lstlisting}
 
-Enfin, nous avons définie les fonctions, déclanché par un appui sur l'un des
+Enfin, nous avons défini les fonctions, déclenché par un appui sur l'un des
 boutons de notre interface, nous permettant de faire appel à nos fonctions natives.
 
 \begin{lstlisting}
