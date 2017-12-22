@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp" >
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:background="#AAA"
+        android:contentDescription="@string/imageTxt" />
+
+    <TextView
+        android:id="@+id/marque"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/img"
+        android:layout_alignTop="@+id/img"
+        android:textStyle="bold"
+        tools:text="Marque" />
+
+    <TextView
+        android:id="@+id/quantite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/marque"
+        android:textColor="@android:color/black"
+        tools:text="Quantite" />
+
+    <TextView
+        android:id="@+id/reference"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/marque"
+        android:layout_below="@+id/marque"
+        android:textColor="@android:color/black"
+        tools:text="Reference" />
+
+    <TextView
+        android:id="@+id/prix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/qtt"
+        android:layout_toEndOf="@+id/marque"
+        android:textColor="@android:color/black"
+        tools:text="prix" />
+
+</RelativeLayout>
