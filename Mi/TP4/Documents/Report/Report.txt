@@ -18,9 +18,9 @@ Ensuite, la variable "subdir" est definie comme suivant:
 
  Ainsi, cette ligne permet d'aller chercher le fichier "Android.mk" au sein du dossier "libusb"
 
- 2:
+2:
 
- 3:
+3:
  
  define the macro in the lubusb/io.c file.
 
@@ -32,10 +32,38 @@ Ensuite, la variable "subdir" est definie comme suivant:
 
 
 
- 4: 
+4: 
 
- we need to add the library to the prelinked map found in ./build/core/prelink-linux-arm.map. 
+we need to add the library to the prelinked map found in ./build/core/prelink-linux-arm.map. 
  -> besoin d'etre rajouter au Kernel (le module USB).
 
 
- 5: Done
+5: Done
+
+
+5 Définition d'un nouveau produit
+
+
+1:	device/vedor/utbm -> device/utbm/lo52
+	On s'attend à trouver dans notre dossier produit "device", un conteneur "linaro" contenant le repo de la carte utilisé.
+
+	device
+		utbm
+			lo52
+		linaro
+			hikey
+				...
+				hikey
+					boardConfig.mk
+				...
+
+2:
+
+On ajouter les fichiers suivants:
+
+	vendorSetup.sh
+	cleanSpec.mk -> optional
+	AndroidProduct.mk
+	BoardConfig.mk
+	lo52.mk (produit)
+
