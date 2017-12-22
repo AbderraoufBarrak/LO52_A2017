@@ -1,0 +1,41 @@
+
+4_ Intégration de la libusb
+
+1:
+
+LOCAL_PATH := $(call my-dir)
+subdirs := $(addprefix $(LOCAL_PATH)/,$(addsuffix /Android.mk, \
+		libusb \
+))
+include $(subdirs)
+
+On retrouve tout dabord la première ligne classique d'un Android.mk:
+"LOCAL_PATH := $(call my-dir)"
+
+Ensuite, la variable "subdir" est definie comme suivant:
+
+ "$(LOCAL_PATH)/libusb/Android.mk"
+
+ Ainsi, cette ligne permet d'aller chercher le fichier "Android.mk" au sein du dossier "libusb"
+
+ 2:
+
+ 3:
+ 
+ define the macro in the lubusb/io.c file.
+
+#define TIMESPEC_TO_TIMEVAL(tv, ts)                                     \
+        do {                                                            \
+                (tv)->tv_sec = (ts)->tv_sec;                            \
+                (tv)->tv_usec = (ts)->tv_nsec / 1000;                   \
+        } while (0)
+
+
+
+ 4: 
+
+ we need to add the library to the prelinked map found in ./build/core/prelink-linux-arm.map. 
+ -> besoin d'etre rajouter au Kernel (le module USB).
+
+
+ 5: Done
