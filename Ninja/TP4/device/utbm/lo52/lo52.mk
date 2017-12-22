@@ -1,6 +1,6 @@
 $(call inherit_product, device/linaro/hikey/hikey.mk)
 
-PRODUCT_PACKAGES += libusb
+PRODUCT_PACKAGES += libusb_lib
 PRODUCT_PACKAGE_OVERLAYS := device/utbm/lo52/overlay
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.hw = lo52 \

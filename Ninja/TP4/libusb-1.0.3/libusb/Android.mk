@@ -3,9 +3,10 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := core.c \
                    descriptor.c \
                    io.c \ 
-                   sync.c 
-LOCAL_C_INCLUDES += libusb \
-                    libusbi
+                   sync.c \
+                   os/linux_usbfs.c
+LOCAL_C_INCLUDES += libusb-1.0.3/libusb/ \
+                    libusb-1.0.3/libusb/os/
 LOCAL_MODULE := libusb_lib
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
