@@ -1,1 +1,1 @@
-include device/linaro/hikey/hikey/BoardConfigCommon.mk
+include device/linaro/hikey/hikey/BoardConfig.mk
