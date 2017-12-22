@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 LOCAL SRC FILES:= core.c \
 		  descriptor.c \
 		  io.c \ 
-		  sync.
+		  sync.c \
 		  os/darwin_usb.c \
 		  os/linux_usbfs.c
 		  
