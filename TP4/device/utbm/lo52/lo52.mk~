@@ -1,0 +1,9 @@
+$(call inherit-product, device/hikey/hikey/device-hikey.mk)
+PRODUCT_PACKAGES +=
+
+DEVICE_PACKAGE_OVERLAYS := 
+
+PRODUCT_NAME := lo52
+PRODUCT_MODEL := BienCache
+PRODUCT_BRAND := ElleEstOuLaPoulette
+PRODUCT_DEVICE := Poulette2.0
