@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyNdkApplication</string>
+    <string name="b_write_label">Write</string>
+    <string name="b_read_label">Read</string>
+    <string name="b_reset_label">Reset</string>
+    <string name="b_start_label">Start</string>
+    v<string name="b_stop_label">Stop</string>
+    <string name="textView_label">Affichage du texte</string>
+</resources>
