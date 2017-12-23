@@ -50,12 +50,12 @@ public class LO52MainActivity extends AppCompatActivity {
     public void startButtonClick(View v){
         Random rand = new Random();
         int i = 11 + rand.nextInt(6);
-        tv.setText(i + "/" + start(i));
+        tv.setText(i + "/" + stop(i));
     }
 
     public void resetButtonClick(View v){
         et.setText("");
-        tv.setText(" Le code de retour est " + this.reset());
+        tv.setText("Le code de retour est " + this.reset());
     }
 
     /**
@@ -67,8 +67,6 @@ public class LO52MainActivity extends AppCompatActivity {
     public native String write (String a);
 
     public native int stop(int i);
-
-    public native int start(int i);
 
     public native String reset();
 

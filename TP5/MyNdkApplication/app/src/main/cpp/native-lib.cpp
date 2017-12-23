@@ -12,7 +12,6 @@ Java_tp5_utbm_fr_myndkapplication_LO52MainActivity_read(
     const char *nativeString = env->GetStringUTFChars(str,NULL);
     std::string retour = "READ : ";
     retour += nativeString;
-    // + *nativeString;
     env->ReleaseStringUTFChars(str,nativeString);
     return env->NewStringUTF(retour.c_str());
 }
@@ -26,7 +25,6 @@ Java_tp5_utbm_fr_myndkapplication_LO52MainActivity_write(
     const char *nativeString = env->GetStringUTFChars(str,NULL);
     std::string retour = "WRITE : ";
     retour += nativeString;
-    // + *nativeString;
     env->ReleaseStringUTFChars(str,nativeString);
     return env->NewStringUTF(retour.c_str());
 }
@@ -34,15 +32,6 @@ Java_tp5_utbm_fr_myndkapplication_LO52MainActivity_write(
 extern "C"
 JNIEXPORT jint JNICALL
 Java_tp5_utbm_fr_myndkapplication_LO52MainActivity_stop(
-        JNIEnv *env,
-        jobject /* this */, jint i) {
-
-    return i*i;
-}
-
-extern "C"
-JNIEXPORT jint JNICALL
-Java_tp5_utbm_fr_myndkapplication_LO52MainActivity_start(
         JNIEnv *env,
         jobject /* this */, jint i) {
 
