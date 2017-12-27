@@ -1,2 +1,2 @@
-add_lunch_combo lo52_eng
-add_lunch_combo lo52_user
+add_lunch_combo lo52-eng
+add_lunch_combo lo52-user

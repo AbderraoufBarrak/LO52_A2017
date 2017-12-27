@@ -1,5 +1,5 @@
 $(call inherit-product, device/hikey/hikey/device-hikey.mk)
-PRODUCT_PACKAGES +=
+PRODUCT_PACKAGES += libusb
 
 DEVICE_PACKAGE_OVERLAYS := device/utbm/lo52/overlay
 

@@ -5,7 +5,6 @@ LOCAL SRC FILES:= core.c \
 		  descriptor.c \
 		  io.c \ 
 		  sync.c \
-		  os/darwin_usb.c \
 		  os/linux_usbfs.c
 		  
 LOCAL_C_INCLUDES += device/utbm/lo52/libusb-1.0.3/libusb \
