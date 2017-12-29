@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.hervenrv.shuttlesmgmt.Achats">
+    tools:context="io.hervenrv.shuttlesmgmt.AchatsAct">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Bienvenue dans les achats"
+        android:text="Bienvenue dans les Achats"
         android:textAlignment="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -19,18 +19,11 @@
 
     <ListView
         android:id="@+id/listview"
-<<<<<<< HEAD
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="0dp"
-=======
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
->>>>>>> 04216c7b2355aeb6fc5fbb9f0ea9fe0f065f6999
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.0" />
 
