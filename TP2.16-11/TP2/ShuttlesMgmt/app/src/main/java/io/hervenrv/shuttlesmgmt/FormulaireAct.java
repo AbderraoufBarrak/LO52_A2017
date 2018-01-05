@@ -107,9 +107,9 @@ public class FormulaireAct extends AppCompatActivity {
                 refList.add(el.getRef());
             }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_formulaire, R.id.liste ,refList);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_formulaire, R.id.liste ,refList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            //viewHolder.refList.setAdapter(adapter);
+            viewHolder.refList.setAdapter(adapter);
         }
 
 
@@ -123,7 +123,7 @@ public class FormulaireAct extends AppCompatActivity {
         try {
             boolean checked = viewHolder.toggleButton.isChecked();
             String acheteur = viewHolder.acheteur.getText().toString();
-            if (acheteur.length() < 1)
+            if (acheteur.length() < 2)
                 return;
 
             String ref = viewHolder.ref.getText().toString();

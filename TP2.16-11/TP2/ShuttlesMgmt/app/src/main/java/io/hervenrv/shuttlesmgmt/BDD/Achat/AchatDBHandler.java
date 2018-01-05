@@ -20,7 +20,6 @@ public class AchatDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db){
 
-        //db.execSQL("CREATE TABLE STOCK()");
         db.execSQL(DBConst.ACHAT_TABLE_CREATE);
     }
 

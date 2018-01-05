@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //getApplicationContext().deleteDatabase("Achat.db");
-        getApplicationContext().deleteDatabase("Produit.db");
-        //getApplicationContext().deleteDatabase("Stock.db");
+        getApplicationContext().deleteDatabase("Achat.db");
+        //getApplicationContext().deleteDatabase("Produit.db");
+        getApplicationContext().deleteDatabase("Stock.db");
 
         achatDAO = new AchatDAO(getApplicationContext());
         stockDAO = new StockDAO(getApplicationContext());
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         produitDAO.open();
 
         //GenereAchats();
-        //GenereStock();
-        GenereProduits();
+        GenereStock();
+        //GenereProduits();
     }
 
     public void openAchat(View view) {
